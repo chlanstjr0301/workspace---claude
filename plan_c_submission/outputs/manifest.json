@@ -1,0 +1,120 @@
+{
+  "started_at": "2026-10-04T01:34:49.738894+09:00",
+  "mode": "full",
+  "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "logical_cpu_count": 16,
+  "numpy": "2.5.1",
+  "pandas": "2.2.3",
+  "sklearn": "1.7.2",
+  "onnxruntime_providers": [
+    "AzureExecutionProvider",
+    "CPUExecutionProvider"
+  ],
+  "torch": {
+    "installed": true,
+    "version": "2.13.0+cpu",
+    "cuda_available": false,
+    "cuda_version": null
+  },
+  "native_hardware_inventory": {
+    "system": "LENOVO 21QNCTO1WW",
+    "cpu": "AMD Ryzen AI 7 PRO 350",
+    "cores_threads": "8/16",
+    "ram_gb": 27.6,
+    "gpu": "AMD Radeon 860M Graphics (4 GB reported adapter memory)",
+    "npu": "AMD NPU Compute Accelerator Device",
+    "execution_choice": "CPU-native for reproducibility; GPU/NPU not required"
+  },
+  "data": {
+    "normal_path": "data\\raw\\press_data_normal.csv",
+    "normal_sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7",
+    "outlier_path": "data\\raw\\press_data_outlier.csv",
+    "outlier_sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e"
+  },
+  "config": {
+    "seed": 42,
+    "seeds": [
+      42,
+      1337,
+      2026
+    ],
+    "gap_seconds": 0.5,
+    "window_size": 10,
+    "window_sizes_sensitivity": [
+      5,
+      10,
+      20
+    ],
+    "alarm_persistence": 3,
+    "alarm_persistence_sensitivity": [
+      1,
+      3,
+      5
+    ],
+    "n_folds": 5,
+    "calibration_quantile": 0.995,
+    "pca_variance": 0.95,
+    "dpca_variance": 0.95,
+    "iforest": {
+      "n_estimators": 300,
+      "max_samples": 256
+    },
+    "stress_quick": [
+      "gain_1.5",
+      "offset_1std",
+      "polarity_ai1",
+      "noise_5pct",
+      "jitter_1ms",
+      "dropout_ai2"
+    ],
+    "stress_full": [
+      "gain_0.5",
+      "gain_0.8",
+      "gain_1.2",
+      "gain_1.5",
+      "gain_2.0",
+      "offset_minus2std",
+      "offset_minus1std",
+      "offset_1std",
+      "offset_2std",
+      "polarity_ai0",
+      "polarity_ai1",
+      "noise_1pct",
+      "noise_5pct",
+      "noise_10pct",
+      "jitter_0.1ms",
+      "jitter_0.5ms",
+      "jitter_1ms",
+      "jitter_2ms",
+      "jitter_5ms",
+      "dropout_ai0",
+      "dropout_ai1",
+      "dropout_ai2"
+    ]
+  },
+  "selected_fault_model": "B1_IF",
+  "runtime_seconds": 29.249,
+  "outputs": [
+    "RESULTS.md",
+    "figures\\model_comparison.png",
+    "figures\\normal_block_false_alarms.png",
+    "figures\\robustness_heatmap.png",
+    "figures\\shift_fault_plane.png",
+    "manifest.json",
+    "predictions.csv",
+    "tables\\block_cv.csv",
+    "tables\\calibration_audit.csv",
+    "tables\\data_audit.csv",
+    "tables\\error_conditions.csv",
+    "tables\\explanation.csv",
+    "tables\\feature_ablation.csv",
+    "tables\\feature_dictionary.csv",
+    "tables\\implementation_status.csv",
+    "tables\\model_comparison.csv",
+    "tables\\persistence_sensitivity.csv",
+    "tables\\robustness.csv",
+    "tables\\selection_gates.csv",
+    "tables\\window_sensitivity.csv"
+  ]
+}

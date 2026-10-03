@@ -1,0 +1,613 @@
+%% ICML-style single-blind submission format.
+%% Self-contained: compiles with any standard LaTeX install (no icml20xx.sty needed).
+%% To use the official style instead, see README.md in this directory.
+\documentclass[twocolumn,10pt]{article}
+
+\usepackage[margin=0.75in]{geometry}
+\usepackage{times}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{titlesec}
+
+\setlength{\columnsep}{0.25in}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\renewcommand{\abstractname}{\normalsize Abstract}
+\bibliographystyle{plainnat}
+
+\title{\bf When the Baseline Has No Parameters:\\
+Evaluation Pitfalls in Single-Event Industrial Anomaly Detection}
+
+\author{Anonymous Submission}
+\date{}
+
+\begin{document}
+\twocolumn[
+\begin{@twocolumnfalse}
+\maketitle
+\begin{center}\begin{minipage}{0.86\textwidth}
+\begin{center}\textbf{Abstract}\end{center}
+\small\noindent
+We report a methodological audit of a widely distributed industrial
+predictive-maintenance benchmark: vibration and current time series from the
+hydraulic pump of a fine-blanking press. The benchmark is representative of a
+large class of public manufacturing datasets---one labelled fault episode,
+one unlabelled normal recording, acquired on different days. We make four
+observations that we believe generalise beyond this dataset. \emph{(i)} The
+acquisition is burst-sampled: $58\%$ of wall-clock time is gaps, and naive
+sliding windows span those gaps, inflating the window count by $2\times$ and
+manufacturing detectable amplitude discontinuities; gap-aware windowing lowers
+the reference $F_1$ from $0.857$ to $0.818$, and the entire loss is in recall.
+\emph{(ii)} Window-level $F_1$ is saturated: a zero-parameter range rule
+attains $F_1=0.857$ against $0.748$ for the reference LSTM-autoencoder, so
+reporting $F_1$ alone cannot distinguish learned models from trivial ones.
+\emph{(iii)} Three commonly used operational metrics degenerate when the
+positive class is a single event---detection lead time is \emph{unattainable by
+construction}, event recall is $1.0$ for every detector, and a false-alarm rate
+of $1$/hour is unresolvable at the available $0.139$\,h of normal observation
+(Poisson $95\%$ upper bound $21.6$/h at zero alarms). \emph{(iv)} The current
+channel separates the two recordings perfectly ($F_1=1.000$ from two features
+alone), but its mains carrier occupies $95.9\%$ of normal AC power versus
+$10.4\%$ in the fault recording---physically impossible for a running motor,
+and therefore an acquisition artefact rather than a fault signature. We adopt a
+pre-declared exclusion rule, quantify its cost at $\Delta F_1 = 0.072$, and show
+that a vibration-only detector still reaches $F_1=0.928$ (95\% CI
+$0.852$--$0.984$, zero false positives, zero learned parameters). Finally, we
+localise $91.1\%$ of all false alarms to a single reversible $300$\,s low-load
+excursion inside the \emph{normal} recording, which we argue is the genuinely
+informative finding the benchmark affords.
+\end{minipage}\end{center}
+\vspace{1.5em}
+\end{@twocolumnfalse}
+]
+
+\section{Introduction}
+
+Public benchmarks for industrial anomaly detection are typically small, weakly
+labelled, and assembled from a handful of recording sessions. A recurring
+pattern---visible in the dataset we study and in many of its peers---is that
+the ``normal'' and ``anomalous'' classes correspond to \emph{different
+recording sessions}. Any difference between sessions, whether mechanical or
+instrumental, is then perfectly confounded with the label.
+
+This is not a hypothetical concern. \citet{wu2021flawed} showed that several
+widely used time-series anomaly benchmarks are solvable by one-line rules;
+\citet{kim2022rigorous} showed that the point-adjustment protocol common in the
+literature inflates $F_1$ to the point where random scores outperform published
+models. Our contribution is complementary and concrete: we take a single
+benchmark that is actively used in a national competition, and we trace, with
+measured numbers, exactly which evaluation decisions change the conclusion and
+by how much.
+
+We organise the paper around the decisions an analyst must make, in the order
+they arise: how to window burst-sampled data (\S\ref{sec:data}), which metrics
+remain identifiable when the positive class is one event (\S\ref{sec:metrics}),
+how to decide whether a highly discriminative channel is signal or artefact
+(\S\ref{sec:confound}), and only then which detector to use
+(\S\ref{sec:method}--\S\ref{sec:results}). Our view is that the first three
+decisions dominate the fourth, and that reporting practice should reflect that
+ordering.
+
+\paragraph{Contributions.}
+\begin{itemize}\itemsep1pt
+\item We identify a burst-sampling acquisition structure and show that
+gap-unaware windowing discards the distinction between adjacent and
+non-adjacent samples, inflating recall through artefacts (\S\ref{sec:data}).
+\item We show window $F_1$ on this benchmark is saturated by a zero-parameter
+rule, and propose a two-tier baseline protocol that preserves both an honest
+improvement margin and a strict reference (\S\ref{sec:metrics}).
+\item We give a falsifiable, pre-declared exclusion rule for session-confounded
+channels and report the exclusion cost rather than hiding it
+(\S\ref{sec:confound}).
+\item We localise the dominant false-alarm mode to a reversible operating-mode
+excursion inside the normal class, and show it is the mechanism behind the
+apparent robustness of amplitude features (\S\ref{sec:fp}).
+\end{itemize}
+
+\section{Dataset and Acquisition Structure}
+\label{sec:data}
+
+\subsection{The benchmark}
+
+The dataset provides two CSV files sampled at a nominal $10$\,Hz with three
+analogue channels---upper motor vibration (\textsf{AI0}), lower motor vibration
+(\textsf{AI1}), and motor current (\textsf{AI2})---plus a constant
+\textsf{Equipment\_state} flag. The normal file contains $20{,}000$ rows
+recorded on 2022-07-12 ($77$\,min wall clock); the fault file contains $600$
+rows recorded on 2022-07-17 ($2.8$\,min). Every row of the normal file is
+labelled $0$ and every row of the fault file is labelled $1$: the label is a
+\emph{file} attribute, not a row attribute. There is therefore exactly one
+positive event.
+
+\subsection{Burst sampling}
+
+Consecutive-sample intervals are not uniform. Taking a gap threshold of
+$0.5$\,s, the normal file decomposes into $599$ contiguous runs and the fault
+file into $21$. Run lengths are capped at exactly $50$ samples ($5$\,s) in both
+files, with $33.7\%$ of normal runs attaining the cap. Gaps account for
+$58.0\%$ of normal wall-clock time and $65.0\%$ of fault wall-clock time. The
+inter-burst start interval is tightly distributed (median $7.96$\,s) while
+burst length is not, which is the signature of a periodic publish-and-drop
+transport layer rather than a process cycle.
+
+This matters for windowing. With $L=20$ samples, only $9{,}978$ of the $19{,}981$
+naive stride-1 windows lie entirely inside a run ($49.9\%$ survival); at $L=10$
+survival is $74.4\%$ and at $L=5$ it is $88.3\%$. A naive window that straddles
+a gap concatenates signal segments separated by up to $16.6$\,s and so contains
+a discontinuity of purely instrumental origin.
+
+Two consequences follow. First, nominal window duration is wrong: a naive
+$20$-sample window spans a median $3.35$\,s (max $24.8$\,s) of wall clock, not
+$2$\,s; gap-aware windows span exactly $1.9$\,s. Second---and this is the
+quantitative point---removing straddling windows lowers the reference
+zero-parameter detector from $F_1=0.857$ to $0.818$, and the drop is
+\emph{entirely} in recall ($0.750\rightarrow0.692$) while precision and FPR stay
+at $1.000$ and $0.000$. The discarded windows were therefore not informative
+detections but gap-induced amplitude jumps.
+
+\begin{table}[t]
+\centering\small
+\caption{Effect of windowing on the zero-parameter range rule. All rows use
+identical splits and thresholds; only the windowing differs. The recall-only
+loss indicates that gap-straddling windows were being detected for
+instrumental, not mechanical, reasons.}
+\label{tab:windowing}
+\begin{tabular}{lcccc}
+\toprule
+Windowing & $N_{\text{norm}}/N_{\text{fault}}$ & P & R & $F_1$ \\
+\midrule
+naive, offset 100 & 4000 / 180 & 1.000 & 0.750 & 0.857 \\
+naive, no reserve & 4880 / 480 & 1.000 & 0.704 & 0.826 \\
+gap-aware, offset 100 & 2433 / 239 & 1.000 & 0.649 & 0.787 \\
+\textbf{gap-aware} & \textbf{2489 / 276} & \textbf{1.000} & \textbf{0.692} & \textbf{0.818} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Spectral structure}
+
+The reference analysis distributed with the dataset characterises normal
+vibration as uncorrelated. Inspecting lag-1 autocorrelation alone supports
+this ($r_1 = -0.011$ for \textsf{AI0}), but it is an artefact of the chosen lag.
+Burst-averaged periodograms ($50$ samples, Hann window, $0.2$\,Hz resolution,
+uniform expectation $3.8\%$ per bin) place $25.0\%$ of \textsf{AI0} power in a
+single $3.6$\,Hz bin and $38.0\%$ of \textsf{AI1} power in a single $1.8$\,Hz
+bin, in a stable $2{:}1$ ratio present in every burst. A Ljung--Box test
+\citep{ljung1978measure} over lags $1$--$8$ rejects whiteness in $275$ of $276$
+normal \textsf{AI0} bursts. Normal operation is thus a narrowband line
+spectrum, and the fault condition is the \emph{collapse} of that line structure
+into broadband low-frequency content.
+
+We note that at $10$\,Hz the Nyquist limit is $5$\,Hz, whereas a gear-type
+hydraulic pump driven by a four-pole induction motor has a gear-mesh frequency
+of roughly $300$\,Hz. Bearing and gear fault frequencies are therefore not
+recoverable from the vibration channels under any transform, which rules out
+the envelope-spectrum family of methods regardless of modelling choice. We make
+this explicit because the conclusion is insensitive to the pole-count
+assumption: $2$-pole ($60$\,Hz) and $6$-pole ($20$\,Hz) shafts both exceed
+Nyquist.
+
+\section{Which Metrics Survive One Event?}
+\label{sec:metrics}
+
+\subsection{Degenerate operational metrics}
+
+Operational anomaly-detection practice favours event-level metrics over
+sample-level ones \citep{hundman2018detecting,garg2021evaluation}. On this
+benchmark three such metrics are not merely noisy but \emph{unidentifiable}.
+
+\paragraph{Detection lead time is unattainable.} Lead time is defined as
+$t_0 - t_{\text{alarm}}$ where $t_0$ is fault onset. The fault file is labelled
+positive from its first row, so $t_0$ can only be taken as that row and no
+alarm can precede it. A window of $L=20$ requires $1.9$\,s to fill and a
+$k=5$ debounce a further $0.5$\,s, bounding lead time above by $-2.4$\,s. The
+target region is empty. We replace lead time by \emph{detection delay}.
+
+\paragraph{Detection delay is dominated by acquisition.} Every detector we
+evaluate reports an identical delay of $8.78$\,s. The cause is structural: the
+first burst of the fault file is $4$ samples long and admits no window, so the
+first evaluable window begins $8.78$\,s after $t_0$. Detection delay therefore
+measures the data, not the model.
+
+\paragraph{Event recall is constant.} With a single positive event, every
+detector that fires at all scores $1.0$. The Clopper--Pearson interval is
+$[0.025, 1.0]$.
+
+\paragraph{False-alarm rate is unresolvable.} The normal test segment provides
+$0.139$\,h of data time. Observing zero alarms gives a Poisson $95\%$ upper
+bound of $21.6$ alarms/h; one alarm gives $34.2$/h. A target of
+$\leq 1$ alarm/h would require roughly $3$\,h of alarm-free normal observation.
+Treating ``$0.0$/h'' as a hard admission criterion therefore filters candidates
+on noise. We report false-positive \emph{counts} and use them only for ranking.
+
+\subsection{What remains}
+
+After the above, the identifiable axes are the bootstrap confidence interval of
+window $F_1$, the false-positive count, and model complexity. Because stride-1
+windows overlap by $19/20$ samples, we resample at the burst level: all
+confidence intervals and paired comparisons use a block bootstrap over bursts
+($B=1000$), which is the smallest unit that is plausibly exchangeable.
+
+\subsection{Two-tier baselines}
+
+A zero-parameter rule that flags any window leaving the per-channel training
+range attains $F_1 = 0.857$ under the reference protocol, against $0.748$ for
+the LSTM-autoencoder \citep{malhotra2016lstm} distributed with the dataset.
+Window $F_1$ is thus saturated near $0.85$, and a deep model scoring $0.80$ is
+not ``good'' but worse than no model.
+
+However, promoting this rule to \emph{the} baseline is also wrong, for a reason
+specific to the data: the extrema of all three channels occur before row
+$15{,}000$, so the test segment lies strictly inside the training range and the
+rule \emph{cannot} produce a false positive. Its $\text{FPR}=0$ is an identity,
+not a measurement. We therefore report two tiers---the conventional reference
+model and the strict zero-parameter rule---and we verify, for every range-based
+detector we report, that the training range is in fact exceedable on test data
+(it is, for $2.6$--$3.8\%$ of windows).
+
+\section{Session Confound and a Pre-declared Exclusion Rule}
+\label{sec:confound}
+
+\subsection{The current channel separates the sessions, not the classes}
+
+The lag-1 autocorrelation of \textsf{AI2} is $0.927$ in the normal file with a
+minimum of $0.906$, and at most $0.836$ in the fault file: the two classes are
+perfectly separated by one scalar. Taken at face value this is the strongest
+feature in the dataset. Three observations argue it is an artefact.
+
+First, normal \textsf{AI2} is a pure aliased tone. A single sinusoid fits each
+burst with median $R^2 = 0.996$ at an apparent $0.600$\,Hz, and
+$\cos(2\pi\cdot0.6/10) = 0.9298$ reproduces the observed autocorrelation. This
+identifies a $60$\,Hz mains carrier folded by a sampling clock in error by
+$1.0\%$. Second, the statistic is a function of carrier \emph{frequency}, which
+load cannot change, so its invariance across operating conditions carries no
+information about whether it tracks machine health. Third, and decisively, the
+share of AC power in the carrier band falls from $0.959$ (normal, range
+$[0.947,0.973]$) to $0.104$ (fault, $[0.046,0.183]$) with no overlap. For a
+running induction motor the mains fundamental cannot vanish; a change of this
+magnitude indicates a different acquisition path.
+
+We also note a file-level fingerprint independent of any channel: decimal
+precision differs between the files (median $6$ digits with $0.0\%$ exceeding
+seven in the normal file, versus median $8$ and $64.8\%$ in the fault file,
+including float64 serialisation residue such as
+\texttt{-44.107442000000006}). The two files were exported by different
+pipelines. The confound is therefore present at the file level and is not
+specific to any one variable.
+
+\subsection{The rule}
+
+Because a single fault session cannot falsify an instrumental explanation, we
+decline to adjudicate it and instead pre-declare an exclusion rule:
+
+\begin{quote}\small
+\textbf{D1.} A feature that is invariant (coefficient of variation $<1\%$)
+across all observed normal operating variation, yet differs between acquisition
+sessions, is excluded from the final model, because a single session cannot
+falsify an instrumental explanation.
+\end{quote}
+
+D1 is a procedural rule, not a physical verdict. It applies to the whole
+\textsf{AI2} channel, including the amplitude features \textsf{AI2\_std} and
+\textsf{AI2\_ptp}, which are functions of the same carrier. We regard partial
+exclusion---banning the autocorrelation while retaining the amplitude---as
+indefensible, and we report the cost of full exclusion in
+\S\ref{sec:results}.
+
+\section{Features and Detectors}
+\label{sec:method}
+
+\subsection{Feature sets}
+
+All features are computed on gap-aware windows of $L=20$. We evaluate four
+D1-compliant sets, each built to test one hypothesis about what distinguishes
+the fault, plus two D1-violating sets retained only for sensitivity analysis.
+
+\begin{itemize}\itemsep1pt
+\item \textsf{S0\_AMP4}: $\{\sigma, \text{p2p}\}$ for \textsf{AI0}, \textsf{AI1}. Amplitude only.
+\item \textsf{S1\_VIB}: \textsf{S0} $+$ lagged correlations at lags $1,2$ $+$
+$\rho(\textsf{AI0},\textsf{AI1})$ $+$ amplitude ratio $+$ interaction.
+\item \textsf{S2\_SHAPE}: amplitude $+$ kurtosis, crest factor $+$ ratio $+$ interaction.
+\item \textsf{S3\_SPEC}: amplitude $+$ band power at $1.5$--$2.5$ and $3.0$--$4.0$\,Hz $+$ ratio $+$ interaction.
+\end{itemize}
+
+Two constructions deserve comment. The \emph{amplitude ratio}
+$\sigma(\textsf{AI0})/\sigma(\textsf{AI1})$ is invariant to per-channel gain and
+polarity, which matters because the dataset documents no sensor axis, mounting
+angle, or unit; consequently no absolute vibration-severity standard can be
+applied, and all thresholds must be relative to the data itself. The
+\emph{interaction} term $-\rho\cdot\sigma(\textsf{AI0})$ encodes a finding from
+\S\ref{sec:fp}: antiphase motion alone is not diagnostic because it also occurs
+in normal operation; antiphase \emph{together with} increased amplitude is.
+
+\subsection{Detectors}
+
+All detectors are one-class and are fitted on normal training windows only:
+the range rule; Mahalanobis distance and a one-sided variant that accumulates
+only positive deviations; principal-component $T^2$ and squared prediction
+error \citep{jackson1979control,macgregor1995statistical}; Isolation Forest
+\citep{liu2008isolation}; Local Outlier Factor in novelty mode
+\citep{breunig2000lof}; and a one-class SVM \citep{scholkopf2001estimating}.
+Thresholds are the $q_{99.9}$ quantile of the score on the normal validation
+segment, so no fault label enters threshold selection. Scores are converted to
+$p$-values by split conformal prediction \citep{vovk2005algorithmic,
+laxhammar2015inductive}, which requires only normal data; we use the
+uniformity of normal $p$-values as a calibration diagnostic rather than
+claiming a coverage guarantee, since exchangeability is violated by the
+excursion of \S\ref{sec:fp}.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Protocol}
+
+Train on normal rows $[0,12000)$ ($6{,}021$ windows), select thresholds on
+normal rows $[12000,15000)$ ($1{,}468$ windows), and test on normal rows
+$[15000,20000)$ ($2{,}489$ windows) together with all $276$ fault windows.
+Standardisation is fitted on the training segment only and is omitted for the
+range rule and Isolation Forest, which are invariant to monotone per-feature
+transforms. Confidence intervals are burst-level block bootstraps with
+$B=1000$.
+
+\begin{table}[t]
+\centering\small
+\caption{D1-compliant detectors, ranked by the lower bound of the bootstrap
+$F_1$ interval. FP is the count of false positives among $2489$ normal test
+windows; $|\theta|$ is the number of learned parameters.}
+\label{tab:main}
+\begin{tabular}{llcccc}
+\toprule
+Features & Detector & $F_1$ & 95\% CI & FP & $|\theta|$ \\
+\midrule
+\textsf{S1\_VIB} & Range rule & \textbf{0.928} & [.852,.984] & \textbf{0} & \textbf{0} \\
+\textsf{S3\_SPEC} & PCA-SPE & 0.917 & [.849,.971] & 10 & 55 \\
+\textsf{S3\_SPEC} & Mahalanobis & 0.905 & [.829,.970] & 11 & 65 \\
+\textsf{S2\_SHAPE} & OCSVM & 0.903 & [.817,.976] & 17 & 95 \\
+\textsf{S2\_SHAPE} & LOF & 0.896 & [.808,.973] & 4 & 0 \\
+\textsf{S2\_SHAPE} & Mahalanobis$^{1S}$ & 0.888 & [.794,.971] & 22 & 65 \\
+\textsf{S2\_SHAPE} & Range rule & 0.877 & [.786,.955] & 6 & 0 \\
+\textsf{S1\_VIB} & PCA-$T^2$ & 0.863 & [.791,.927] & 60 & 72 \\
+\textsf{S0\_AMP4} & OCSVM & 0.866 & [.773,.949] & 7 & 72 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Main result}
+
+Table~\ref{tab:main} gives the D1-compliant leaderboard. The best detector is a
+zero-parameter range rule on \textsf{S1\_VIB}, at $F_1 = 0.928$ with perfect
+precision and no false positives. Against the strict baseline of
+\S\ref{sec:metrics} ($F_1 = 0.818$) the paired block bootstrap gives
+$\Delta F_1 \in [+0.008, +0.202]$ with $P(\Delta \leq 0) = 0.019$; against a
+Mahalanobis detector on amplitude features only ($0.828$) it gives
+$[+0.055, +0.159]$, $P(\Delta\leq0)=0.000$.
+
+We verify that this result is not the identity of \S\ref{sec:metrics}: in the
+\textsf{S1\_VIB} feature space, $95$ of $2489$ normal test windows ($3.82\%$)
+do exceed the training range on at least one coordinate, and are nonetheless
+scored below threshold.
+
+The second-ranked detector, PCA-SPE on spectral features, is
+\emph{not distinguishable} from the first: $\Delta F_1 \in [-0.022, +0.043]$,
+$P(\Delta\leq0)=0.265$. We consider this the most useful single number in the
+study. Rather than break the tie on point estimates, we assign the two models
+different roles: the zero-parameter rule is the \emph{reference} that any more
+complex model must beat significantly, and the PCA model is the
+\emph{deployment} candidate, because its residual decomposition yields
+contribution plots that attribute an alarm to individual variables---the
+standard diagnostic artefact in multivariate process control.
+
+\subsection{Cost of the exclusion rule}
+
+\begin{table}[t]
+\centering\small
+\caption{Sensitivity to D1. Excluding the current channel costs
+$\Delta F_1 = 0.072$. Two current-derived features alone separate the classes
+perfectly, which we read as a measure of the confound rather than of
+performance.}
+\label{tab:d1}
+\begin{tabular}{llcc}
+\toprule
+Features & Detector & $F_1$ & D1 \\
+\midrule
+\textsf{AI2} only (2 feat.) & PCA-SPE & 1.000 & violates \\
+\textsf{AI2} only (2 feat.) & Mahalanobis & 1.000 & violates \\
+amp.\ $+$ \textsf{AI2} & LOF & 0.984 & violates \\
+amp.\ $+$ \textsf{AI2} & OCSVM & 0.964 & violates \\
+\midrule
+\textsf{S1\_VIB} (adopted) & Range rule & 0.928 & complies \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:d1} quantifies what D1 costs. Two current-derived features
+suffice for perfect separation. We report this prominently precisely because it
+is the exclusion's justification: given independent evidence that the current
+acquisition path differed between sessions, perfect separation measures the
+confound, not the detector. The cost of declining it is $\Delta F_1 = 0.072$.
+
+\subsection{Where the false alarms are}
+\label{sec:fp}
+
+\begin{table}[t]
+\centering\small
+\caption{False alarms are not uniformly distributed over the normal test
+segment. Rows are $1000$-sample bins; statistics are bin means. The detector is
+the worst-performing D1-compliant candidate ($191$ false positives), chosen to
+make the concentration visible.}
+\label{tab:fp}
+\begin{tabular}{lrrrrr}
+\toprule
+Rows & $n$ & FP & rate & $\sigma_{\textsf{AI1}}$ & $\rho_{01}$ \\
+\midrule
+15--16k & 501 & 13 & 2.6\% & 0.089 & $+0.197$ \\
+\textbf{16--17k} & 499 & \textbf{64} & \textbf{12.8\%} & \textbf{0.043} & $\mathbf{-0.198}$ \\
+\textbf{17--18k} & 504 & \textbf{56} & \textbf{11.1\%} & \textbf{0.042} & $\mathbf{-0.248}$ \\
+\textbf{18--19k} & 502 & \textbf{54} & \textbf{10.8\%} & 0.058 & $-0.093$ \\
+19--20k & 483 & 4 & 0.8\% & 0.103 & $+0.316$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:fp} shows that $91.1\%$ of false positives fall in rows
+$16{,}000$--$19{,}000$, roughly $300$\,s. In that interval vibration amplitude
+drops by $53\%$ and the upper--lower correlation reverses sign, yet the label
+remains normal; by row $19{,}000$ both statistics return to training levels
+($0.103$ and $+0.316$ against $0.115$ and $+0.306$). This is a reversible
+second operating mode, not a regime change, and we were able to confirm that it
+co-varies with a load proxy.
+
+Two implications follow. First, sign reversal of inter-sensor correlation is
+\emph{not} a fault signature: it occurs in labelled-normal data. What
+distinguishes the fault is reversal \emph{accompanied by rising} amplitude,
+whereas the normal excursion reverses while amplitude \emph{falls}---which is
+why we include the interaction feature of \S\ref{sec:method}. Second, and less
+comfortably, the zero false positives of our adopted detector are a consequence
+of direction rather than robustness: normal operating variation pushes
+amplitude \emph{inside} the training support while the fault pushes it outside.
+A normal mode that raised amplitude---a heavier blanking job, a higher pressure
+setting---would produce false alarms. No such mode is present in these data,
+and we state this as a limitation rather than discovering it later.
+
+\section{Discussion}
+
+\paragraph{Ordering of decisions.} Across every comparison we ran, the choice
+of windowing ($\Delta F_1 = 0.039$), the choice of whether to admit the
+confounded channel ($0.072$), and the choice of baseline (the difference
+between claiming $+0.18$ and claiming $+0.11$ over the reference model) each
+moved the headline number by more than the spread across all eight detectors on
+a fixed feature set. Model selection was the least consequential decision we
+made. We suspect this ordering is common in small industrial benchmarks and is
+under-reported because the preprocessing decisions are rarely ablated.
+
+\paragraph{On zero-parameter winners.} That a range rule tops
+Table~\ref{tab:main} is not an argument against learning; it is a statement
+about the identifiability of this benchmark. With $276$ positive windows drawn
+from one event, the effective positive sample size is one, and the bootstrap
+intervals in Table~\ref{tab:main} overlap almost completely. The honest reading
+is that this dataset can rank preprocessing choices but cannot rank detectors.
+
+\paragraph{Calibration versus coverage.} We deliberately do not claim a
+conformal coverage guarantee. Exchangeability fails across the excursion of
+\S\ref{sec:fp}, and in feature sets that include correlation statistics we
+measured empirical false-positive rates exceeding the nominal $\alpha$ by up to
+$84\times$. We report the Kolmogorov--Smirnov distance of the normal
+$p$-value distribution from uniform as a diagnostic instead; it is smallest
+($0.046$--$0.105$) exactly for the amplitude and spectral feature sets that are
+insensitive to the excursion.
+
+\paragraph{Limitations.} The study concerns one dataset with one fault event,
+and all statements about the fault mechanism are necessarily weak. We make no
+claim about which failure mode produced the recording; the available bandwidth
+($\leq 5$\,Hz) excludes the diagnostic frequencies that would be required. Our
+evaluation protocol also inherits the dataset's single-session structure: a
+model that passes D1 may still be exploiting session differences that we failed
+to identify.
+
+\section{Conclusion}
+
+On a representative industrial predictive-maintenance benchmark, we find that
+three evaluation decisions---gap-aware windowing, baseline selection, and the
+treatment of a session-confounded channel---each affect the reported $F_1$ more
+than the choice among eight standard one-class detectors, and that three
+commonly reported operational metrics are unidentifiable when the positive
+class is a single event. We recommend that work on such benchmarks report the
+windowing survival rate, verify that range-based baselines can in principle
+produce false positives, state the effective number of positive events
+alongside any interval estimate, and quantify the cost of excluding any channel
+suspected of acquisition confounding. Applying this protocol, a vibration-only
+detector with no learned parameters attains $F_1 = 0.928$ with zero false
+positives, and $91.1\%$ of all false alarms in the study localise to a single
+reversible load excursion that the benchmark labels normal---which we regard as
+the finding the data actually supports.
+
+\paragraph{Reproducibility.} The full pipeline runs end to end from a single
+entry point and emits the comparison table, the false-alarm decomposition, and
+per-window predictions. All randomised components are seeded; the range rule,
+Mahalanobis, and PCA detectors are deterministic. Repeated runs are
+byte-identical.
+
+\begin{thebibliography}{99}\small
+\setlength{\itemsep}{1pt}
+
+\bibitem[Breunig et al.(2000)]{breunig2000lof}
+M.~M. Breunig, H.-P. Kriegel, R.~T. Ng, and J.~Sander.
+\newblock LOF: Identifying density-based local outliers.
+\newblock In \emph{SIGMOD}, 2000.
+
+\bibitem[Garg et al.(2021)]{garg2021evaluation}
+A.~Garg, W.~Zhang, J.~Samaran, R.~Savitha, and C.-S. Foo.
+\newblock An evaluation of anomaly detection and diagnosis in multivariate time
+  series.
+\newblock \emph{IEEE Trans. Neural Netw. Learn. Syst.}, 2021.
+
+\bibitem[Hundman et al.(2018)]{hundman2018detecting}
+K.~Hundman, V.~Constantinou, C.~Laporte, I.~Colwell, and T.~Soderstrom.
+\newblock Detecting spacecraft anomalies using LSTMs and nonparametric dynamic
+  thresholding.
+\newblock In \emph{KDD}, 2018.
+
+\bibitem[Jackson \& Mudholkar(1979)]{jackson1979control}
+J.~E. Jackson and G.~S. Mudholkar.
+\newblock Control procedures for residuals associated with principal component
+  analysis.
+\newblock \emph{Technometrics}, 21(3):341--349, 1979.
+
+\bibitem[Kim et al.(2022)]{kim2022rigorous}
+S.~Kim, K.~Choi, H.-S. Choi, B.~Lee, and S.~Yoon.
+\newblock Towards a rigorous evaluation of time-series anomaly detection.
+\newblock In \emph{AAAI}, 2022.
+
+\bibitem[Laxhammar \& Falkman(2015)]{laxhammar2015inductive}
+R.~Laxhammar and G.~Falkman.
+\newblock Inductive conformal anomaly detection for sequential detection of
+  anomalous sub-trajectories.
+\newblock \emph{Ann. Math. Artif. Intell.}, 74:67--94, 2015.
+
+\bibitem[Liu et al.(2008)]{liu2008isolation}
+F.~T. Liu, K.~M. Ting, and Z.-H. Zhou.
+\newblock Isolation forest.
+\newblock In \emph{ICDM}, 2008.
+
+\bibitem[Ljung \& Box(1978)]{ljung1978measure}
+G.~M. Ljung and G.~E.~P. Box.
+\newblock On a measure of lack of fit in time series models.
+\newblock \emph{Biometrika}, 65(2):297--303, 1978.
+
+\bibitem[MacGregor \& Kourti(1995)]{macgregor1995statistical}
+J.~F. MacGregor and T.~Kourti.
+\newblock Statistical process control of multivariate processes.
+\newblock \emph{Control Engineering Practice}, 3(3):403--414, 1995.
+
+\bibitem[Malhotra et al.(2016)]{malhotra2016lstm}
+P.~Malhotra, A.~Ramakrishnan, G.~Anand, L.~Vig, P.~Agarwal, and G.~Shroff.
+\newblock LSTM-based encoder-decoder for multi-sensor anomaly detection.
+\newblock \emph{arXiv:1607.00148}, 2016.
+
+\bibitem[Sch\"olkopf et al.(2001)]{scholkopf2001estimating}
+B.~Sch\"olkopf, J.~C. Platt, J.~Shawe-Taylor, A.~J. Smola, and R.~C.
+  Williamson.
+\newblock Estimating the support of a high-dimensional distribution.
+\newblock \emph{Neural Computation}, 13(7):1443--1471, 2001.
+
+\bibitem[Vovk et al.(2005)]{vovk2005algorithmic}
+V.~Vovk, A.~Gammerman, and G.~Shafer.
+\newblock \emph{Algorithmic Learning in a Random World}.
+\newblock Springer, 2005.
+
+\bibitem[Wu \& Keogh(2021)]{wu2021flawed}
+R.~Wu and E.~Keogh.
+\newblock Current time series anomaly detection benchmarks are flawed and are
+  creating the illusion of progress.
+\newblock \emph{IEEE Trans. Knowl. Data Eng.}, 2021.
+
+\end{thebibliography}
+
+\end{document}

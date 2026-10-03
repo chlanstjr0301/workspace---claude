@@ -2,3 +2,11 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ipynb_checkpoints/
+
+# LaTeX 중간 산출물
+*.aux
+*.log
+*.out
+*.synctex.gz
+!**/outputs/*.log
+!**/outputs/**/*.log

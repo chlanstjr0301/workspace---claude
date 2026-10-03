@@ -1,0 +1,44 @@
+seed: 42
+seeds: [42, 1337, 2026]
+gap_seconds: 0.5
+window_size: 10
+window_sizes_sensitivity: [5, 10, 20]
+alarm_persistence: 3
+alarm_persistence_sensitivity: [1, 3, 5]
+n_folds: 5
+calibration_quantile: 0.995
+pca_variance: 0.95
+dpca_variance: 0.95
+iforest:
+  n_estimators: 300
+  max_samples: 256
+stress_quick:
+  - gain_1.5
+  - offset_1std
+  - polarity_ai1
+  - noise_5pct
+  - jitter_1ms
+  - dropout_ai2
+stress_full:
+  - gain_0.5
+  - gain_0.8
+  - gain_1.2
+  - gain_1.5
+  - gain_2.0
+  - offset_minus2std
+  - offset_minus1std
+  - offset_1std
+  - offset_2std
+  - polarity_ai0
+  - polarity_ai1
+  - noise_1pct
+  - noise_5pct
+  - noise_10pct
+  - jitter_0.1ms
+  - jitter_0.5ms
+  - jitter_1ms
+  - jitter_2ms
+  - jitter_5ms
+  - dropout_ai0
+  - dropout_ai1
+  - dropout_ai2

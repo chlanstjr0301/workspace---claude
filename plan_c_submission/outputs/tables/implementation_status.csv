@@ -1,0 +1,6 @@
+﻿component,status,detail
+Statistical core,complete,"B0_Range, B1_IF, M1_Mahalanobis, M2_PCA_MSPC, M3_DPCA"
+Sensitivity audits,complete,"window 5/10/20, feature ablation, persistence 1/3/5"
+LSTM-AE,reference_only,Prior TensorFlow run retained; same-protocol retraining unavailable in Python 3.13
+VUS-PR,not_implemented,AP and alarm-range metrics retained; avoid unverified dependency
+Native acceleration,cpu,16 logical threads; AMD GPU/NPU detected but Python providers absent

@@ -1,0 +1,4 @@
+1) data가 symmetric함이(이상과 정상 둘다) 통계적으로 유의해야 절댓값을 취할 수 있는거 아닌가
+2) K-fold 쓸 수 있는지
+3) Loss Function MSE만 썼는데 딴건 어떤지? 절댓값에 거리기반이니까 사실 MSE가 젤 나을거 같긴 한데
+4) Blackbox인게 문제가 되나, Whitebox모델을 만들면 precision을 좀 포기하더라도 해석가능성을 추가해 엣지를 줄수도 있다.
