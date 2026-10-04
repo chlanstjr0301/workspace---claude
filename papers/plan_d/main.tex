@@ -124,7 +124,16 @@ must not report as equipment faults---separates the models cleanly
 (\S\ref{sec:robust}): worst-case false-alarm increase ranges from $17.0$ to
 $89.7$ percentage points. We make this the selection criterion.
 
-\textbf{(4) A reproducible protocol.} We specify gap-aware windowing,
+\textbf{(4) The protocol choices are load-bearing, and we measure by how much.}
+Against a uniform random score the submitted detector is clearly separated
+($F_1$ $0.994$ vs.\ $0.228$), but under the point-adjustment protocol that is
+standard in much of this literature a \emph{random} score reaches $F_1=0.779$
+--- indistinguishable from our deployed system's operational $0.780$
+(\S\ref{sec:protoval}). Reporting against a trivial baseline and refusing
+point adjustment are therefore not stylistic preferences here; either omission
+would have reversed the paper's conclusion.
+
+\textbf{(5) A reproducible protocol.} We specify gap-aware windowing,
 burst-blocked normal-only block cross-validation, split-conformal calibration
 of the alarm threshold, and a sequence of selection gates that deliberately
 excludes detection score as a tie-breaker (\S\ref{sec:protocol}). The full
@@ -176,6 +185,133 @@ consulting fault labels. Because overlapping windows violate exchangeability,
 we block by acquisition burst, in the spirit of purged cross-validation
 \citep{lopezdeprado2018advances}, and we report realized coverage rather than
 assuming it.
+
+\section{Problem Formulation}
+\label{sec:prelim}
+
+We first fix notation. Our departure from the standard time-series anomaly
+detection (TAD) setup is confined to \S\ref{sub:bursts}, where the acquisition
+is not a uniformly sampled stream; everything downstream inherits that change.
+
+\subsection{Signals and labels}
+
+Let $X=(x_1,\dots,x_T)$ denote a record of $N$ synchronous channels, $x_t\in
+\mathbb{R}^{N}$, observed at timestamps $\tau_1<\dots<\tau_T$. Here $N=3$
+(upper vibration, lower vibration, motor current). Write
+$\Delta_t=\tau_{t+1}-\tau_t$ for the sampling interval. A binary label
+$y_t\in\{0,1\}$ marks fault ($1$) or normal ($0$).
+
+Two properties of this benchmark are atypical and must be carried in the
+notation. First, $y_t$ is constant within each record: the label is a property
+of the \emph{file}, not of the sample. Second, the normal and fault records
+were acquired on different days; writing $c(t)\in\{1,2\}$ for the acquisition
+session of sample $t$, we have $y_t=\mathbb{1}[c(t)=2]$ exactly. Session and
+label are perfectly confounded, which is the premise of \S\ref{sec:robust}.
+
+\subsection{Acquisition bursts}
+\label{sub:bursts}
+
+The standard setup assumes $\Delta_t$ constant. It is not. Fix a gap threshold
+$g$ and define the \emph{acquisition bursts} as the maximal contiguous runs
+\begin{equation}
+\mathcal{B}=\{B_1,\dots,B_K\},\qquad
+B_k=\{t: a_k \le t \le b_k\},\ \ \Delta_t\le g\ \ \forall\, t\in[a_k,b_k),
+\label{eq:burst}
+\end{equation}
+so that consecutive bursts are separated by $\Delta_{b_k}>g$. We use
+$g=\SI{0.5}{\second}$. A burst is the natural unit of this acquisition: it is
+the longest stretch over which "adjacent sample" means what it usually means.
+
+\subsection{Gap-aware windowing}
+
+Given a window length $\ell$, the naive stride-1 construction is
+$w_t=(x_t,\dots,x_{t+\ell-1})$ for every admissible $t$. We instead require a
+window to lie entirely inside one burst,
+\begin{equation}
+\mathcal{W}_\ell=\bigl\{\,w_t \;:\; [t,\,t+\ell-1]\subseteq B_k \text{ for some } k \,\bigr\},
+\label{eq:gapaware}
+\end{equation}
+and define the \emph{survival rate}
+$\rho(\ell)=|\mathcal{W}_\ell| \,/\, |\mathcal{W}^{\mathrm{naive}}_\ell|$,
+the fraction of naive windows that are physically contiguous. A window outside
+$\mathcal{W}_\ell$ concatenates signal segments separated by up to
+\SI{16.6}{\second} and therefore contains a discontinuity of instrumental, not
+mechanical, origin. Section~\ref{sec:data} measures $\rho$.
+
+A feature map $\phi:\mathbb{R}^{\ell\times N}\!\to\mathbb{R}^{d}$ summarises
+each window; $d=23$ here, grouped as amplitude, shape, relation and level
+(\S\ref{sec:protocol}).
+
+\subsection{Scoring and decision}
+
+A detector is a score $A:\mathbb{R}^{d}\!\to\mathbb{R}$, larger meaning more
+anomalous, fitted on normal data only. Rather than thresholding $A$ directly we
+convert it to a split-conformal $p$-value against a normal calibration set
+(Eq.~\ref{eq:conformal}) and alarm when
+\begin{equation}
+\hat y_t=\mathbb{1}\!\left[\,p_{\mathrm{normal}}(\phi(w_t))\le\alpha\,\right],
+\qquad \alpha=0.01 .
+\label{eq:decide}
+\end{equation}
+We write $\mathrm{risk}=1-p_{\mathrm{normal}}$ and stress that it is a rank
+statistic, not $\Pr(y=1\mid x)$; \S\ref{sec:calib} measures the gap.
+
+\subsection{Temporal integration}
+
+Single-window decisions are debounced. For integers $M\le N_{\mathrm w}$ define
+the operator
+\begin{equation}
+\Pi_{N_{\mathrm w},M}(\hat y)_t=\mathbb{1}\!\left[\textstyle\sum_{j=t-N_{\mathrm w}+1}^{t}\hat y_j\ \ge M\right],
+\label{eq:mofn}
+\end{equation}
+evaluated only over index windows contained in a single burst. The submitted
+system uses the strict form $N_{\mathrm w}=M=3$. Section~\ref{sec:mofn}
+measures the whole $(N_{\mathrm w},M)$ family; the usual recommendation that
+loose integration ($M<N_{\mathrm w}$) helps turns out to be false here.
+
+\subsection{Three evaluation levels}
+\label{sub:levels}
+
+Results are reported at three granularities, and mixing them silently is the
+error this paper is most concerned with.
+
+\begin{description}\itemsep2pt
+\item[$\mathcal{L}_1$ window.] Each $w\in\mathcal{W}_\ell$ is one observation.
+  Overlapping windows share $\ell-1$ of $\ell$ samples, so these are not
+  independent.
+\item[$\mathcal{L}_2$ burst.] Each $B_k$ is one observation; a burst is called
+  detected if any of its windows alarms. This is the smallest plausibly
+  exchangeable unit, and all confidence intervals resample at this level.
+\item[$\mathcal{L}_3$ event.] A maximal run of alarming windows is one alarm
+  event; false-alarm rates per hour are counted here.
+\end{description}
+
+With $P,R,F_1$ defined as usual from $\mathrm{TP},\mathrm{FP},\mathrm{FN}$, the
+\emph{effective} number of positive observations is not $|\{t:y_t=1\}|$ but the
+number of independent fault events, which is \textbf{one}. Any interval
+estimate that ignores this is meaningless, so we resample bursts rather than
+windows throughout.
+
+\subsection{Point adjustment, and why we do not use it}
+\label{sub:pa}
+
+Let $\mathcal{S}=\{S_1,\dots,S_M\}$ be the ground-truth fault segments. The
+widely used \emph{point-adjustment} (PA) protocol \citep{kim2022towards}
+replaces $\hat y$ by
+\begin{equation}
+\hat y^{\mathrm{PA}}_t=
+\begin{cases}
+1, & t\in S_m \text{ and } \exists\, t'\!\in S_m:\ \hat y_{t'}=1,\\
+\hat y_t, & \text{otherwise,}
+\end{cases}
+\label{eq:pa}
+\end{equation}
+that is, one hit anywhere inside a segment credits the whole segment. PA can
+only increase $\mathrm{TP}$ and decrease $\mathrm{FN}$, never touching
+$\mathrm{FP}$, so $F_1^{\mathrm{PA}}\ge F_1$ always. We take $S_m$ to be the
+fault bursts. \textbf{We report no adjusted metric anywhere in this paper};
+\S\ref{sec:protoval} measures what PA would have done to our numbers, and the
+answer is the reason for the choice.
 
 \section{The Benchmark and Its Acquisition Structure}
 \label{sec:data}
@@ -322,6 +458,85 @@ events per hour on each normal hold-out block, with a Poisson 95\% upper bound
 so that a zero count is never reported as a rate of zero; realized conformal
 coverage; and false-alarm increase under measurement perturbation. We report
 the worst block, not only the mean.
+
+\section{Protocol Validation: A Random Baseline and Point Adjustment}
+\label{sec:protoval}
+
+Two choices in \S\ref{sec:protocol} --- reporting against a trivial baseline,
+and refusing point adjustment --- are easy to assert and easy to skip. We
+measure what each is worth on this benchmark. Both experiments use the normal
+hold-out ($2{,}929$ windows) together with all fault windows ($428$ windows in
+$17$ segments), and both report the \emph{oracle} $F_1$ obtained by sweeping the
+threshold to its best value, which is the quantity most favourable to the
+method under test.
+
+\begin{table}[t]
+\centering\small
+\caption{Oracle $F_1$ under each protocol. Uniform random scores are averaged
+over 20 seeds ($\pm$ s.d.). Our operational threshold is the conformal rule of
+Eq.~\ref{eq:decide}, not an oracle sweep.}
+\label{tab:protoval}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Score & Prot. & $F_1$ \\
+\midrule
+Submitted, oracle $\delta$ & --- & 0.994 \\
+Uniform random, oracle $\delta$ & --- & 0.228\,$\pm$\,0.002 \\
+Submitted, conformal $\alpha{=}0.01$ & --- & 0.780 \\
+\midrule
+Submitted, oracle $\delta$ & PA & 1.000 \\
+Uniform random, oracle $\delta$ & PA & \textbf{0.779\,$\pm$\,0.041} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{A random baseline is not free.} \citet{kim2022towards} argue that
+TAD results are uninterpretable without a trivial reference, because the class
+balance and segment structure of these benchmarks can carry a large $F_1$ on
+their own. On our split a uniform random score reaches $F_1=0.228$ at its best
+threshold (Table~\ref{tab:protoval}), well below the submitted detector's
+$0.994$. The separation is therefore real --- but note the second row against
+the third: our \emph{deployed} conformal threshold yields $0.780$, not $0.994$.
+The gap between oracle and operational thresholding is larger than the gap
+between several of the models we compare in \S\ref{sec:sep}, which is one more
+reason not to rank detectors on $F_1$ here.
+
+\paragraph{Point adjustment would have erased the comparison.} Applying
+Eq.~\ref{eq:pa}, the submitted detector reaches $F_1^{\mathrm{PA}}=1.000$ and a
+\emph{uniform random score} reaches $0.779\pm0.041$. The latter is
+indistinguishable from the operational $F_1$ of our actual system. Had we
+adopted the protocol that is standard in much of this literature, a detector
+with no information would have matched a deployed one, and the entire empirical
+content of this paper would have been an artefact of the metric.
+
+\begin{table}[t]
+\centering\small
+\caption{PA inflation of a random score grows as fault segments get shorter.
+Segments are fault bursts, ordered by length; each row keeps the shortest
+$p\%$. Five seeds.}
+\label{tab:painflate}
+\begin{tabular}{lccccc}
+\toprule
+Subset & Segments & Median len. & $F_1$ & $F_1^{\mathrm{PA}}$ & Inflation \\
+\midrule
+shortest 25\% & 4  & 6  & 0.030 & 0.173 & $\times 5.8$ \\
+shortest 50\% & 8  & 12 & 0.067 & 0.439 & $\times 6.5$ \\
+all           & 17 & 27 & 0.227 & 0.788 & $\times 3.5$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The inflation is structural, not incidental.}
+Table~\ref{tab:painflate} restricts to the shortest segments and recomputes.
+Inflation is largest where segments are short, because PA converts a single
+chance hit into credit for the whole segment regardless of its length; with
+$17$ segments of median $27$ windows, a random score needs only one hit per
+segment. This is the mechanism \citet{kim2022towards} identify, reproduced on
+an industrial benchmark that their study does not cover. It also explains why
+burst-level reporting (\S\ref{sub:levels}, $\mathcal{L}_2$) is \emph{not} a
+disguised form of PA: $\mathcal{L}_2$ counts a burst once, whereas PA counts it
+as many times as it has windows.
 
 \section{Normal and Fault Are Perfectly Separable}
 \label{sec:sep}
@@ -506,6 +721,60 @@ negatives are zero in every stratum, a direct consequence of
 dominated by under-represented normal operating states, not by missed faults,
 and that additional \emph{normal} data across load conditions would improve it
 more than additional fault data.
+
+\section{Temporal Integration: Loose Rules Do Not Help}
+\label{sec:mofn}
+
+The persistence operator of Eq.~\ref{eq:mofn} is usually recommended in its
+loose form: requiring $M$ hits out of $N_{\mathrm w}$ windows rather than
+$N_{\mathrm w}$ consecutive ones is supposed to reduce misses, because it
+tolerates quiet stretches inside a fault, without paying much in false alarms.
+We measure the whole family.
+
+\begin{table}[t]
+\centering\small
+\caption{Persistence rules on the normal hold-out ($2{,}929$ windows) and the
+$17$ fault bursts. Candidate windows satisfy both stages at $\alpha=0.01$;
+index windows never cross a burst boundary. Delay is measured from the start of
+the burst.}
+\label{tab:mofn}
+\begin{tabular}{lccccc}
+\toprule
+Rule & Bursts & $R_{\mathcal{L}_1}$ & FP win. & FP ev. & Delay (med.) \\
+\midrule
+consecutive 1 & \textbf{16/17} & 0.963 & 35 & 23 & \SI{0.0}{\second} \\
+consecutive 2 & 15/17 & 0.916 & 12 & 9 & \SI{0.1}{\second} \\
+2 of 3        & 15/17 & 0.893 & 23 & 8 & \SI{0.2}{\second} \\
+\textbf{consecutive 3} & 15/17 & 0.876 & \textbf{3} & \textbf{2} & \SI{0.2}{\second} \\
+3 of 4        & 15/17 & 0.853 & 8  & 3 & \SI{0.3}{\second} \\
+3 of 5        & 15/17 & 0.829 & 15 & 5 & \SI{0.4}{\second} \\
+4 of 5        & 15/17 & 0.811 & 4  & 1 & \SI{0.4}{\second} \\
+consecutive 5 & 14/17 & 0.799 & \textbf{0} & \textbf{0} & \SI{0.4}{\second} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:mofn} contradicts the recommendation. Loosening from
+\emph{consecutive 3} to \emph{2 of 3} multiplies false-alarm windows by
+$7.7\times$ ($3\to23$) while detecting the same $15$ of $17$ bursts; the same
+holds at $N_{\mathrm w}=5$ ($0\to15$). The reason is visible in the candidate
+counts: the normal hold-out contains $35$ isolated candidate windows scattered
+across the record, so widening the index window mostly brings \emph{distinct}
+candidates into one frame rather than bridging a genuine fault.
+
+A second observation changes how the trade-off should be framed. With stride
+\SI{0.1}{\second} the median detection delay moves only from \SI{0.0}{\second}
+to \SI{0.4}{\second} across the whole family, and the maximum from
+\SI{0.0}{\second} to \SI{1.5}{\second} --- negligible against the
+\SI{8}{\second} burst period. \textbf{The operative trade-off here is not delay
+against false alarms but misses against false alarms}, and on that axis the
+pre-registered \emph{consecutive 3} sits at a defensible point: an
+$11.7\times$ reduction in false alarms over \emph{consecutive 1} for the cost
+of one burst.
+
+Table~\ref{tab:mofn} is diagnostic. The rule was fixed before results were
+examined and was not changed afterwards; revising it here would be the
+post-selection this paper otherwise criticises (\S\ref{sec:amend}).
 
 \section{Reproducing the Reference LSTM-Autoencoder}
 \label{sec:bl1}
