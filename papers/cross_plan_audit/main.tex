@@ -162,6 +162,104 @@ violate exchangeability, so we block by acquisition burst in the spirit of
 purged cross-validation \citep{lopezdeprado2018advances}; \S\ref{sec:cvgap}
 quantifies what happens when that is not enough.
 
+\section{Problem Formulation}
+\label{sec:prelim}
+
+The claim of this paper is that the reported number is a function of the
+protocol, not only of the model. To state that precisely we have to give the
+protocol its own notation, which the usual time-series anomaly detection (TAD)
+formulation leaves implicit.
+
+\subsection{Signals, sessions and labels}
+
+Let $X=(x_1,\dots,x_T)$, $x_t\in\mathbb{R}^{N}$ with $N=3$, be the record
+observed at timestamps $\tau_1<\dots<\tau_T$, and write
+$\Delta_t=\tau_{t+1}-\tau_t$. A label $y_t\in\{0,1\}$ marks fault.
+
+Two facts about this benchmark enter the notation because every pipeline
+inherits them. The label is constant within each file, so it is a property of
+the record rather than of the sample; and writing $c(t)\in\{1,2\}$ for the
+acquisition session, $y_t=\mathbb{1}[c(t)=2]$ holds exactly. Session and label
+are perfectly confounded (\S\ref{sec:limits}).
+
+\subsection{Acquisition bursts}
+
+The standard formulation assumes $\Delta_t$ constant. Fix a gap threshold $g$
+and define the acquisition bursts as the maximal runs
+\begin{equation}
+\mathcal{B}=\{B_1,\dots,B_K\},\quad
+B_k=\{t: a_k\le t\le b_k\},\ \Delta_t\le g\ \forall t\in[a_k,b_k),
+\label{eq:burst}
+\end{equation}
+with $g=\SI{0.5}{\second}$. Section~\ref{sec:data} shows $K=599$ for the normal
+record with bursts of at most 50 samples.
+
+\subsection{A protocol is a tuple}
+\label{sub:tuple}
+
+Each pipeline in this study is an instance of
+\begin{equation}
+\Pi \;=\; \bigl(\ell,\ \gamma,\ \mathcal{U},\ \sigma,\ \Theta,\ \pi\bigr),
+\label{eq:protocol}
+\end{equation}
+whose components are exactly the columns of Table~\ref{tab:protocols}:
+
+\begin{description}\itemsep1pt
+\item[$\ell$] window length in samples (4 to 30 across pipelines; ``native''
+  for burst-level scoring).
+\item[$\gamma\in\{0,1\}$] \emph{gap-safety}. With $\gamma=1$ a window is
+  admitted only if $[t,t+\ell-1]\subseteq B_k$ for some $k$; with $\gamma=0$
+  windows may straddle gaps. Define the survival rate
+  $\rho(\ell)=|\mathcal{W}^{\gamma=1}_\ell|/|\mathcal{W}^{\gamma=0}_\ell|$.
+\item[$\mathcal{U}$] \emph{scoring unit}: window, row, or burst. This fixes
+  what one observation is, and hence what $\mathrm{TP}$ counts.
+\item[$\sigma$] \emph{split rule}: which data fit the model, which calibrate
+  the threshold, which are held out, and whether blocks respect burst
+  boundaries.
+\item[$\Theta$] \emph{threshold source}: normal data only (conformal or
+  quantile), normal $+$ fault, or supervised cross-validation.
+\item[$\pi$] \emph{post-processing}, in particular the persistence operator
+\begin{equation}
+\Pi^{\mathrm{pers}}_{N_{\mathrm w},M}(\hat y)_t=\mathbb{1}\!\left[\textstyle\sum_{j=t-N_{\mathrm w}+1}^{t}\hat y_j\ \ge M\right],
+\label{eq:mofn}
+\end{equation}
+evaluated inside one burst. Pipeline~D uses $N_{\mathrm w}=M=3$; pipeline~F
+uses the loose form $(N_{\mathrm w},M)=(3,2)$.
+\end{description}
+
+A detector proper is a score $A:\mathbb{R}^{d}\!\to\mathbb{R}$ fitted on normal
+data, thresholded to give $\hat y$. \textbf{The thesis of this paper is that
+varying $\Pi$ with $A$ held fixed moves the reported $F_1$ further than varying
+$A$ with $\Pi$ held fixed} (\S\ref{sec:protocol-effect}), so the seven
+numbers in the last column of Table~\ref{tab:protocols} are not comparable:
+they are measurements of seven different $\Pi$.
+
+\subsection{Evaluation levels and effective sample size}
+\label{sub:levels}
+
+Because $\mathcal{U}$ differs across pipelines, we name the three granularities
+explicitly. $\mathcal{L}_1$ counts windows or rows; overlapping windows share
+$\ell-1$ of $\ell$ samples and are not independent. $\mathcal{L}_2$ counts
+bursts, the smallest plausibly exchangeable unit. $\mathcal{L}_3$ counts
+maximal runs of alarming units as alarm events, which is where false alarms per
+hour are defined. A pipeline reporting $\mathcal{L}_1$ $F_1$ and one reporting
+$\mathcal{L}_2$ $F_1$ are not measuring the same quantity even on identical
+predictions.
+
+The effective number of positive observations is not $|\{t:y_t=1\}|$ but the
+number of independent fault events, which is \textbf{one}. Interval estimates
+that resample units rather than bursts are therefore not valid here.
+
+\subsection{Point adjustment}
+\label{sub:pa}
+
+Let $\mathcal{S}=\{S_1,\dots,S_M\}$ be the fault segments. The point-adjustment
+protocol \citep{kim2022towards} sets $\hat y^{\mathrm{PA}}_t=1$ for all $t\in
+S_m$ whenever $\hat y_{t'}=1$ for some $t'\in S_m$. It can only raise
+$\mathrm{TP}$ and lower $\mathrm{FN}$, so $F_1^{\mathrm{PA}}\ge F_1$ always.
+\textbf{No pipeline in this study uses it}, and \S\ref{sec:protoval} measures
+what it would have done.
+
 \section{The Benchmark}
 \label{sec:data}
 
@@ -475,6 +573,105 @@ away but a statement about information: below roughly $\SI{1.5}{\second}$ of
 contiguous signal this feature set cannot decide. The operational implication
 is that a short burst should yield \emph{abstention} rather than a negative
 classification --- a distinction no aggregate $F_1$ expresses.
+
+\section{What the Protocol Choices Are Worth}
+\label{sec:protoval}
+
+Sections~\ref{sec:protocol-effect}--\ref{sec:length} show that $\Pi$ moves
+the headline number. We now price two specific components of $\Pi$ that are
+easy to omit: the reference baseline, and the post-processing operator $\pi$.
+Both are measured on pipeline~D, which is the only one whose per-window scores,
+conformal $p$-values and burst indices are all retained; the mechanisms,
+however, are properties of the protocol and apply to any pipeline sharing the
+relevant component.
+
+\subsection{A trivial baseline, and point adjustment}
+
+\begin{table}[t]
+\caption{Oracle $F_1$ on D's hold-out ($2{,}929$ normal windows, $428$ fault
+windows in $17$ segments). Random scores averaged over 20 seeds.}
+\label{tab:protoval}
+\vskip 0.1in
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Score & Prot. & $F_1$ \\
+\midrule
+D stage-1, oracle $\delta$ & --- & 0.994 \\
+Uniform random, oracle $\delta$ & --- & 0.228\,$\pm$\,0.002 \\
+D stage-1, conformal $\alpha{=}0.01$ & --- & 0.780 \\
+\midrule
+D stage-1, oracle $\delta$ & PA & 1.000 \\
+Uniform random, oracle $\delta$ & PA & \textbf{0.779\,$\pm$\,0.041} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Against a uniform random score the detector is clearly separated,
+$F_1=0.994$ versus $0.228$ (Table~\ref{tab:protoval}). Under point adjustment
+(\S\ref{sub:pa}) a \emph{random} score reaches $0.779\pm0.041$, which is
+indistinguishable from the operational $F_1=0.780$ of the deployed system. The
+inflation grows as segments shorten --- restricting to the shortest quarter of
+fault bursts (median 6 windows) raises a random score from $0.030$ to $0.173$,
+a factor of $5.8$ --- because PA converts one chance hit into credit for an
+entire segment regardless of its length.
+
+This bears directly on \S\ref{sec:nocompare}. The seven $F_1$ values in
+Table~\ref{tab:protocols} already span $0.684$--$0.988$ from protocol variation
+alone; had any pipeline additionally adopted PA, its number would have moved
+into the same range for reasons having nothing to do with its model. A
+packaged benchmark that does not state its adjustment convention cannot be
+compared against at all.
+
+\subsection{Loose persistence does not help}
+\label{sec:mofn}
+
+Pipelines D and F differ in $\pi$: D requires three consecutive alarms,
+F requires two of three. The loose form is the usual recommendation, on the
+reasoning that it tolerates quiet stretches inside a fault. We measure the
+whole family on D.
+
+\begin{table}[t]
+\caption{Persistence rules on D's hold-out. Candidates satisfy both stages at
+$\alpha=0.01$; index windows never cross a burst boundary.}
+\label{tab:mofn}
+\vskip 0.1in
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Rule & Bursts & $R_{\mathcal{L}_1}$ & FP win. & FP ev. & Delay \\
+\midrule
+consec.\ 1 & \textbf{16/17} & 0.963 & 35 & 23 & \SI{0.0}{\second} \\
+consec.\ 2 & 15/17 & 0.916 & 12 & 9 & \SI{0.1}{\second} \\
+\textbf{2 of 3} \small(F) & 15/17 & 0.893 & \textbf{23} & 8 & \SI{0.2}{\second} \\
+\textbf{consec.\ 3} \small(D) & 15/17 & 0.876 & \textbf{3} & 2 & \SI{0.2}{\second} \\
+3 of 4 & 15/17 & 0.853 & 8 & 3 & \SI{0.3}{\second} \\
+3 of 5 & 15/17 & 0.829 & 15 & 5 & \SI{0.4}{\second} \\
+4 of 5 & 15/17 & 0.811 & 4 & 1 & \SI{0.4}{\second} \\
+consec.\ 5 & 14/17 & 0.799 & \textbf{0} & 0 & \SI{0.4}{\second} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:mofn} reverses the recommendation. Loosening from
+\emph{consecutive 3} to \emph{2 of 3} multiplies false-alarm windows by
+$7.7\times$ ($3\to23$) while detecting the same 15 of 17 bursts; the same holds
+at $N_{\mathrm w}=5$ ($0\to15$). The normal hold-out contains 35 isolated
+candidate windows scattered across the record, so widening the index window
+mostly brings \emph{distinct} candidates into one frame rather than bridging a
+genuine fault. We state the limitation plainly: this is measured under D's
+$(\ell=10,\gamma=1,\mathcal{U}=\text{window})$, whereas F scores rows with
+$\gamma=0$, so it is evidence that F's choice deserves re-examination rather
+than a demonstration that F is wrong.
+
+A second reading changes the framing. With stride \SI{0.1}{\second} the median
+detection delay moves only from \SI{0.0}{\second} to \SI{0.4}{\second} across
+the entire family, negligible against the \SI{8}{\second} burst period.
+\textbf{The operative trade-off is not delay against false alarms but misses
+against false alarms} --- and on that axis the parameter that matters is
+$N_{\mathrm w}$, not $M/N_{\mathrm w}$.
 
 \section{Why These Numbers Must Not Be Ranked}
 \label{sec:nocompare}
