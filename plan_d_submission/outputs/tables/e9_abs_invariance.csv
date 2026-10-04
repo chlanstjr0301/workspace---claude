@@ -1,0 +1,8 @@
+﻿feature,max_abs_change,invariant_to_abs
+RMS,0.0,True
+MAV,0.0,True
+PEAK,0.0,True
+KURT,4.87593530824082,False
+STD,119.25700631621021,False
+MEAN,277.9258344,False
+P2P,304.178629,False

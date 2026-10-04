@@ -1,0 +1,128 @@
+{
+  "mode": "full",
+  "seed": 20261004,
+  "python": "3.13.9",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.1",
+  "pandas": "2.2.3",
+  "data_sha256": {
+    "press_data_normal.csv": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7",
+    "press_data_outlier.csv": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e"
+  },
+  "config": {
+    "seed": 20261004,
+    "data": {
+      "normal": "data/raw/press_data_normal.csv",
+      "outlier": "data/raw/press_data_outlier.csv",
+      "channels": [
+        "AI0_Vibration",
+        "AI1_Vibration",
+        "AI2_Current"
+      ]
+    },
+    "windows": {
+      "gap_sec": 0.5,
+      "length": 10,
+      "length_sensitivity": [
+        5,
+        10,
+        20
+      ],
+      "stride": 1
+    },
+    "cv": {
+      "n_blocks": 5
+    },
+    "features": {
+      "groups": [
+        "A",
+        "S",
+        "R",
+        "O",
+        "Q"
+      ],
+      "model_groups": [
+        "A",
+        "S",
+        "R",
+        "O"
+      ]
+    },
+    "models": {
+      "enabled": [
+        "BL0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "optional": [
+        "BL1_LSTMAE",
+        "M4_CNNAE"
+      ],
+      "isolation_forest": {
+        "n_estimators": 200,
+        "max_samples": 256
+      },
+      "pca_mspc": {
+        "var_ratio": 0.95
+      }
+    },
+    "calibration": {
+      "yellow_p": 0.01,
+      "red_p": 0.01,
+      "red_consecutive": 3
+    },
+    "robustness": {
+      "gain": [
+        0.8,
+        0.9,
+        1.1,
+        1.25
+      ],
+      "offset_sigma": [
+        0.1,
+        0.25,
+        0.5
+      ],
+      "polarity": [
+        "AI0",
+        "AI1",
+        "AI2",
+        "all"
+      ],
+      "jitter_sec": [
+        0.01,
+        0.02,
+        0.05
+      ]
+    },
+    "selection": {
+      "max_recall_drop_pp": 20.0,
+      "worst_block_fp_vs_bl0": true,
+      "require_burst_detection": true
+    },
+    "deep": {
+      "lstm_ae": {
+        "hidden": [
+          64,
+          32
+        ],
+        "epochs_quick": 0,
+        "epochs_full": 800,
+        "batch_size": 128,
+        "lr": 0.001,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "seeds_cv": [
+          0
+        ]
+      }
+    }
+  },
+  "elapsed_sec": 13050.5,
+  "chosen_stage1_model": "M3",
+  "generated": "2026-10-04 05:14:33"
+}

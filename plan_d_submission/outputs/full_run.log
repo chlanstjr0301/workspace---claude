@@ -1,0 +1,56 @@
+[01:37:03] Plan D 파이프라인 시작  mode=full  seed=20261004
+[01:37:03]   정상 20000행 / 이상 600행
+[01:37:03] E0  데이터 품질·버스트 진단
+[01:37:03]   -> e0_data_quality.csv (2행)
+[01:37:03]   -> e0_channel_stats.csv (6행)
+[01:37:03]   -> e0_bursts.csv (620행)
+[01:37:03]   -> e0_burst_summary.csv (2행)
+[01:37:03] E1  window 길이 민감도
+[01:37:04]   -> e1_window_sensitivity.csv (3행)
+[01:37:05]   window seq=10 -> 정상 14871 / 이상 428, 특징 25차원
+[01:37:05] E2/E3  동일조건 모델 벤치마크 + 정상 5블록 CV
+[01:37:07]   -> e3_normal_block_cv.csv (20행)
+[01:37:07]   -> e2_model_comparison.csv (4행)
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791045427.329662   41552 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1791045429.938965   41552 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+[01:37:11] BL-1 LSTM-AE 재현  backend=tensorflow
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+[03:48:13]   -> e2_bl1_g0_guidebook.csv (3행)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+C:\Users\cmsch\anaconda3\Lib\site-packages\keras\src\layers\rnn\rnn.py:199: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(**kwargs)
+[05:13:51]   -> e2_bl1_g1_planD.csv (5행)
+[05:13:51]   -> e2_model_comparison.csv (5행)
+[05:13:51] E4  특징군 ablation (A/S/R/O)
+[05:14:20]   -> e4_feature_ablation.csv (36행)
+[05:14:20] E5/E6  극성·이득·오프셋·jitter 섭동
+[05:14:32]   -> e5_robustness.csv (280행)
+[05:14:32]   -> e6_shift_false_alarm.csv (280행)
+[05:14:33]   -> e5_robustness_summary.csv (16행)
+[05:14:33] E8  conformal coverage
+[05:14:33]   -> e8_conformal_coverage.csv (60행)
+[05:14:33]   -> e2_selection_gates.csv (5행)
+[05:14:33]   선정 1단 모델: M3
+[05:14:33] E7  FP/FN 조건 분해 (M3)
+[05:14:33]   -> e7_error_conditions.csv (50행)
+[05:14:33]   -> e7_error_conditions_summary.csv (10행)
+[05:14:33] 최종 예측 생성 (CARE-Press 2단 판정: 1단=M3, 2단=M1)
+[05:14:33]   -> predictions.csv (15299행)
+[05:14:33]   -> final_alarm_summary.csv (1행)
+[05:14:33]   -> e4_explanation_stability.csv (2행)
+[05:14:33] 완료. 13050.5초
