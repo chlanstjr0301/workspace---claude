@@ -87,6 +87,9 @@ def r2_operational():
                      "유병률": round(float(y.mean()), 4), **m})
     e2 = pd.read_csv(os.path.join(TAB, "e2_model_comparison.csv")).set_index("model")
     for m in ["BL0", "M3", "BL1"]:
+        if m not in e2.index:          # BL-1 은 full 실행 또는 동봉 CSV 가 있을 때만
+            print("     (%s 결과 없음 - 행 생략)" % m)
+            continue
         rows.append({"기준": "%s (CV 5-fold 평균)" % m, "단위": "window",
                      "표본": "fold별 정상 holdout + fault 428",
                      "유병률": 0.1203,
@@ -179,7 +182,7 @@ def r5_channel_share():
     return df
 
 
-if __name__ == "__main__":
+def main():
     print("보고서 보충표 생성")
     r1_gate_comparison()
     r2_operational()
@@ -187,3 +190,7 @@ if __name__ == "__main__":
     r4_red_fn()
     r5_channel_share()
     print("완료")
+
+
+if __name__ == "__main__":
+    main()

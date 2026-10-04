@@ -9,13 +9,20 @@
 
 ```bash
 pip install -r requirements.txt
-python run_all.py --config config.yaml --mode quick    # CPU, 약 25초
-python run_all.py --config config.yaml --mode full     # + LSTM-AE 재현
+python run_all.py --config config.yaml --mode quick    # CPU, 약 1분
+python run_all.py --config config.yaml --mode full     # + LSTM-AE 재현(약 3.6시간)
+# 저장소 루트에서도 동일하게 동작한다:
+# python plan_d_submission/run_all.py --config plan_d_submission/config.yaml --mode quick
 ```
 
-`quick` 만으로 보고서의 모든 핵심 주장(표·그림·예측파일)이 재생성된다.
-`full` 은 공식 LSTM-Autoencoder(BL-1) 재현을 추가한다. TensorFlow 가 없으면
-PyTorch 로 같은 구조를 만들고, 둘 다 없으면 BL-1 만 건너뛴 채 나머지가 완주한다.
+`quick` 한 명령으로 모델 비교표·예측파일·그림과 함께 보고서 보충표(r1–r5,
+`make_report_tables.py`)와 감사 진단표(r6–r11, `make_audit_tables.py`)가 생성된다.
+보충표와 진단표는 모델·임계값을 바꾸지 않는다.
+
+**BL-1(LSTM-AE) 행은 예외다.** `outputs/tables/e2_bl1_g*_*.csv` 는 `full` 실행으로만
+만들어지며, `quick` 은 이 CSV 가 이미 있으면 비교표에 합친다. `outputs/` 를 지우고
+`quick` 만 실행하면 BL-1 행이 빠진 채(비교표 4행) 완주한다. 나머지 수치는 동일하다.
+TensorFlow 가 없으면 PyTorch 로 같은 구조를 만들고, 둘 다 없으면 BL-1 만 건너뛴다.
 
 검증:
 
@@ -162,4 +169,4 @@ plan_d_submission/
 
 재현성: 원본 데이터는 수정하지 않으며 SHA-256 을 `run_manifest.json` 에
 기록한다. 절대경로를 쓰지 않고 시드를 고정한다. `outputs/` 를 지운 뒤
-한 명령으로 전부 다시 생성된다.
+한 명령으로 BL-1 행을 제외한 모든 표가 같은 값으로 다시 생성된다(BL-1 은 `full`).

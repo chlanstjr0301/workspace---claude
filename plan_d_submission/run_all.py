@@ -550,7 +550,11 @@ def main():
     a = ap.parse_args()
 
     t0 = time.time()
-    cfg = yaml.safe_load(open(os.path.join(HERE, a.config), encoding="utf-8"))
+    # 패키지 폴더·저장소 루트 어디서 실행해도 같은 설정을 찾는다.
+    cfg_path = a.config if os.path.isfile(a.config) else os.path.join(HERE, a.config)
+    if not os.path.isfile(cfg_path):
+        cfg_path = os.path.join(HERE, os.path.basename(a.config))
+    cfg = yaml.safe_load(open(cfg_path, encoding="utf-8"))
     seed = cfg["seed"]
     np.random.seed(seed)
     os.makedirs(TAB, exist_ok=True)
@@ -629,6 +633,14 @@ def main():
     with open(os.path.join(OUT, "run_manifest.json"), "w", encoding="utf-8") as f:
         json.dump(manifest, f, ensure_ascii=False, indent=2)
     log("완료. %.1f초" % (time.time() - t0))
+
+    # 보고서 보충표(r1-r5)와 감사 진단표(r6-r11). 모델·임계값 불변, 기존 산출물만 사용.
+    import make_report_tables as RT
+    import make_audit_tables as AT
+    log("보고서 보충표 생성")
+    RT.main()
+    log("감사 진단표 생성")
+    AT.main()
 
 
 if __name__ == "__main__":
