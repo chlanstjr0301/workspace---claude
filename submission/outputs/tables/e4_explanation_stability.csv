@@ -1,3 +1,0 @@
-﻿model,top_feature_stability,top_features_fold0
-M1,0.7333333333333334,"S_ac1_CUR, O_absmean_CUR, A_std_AI0, S_ac2_CUR, A_rms_AI1"
-M3,0.8666666666666666,"R_stdratio_AI0_AI1, S_ac2_CUR, S_ac1_CUR, A_rms_AI0, S_zcr_CUR"

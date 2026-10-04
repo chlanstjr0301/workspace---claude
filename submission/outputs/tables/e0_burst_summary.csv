@@ -1,3 +1,0 @@
-﻿source,n_bursts,samples_min,samples_median,samples_max,dur_max_sec,bursts_ge_120_samples
-normal,599,1,37.0,50,4.9,0
-outlier,21,3,28.0,50,4.9,0

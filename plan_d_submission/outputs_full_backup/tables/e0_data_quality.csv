@@ -1,3 +1,0 @@
-﻿source,rows,columns,t_start,t_end,span_sec,span_if_continuous_sec,dt_median_sec,dt_min_sec,dt_max_sec,n_gaps_gt_threshold,n_missing,n_dup_timestamp,n_non_monotonic,equipment_state_values
-normal,20000,6,2022-07-12 00:00:00.019000,2022-07-12 01:16:55.828000,4615.8,2000.0,0.1,0.0,16.643,598,0,1,0,[0]
-outlier,600,6,2022-07-17 10:51:07.943000,2022-07-17 10:53:53.540000,165.6,60.0,0.1,0.1,8.572,20,0,0,0,[1]

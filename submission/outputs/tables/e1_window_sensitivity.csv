@@ -1,4 +1,0 @@
-﻿seq,normal_windows_gap_aware,normal_windows_naive,normal_retained_pct,outlier_windows_gap_aware,outlier_windows_naive,outlier_retained_pct,bursts_usable_normal,bursts_usable_outlier
-5,17652,19996,88.27765553110622,517,596,86.74496644295301,570,18
-10,14871,19991,74.38847481366615,428,591,72.41962774957699,530,17
-20,9978,19981,49.93744056854011,276,581,47.50430292598967,452,13
