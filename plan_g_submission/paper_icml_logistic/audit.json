@@ -1,0 +1,1346 @@
+{
+  "classifier_fits": 0,
+  "threshold": 0.5,
+  "features": [
+    "AI0_RMS",
+    "AI0_MaxAbs",
+    "AI1_RMS",
+    "AI1_PeakToPeak",
+    "AI1_Kurtosis"
+  ],
+  "weights": [
+    "None",
+    "{0:1,1:3}",
+    "{0:1,1:5}",
+    "{0:1,1:10}",
+    "balanced"
+  ],
+  "source_copy_hashes_verified": true,
+  "original_hash_verified": true,
+  "folds_identical_across_weights_and_tracking": true,
+  "validation_membership_verified": true,
+  "all_predictions_strict_threshold_verified": true,
+  "published_saved_metrics_reproduced": true,
+  "pr_auc_definition": "auc(recall,precision) of sklearn.precision_recall_curve, per fold",
+  "average_precision_saved_separately": true,
+  "score_logit_clip_epsilon": 1e-15,
+  "score_clipping": [
+    {
+      "weight": "None",
+      "exact_zero": 0,
+      "exact_one": 0,
+      "clipped_count": 0
+    },
+    {
+      "weight": "balanced",
+      "exact_zero": 0,
+      "exact_one": 0,
+      "clipped_count": 0
+    },
+    {
+      "weight": "{0:1,1:10}",
+      "exact_zero": 0,
+      "exact_one": 0,
+      "clipped_count": 0
+    },
+    {
+      "weight": "{0:1,1:3}",
+      "exact_zero": 0,
+      "exact_one": 0,
+      "clipped_count": 0
+    },
+    {
+      "weight": "{0:1,1:5}",
+      "exact_zero": 0,
+      "exact_one": 0,
+      "clipped_count": 0
+    }
+  ],
+  "centroid_training_rows_only": true,
+  "previous_centroid_distances_reproduced": true,
+  "max_none_probability_reconstruction_error": 4.218847493575595e-15,
+  "csv_and_tex_tables_same_dataframes": true,
+  "figure_png_dpi": 300,
+  "figure_vectors": [
+    "pdf",
+    "svg"
+  ],
+  "Python": "3.11.16",
+  "numpy": "2.4.6",
+  "pandas": "3.0.5",
+  "scipy": "1.17.1",
+  "sklearn": "1.9.1",
+  "post_authoring_checks": [
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\predictions.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\cv_fold_metrics.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\metrics.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\cv_split_indices.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\experiment_metadata.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\feature_dataset.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_class_weight_ablation\\effective_class_weights.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_current_acf_ablation\\burst_feature_dataset.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_fn_burst_tracking\\fold_coefficients.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_fn_burst_tracking\\validation_predictions.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_fn_feature_analysis\\recovered_fold_intercepts.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_fn_feature_analysis\\abnormal_fold_distances.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\metrics_by_sample_count.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\eligible_bursts_by_sample_count.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\tp_to_fn_by_sample_count.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\tp_to_fn_summary.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\feature_drift_by_sample_count.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\burst_619_620_predictions.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_results\\logistic_burst_sample_count\\experiment_metadata.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_reference\\소성가공.ipynb",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_data\\raw\\press_data_normal.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_data\\raw\\outlier_data.csv",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_src\\LSTM-AutoEncoder\\baseline_original.py",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_copy_src\\LSTM-AutoEncoder\\baseline_original.sha256",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "weight_labels_literal_None",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Precision_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Precision_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Recall_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Recall_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_F1_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_F1_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Balanced_Accuracy_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_Balanced_Accuracy_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_ROC_AUC_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_ROC_AUC_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_FP_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_FP_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_FN_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_None_FN_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PR_AUC_None",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_class_weight_row_None",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Precision_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Precision_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Recall_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Recall_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_F1_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_F1_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Balanced_Accuracy_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_Balanced_Accuracy_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_ROC_AUC_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_ROC_AUC_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_FP_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_FP_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_FN_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:3}_FN_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PR_AUC_{0:1,1:3}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_class_weight_row_{0:1,1:3}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Precision_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Precision_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Recall_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Recall_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_F1_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_F1_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Balanced_Accuracy_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_Balanced_Accuracy_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_ROC_AUC_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_ROC_AUC_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_FP_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_FP_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_FN_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:5}_FN_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PR_AUC_{0:1,1:5}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_class_weight_row_{0:1,1:5}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Precision_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Precision_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Recall_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Recall_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_F1_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_F1_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Balanced_Accuracy_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_Balanced_Accuracy_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_ROC_AUC_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_ROC_AUC_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_FP_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_FP_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_FN_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_{0:1,1:10}_FN_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PR_AUC_{0:1,1:10}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_class_weight_row_{0:1,1:10}",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Precision_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Precision_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Recall_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Recall_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_F1_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_F1_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Balanced_Accuracy_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_Balanced_Accuracy_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_ROC_AUC_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_ROC_AUC_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_FP_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_FP_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_FN_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "metric_balanced_FN_std",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PR_AUC_balanced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_class_weight_row_balanced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_table_sample_count_coverage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_table_sample_count_transitions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_table_sample_count_drift",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_recall_data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_drift_data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_feature_data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "crossings_94_observations_16_normal_bursts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_reverse_crossings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "abnormal_identities_unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_median",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_Q1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_Q3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_min",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_Normal_max",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_median",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_Q1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_Q3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_min",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "score_distribution_All abnormal_max",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_score_clipping",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "centroid_vectors_50_fold_two_classes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "centroid_train_class_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_None_Precision",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_None_Recall",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_None_F1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_None_ROC_AUC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_None_PR_AUC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_balanced_Precision",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_balanced_Recall",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_balanced_F1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_balanced_ROC_AUC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_balanced_PR_AUC",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Detected abnormal_mean_probability_none",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Detected abnormal_mean_probability_balanced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Detected abnormal_mean_delta_score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_FN abnormal_mean_probability_none",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_FN abnormal_mean_probability_balanced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_FN abnormal_mean_delta_score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Normal_mean_probability_none",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Normal_mean_probability_balanced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_Normal_mean_delta_score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_619_balanced_probability",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_619_paired_score_shift",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_620_balanced_probability",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_620_paired_score_shift",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_score_mean_Normal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_score_mean_Detected abnormal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_score_mean_FN abnormal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_score_mean_All abnormal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_detected_normal_centroid_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_detected_normal_centroid_min",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_detected_lowest_individual_score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_AI0_RMS_cohen_d",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_AI0_MaxAbs_cohen_d",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_AI1_RMS_cohen_d",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_AI1_PeakToPeak_cohen_d",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_AI1_Kurtosis_cohen_d",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_619_probability_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_619_probability_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_619_distance_normal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_619_distance_normal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_619_distance_abnormal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_619_distance_abnormal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_620_probability_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_620_probability_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_620_distance_normal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_620_distance_normal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_620_distance_abnormal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_fn_620_distance_abnormal_mean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_4",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_6",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_8",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_12",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_20",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_25",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_crop_row_30",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_eligible_recall_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_eligible_recall_15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_10",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_12",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_15",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_20",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_25",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_fixed_recall_30",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_drift_AI0_MaxAbs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_drift_AI0_RMS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_drift_AI1_Kurtosis",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_drift_AI1_PeakToPeak",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_claim_drift_AI1_RMS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_raw_rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_raw_bursts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_eligible_bursts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_calendar_dates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_samples_min",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_samples_median",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Normal_samples_max",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_date_Normal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_raw_rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_raw_bursts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_eligible_bursts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_calendar_dates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_samples_min",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_samples_median",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_dataset_Abnormal_samples_max",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "paper_date_Abnormal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "feature_formulas_five_rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "required_sections",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "research_questions_named",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "imbalance_distinct_from_scarcity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "pump_provenance_hedged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "date_and_selection_limits",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "crop_filter_and_reference_scope",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "dependencies_not_independent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "ROC_PR_tradeoff",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_forbidden_positive_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_invented_bibliography",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_invented_official_style",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "main_pdf_absence_transparent",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_environment_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_2085",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_8207",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_8920",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_8935",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_9299",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_9719",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_10433",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_17608",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_19410",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_21368",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_23133",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_23946",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_29461",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_30656",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_30670",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_31178",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_31192",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_31730",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_31744",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_32971",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_nesting_32985",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latex_referenced_files_exist",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "five_tables",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "six_vector_PDF_figures",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_PDFs_rendered",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "post_authoring_passed": true,
+  "paper_sha256": "236380af5960ab8e445af679dbb01112ecfa749db59ae6e418548a49367d79cc",
+  "figure_pdf_rendered": true,
+  "main_pdf_compiled": false,
+  "paper_pagination_checked": false,
+  "visual_QA": "All six PNGs and the Poppler-rendered vector-PDF contact sheet were visually reviewed, with no clipping or missing content. Figure appearance only; main paper pagination remains unverified."
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "title": "ICML 2026 Author Instructions",
+    "url": "https://icml.cc/Conferences/2026/AuthorInstructions",
+    "checked": "official instructions; 8-page submitted main-body rule and LaTeX styles; no submission performed"
+  },
+  {
+    "title": "Jackson and Mudholkar 1979",
+    "url": "https://www.stat.cmu.edu/technometrics/70-79/VOL-21-03/v2103341.pdf",
+    "checked": "original paper accessed in this manuscript task; residual-monitoring scope confirmed"
+  },
+  {
+    "title": "Liu, Ting, Zhou 2008",
+    "url": "https://cs.nju.edu.cn/zhouzh/zhouzh.files/publication/icdm08b.pdf",
+    "checked": "author-hosted original paper accessed; isolation principle confirmed"
+  },
+  {
+    "title": "Saito and Rehmsmeier 2015",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118432",
+    "checked": "original article page; PR perspective"
+  },
+  {
+    "title": "Kim et al. version2 2022",
+    "url": "https://arxiv.org/abs/2109.05257",
+    "checked": "author abstract; point-adjustment critique; no unverified numerical result imported"
+  },
+  {
+    "title": "scikit-learn official documentation",
+    "url": "https://scikit-learn.org/stable/",
+    "checked": "PCA, StandardScaler, average_precision_score, calibration API pages as linked in bibliography"
+  },
+  {
+    "title": "Kim et al. AAAI 2022 published version",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20680",
+    "checked": "Official publisher abstract and bibliographic metadata confirmed; final bibliography uses published venue/DOI"
+  }
+]

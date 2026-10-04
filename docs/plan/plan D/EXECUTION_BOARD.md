@@ -8,22 +8,22 @@
 
 | 항목 | 상태 | 완료 증거 |
 |---|---|---|
-| 분석 프로토콜 동결 | **완료** | `submission/config.yaml`, `submission/decision_log.md` (PROTOCOL_FREEZE) |
-| 제출 코드 골격 | **완료** | `submission/run_all.py` — quick 25초 완주, 테스트 13/13 통과 |
-| 모델 동일조건 비교 | **완료(특징모델)** | `submission/outputs/tables/e2_model_comparison.csv` |
-| 정상 블록 CV | **완료** | `submission/outputs/tables/e3_normal_block_cv.csv` (5 fold × 4 모델) |
-| 강건성 섭동 | **완료** | `submission/outputs/tables/e5_robustness.csv`, `e6_shift_false_alarm.csv` |
-| 오류분석 | **완료** | `submission/outputs/tables/e7_error_conditions.csv` |
-| BL-1 공식 LSTM-AE 재현 | **중단·재실행 필요** | `submission/outputs/full_run.log` — Windows 네이티브 TF가 BL-1 시작 후 완료 기록 없이 종료됨 |
+| 분석 프로토콜 동결 | **완료** | `plan_d_submission/config.yaml`, `plan_d_submission/decision_log.md` (PROTOCOL_FREEZE) |
+| 제출 코드 골격 | **완료** | `plan_d_submission/run_all.py` — quick 25초 완주, 테스트 13/13 통과 |
+| 모델 동일조건 비교 | **완료(특징모델)** | `plan_d_submission/outputs/tables/e2_model_comparison.csv` |
+| 정상 블록 CV | **완료** | `plan_d_submission/outputs/tables/e3_normal_block_cv.csv` (5 fold × 4 모델) |
+| 강건성 섭동 | **완료** | `plan_d_submission/outputs/tables/e5_robustness.csv`, `e6_shift_false_alarm.csv` |
+| 오류분석 | **완료** | `plan_d_submission/outputs/tables/e7_error_conditions.csv` |
+| BL-1 공식 LSTM-AE 재현 | **진행 중 (정상)** | PID 39448 생존·CPU 2.9코어 지속 점유. G0 seed 0 완료(01:37→02:22, 45분), seed 1 학습 중. 로그에 완료 기록이 없는 것은 Keras `verbose=0` + 3시드 종료 후 일괄 저장 구조 때문이며 중단이 아님 |
 | 최종모델 동결 | **잠정** | decision_log `MODEL_FREEZE 후보` = 1단 M3 / 2단 M1. BL-1 비교 후 확정 |
 | 결과보고서 | 미착수 | 최종 PDF |
 | 발표자료 | 미착수 | 최종 PPT/PDF |
-| clean-room 재현 | 미착수 | `submission/outputs/clean_run.log` |
+| clean-room 재현 | 미착수 | `plan_d_submission/outputs/clean_run.log` |
 | 포털 제출 | 미착수 | 제출 완료 화면 |
 
 ## 의사결정 로그 형식
 
-전체 기록은 `submission/decision_log.md`. 요약:
+전체 기록은 `plan_d_submission/decision_log.md`. 요약:
 
 | 날짜·시각 | 결정 | 근거 파일 |
 |---|---|---|
@@ -37,7 +37,7 @@
 
 | Run ID | 설정 | 데이터 해시 | 시드 | 결과 파일 | 판정 |
 |---|---|---|---|---|---|
-| quick-01 | `config.yaml` 동결판 | `f2d61cb3…` / `9fad8c23…` | 20261004 | `submission/outputs/tables/*` | 게이트 통과 = M3 단독 |
+| quick-01 | `config.yaml` 동결판 | `f2d61cb3…` / `9fad8c23…` | 20261004 | `plan_d_submission/outputs/tables/*` | 게이트 통과 = M3 단독 |
 | full-01 | + BL-1 G0/G1 | 동일 | 0,1,2 / 0 | `e2_bl1_*.csv` | 진행 중 |
 
 ## 오늘의 세 가지

@@ -1,0 +1,11 @@
+{
+  "question": "Does burst advantage persist after equalizing train endpoint counts?",
+  "triggered_pairs": 33,
+  "actual_unique_fits": 38,
+  "random_sampling_seeds": [
+    42,
+    43,
+    44
+  ],
+  "not_used_for_selection": true
+}

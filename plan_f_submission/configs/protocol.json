@@ -1,0 +1,18 @@
+{
+  "version": "1.0-before-model-results",
+  "seeds": [42, 43, 44],
+  "windows": [5, 10, 20],
+  "default_window": 10,
+  "burst_gap_seconds": 0.5,
+  "models": ["M0", "M1", "M2", "M3", "M4"],
+  "input_sensors": ["AI0_Vibration", "AI1_Vibration", "AI2_Current"],
+  "lstm": {"encoder": [64,32], "decoder": [32,64], "abs_input": true, "scaler": "MinMaxScaler, normal internal fit rows only, clip=False", "loss": "sequence MSE", "score": "last-observation mean squared error over 3 sensors", "optimizer": "Adam", "lr": 0.001, "batch_size": 128, "max_epochs": 20, "early_stopping_patience": 4, "min_delta": 0.00001, "lr_patience": 2, "lr_factor": 0.7, "internal_fit_fraction": 0.85, "threads": 2},
+  "isolation_forest": {"n_estimators": 300, "max_samples": 256, "contamination": "auto", "n_jobs": 2, "score": "-score_samples"},
+  "features": {"stats": ["mean", "std", "rms", "min", "max"], "ddof": 0, "signed_raw_input": true, "rms": "sqrt(mean(x**2))", "fft": false},
+  "thresholds": {"target_normal_calibration_fpr": [0.005,0.01,0.02,0.05], "quantile": "higher", "decision": "score > threshold", "ties": "equal scores are normal"},
+  "selection": {"primary": "all-observation operational 3-seed ensemble; selection FPR<=0.01, then Recall desc, F1 desc, AP desc, measured fit+score runtime asc, model key asc", "alternative": "same candidates, maximize F1 then Recall then AP then runtime", "postprocessing": ["none","consecutive2","two_of_three"], "no_eligible": "report no compliant candidate; descriptive fallback minimum FPR then maximum Recall", "common_rows": "intersection across every base model and every window, frozen before scores", "seed_policy": "report every seed and sample mean/std, use fixed equal-weight three-seed score ensemble for operation; never select best seed"},
+  "operational_score": "For each seed/model, map raw scores by piecewise-linear normal-calibration quantiles to normal z units, extrapolating tails using last distinct segment. Use M2 normalized score where window unavailable. Average seeds. Recalibrate threshold on entire normal calibration operational distribution. Not a probability.",
+  "auxiliary": {"sensor_combinations": "M2 all 7 nonempty subsets, three seeds; descriptive development only", "feature_ablation": "M4 L10 leave one of 15 features out, three seeds, target FPR .01; development only", "matched_count": "for M0/M1 and M3/M4 at each L where burst-aware improves development common-row F1 or Recall at .01: downsample unaware train endpoints with deterministic seed to aware count, preserve early-stop count separately", "probability": "nonnegative-slope regularized sigmoid fitted only calibration normal+anomaly labels, report selection/test Brier/log loss/reliability against constant calibration prevalence and explicitly uncalibrated sigmoid proxy; no threshold retuning", "error_bins": "normal-train sensor magnitude/current difference quartiles, position <=L-1, burst length <L; no physical condition claims", "uncertainty": "three seed variation only; no independent-failure or row-iid confidence intervals"},
+  "test_gate": "Do not compute test scores before selection_lock.json exists. Test results cannot change settings. Previously viewed full-data summaries acknowledged.",
+  "guidebook": {"found": true, "pdf": "references/guidebook.pdf", "exact_reproduction": false, "reason": "PyTorch structural adaptation with common fixed splits, 5/10/20 windows, shorter CPU budget, internal normal early stopping, endpoint label and normal-calibration threshold; no original 100-step future-label claim"}
+}

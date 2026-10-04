@@ -357,7 +357,7 @@ F1 최고 모델을 자동 선택하지 않는다. 단, 공지 요구를 충족�
 ## 10. 제출 코드 구조
 
 ```text
-submission/
+plan_d_submission/
 ├── README.md
 ├── requirements.txt
 ├── environment.yml
@@ -488,7 +488,7 @@ python run_all.py --config config.yaml --mode full
 ### 10월 4일 — 프로토콜 동결과 제출 골격
 
 - [ ] Plan D 설정과 모델 선정 규칙 동결
-- [ ] `submission/` 골격 및 `run_all.py` CLI 생성
+- [ ] `plan_d_submission/` 골격 및 `run_all.py` CLI 생성
 - [ ] 데이터 로딩·버스트 분할·특징 모듈화
 - [ ] 테스트 3종: 공백 횡단 금지, 정상 전용 fit, 예측 스키마
 - [ ] 기존 Plan A/B 수치를 새 파이프라인에서 재현

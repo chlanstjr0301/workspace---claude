@@ -1,0 +1,64 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Jackson \& Mudholkar(1979)Jackson and Mudholkar]{jackson1979}
+Jackson, J.~E. and Mudholkar, G.~S.
+\newblock Control procedures for residuals associated with principal component
+  analysis.
+\newblock \emph{Technometrics}, 21\penalty0 (3):\penalty0 341--349, 1979.
+\newblock \doi{10.1080/00401706.1979.10489779}.
+
+\bibitem[Kim et~al.(2022)Kim, Choi, Choi, Lee, and Yoon]{kim2022}
+Kim, S., Choi, K., Choi, H.-S., Lee, B., and Yoon, S.
+\newblock Towards a rigorous evaluation of time-series anomaly detection.
+\newblock \emph{Proceedings of the AAAI Conference on Artificial Intelligence},
+  36\penalty0 (7):\penalty0 7194--7201, 2022.
+\newblock \doi{10.1609/aaai.v36i7.20680}.
+\newblock URL \url{https://ojs.aaai.org/index.php/AAAI/article/view/20680}.
+
+\bibitem[Liu et~al.(2008)Liu, Ting, and Zhou]{liu2008}
+Liu, F.~T., Ting, K.~M., and Zhou, Z.-H.
+\newblock Isolation forest.
+\newblock In \emph{2008 Eighth IEEE International Conference on Data Mining},
+  pp.\  413--422, 2008.
+\newblock \doi{10.1109/ICDM.2008.17}.
+
+\bibitem[Saito \& Rehmsmeier(2015)Saito and Rehmsmeier]{saito2015}
+Saito, T. and Rehmsmeier, M.
+\newblock The precision-recall plot is more informative than the roc plot when
+  evaluating binary classifiers on imbalanced datasets.
+\newblock \emph{PLOS ONE}, 10\penalty0 (3):\penalty0 e0118432, 2015.
+\newblock \doi{10.1371/journal.pone.0118432}.
+
+\bibitem[{scikit-learn developers}(2026{\natexlab{a}})]{sklearnap}
+{scikit-learn developers}.
+\newblock {average\_precision\_score}: Api documentation, 2026{\natexlab{a}}.
+\newblock URL
+  \url{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html}.
+\newblock Accessed 2026-10-03; version 1.9.1.
+
+\bibitem[{scikit-learn developers}(2026{\natexlab{b}})]{sklearncal}
+{scikit-learn developers}.
+\newblock Probability calibration, 2026{\natexlab{b}}.
+\newblock URL \url{https://scikit-learn.org/stable/modules/calibration.html}.
+\newblock Accessed 2026-10-03; version 1.9.1.
+
+\bibitem[{scikit-learn developers}(2026{\natexlab{c}})]{sklearnpca}
+{scikit-learn developers}.
+\newblock {PCA}: Api documentation, 2026{\natexlab{c}}.
+\newblock URL
+  \url{https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html}.
+\newblock Accessed 2026-10-03; version 1.9.1.
+
+\bibitem[{scikit-learn developers}(2026{\natexlab{d}})]{sklearnscale}
+{scikit-learn developers}.
+\newblock {StandardScaler}: Api documentation, 2026{\natexlab{d}}.
+\newblock URL
+  \url{https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html}.
+\newblock Accessed 2026-10-03; version 1.9.1.
+
+\end{thebibliography}

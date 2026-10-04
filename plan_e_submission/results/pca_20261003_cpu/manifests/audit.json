@@ -1,0 +1,66 @@
+{
+  "created": "2026-10-03T18:37:34.404720+00:00",
+  "files": [
+    {
+      "file": "press_data_normal.csv",
+      "sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7",
+      "original_rows": 20000,
+      "clean_rows": 19999,
+      "removed": 1,
+      "missing": 0,
+      "numeric_failures": 0,
+      "timestamp_failures": 0,
+      "date": [
+        "2022-07-12"
+      ],
+      "label_counts": {
+        "0": 20000
+      },
+      "gaps_over_05": 598,
+      "gap_max": 16.643,
+      "gap_median": 0.1,
+      "burst_count": 599
+    },
+    {
+      "file": "outlier_data.csv",
+      "sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e",
+      "original_rows": 600,
+      "clean_rows": 600,
+      "removed": 0,
+      "missing": 0,
+      "numeric_failures": 0,
+      "timestamp_failures": 0,
+      "date": [
+        "2022-07-17"
+      ],
+      "label_counts": {
+        "1": 600
+      },
+      "gaps_over_05": 20,
+      "gap_max": 8.572,
+      "gap_median": 0.1,
+      "burst_count": 21
+    }
+  ],
+  "prior_full_data_summary_seen": true,
+  "original_csv_unchanged": true,
+  "burst_sensitivity": [
+    {
+      "gap": 0.2,
+      "bursts": 360,
+      "same_as_05": true
+    },
+    {
+      "gap": 0.5,
+      "bursts": 360,
+      "same_as_05": true
+    },
+    {
+      "gap": 1.0,
+      "bursts": 360,
+      "same_as_05": true
+    }
+  ],
+  "split_origin": "first experiment immutable artifacts",
+  "notes": "No failure-onset, maintenance, pressure, quality, utilization, physical units or operating load histories supplied."
+}

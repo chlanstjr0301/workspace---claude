@@ -1,0 +1,21 @@
+\begin{table*}[t]
+\centering
+\caption{Frozen unweighted crop inference; eligibility is $N\geq L$. Recall/F1 mean $\pm$ population standard deviation across 10 repeats pooled over crop positions within each repeat, unlike Table~\ref{tab:weights}. Transitions count original-TP parents with any crop/fold FN; the denominator excludes original FNs. Normal FP counts pool repeated crop predictions.}
+\label{tab:length}
+\small
+\begin{tabular}{rlllrlr}
+\toprule
+$L$ & Normal / abnormal & Recall & F1 & Mean abnormal $p$ & TP $\rightarrow$ FN & Normal FP \\
+\midrule
+4 & 575/20 & $0.461\pm0.007$ & $0.631\pm0.007$ & 0.4573 & 14/18 & 0 \\
+6 & 565/18 & $0.435\pm0.009$ & $0.606\pm0.009$ & 0.4220 & 14/16 & 0 \\
+8 & 550/18 & $0.467\pm0.009$ & $0.637\pm0.008$ & 0.4495 & 13/16 & 0 \\
+10 & 530/17 & $0.529\pm0.006$ & $0.692\pm0.005$ & 0.5092 & 12/15 & 0 \\
+12 & 511/16 & $0.562\pm0.000$ & $0.720\pm0.000$ & 0.5498 & 12/15 & 0 \\
+15 & 480/16 & $0.682\pm0.000$ & $0.811\pm0.000$ & 0.6604 & 9/15 & 0 \\
+20 & 452/13 & $0.749\pm0.015$ & $0.856\pm0.010$ & 0.7201 & 8/13 & 0 \\
+25 & 402/12 & $0.765\pm0.000$ & $0.867\pm0.000$ & 0.7235 & 6/12 & 0 \\
+30 & 360/10 & $0.821\pm0.014$ & $0.901\pm0.008$ & 0.7797 & 5/10 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table*}

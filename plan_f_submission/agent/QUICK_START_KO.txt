@@ -1,0 +1,33 @@
+이미 학습된 결과 읽기
+  paper/논문_한국어.pdf
+  runs/experiment_20261003_01/report.html
+
+이 패키지의 전체 독립 재현을 에이전트에 맡길 때
+  "현재 폴더의 agent/AGENT_PROMPT_KO.txt를 읽고 새 실행 폴더에서 재현해.
+   동봉 완료 실행을 덮어쓰지 말고, 원본/누출/인증 보호 조건을 지켜.
+   일반적인 구현은 자율적으로 처리하고 결과와 차이를 보고해."
+
+로컬 전체 재현 (Python 3.13, CPU)
+  python -m venv .venv
+  .venv/bin/python -m pip install -r requirements.lock.txt
+  .venv/bin/python scripts/run_all.py
+Windows에서는 .venv/bin/python 대신 .venv\Scripts\python.exe를 사용한다.
+
+학습·파일 변경 없이 패키지 무결성 확인
+  python scripts/verify_package.py
+저장 모델의 분할별 추론 확인은 src/verify.py를 사용한다.
+이 코드는 verification.json을 갱신하므로 원실행 폴더의 복사본에서 실행한다.
+
+논문만 재생성
+  python -m pip install -r paper/requirements-paper.lock.txt
+  python scripts/build_paper.py
+
+Colab CLI 예시 (새 이름으로 변경하고 자신의 세션만 관리)
+  /home/lim/.local/bin/colab --auth=oauth2 sessions
+  /home/lim/.local/bin/colab --auth=oauth2 new --session hydraulic-reproduce-새고유명
+  /home/lim/.local/bin/colab --auth=oauth2 upload --session hydraulic-reproduce-새고유명 입력묶음.zip /content/입력묶음.zip
+  /home/lim/.local/bin/colab --auth=oauth2 exec --session hydraulic-reproduce-새고유명 --file 원격실행.py --timeout 60
+  /home/lim/.local/bin/colab --auth=oauth2 download --session hydraulic-reproduce-새고유명 /content/결과.zip 결과.zip
+  /home/lim/.local/bin/colab --auth=oauth2 stop --session hydraulic-reproduce-새고유명
+과거 scripts/start_remote.py 등의 하드코딩 세션·경로는 실행기록이다.
+새 재현은 run_all.py를 우선 사용하며 Colab 래퍼는 환경에 맞게 수정한다.

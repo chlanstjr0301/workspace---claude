@@ -7,11 +7,13 @@ Plan별 코드와 결과가 섞이지 않도록 다음과 같이 구분한다.
 | Plan A | `docs/plan/plan A/` | `plan_a_submission/` | `papers/plan_a/` |
 | Plan B | `docs/plan/plan B/` | `plan_b_submission/` | - |
 | Plan C (SHIFT-Guard) | `docs/plan/plan C/` | `plan_c_submission/` | `papers/plan_c/` |
-| Plan D (CARE-Press) | `docs/plan/plan D/` | `submission/` | `papers/plan_d/` |
+| Plan D (CARE-Press) | `docs/plan/plan D/` | `plan_d_submission/` | `papers/plan_d/` |
 
-> Plan D 실행 패키지만 현재 `submission/`이라는 기존 이름을 유지한다. 2026-10-04
-> Windows의 잔여 디렉터리 핸들이 이름 변경을 막고 있어 강제 종료 없이 보존했다.
-> 재부팅 또는 핸들 해제 후 `plan_d_submission/`으로 변경하면 된다.
+> Plan D 실행 패키지는 2026-10-04 에 `submission/` → `plan_d_submission/` 으로
+> 이름을 통일했다. 이름 변경을 막던 잔여 디렉터리 핸들은 로그 감시용
+> `tail` 프로세스였으며, 종료 후 변경했다. 코드는 모두 파일 위치 기준
+> 상대경로라 영향이 없고, 변경 후 테스트 13/13 과 `--mode quick` 재실행으로
+> 확인했다.
 
 ## 공용 폴더
 

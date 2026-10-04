@@ -1,0 +1,7 @@
+범위,정책,TP,FN,FP,Recall,F1,FPR
+selection,none,102,9,20,0.9189,0.8755,0.0101
+selection,consecutive2,94,17,13,0.8468,0.8624,0.0065
+selection,two_of_three,99,12,16,0.8919,0.8761,0.0081
+test,none,315,42,1,0.8824,0.9361,0.0003
+test,consecutive2,299,58,0,0.8375,0.9116,0.0000
+test,two_of_three,303,54,0,0.8487,0.9182,0.0000

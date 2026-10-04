@@ -1,0 +1,7 @@
+요구,실험·결과,근거,한계
+데이터 이해15,중복1행 제거·분할·620버스트,configs/frozen/,제품·설비·단위 미확인
+모델40,M0~M4·13설정·3seed·TP303/FN54,tables/metrics_test.csv,단일 날짜·LSTM 제한예산
+영향요인15,7센서조합·15특징제거·조건별분모,tables/feature_ablation.csv,물리 인과·공정상태 미확인
+현장활용10,시각·센서·경보·공백 추적,predictions/main_test.csv,비용·불량·비가동 미검증
+차별성10,공통행/전체행·보완·버스트·후처리,tables/burst_pairs_test.csv,새 범용 알고리즘 아님
+재현성10,원본해시·코드·객체·원명령,"verification.json, scripts/",외부환경 부동소수점 차이

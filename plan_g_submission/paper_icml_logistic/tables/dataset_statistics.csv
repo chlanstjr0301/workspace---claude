@@ -1,0 +1,3 @@
+﻿group,raw_rows,raw_bursts,eligible_bursts,excluded_lt4,calendar_dates,date_min,date_max,samples_min,samples_median,samples_max,median_within_burst_gap_seconds
+Normal,20000,599,575,24,1,2022-07-12,2022-07-12,4,38.0,50,0.1
+Abnormal,600,21,20,1,1,2022-07-17,2022-07-17,4,29.5,50,0.1

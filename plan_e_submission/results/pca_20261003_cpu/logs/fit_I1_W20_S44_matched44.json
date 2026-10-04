@@ -1,0 +1,25 @@
+{
+  "kind": "IF",
+  "name": "I1_W20_S44_matched44",
+  "feature": "U20",
+  "sensors": null,
+  "fit_seconds": 1.0099922189999688,
+  "training_windows": 6021,
+  "names": [
+    "AI0_Vibration__mean",
+    "AI1_Vibration__mean",
+    "AI2_Current__mean",
+    "AI0_Vibration__std",
+    "AI1_Vibration__std",
+    "AI2_Current__std",
+    "AI0_Vibration__rms",
+    "AI1_Vibration__rms",
+    "AI2_Current__rms",
+    "AI0_Vibration__min",
+    "AI1_Vibration__min",
+    "AI2_Current__min",
+    "AI0_Vibration__max",
+    "AI1_Vibration__max",
+    "AI2_Current__max"
+  ]
+}

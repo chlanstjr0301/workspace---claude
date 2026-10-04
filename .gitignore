@@ -10,3 +10,11 @@ __pycache__/
 *.synctex.gz
 !**/outputs/*.log
 !**/outputs/**/*.log
+
+# latexmk / bibtex 부기 파일 (매 빌드마다 바뀌는 노이즈)
+*.fls
+*.fdb_latexmk
+*.blg
+
+# 벤더링된 실행 바이너리 (Linux ELF, 공개 배포본 — 저장소에 둘 이유 없음)
+plan_e_submission/tools/tectonic

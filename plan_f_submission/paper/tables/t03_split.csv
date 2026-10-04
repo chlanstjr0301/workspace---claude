@@ -1,0 +1,8 @@
+상태,분할,행,버스트
+정상,train,12012,360
+정상,calibration,2011,63
+정상,selection,1986,58
+정상,test,3990,118
+이상,calibration,132,4
+이상,selection,111,4
+이상,test,357,13

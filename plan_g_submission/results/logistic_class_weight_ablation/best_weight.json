@@ -1,0 +1,27 @@
+{
+  "selection_uses": "mean scores from same 50 CV folds only; no held-out test",
+  "near_tie_tolerance": 0.001,
+  "recall_warning_floor": 0.85,
+  "selection_rule": "within 0.001 of maximum mean F1, highest mean Recall, then F1, Precision, declared order",
+  "strict_F1_max_weight": "None",
+  "selected_weight": "None",
+  "selected_class_weight": null,
+  "selected_metrics": {
+    "Accuracy": 0.9966386554621849,
+    "Precision": 1.0,
+    "Recall": 0.9,
+    "F1": 0.9419047619047618,
+    "Balanced_Accuracy": 0.95,
+    "ROC_AUC": 0.9166956521739131,
+    "TN": 115.0,
+    "FP": 0.0,
+    "FN": 0.4,
+    "TP": 3.6
+  },
+  "selected_recall_below_floor": false,
+  "best_weight_with_recall_at_least_0_85": "None",
+  "strict_F1_max_weights": [
+    "None",
+    "{0:1,1:3}"
+  ]
+}

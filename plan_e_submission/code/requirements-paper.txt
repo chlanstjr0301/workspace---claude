@@ -1,0 +1,2 @@
+pymupdf==1.28.2
+# PDF inspection only; model packages are in requirements.lock.txt.

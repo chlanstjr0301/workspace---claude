@@ -1,0 +1,10 @@
+﻿sample_count,eligible_normal,eligible_abnormal,eligible_original_TP,excluded_normal,excluded_abnormal,n_physical_crops,n_OOF_predictions,uncomputable_physical_crops,evaluated_physical_crops,evaluated_OOF_predictions,evaluated_unique_normal,evaluated_unique_abnormal
+4,575,20,18,0,0,1766,17660,0,1766,17660,575,20
+6,565,18,16,10,2,1727,17270,0,1727,17270,565,18
+8,550,18,16,25,2,1670,16700,0,1670,16700,550,18
+10,530,17,15,45,3,1611,16110,0,1611,16110,530,17
+12,511,16,15,64,4,1548,15480,0,1548,15480,511,16
+15,480,16,15,95,4,1466,14660,0,1466,14660,480,16
+20,452,13,13,123,7,1371,13710,0,1371,13710,452,13
+25,402,12,12,173,8,1210,12100,0,1210,12100,402,12
+30,360,10,10,215,10,1093,10930,0,1093,10930,360,10
