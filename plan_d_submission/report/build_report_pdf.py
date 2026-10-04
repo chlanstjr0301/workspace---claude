@@ -20,43 +20,46 @@ CSS = r"""
 @page { size: A4; margin: 20mm 18mm 20mm 18mm; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body {
-  font-family: "NanumMyeongjo", "나눔명조", "HCR Batang", "Batang", serif;
-  font-size: 10.5pt; line-height: 1.65; color: #000; background: #fff;
+  /* 공식 양식: 본문 휴먼명조 14pt·줄간격 160%, 주석 10pt. 휴먼명조가 없으면 나눔명조 */
+  font-family: "휴먼명조", "HumanMyeongjo", "NanumMyeongjo", "나눔명조", "HCR Batang", "Batang", serif;
+  font-size: 14pt; line-height: 1.6; color: #000; background: #fff;
   word-break: keep-all; overflow-wrap: break-word;
 }
-h1 { font-size: 18pt; text-align: center; margin: 0 0 4mm 0; }
-h2 { font-size: 14pt; margin: 8mm 0 3mm 0; padding-bottom: 1.5mm;
+h1 { font-size: 20pt; text-align: center; margin: 0 0 4mm 0; }
+h2 { font-size: 16pt; margin: 8mm 0 3mm 0; padding-bottom: 1.5mm;
      border-bottom: 1.2pt solid #000; page-break-after: avoid; }
 h2.chapter { page-break-before: always; }
-h3 { font-size: 11.5pt; margin: 5mm 0 2mm 0; page-break-after: avoid; }
+h3 { font-size: 14.5pt; margin: 5mm 0 2mm 0; page-break-after: avoid; }
 p { margin: 1.5mm 0; text-align: justify; }
-blockquote { margin: 0 0 4mm 0; text-align: center; color: #333; border: none; }
+blockquote { margin: 3mm 0; padding: 2mm 4mm; border-left: 1.2pt solid #555; background: #f3f3f3; font-size: 12pt; }
+body > blockquote:first-of-type { text-align: center; background: none; border: none; font-size: 14pt; }
 hr { border: none; border-top: 0.6pt solid #888; margin: 5mm 0; }
 table { border-collapse: collapse; width: 100%; margin: 2mm 0 1mm 0;
-        font-size: 8.8pt; line-height: 1.4; page-break-inside: auto; }
+        font-size: 10pt; line-height: 1.45; page-break-inside: auto; }
 tr { page-break-inside: avoid; }
 thead { display: table-header-group; }
 th, td { border: 0.5pt solid #444; padding: 1mm 1.5mm; vertical-align: top; }
 th { background: #e8e8e8; font-weight: bold; text-align: center; }
 p.caption { font-weight: bold; margin: 4mm 0 0 0; page-break-after: avoid; }
-p.source { font-size: 8.5pt; color: #333; margin: 0.5mm 0 3mm 0; }
-code { font-family: "NanumGothicCoding", monospace; font-size: 8.8pt; }
-pre { font-family: "NanumGothicCoding", monospace; font-size: 8.4pt; line-height: 1.35;
+p.source { font-size: 10pt; color: #333; margin: 0.5mm 0 3mm 0; }
+code { font-family: "NanumGothicCoding", monospace; font-size: 0.85em; }
+pre { font-family: "NanumGothicCoding", monospace; font-size: 10pt; line-height: 1.35;
       background: #f4f4f4; border: 0.5pt solid #bbb; padding: 2mm 3mm;
       white-space: pre-wrap; page-break-inside: avoid; }
 pre code { font-size: inherit; }
 figure { margin: 3mm 0; text-align: center; page-break-inside: avoid; }
-figure img { max-width: 100%; max-height: 110mm; }
-figcaption { font-size: 9.5pt; font-weight: bold; margin-top: 1mm; }
+figure img { max-width: 100%; max-height: 95mm; }
+figcaption { font-size: 10pt; font-weight: bold; margin-top: 1mm; }
 ul, ol { margin: 1mm 0 1mm 6mm; padding-left: 4mm; }
 li { margin: 0.6mm 0; }
 nav.toc { page-break-before: always; }
 nav.toc h2 { border-bottom: 1.2pt solid #000; }
-nav.toc ul { list-style: none; margin: 0; padding: 0; }
+nav.toc ul { list-style: none; margin: 0; padding: 0; column-count: 2; column-gap: 8mm; }
+nav.toc li.l2 { break-after: avoid; }
 nav.toc li { line-height: 1.45; margin: 0; }
 nav.toc li.l2 { font-weight: bold; margin-top: 2mm; }
-nav.toc li.l3 { margin-left: 7mm; font-size: 9.5pt; }
-p.formula { text-align: center; margin: 2mm 0; }
+nav.toc li.l3 { margin-left: 7mm; font-size: 11pt; }
+p.formula { text-align: center; margin: 2mm 0; font-size: 12pt; }
 """
 
 FOOTER = ('<div style="width:100%;font-size:8pt;text-align:center;'

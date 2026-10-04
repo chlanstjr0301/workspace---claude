@@ -613,7 +613,7 @@ def main():
     cov = e8(cfg, p_by_fold)
     e9(cfg, P)
 
-    # 통과 기준(§6.2 + DL-001~003, 정정 DL-006) 에 따른 모델 선정
+    # 통과 기준(§6.2 + DL-001~003, 정정 DL-016) 에 따른 모델 선정
     from src.selection import apply_gates
     gates, chosen, picks = apply_gates(cfg, agg, rob_agg, cov)
     save(gates, "e2_selection_gates.csv")
@@ -655,12 +655,14 @@ def main():
     import make_supervised_control as SC
     import make_calibration as CB
     import make_correction_tables as CT
+    import make_interaction_tables as IT
     for name, mod in (("보고서 보충표 r1-r5", RT), ("감사 진단표 r6-r12", AT),
                       ("도메인 진단표 d1-d3", DT), ("M-of-N 표 d4", MT),
                       ("프로토콜 통제표 d5-d6", PT),
                       ("지도학습 대조군 d7", SC),
                       ("확률 보정 r13", CB),
-                      ("정정 대응표 c1-c5", CT)):
+                      ("정정 대응표 c1-c5", CT),
+                      ("상호작용 진단표 i1-i4", IT)):
         log(name + " 생성")
         mod.main()
 
