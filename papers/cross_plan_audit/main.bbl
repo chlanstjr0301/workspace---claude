@@ -1,0 +1,102 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Angelopoulos and Bates(2023)]{angelopoulos2023conformal}
+Anastasios~N. Angelopoulos and Stephen Bates.
+\newblock Conformal prediction: A gentle introduction.
+\newblock \emph{Foundations and Trends in Machine Learning}, 16\penalty0
+  (4):\penalty0 494--591, 2023.
+
+\bibitem[Garg et~al.(2022)Garg, Zhang, Samaran, Savitha, and
+  Foo]{garg2022evaluation}
+Astha Garg, Wenyu Zhang, Jules Samaran, Ramasamy Savitha, and Chuan-Sheng Foo.
+\newblock An evaluation of anomaly detection and diagnosis in multivariate time
+  series.
+\newblock \emph{IEEE Transactions on Neural Networks and Learning Systems},
+  33\penalty0 (6):\penalty0 2508--2517, 2022.
+
+\bibitem[Geirhos et~al.(2020)Geirhos, Jacobsen, Michaelis, Zemel, Brendel,
+  Bethge, and Wichmann]{geirhos2020shortcut}
+Robert Geirhos, J{\"o}rn-Henrik Jacobsen, Claudio Michaelis, Richard Zemel,
+  Wieland Brendel, Matthias Bethge, and Felix~A. Wichmann.
+\newblock Shortcut learning in deep neural networks.
+\newblock \emph{Nature Machine Intelligence}, 2\penalty0 (11):\penalty0
+  665--673, 2020.
+
+\bibitem[Jackson and Mudholkar(1979)]{jackson1979control}
+J.~Edward Jackson and Govind~S. Mudholkar.
+\newblock Control procedures for residuals associated with principal component
+  analysis.
+\newblock \emph{Technometrics}, 21\penalty0 (3):\penalty0 341--349, 1979.
+
+\bibitem[Kim et~al.(2022)Kim, Choi, Choi, Lee, and Yoon]{kim2022towards}
+Siwon Kim, Kukjin Choi, Hyun-Soo Choi, Byunghan Lee, and Sungroh Yoon.
+\newblock Towards a rigorous evaluation of time-series anomaly detection.
+\newblock In \emph{AAAI}, 2022.
+
+\bibitem[Ledoit and Wolf(2004)]{ledoit2004well}
+Olivier Ledoit and Michael Wolf.
+\newblock A well-conditioned estimator for large-dimensional covariance
+  matrices.
+\newblock \emph{Journal of Multivariate Analysis}, 88\penalty0 (2):\penalty0
+  365--411, 2004.
+
+\bibitem[Liu et~al.(2008)Liu, Ting, and Zhou]{liu2008isolation}
+Fei~Tony Liu, Kai~Ming Ting, and Zhi-Hua Zhou.
+\newblock Isolation forest.
+\newblock In \emph{ICDM}, 2008.
+
+\bibitem[L{\'o}pez~de Prado(2018)]{lopezdeprado2018advances}
+Marcos L{\'o}pez~de Prado.
+\newblock \emph{Advances in Financial Machine Learning}.
+\newblock Wiley, 2018.
+
+\bibitem[{Ministry of SMEs and Startups} and {KAIST}(2022)]{kamp2022press}
+{Ministry of SMEs and Startups} and {KAIST}.
+\newblock Plastic forming predictive maintenance ai dataset.
+\newblock Korea AI Manufacturing Platform (KAMP),
+  \url{https://www.kamp-ai.kr/}, December 2022.
+\newblock Smart Manufacturing Innovation Promotion Team (InterX Co., Ltd.).
+
+\bibitem[Qin(2003)]{qin2003statistical}
+S.~Joe Qin.
+\newblock Statistical process monitoring: Basics and beyond.
+\newblock \emph{Journal of Chemometrics}, 17\penalty0 (8-9):\penalty0 480--502,
+  2003.
+
+\bibitem[Randall and Antoni(2011)]{randall2011rolling}
+Robert~B. Randall and Jerome Antoni.
+\newblock Rolling element bearing diagnostics---a tutorial.
+\newblock \emph{Mechanical Systems and Signal Processing}, 25\penalty0
+  (2):\penalty0 485--520, 2011.
+
+\bibitem[Recht et~al.(2019)Recht, Roelofs, Schmidt, and
+  Shankar]{recht2019imagenet}
+Benjamin Recht, Rebecca Roelofs, Ludwig Schmidt, and Vaishaal Shankar.
+\newblock Do {ImageNet} classifiers generalize to {ImageNet}?
+\newblock In \emph{ICML}, 2019.
+
+\bibitem[Vovk et~al.(2005)Vovk, Gammerman, and Shafer]{vovk2005algorithmic}
+Vladimir Vovk, Alexander Gammerman, and Glenn Shafer.
+\newblock \emph{Algorithmic Learning in a Random World}.
+\newblock Springer, 2005.
+
+\bibitem[Wu and Keogh(2023)]{wu2023current}
+Renjie Wu and Eamonn~J. Keogh.
+\newblock Current time series anomaly detection benchmarks are flawed and are
+  creating the illusion of progress.
+\newblock In \emph{IEEE Transactions on Knowledge and Data Engineering}, 2023.
+
+\bibitem[Zech et~al.(2018)Zech, Badgeley, Liu, Costa, Titano, and
+  Oermann]{zech2018variable}
+John~R. Zech, Marcus~A. Badgeley, Manway Liu, Anthony~B. Costa, Joseph~J.
+  Titano, and Eric~K. Oermann.
+\newblock Variable generalization performance of a deep learning model to
+  detect pneumonia in chest radiographs: A cross-sectional study.
+\newblock \emph{PLoS Medicine}, 15\penalty0 (11):\penalty0 e1002683, 2018.
+
+\end{thebibliography}

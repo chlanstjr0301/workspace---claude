@@ -51,8 +51,9 @@ record consists of 599 bursts of at most 50 samples (\SI{4.9}{\second}), so the
 reference pipeline's 120-sample analysis span does not fit inside \emph{any}
 burst, and its stated ``\SI{10}{\second}-ahead'' horizon is unrealizable.
 Second, under a leakage-controlled protocol every model we test---including a
-one-line range rule---achieves $\mathrm{AP}=1.000$ and perfect recall, so
-detection metrics carry \emph{zero} discriminative power on this benchmark; the
+one-line range rule---attains recall $1.000$ and average precision that rounds
+to $1.000$, so detection metrics carry \emph{almost no} discriminative power
+on this benchmark; the
 published LSTM-AE score of $F_1=0.748$---which we reproduce to within seed
 noise at $0.743$---is below what a rule with no learned parameters attains
 ($F_1=0.973$), and the same network reaches $0.959$ once placed inside a
@@ -61,10 +62,16 @@ procedure rather than model capacity. Third, models that are indistinguishable o
 differ by more than $5\times$ in robustness to benign measurement shift: a
 pure DC offset applied to \emph{normal} data raises the false-alarm rate by
 $89.7$ points for a Mahalanobis monitor but only $17.0$ points for PCA-MSPC.
-We argue that on benchmarks where normal and fault records are separable for
-trivial reasons---here a single fault event recorded on a different day---model
+Fourth, a cross-validated false-alarm rate does not describe the system that
+is actually deployed: on the identical held-out block, five-fold CV reports
+$0.27\%$ while the frozen configuration produces $8.23\%$, a $30\times$ gap
+caused solely by which block supplies the conformal calibration set. We argue
+that on benchmarks where normal and fault records are separable for trivial
+reasons---here a single fault event recorded on a different day---model
 selection must be driven by false-alarm behaviour under shift and by
-calibration quality, not by detection scores. We release a protocol
+calibration quality, not by detection scores, and that the frozen
+configuration's own held-out error must be reported alongside any
+cross-validated average. We release a protocol
 (gap-aware windowing, burst-blocked normal-only cross-validation, conformal
 calibration, and shift-perturbation gates) that makes this selection explicit
 and reproducible in one command.
@@ -104,11 +111,11 @@ uniform time.
 
 \textbf{(2) Detection metrics cannot discriminate models here.} Under a
 leakage-controlled protocol (\S\ref{sec:protocol}), a one-line normal-range
-rule, a shrinkage Mahalanobis monitor, and PCA-MSPC all reach
-$\mathrm{AP}=1.000$, $\mathrm{AUROC}=1.000$ and recall $1.000$
-(\S\ref{sec:sep}). Normal and fault windows are linearly separable by a
-single feature. Reporting $F_1$ differences on this benchmark measures
-threshold placement, not detection ability.
+rule, a shrinkage Mahalanobis monitor, and PCA-MSPC all reach recall $1.000$
+with AUROC above $0.9998$ (\S\ref{sec:sep}). Shape features alone give
+$\mathrm{AP} = 0.9986$ and amplitude features alone $0.9935$, so the signal is
+redundant across feature groups. Reporting $F_1$ differences on this benchmark
+measures threshold placement, not detection ability.
 
 \textbf{(3) Robustness to benign measurement shift does discriminate, by a
 wide margin.} Perturbing \emph{normal} data with sensor gain, DC offset,
@@ -320,10 +327,13 @@ the worst block, not only the mean.
 \label{sec:sep}
 
 Table~\ref{tab:e2} gives the five-fold result. BL-0, M1 and M3 all attain
-recall $1.000$, $\mathrm{AP}=1.000$ and $\mathrm{AUROC}=1.000$; M2 is
-marginally lower. Every fault window is scored above every normal hold-out
-window by a rule that merely checks whether features leave their training
-range.
+recall $1.000$ and average precision that rounds to $1.000$; M2 is marginally
+lower. The separation is near-total but not exact: the highest mean AUROC we
+observe is $0.99999880$ (BL-0), against $0.99999659$ (M1) and $0.99985676$
+(M3), so a small number of fault windows are scored below some normal
+hold-out window. We avoid the phrase ``perfect separation'' for that reason.
+The operative point stands --- a rule that merely checks whether features
+leave their training range is as good a detector as anything we trained.
 
 \begin{figure}[t]
 \centering
@@ -541,7 +551,8 @@ between the reference baseline and the parameter-free rule of
 artefact of our reimplementation.
 
 Second, \textbf{the same network reaches $F_1 = 0.959$ once the protocol is
-corrected}. G1 attains recall $1.000$ and $\mathrm{AP}=1.000$ on every fold,
+corrected}. G1 attains recall $1.000$ on every fold and AP of $1.000$ on four
+of five folds ($0.999984$ on the fifth),
 matching the feature-based monitors exactly. The improvement of $+0.216$ $F_1$
 is attributable entirely to evaluation and preprocessing---gap-aware windows,
 raw signal, whole-window reconstruction error, and a threshold fit without
@@ -587,6 +598,84 @@ M3 (selected)                   & 0.928 & 1.000 & 0.962 & 0.0116 & 0.0227 \\
 \end{tabular}
 \end{table}
 
+\section{Cross-Validation Does Not Predict Deployment}
+\label{sec:cvgap}
+
+The protocol of \S\ref{sec:protocol} selects a model by cross-validation and
+then freezes one configuration for deployment: fit on normal blocks 0--2,
+conformal calibration on block 3, leaving block 4 unseen. We report what
+happens next, because it was not what the cross-validation predicted.
+
+On block 4 the frozen system raises a first-stage alarm on
+$241/2929 = \mathbf{8.23\%}$ of normal windows. The five-fold cross-validation
+that selected it reports, \emph{on the identical block}, a false-positive rate
+of $8/2929 = \mathbf{0.27\%}$ --- a factor of $30$. Nothing about the model
+differs. The fold that holds out block 4 calibrates on block 0; the frozen
+configuration calibrates on block 3, which is a quiet stretch, so the quantile
+it supplies is too tight for block 4. Of the 241 non-green windows, 217 fall in
+original rows $16{,}000$--$19{,}000$, and $54$ of block 4's $106$ bursts raise
+at least one alarm.
+
+This is a quantified failure of the exchangeability that split-conformal
+inference assumes, induced by the blocked splitting that burst structure forces
+on us. Its practical consequence is that \textbf{a cross-validated false-alarm
+rate is a property of the (fold, calibration block) pair, not of the system}.
+With five blocks and one fault event there is no held-out budget left to
+estimate the deployed rate honestly, so we report it directly instead.
+
+\begin{table}[t]
+\caption{Comparison metrics and operating metrics are different quantities.
+The upper rows reuse the same 428 fault windows in every fold; the lower rows
+are the frozen configuration's own held-out block plus the fault record.}
+\label{tab:operational}
+\vskip 0.08in
+\centering
+\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{llrrr}
+\toprule
+ & Prev. & Prec. & Recall & $F_1$ \\
+\midrule
+\multicolumn{5}{l}{\textit{Five-fold CV (model comparison)}} \\
+\quad BL-0 & 0.120 & 0.949 & 1.000 & 0.973 \\
+\quad M3   & 0.120 & 0.928 & 1.000 & 0.962 \\
+\quad BL-1 & 0.120 & 0.922 & 1.000 & 0.959 \\
+\midrule
+\multicolumn{5}{l}{\textit{Frozen configuration (operating)}} \\
+\quad Stage 1 only & 0.128 & 0.640 & 1.000 & 0.780 \\
+\quad Two-stage (red) & 0.128 & \textbf{0.992} & 0.876 & \textbf{0.931} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:operational} separates the two. The two-stage rule cuts false
+alarms from $241$ to $3$ windows (FPR $0.0823 \rightarrow 0.0010$, a factor of
+$82$) at a cost of $53$ missed fault windows. Of those $53$, $33$ ($62.3\%$)
+are the first two windows of a burst, which the three-consecutive-window
+requirement makes structurally unreachable; the misses are a statement about
+available observation length, not about the detector.
+
+\section{Ranking Is Not Calibration}
+\label{sec:prob}
+
+The protocol exposes $\mathrm{risk} = 1 - p_{\text{normal}}$. On the frozen
+evaluation set this quantity ranks almost perfectly ($\mathrm{AP} \ge 0.99$)
+and is nonetheless a poor probability: its Brier score is $\mathbf{0.487}$
+against $\mathbf{0.111}$ for a constant predictor at the base rate, with
+log-loss $1.695$ versus $0.382$. Of normal held-out windows, $73.1\%$ receive
+$\mathrm{risk} > 0.5$. This is not a defect of the estimator but of the
+reading: a conformal $p$-value is uniform under the null by construction, so
+$1-p$ concentrates near $1$ even for normal data. It is a rank statistic, and
+reporting it as a probability is a category error.
+
+Where a probability is genuinely needed --- deciding whether an alarm warrants
+stopping production --- we report instead the posterior implied by the
+two-stage operating point ($\mathrm{TPR} = 0.876$, $\mathrm{FPR} = 0.00102$)
+under assumed fault prevalence:
+$P(\text{fault}\mid\text{red}) = 0.896$ at $1\%$ prevalence, $0.461$ at
+$0.1\%$, and $0.079$ at $0.01\%$. The gap between the first and third is the
+reason we do not recommend automatic shutdown on a single alarm.
+
 \section{Model Selection}
 \label{sec:selection}
 
@@ -622,18 +711,46 @@ metrics.
 \section{Amendments Made After Seeing Results}
 \label{sec:amend}
 
-Three protocol changes were made after first results and are recorded here for
-completeness. (1) The robustness gate was originally defined on fault-side
-recall drop; with recall saturated at $1.000$ this quantity was identically
-zero for three of four models and carried no information, so the normal-side
-false-alarm increase was added. (2) The false-alarm gate ``no worse than
-BL-0'' was given a tolerance (relative $10\%$ or absolute $0.005$); taken
-literally it eliminated every model by hundredths of a percentage point and
-reinstated the floor baseline as the winner. (3) The coverage gate
-(\S\ref{sec:calib}) did not exist in the original specification and was added
-once BL-0's tie structure was observed. We also note that the fault record was
-inspected during exploratory work preceding this protocol, so these results
-should not be read as a fully held-out evaluation.
+Three selection gates were changed after first results. We state the
+consequence first: \textbf{under the original gates the winner is BL-0, the
+parameter-free range rule, not M3} (Table~\ref{tab:gates}).
+
+(1) The robustness gate was originally defined on fault-side recall drop; with
+recall saturated at $1.000$ this quantity was $0.00$--$2.57$ points for all
+models and carried no information, so the normal-side false-alarm increase was
+added. (2) The false-alarm gate ``no worse than BL-0'' was given a tolerance
+(relative $10\%$ or absolute $0.005$); taken literally it eliminated every
+model by hundredths of a percentage point and reinstated the floor baseline.
+(3) The coverage gate did not exist in the original specification and was added
+once BL-0's tie structure (\S\ref{sec:calib}) was observed.
+
+\begin{table}[t]
+\caption{Selection under the original and revised gates. The revision changes
+the winner. We report both rather than only the second.}
+\label{tab:gates}
+\vskip 0.08in
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrcc}
+\toprule
+ & $F_1$ & Shift & Cov.\ err & Orig. & Rev. \\
+\midrule
+BL-0 & \textbf{0.973} & 61.3 & \textbf{0.087} & \textbf{pass} & fail \\
+M1   & 0.965 & \textbf{89.7} & 0.002 & fail & fail \\
+M2   & 0.929 & 22.3 & 0.016 & fail & fail \\
+M3   & 0.962 & \textbf{17.0} & 0.013 & fail & \textbf{pass} \\
+BL-1 & 0.959 & n/e & n/e & fail & fail \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Two further disclosures. The claim that fault data are unused holds for model
+fitting and threshold selection, which are enforced by test, but \emph{not} for
+model selection: the burst-detection gate, the tie-breaking sort key, and our
+reading of the ablation all consult fault labels. And the fault record was
+inspected during exploratory work preceding this protocol, so these results are
+not a fully held-out evaluation.
 
 \section{Limitations}
 \label{sec:limits}
