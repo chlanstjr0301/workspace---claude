@@ -19,6 +19,11 @@ import sys
 
 import numpy as np
 import pandas as pd
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 import yaml
 from scipy.stats import beta, chi2
 from sklearn.metrics import average_precision_score, roc_auc_score

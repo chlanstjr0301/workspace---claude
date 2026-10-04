@@ -14,6 +14,11 @@ import sys
 import numpy as np
 import pandas as pd
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 TAB = os.path.join(HERE, "outputs", "tables")

@@ -49,7 +49,15 @@ def burst_table(df, label):
         rows.append(dict(
             source=label, burst=i, n_sample=b - a,
             t_start_s=float((ts[a] - t0) / np.timedelta64(1, "s")),
-            rms_AI0=float(s0), rms_AI1=float(W[:, 1].std()), rms_AI2=float(W[:, 2].std()),
+            # 주의: 아래 std_* 는 '버스트 평균을 제거한' 표준편차다.
+            # 전류처럼 DC 오프셋이 큰 채널에서는 RMS 와 크게 달라지므로
+            # 진짜 RMS(=sqrt(mean(x^2))) 를 별도 열로 함께 기록한다. (DL-007)
+            std_AI0=float(s0), std_AI1=float(W[:, 1].std()),
+            std_AI2=float(W[:, 2].std()),
+            rms_AI0=float(np.sqrt((W[:, 0] ** 2).mean())),
+            rms_AI1=float(np.sqrt((W[:, 1] ** 2).mean())),
+            rms_AI2=float(np.sqrt((W[:, 2] ** 2).mean())),
+            mean_AI2=float(W[:, 2].mean()),
             kurt_AI0=float(((W[:, 0] - W[:, 0].mean()) ** 4).mean() / (s0 ** 4 + 1e-24) - 3.0),
             corr01=float(np.corrcoef(W[:, 0], W[:, 1])[0, 1]) if s0 > 1e-9 else 0.0,
             acf1_AI0=float(np.corrcoef(W[:-1, 0], W[1:, 0])[0, 1]) if s0 > 1e-9 else 0.0,
@@ -72,6 +80,8 @@ def main():
     d1 = pd.DataFrame({
         "n_burst": g.size(),
         "rms_AI0": g.rms_AI0.mean(), "rms_AI1": g.rms_AI1.mean(), "rms_AI2": g.rms_AI2.mean(),
+        "std_AI0": g.std_AI0.mean(), "std_AI2": g.std_AI2.mean(),
+        "mean_AI2": g.mean_AI2.mean(),
         "corr01": g.corr01.mean(),
         "rms_AI2_min": g.rms_AI2.min(), "rms_AI2_max": g.rms_AI2.max(),
         "corr01_min": g.corr01.min(), "corr01_max": g.corr01.max(),
@@ -114,8 +124,12 @@ def main():
         dict(indicator="자기상관 lag1 (상부)", normal_main=Fn[~low].acf1_AI0.mean(),
              fault=Fo.acf1_AI0.mean(), ratio=np.nan),
         dict(indicator="상·하부 상관", normal_main=m.corr01, fault=f.corr01, ratio=np.nan),
-        dict(indicator="전류 RMS", normal_main=m.rms_AI2, fault=f.rms_AI2,
-             ratio=f.rms_AI2 / m.rms_AI2),
+        dict(indicator="전류 RMS (sqrt(mean(x^2)))", normal_main=m.rms_AI2,
+             fault=f.rms_AI2, ratio=f.rms_AI2 / m.rms_AI2),
+        dict(indicator="전류 표준편차 (평균 제거)", normal_main=m.std_AI2,
+             fault=f.std_AI2, ratio=f.std_AI2 / m.std_AI2),
+        dict(indicator="전류 평균 (DC 오프셋)", normal_main=m.mean_AI2,
+             fault=f.mean_AI2, ratio=np.nan),
     ])
     d3.to_csv(os.path.join(OUT, "d3_failure_signature.csv"), index=False, encoding="utf-8-sig")
     print("\n[d3] 고장모드 대조표의 '본 데이터' 행")

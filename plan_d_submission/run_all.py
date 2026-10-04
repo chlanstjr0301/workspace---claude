@@ -9,7 +9,7 @@ full  : + LSTM-AE(G0/G1) 다중시드
 
 핵심 원칙
  - 모든 스케일러·임계값은 해당 fold 의 정상 학습/보정 구간에서만 적합한다.
- - 이상 데이터는 임계값·특징·하이퍼파라미터 선택에 쓰지 않는다.
+ - 이상 데이터는 적합·임계값에 쓰지 않는다. 선정 게이트 일부에는 사용된다.
  - window 는 버스트 내부에서만 만든다.
 """
 import argparse
@@ -17,6 +17,14 @@ import json
 import os
 import platform
 import sys
+
+# 한국어 Windows(cp949) 에서 로그의 유니코드 문자가 UnicodeEncodeError 를
+# 일으켜 파이프라인이 중단되는 것을 막는다.
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 import time
 
 import numpy as np
@@ -605,11 +613,15 @@ def main():
     cov = e8(cfg, p_by_fold)
     e9(cfg, P)
 
-    # 통과 기준(§6.2 + DL-001~003)에 따른 모델 선정
+    # 통과 기준(§6.2 + DL-001~003, 정정 DL-006) 에 따른 모델 선정
     from src.selection import apply_gates
-    gates, chosen = apply_gates(cfg, agg, rob_agg, cov)
+    gates, chosen, picks = apply_gates(cfg, agg, rob_agg, cov)
     save(gates, "e2_selection_gates.csv")
-    log("  선정 1단 모델: %s" % chosen)
+    save(pd.DataFrame([{"규칙": k, "선정 모델": v} for k, v in picks.items()]),
+         "r12_selection_by_rule.csv")
+    log("  선정: 원안(v0)=%s / 제출본(v1)=%s / 정정(v2)=%s"
+        % (picks["v0_original"], picks["v1_submitted"], picks["v2_corrected"]))
+    log("  1순위 정렬키: far_h_upper95_worst (낮을수록 우선)")
 
     e7(cfg, P, seed, chosen)
     final_predictions(cfg, P, seed, chosen, "M1")
@@ -637,10 +649,20 @@ def main():
     # 보고서 보충표(r1-r5)와 감사 진단표(r6-r11). 모델·임계값 불변, 기존 산출물만 사용.
     import make_report_tables as RT
     import make_audit_tables as AT
-    log("보고서 보충표 생성")
-    RT.main()
-    log("감사 진단표 생성")
-    AT.main()
+    import make_domain_tables as DT
+    import make_mofn_table as MT
+    import make_protocol_tables as PT
+    import make_supervised_control as SC
+    import make_calibration as CB
+    import make_correction_tables as CT
+    for name, mod in (("보고서 보충표 r1-r5", RT), ("감사 진단표 r6-r12", AT),
+                      ("도메인 진단표 d1-d3", DT), ("M-of-N 표 d4", MT),
+                      ("프로토콜 통제표 d5-d6", PT),
+                      ("지도학습 대조군 d7", SC),
+                      ("확률 보정 r13", CB),
+                      ("정정 대응표 c1-c5", CT)):
+        log(name + " 생성")
+        mod.main()
 
 
 if __name__ == "__main__":

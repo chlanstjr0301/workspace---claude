@@ -1,0 +1,3 @@
+﻿점수,Brier,log-loss,상수예측 Brier,상수예측 log-loss,n,유병률
+risk_score = 1 - p_normal (제출본),0.487,1.6954,0.1112,0.3816,3357,0.1275
+anomaly_prob_cal (교차적합 Platt),0.0025,0.0086,0.1112,0.3816,3357,0.1275
