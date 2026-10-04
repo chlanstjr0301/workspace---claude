@@ -14,7 +14,7 @@
 | 정상 블록 CV | **완료** | `submission/outputs/tables/e3_normal_block_cv.csv` (5 fold × 4 모델) |
 | 강건성 섭동 | **완료** | `submission/outputs/tables/e5_robustness.csv`, `e6_shift_false_alarm.csv` |
 | 오류분석 | **완료** | `submission/outputs/tables/e7_error_conditions.csv` |
-| BL-1 공식 LSTM-AE 재현 | **중단·재실행 필요** | `submission/outputs/full_run.log` — Windows 네이티브 TF가 BL-1 시작 후 완료 기록 없이 종료됨 |
+| BL-1 공식 LSTM-AE 재현 | **진행 중 (정상)** | PID 39448 생존·CPU 2.9코어 지속 점유. G0 seed 0 완료(01:37→02:22, 45분), seed 1 학습 중. 로그에 완료 기록이 없는 것은 Keras `verbose=0` + 3시드 종료 후 일괄 저장 구조 때문이며 중단이 아님 |
 | 최종모델 동결 | **잠정** | decision_log `MODEL_FREEZE 후보` = 1단 M3 / 2단 M1. BL-1 비교 후 확정 |
 | 결과보고서 | 미착수 | 최종 PDF |
 | 발표자료 | 미착수 | 최종 PPT/PDF |

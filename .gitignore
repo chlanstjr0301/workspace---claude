@@ -10,3 +10,8 @@ __pycache__/
 *.synctex.gz
 !**/outputs/*.log
 !**/outputs/**/*.log
+
+# latexmk / bibtex 부기 파일 (매 빌드마다 바뀌는 노이즈)
+*.fls
+*.fdb_latexmk
+*.blg

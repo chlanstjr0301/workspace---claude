@@ -53,9 +53,11 @@ burst, and its stated ``\SI{10}{\second}-ahead'' horizon is unrealizable.
 Second, under a leakage-controlled protocol every model we test---including a
 one-line range rule---achieves $\mathrm{AP}=1.000$ and perfect recall, so
 detection metrics carry \emph{zero} discriminative power on this benchmark; the
-published LSTM-AE score of $F_1=0.748$ is below what a rule with no learned
-parameters attains ($F_1=0.973$), which indicates a protocol defect rather than
-a capacity difference. Third, models that are indistinguishable on detection
+published LSTM-AE score of $F_1=0.748$---which we reproduce to within seed
+noise at $0.743$---is below what a rule with no learned parameters attains
+($F_1=0.973$), and the same network reaches $0.959$ once placed inside a
+leakage-controlled protocol, so the published gap measures evaluation
+procedure rather than model capacity. Third, models that are indistinguishable on detection
 differ by more than $5\times$ in robustness to benign measurement shift: a
 pure DC offset applied to \emph{normal} data raises the false-alarm rate by
 $89.7$ points for a Mahalanobis monitor but only $17.0$ points for PCA-MSPC.
@@ -323,10 +325,20 @@ marginally lower. Every fault window is scored above every normal hold-out
 window by a rule that merely checks whether features leave their training
 range.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig4_score_separation.png}
+\caption{Anomaly-score distributions on fold 0. Normal hold-out and fault
+windows do not overlap for any monitor, including the parameter-free range
+rule BL-0. No threshold choice can distinguish these methods by detection.}
+\label{fig:sep}
+\end{figure}
+
 \begin{table}[t]
 \caption{Five-fold block cross-validation. Detection metrics saturate; the
 models are ordered only by false alarms. FAR is per hour of acquisition on the
-worst hold-out block, with Poisson 95\% upper bound.}
+worst hold-out block, with Poisson 95\% upper bound. BL-1 is the reference
+LSTM-Autoencoder under our protocol (\S\ref{sec:bl1}).}
 \label{tab:e2}
 \vskip 0.08in
 \centering
@@ -341,6 +353,7 @@ BL-0 & 1.000 & 1.000 & 1.000 & 0.0201 & 566.1 \\
 M1   & 1.000 & 1.000 & 1.000 & 0.0219 & 340.7 \\
 M2   & 0.932 & 0.983 & 0.997 & 0.0222 & 555.5 \\
 M3   & 1.000 & 0.999 & 1.000 & 0.0227 & 362.7 \\
+BL-1 & 1.000 & 1.000 & 1.000 & 0.0268 & 509.2 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -502,10 +515,14 @@ three channels. This is worth isolating because it interacts with the
 preceding results. Window RMS is \emph{exactly invariant} to this transform,
 since $|x|^2 = x^2$; so are mean absolute value and peak. What the transform
 does destroy is sign and phase structure---precisely the information a
-sequence model could exploit that a moment-based statistic cannot. Measured on
-training windows, the transform changes window standard deviation by up to
-$1.1\times10^{2}$, peak-to-peak by $3.0\times10^{2}$ and kurtosis by $4.95$,
-while leaving RMS, MAV and peak bitwise identical. The reference pipeline thus
+sequence model could exploit that a moment-based statistic cannot. Measured
+over the 14{,}871 normal windows, the transform leaves RMS, mean absolute
+value and peak \emph{bitwise identical} (maximum change $0.0$), while changing
+window standard deviation by up to $1.19\times10^{2}$, signed mean by
+$2.78\times10^{2}$, peak-to-peak by $3.04\times10^{2}$ and kurtosis by $4.88$.
+The signed mean matters here: the fault record's current channel carries a
+large DC offset relative to normal operation, and that offset is exactly what
+$|\cdot|$ confounds with an amplitude increase. The reference pipeline thus
 discards the only information that would justify the sequence model over a
 moment-based monitor, before training it. Empirically the discarded structure
 is not noise: the fault record is asymmetric in opposite directions on the two
@@ -514,26 +531,58 @@ vibration channels (skewness $+0.385$ on \texttt{AI0}, $-0.586$ on
 ($+0.023$).
 
 \paragraph{Results.} Table~\ref{tab:bl1} reports both variants against the
-published values and against our selected monitor.
+published values and against our selected monitor. Two things follow.
+
+First, \textbf{G0 reproduces the published numbers}: averaged over three
+seeds we obtain $F_1 = 0.743 \pm 0.029$ against the published $0.748$, with
+precision, recall and false-positive rate all within seed noise. The gap
+between the reference baseline and the parameter-free rule of
+\S\ref{sec:sep} is therefore a property of the reference protocol, not an
+artefact of our reimplementation.
+
+Second, \textbf{the same network reaches $F_1 = 0.959$ once the protocol is
+corrected}. G1 attains recall $1.000$ and $\mathrm{AP}=1.000$ on every fold,
+matching the feature-based monitors exactly. The improvement of $+0.216$ $F_1$
+is attributable entirely to evaluation and preprocessing---gap-aware windows,
+raw signal, whole-window reconstruction error, and a threshold fit without
+fault labels---since the architecture, optimiser and training budget are
+unchanged. Even so, G1 does not overtake the one-line range rule, and it
+incurs the highest worst-block false-alarm rate of any model we test
+($0.0268$ against $0.0201$ for that rule). Note that the two halves of
+Table~\ref{tab:bl1} are not directly comparable: the published and G0 rows
+come from the guidebook's single held-out split, whereas the lower rows are
+five-fold means. We give both the mean and the worst block for the latter so
+that the comparison is not read off a favourable fold.
+
+We also note that under G0 early stopping never fired: all three seeds
+consumed the full 800-epoch budget despite a patience of 40 on training loss,
+whereas G1 stopped between 499 and 679 epochs. The reference configuration's
+patience of 120 was therefore inactive.
 
 \begin{table}[t]
 \caption{Reference LSTM-Autoencoder. G0 reproduces the guidebook protocol;
-G1 places the same network in ours. Published guidebook values are shown for
-reference.}
+G1 places the same network in ours. The published row and G0 use the
+guidebook's single train/test split, so no per-block worst case exists for
+them; rows below the rule are five-fold block cross-validation, reported as
+mean and worst block.}
 \label{tab:bl1}
 \vskip 0.08in
 \centering
 \small
-\begin{tabular}{lrrrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
 \toprule
- & Precision & Recall & $F_1$ & FP rate \\
+ & \multirow{2}{*}{Prec.} & \multirow{2}{*}{Recall} & \multirow{2}{*}{$F_1$}
+ & \multicolumn{2}{c}{FP rate} \\
+\cmidrule(lr){5-6}
+ & & & & mean & worst \\
 \midrule
-Published \citep{kamp2022press} & 0.664 & 0.856 & 0.748 & 0.0195 \\
-G0 (reproduction)  & -- & -- & -- & -- \\
-G1 (our protocol)  & -- & -- & -- & -- \\
+Published \citep{kamp2022press} & 0.664 & 0.856 & 0.748 & 0.0195 & -- \\
+G0 (reproduction, 3 seeds)      & 0.667 & 0.843 & 0.743 & 0.0193 & -- \\
 \midrule
-BL-0 (one-line rule) & 0.949 & 1.000 & 0.973 & 0.0201 \\
-M3 (selected)        & 0.928 & 1.000 & 0.962 & 0.0227 \\
+G1 (our protocol, 5 folds)      & 0.922 & 1.000 & \textbf{0.959} & 0.0127 & 0.0268 \\
+BL-0 (one-line rule)            & 0.949 & 1.000 & \textbf{0.973} & 0.0080 & 0.0201 \\
+M3 (selected)                   & 0.928 & 1.000 & 0.962 & 0.0116 & 0.0227 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -550,11 +599,21 @@ $\le 0.05$ at $\alpha=0.10$. Among survivors we prefer the lowest worst-block
 Poisson upper bound on alarms per hour.
 
 Only \textbf{M3 (PCA-MSPC)} passes. BL-0 fails (ii) and (v); M1 fails (ii) on
-offset with $+89.7$ points; M2 fails (ii) on gain. The selected system uses M3
-as the first stage and a vibration-only Mahalanobis monitor as the
-confirmation stage, which also supplies per-feature contributions for
-root-cause text. Top-contributing features are stable across folds (Jaccard
-overlap $0.87$ for M3, $0.73$ for M1).
+offset with $+89.7$ points; M2 fails (ii) on gain; BL-1 (G1) fails (iii) with
+the highest worst-block false-alarm rate of the set ($0.0268$ against a limit
+of $0.0251$). The selected system uses M3 as the first stage and a
+vibration-only Mahalanobis monitor as the confirmation stage, which also
+supplies per-feature contributions for root-cause text. Top-contributing
+features are stable across folds (Jaccard overlap $0.87$ for M3, $0.73$ for
+M1).
+
+We flag one asymmetry. Gates (ii) and (v) were \emph{not} evaluated for BL-1:
+the perturbation study requires retraining for every fold$\times$perturbation
+combination, which at the measured cost of this network (a single five-fold
+run takes \SI{3.6}{\hour} on CPU) exceeds our compute budget by more than an
+order of magnitude. BL-1's exclusion therefore rests on a single measured
+gate, and we report it as such rather than claiming it was dominated across
+all criteria.
 
 We stress that this ranking would have been invisible---and the choice would
 have defaulted to the highest-$F_1$ model, BL-0---had we used detection
