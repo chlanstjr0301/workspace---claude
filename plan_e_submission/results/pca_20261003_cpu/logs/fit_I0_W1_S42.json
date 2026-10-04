@@ -1,0 +1,13 @@
+{
+  "kind": "IF",
+  "name": "I0_W1_S42",
+  "feature": "R",
+  "sensors": null,
+  "fit_seconds": 0.8157799599998725,
+  "training_windows": 12012,
+  "names": [
+    "AI0_Vibration",
+    "AI1_Vibration",
+    "AI2_Current"
+  ]
+}

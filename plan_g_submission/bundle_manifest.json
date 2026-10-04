@@ -1,0 +1,1291 @@
+{
+  "format": 1,
+  "entries": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 1959,
+      "sha256": "862775b90f164d841a586133be731153251bea2beb0f4efd89ea6bbfebf86424"
+    },
+    {
+      "path": "data/raw/outlier_data.csv",
+      "bytes": 38823,
+      "sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e"
+    },
+    {
+      "path": "data/raw/press_data_normal.csv",
+      "bytes": 1211960,
+      "sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7"
+    },
+    {
+      "path": "paper_icml_logistic/analysis_validation.md",
+      "bytes": 1705,
+      "sha256": "1f833b1d4cf09450b959bf4a47eb5b090aa679d6fc8195cef188b07837c7620b"
+    },
+    {
+      "path": "paper_icml_logistic/analyze_results.py",
+      "bytes": 27100,
+      "sha256": "b48912ec301f8d91ff3a1c2649e79d16f40d7e4dd34b3d044a5f9e0c2ac67020"
+    },
+    {
+      "path": "paper_icml_logistic/audit.json",
+      "bytes": 29923,
+      "sha256": "8257bfe41cf832048bedf1d1bb17ae5225e8f423cadefa1c346a42446ff60397"
+    },
+    {
+      "path": "paper_icml_logistic/audit_paper.py",
+      "bytes": 16075,
+      "sha256": "08e84a1e77a0ba2fd881719748e2a2cc7cc95936302417052621d220c30166bc"
+    },
+    {
+      "path": "paper_icml_logistic/figures/class_weight_metrics.pdf",
+      "bytes": 13027,
+      "sha256": "6c25f01429031b285963888724632b126ffdbb918c1f28a10bc74571938af142"
+    },
+    {
+      "path": "paper_icml_logistic/figures/class_weight_metrics.png",
+      "bytes": 63569,
+      "sha256": "24d4cb2ee1e6e4564c972853da8f5a4f694819c7be33639213c1a37dfc9245f9"
+    },
+    {
+      "path": "paper_icml_logistic/figures/class_weight_metrics.svg",
+      "bytes": 23348,
+      "sha256": "5751165ac6e8fb5118f1b9c07ebc9f505314414688b12885ab3dec83c53c8c8f"
+    },
+    {
+      "path": "paper_icml_logistic/figures/feature_distributions.pdf",
+      "bytes": 20960,
+      "sha256": "68fbfdfb7efcc8efd035fa9e30106848fdb4e011fe11d193b0dcefad08145561"
+    },
+    {
+      "path": "paper_icml_logistic/figures/feature_distributions.png",
+      "bytes": 94368,
+      "sha256": "118c23911ad9ee666eb0da9788459a987f0354eeac27c3f76194972a37b2e86e"
+    },
+    {
+      "path": "paper_icml_logistic/figures/feature_distributions.svg",
+      "bytes": 48359,
+      "sha256": "8582c940244284a5eb998014337fafce30f9a8c055bfe02dd37629f41b61ceb0"
+    },
+    {
+      "path": "paper_icml_logistic/figures/none_probability_distribution.pdf",
+      "bytes": 16389,
+      "sha256": "7dcb95640fb6ce12ffc9c84fd95785166d1b089edec974f571f86416fe1f4ffc"
+    },
+    {
+      "path": "paper_icml_logistic/figures/none_probability_distribution.png",
+      "bytes": 53927,
+      "sha256": "4835994b1e0e32d143057644c5fb0dc634a7bcf1b8ac1d164bede179b8e2aeac"
+    },
+    {
+      "path": "paper_icml_logistic/figures/none_probability_distribution.svg",
+      "bytes": 17519,
+      "sha256": "7b35794698a74e1db08bbab53d8deb19b53b31fa853b0e5d251186c444b40aef"
+    },
+    {
+      "path": "paper_icml_logistic/figures/pipeline.pdf",
+      "bytes": 18343,
+      "sha256": "b566e4a0aab6e9901afb1e07c1e769693046093319188cefd76beca1e1782a79"
+    },
+    {
+      "path": "paper_icml_logistic/figures/pipeline.png",
+      "bytes": 106060,
+      "sha256": "4868d03e917aa53c23befe32ca04aaa616272f4fadd181459b34e3a1791663af"
+    },
+    {
+      "path": "paper_icml_logistic/figures/pipeline.svg",
+      "bytes": 6310,
+      "sha256": "fdeba381523185374f6e39f996799c666bed13b5b72c2ed3d0ca75184ea4137a"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_feature_drift.pdf",
+      "bytes": 16409,
+      "sha256": "9134be8dd668b2ba7e0b9a0b71a3bcd380d4e8af63e21834fbe6c59f9811f69f"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_feature_drift.png",
+      "bytes": 104979,
+      "sha256": "ea3d8a6b53c699bbb1a3f11a5744582d1a11defc7243e5a5ed6a18583ec87d59"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_feature_drift.svg",
+      "bytes": 22170,
+      "sha256": "ff082ce96eb656293196fd148f468cda0de5afcf6468f54f202a41de40d6c3c3"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_recall.pdf",
+      "bytes": 14445,
+      "sha256": "43c8ad8f0e644a5553ebe10d1907e0af6f4e68f229acc2c25b0b7ac4f981e5c1"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_recall.png",
+      "bytes": 91069,
+      "sha256": "54f8529f21123ba5a20d59bdb35db5314e978e38b77fd8454a7ada58d68c8df8"
+    },
+    {
+      "path": "paper_icml_logistic/figures/sample_count_recall.svg",
+      "bytes": 17939,
+      "sha256": "54b2c490bf1e46894301d1f7eba9a8f5533dfe1315bb1646b640ed42b6011134"
+    },
+    {
+      "path": "paper_icml_logistic/main.tex",
+      "bytes": 29476,
+      "sha256": "236380af5960ab8e445af679dbb01112ecfa749db59ae6e418548a49367d79cc"
+    },
+    {
+      "path": "paper_icml_logistic/README.md",
+      "bytes": 5323,
+      "sha256": "58899dcc9c3e2815962a458f46d740f3bd310015b4c36fcd74194886d99bbf4d"
+    },
+    {
+      "path": "paper_icml_logistic/references.bib",
+      "bytes": 251,
+      "sha256": "2d9850e3b3153b0b6766a27298a2d245f134eb611682e3c3542e6ed57d61fa9f"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/data/raw/outlier_data.csv",
+      "bytes": 38823,
+      "sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/data/raw/press_data_normal.csv",
+      "bytes": 1211960,
+      "sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/manifest.json",
+      "bytes": 6747,
+      "sha256": "2283028a3bf6bac0b8412a906c71eb3a2be35aa838a9101ac8c13ab1c1871587"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/reference/소성가공.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/burst_619_620_predictions.csv",
+      "bytes": 1339,
+      "sha256": "d16e91b54c94ec6ddf947991a819893958897240bb339bdd4adb3087e8b870ac"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/eligible_bursts_by_sample_count.csv",
+      "bytes": 720,
+      "sha256": "3ca247aa8992d74d95f1702b0dcb3a525f7992f8573eba294cb50212c93199c4"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/experiment_metadata.json",
+      "bytes": 2453,
+      "sha256": "7cd8978c40e967875bda1f0c170732a7e219521a3fbd0cb799a99935477f1c27"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/feature_drift_by_sample_count.csv",
+      "bytes": 15309,
+      "sha256": "5ed1859af3eac542e252b291ac501f4f1e969b8555d91d634096409d0d24648a"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/metrics_by_sample_count.csv",
+      "bytes": 16041,
+      "sha256": "e50b348d4ed6d74588704276469beb453e02ca5909ffc4f5025012c0325a7059"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/tp_to_fn_by_sample_count.csv",
+      "bytes": 13837,
+      "sha256": "4d2e9c9e28f1d7f1d898326004649936e54f034409ed76457c5ae3cee40faf95"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_burst_sample_count/tp_to_fn_summary.csv",
+      "bytes": 902,
+      "sha256": "2f5cc98237efdcf7bea3d8ef536a20f5807e9d69b6cd2742b8c2fefe1c24ccc0"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/cv_fold_metrics.csv",
+      "bytes": 31445,
+      "sha256": "77aeb7c576c246e6d5df4cb08a5c89c19acb98812a1d6f0ce441a96fe7d853c0"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/effective_class_weights.csv",
+      "bytes": 14997,
+      "sha256": "db73c594e093a83dfd733143afe9c84d3319f8521e901083c686af3fc602f326"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/experiment_metadata.json",
+      "bytes": 4784,
+      "sha256": "1b1293b9cf328c6bf35791c39a373d9a95914a561c1c5fb97dfe1ea3e49d6078"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/feature_dataset.csv",
+      "bytes": 55903,
+      "sha256": "c4b057e3c06cfd0a168289ffe80150797527cc8f874c7631d7bb9890f28c6f33"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/metrics.csv",
+      "bytes": 3012,
+      "sha256": "1aedc6f57d972c463a7d0b40b28b0f92b0c36c259b1d1f5077efb77bda820fc9"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_class_weight_ablation/predictions.csv",
+      "bytes": 2063908,
+      "sha256": "b4e454fda39790f5b36d72c334ea727754a021937dbcfb61ba8da04540ec4c9f"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_current_acf_ablation/burst_feature_dataset.csv",
+      "bytes": 317237,
+      "sha256": "2bbae8d953aa2bd949b79831c7de2686c3b27c8b435a93e774cf37354349e31c"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_fn_burst_tracking/fold_coefficients.csv",
+      "bytes": 9623,
+      "sha256": "707b59d1f182282000cd731ec9ca9336c7ff5d65074fc5dda17777361f804af0"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_fn_burst_tracking/validation_predictions.csv",
+      "bytes": 266934,
+      "sha256": "5d9e563042768ed215e066ce63ac14e5af36cf47c66293ed17b5271e02a6d9a2"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_fn_feature_analysis/abnormal_fold_distances.csv",
+      "bytes": 9171,
+      "sha256": "5915781c9526ad3d45e76aecfa515e6be580606da61b030781d36c659674baab"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/results/logistic_fn_feature_analysis/recovered_fold_intercepts.csv",
+      "bytes": 6970,
+      "sha256": "0bddb681b13cd03724e747c29d756b66c4c45269e93339eff5a73fe6ec8ff804"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/src/LSTM-AutoEncoder/baseline_original.py",
+      "bytes": 15396,
+      "sha256": "3b0855d29c0e47e9856d3c293083d7f430ebe7cbe6f24ef85f247348e504a0a8"
+    },
+    {
+      "path": "paper_icml_logistic/source_results/src/LSTM-AutoEncoder/baseline_original.sha256",
+      "bytes": 88,
+      "sha256": "e68b50f23386353b8f713bc2f17cde458e136d62feff0725d8f52f8611ea2ce7"
+    },
+    {
+      "path": "paper_icml_logistic/tables/abnormal_centroid_distances.csv",
+      "bytes": 2068,
+      "sha256": "b0749a82a9557d011c024b3cfe3023c75cb75c088a2d000300d088af1d4bf74e"
+    },
+    {
+      "path": "paper_icml_logistic/tables/abnormal_robustness_per_weight.csv",
+      "bytes": 14757,
+      "sha256": "af91976dcc79eec086f22c00b8384df0652c0b4414be15b0539d5160a2244785"
+    },
+    {
+      "path": "paper_icml_logistic/tables/analysis_summary.json",
+      "bytes": 9140,
+      "sha256": "746bff20519ff7c908c34bab551d6f9745d2b8ab5c179dbacc3d478e68ad3cb0"
+    },
+    {
+      "path": "paper_icml_logistic/tables/class_weight_fold_metrics.csv",
+      "bytes": 19109,
+      "sha256": "f2f19c1920ca83726eef1caa37cf84129b58657ce67ffc8dbc0b984044fbcaba"
+    },
+    {
+      "path": "paper_icml_logistic/tables/class_weights.csv",
+      "bytes": 1665,
+      "sha256": "d5a34e0b787273fe5d548d119a851ca623c5013b8ebef6d37966f4daf8aea78e"
+    },
+    {
+      "path": "paper_icml_logistic/tables/class_weights.tex",
+      "bytes": 1223,
+      "sha256": "a83b6a26a6680cbdaadc751a15ffea137247035c6573d401ca5a69fb83747713"
+    },
+    {
+      "path": "paper_icml_logistic/tables/dataset.tex",
+      "bytes": 535,
+      "sha256": "c4fa2f95eec6c56fde8c637517fd78b313b46c149d8e1b46eb35959cc7929586"
+    },
+    {
+      "path": "paper_icml_logistic/tables/dataset_statistics.csv",
+      "bytes": 286,
+      "sha256": "af8421c6de477009f2a5f3c28f44934297eb5b695c6da29edf5f85d0692734ba"
+    },
+    {
+      "path": "paper_icml_logistic/tables/feature_separability.csv",
+      "bytes": 1412,
+      "sha256": "4962d52bc2e73e7f609b07c038060c15e2296a115f328e50a901ca8f76da6881"
+    },
+    {
+      "path": "paper_icml_logistic/tables/figure_feature_distribution_data.csv",
+      "bytes": 52103,
+      "sha256": "2670fd7f5242eccea7e7e7d432a6b08555a3e858f10d118b9147b3554ee819c6"
+    },
+    {
+      "path": "paper_icml_logistic/tables/figure_feature_drift_data.csv",
+      "bytes": 3570,
+      "sha256": "ced87b869939cadf48d124d7ae88c4d267381176fc29cff76ae8ebf067c37f32"
+    },
+    {
+      "path": "paper_icml_logistic/tables/figure_none_probability_data.csv",
+      "bytes": 213534,
+      "sha256": "061d5a3017f71c974b8ea1276dc309433bcdc9b21ef8e88a06ef212a7b835b5c"
+    },
+    {
+      "path": "paper_icml_logistic/tables/figure_sample_count_recall_data.csv",
+      "bytes": 9680,
+      "sha256": "6a499370b32b4750e0f6fe112c4425d288f0725aeb70349ca565cb2f7386e554"
+    },
+    {
+      "path": "paper_icml_logistic/tables/fn_619_620.csv",
+      "bytes": 738,
+      "sha256": "daef3e960d0427c1700d057780635d6422ffc2cf53d87a72134bfb1254509568"
+    },
+    {
+      "path": "paper_icml_logistic/tables/fn_619_620.tex",
+      "bytes": 565,
+      "sha256": "ceb7f4610fc0c3d7420550705fcfed4ebb578fe0bbee26c8580959346aee428b"
+    },
+    {
+      "path": "paper_icml_logistic/tables/fold_centroid_distances.csv",
+      "bytes": 332024,
+      "sha256": "3a3698cedbdaf6800aeee9613d101a70bdbfea0fd415f73201736a3db2c76c1a"
+    },
+    {
+      "path": "paper_icml_logistic/tables/fold_centroids.csv",
+      "bytes": 11034,
+      "sha256": "e1eab72bf7144dc59f70e09556b57047bd9a9924bcf60ad3b6c216e5f2d29b4e"
+    },
+    {
+      "path": "paper_icml_logistic/tables/none_balanced_matched_shifts.csv",
+      "bytes": 984615,
+      "sha256": "2a816b1bf791898f37c7dc888256ec1b0197c5c69a1640ea3ab03d541ff6d6aa"
+    },
+    {
+      "path": "paper_icml_logistic/tables/none_balanced_shift_summary.csv",
+      "bytes": 801,
+      "sha256": "55e7e0bfde98ff01d0995c9895e337c68b38f8a34254fb0425270a456caaac1b"
+    },
+    {
+      "path": "paper_icml_logistic/tables/none_score_distribution.csv",
+      "bytes": 642,
+      "sha256": "6ad26c7c4afa657f3ee3fa874a65ccb085a04c40043c3d8695b8ba5ce75e37f0"
+    },
+    {
+      "path": "paper_icml_logistic/tables/paper_numeric_claim_checks.csv",
+      "bytes": 2899,
+      "sha256": "a713f05a0ead529f0ff2ca4382e59d65667a132545d589f398d32a629b1a01b8"
+    },
+    {
+      "path": "paper_icml_logistic/tables/sample_count.tex",
+      "bytes": 1261,
+      "sha256": "15fc8498807eced31ce166e06d2b28593b3380edc84032c62c73ace217156426"
+    },
+    {
+      "path": "paper_icml_logistic/tables/sample_count_coverage.csv",
+      "bytes": 720,
+      "sha256": "3ca247aa8992d74d95f1702b0dcb3a525f7992f8573eba294cb50212c93199c4"
+    },
+    {
+      "path": "paper_icml_logistic/tables/sample_count_drift.csv",
+      "bytes": 15059,
+      "sha256": "430d62da3399de562b865b9c8ca068b740e54811dc77263d2e18487691b5d0e0"
+    },
+    {
+      "path": "paper_icml_logistic/tables/sample_count_results.csv",
+      "bytes": 4379,
+      "sha256": "1a03e4917da5ed62f3457928f176688579e43a1bfab5d0cb1b7d5830ba3e5b28"
+    },
+    {
+      "path": "paper_icml_logistic/tables/sample_count_transitions.csv",
+      "bytes": 902,
+      "sha256": "2f5cc98237efdcf7bea3d8ef536a20f5807e9d69b6cd2742b8c2fefe1c24ccc0"
+    },
+    {
+      "path": "paper_icml_logistic/tables/score_clipping.csv",
+      "bytes": 132,
+      "sha256": "cf72cecd917eed8c9b768c249cca02b5a2ab3762d165b2ffdc2392bbaf64a361"
+    },
+    {
+      "path": "paper_icml_logistic/tables/score_strata.csv",
+      "bytes": 478,
+      "sha256": "c218f9191194e639bb1a22b0e112a0dc80514ae46ae2938769545c1292658b6c"
+    },
+    {
+      "path": "paper_icml_logistic/tables/threshold_crossings.csv",
+      "bytes": 161,
+      "sha256": "50bd9ee5614265d7441292d48d275c061b81dedfb1419f13cdf885c30240a8fd"
+    },
+    {
+      "path": "reference/소성가공.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/A_Baseline_mean_confusion_matrix.csv",
+      "bytes": 80,
+      "sha256": "9ba503702adf4aa4bb686854b5eeb0bc13a3106449979e532603fae15f10edce"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/analysis_report.md",
+      "bytes": 4731,
+      "sha256": "714390e91f3f4bab3b18dd9ff500377d883ef830c9b2d6629c6adb6e551cc95f"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/B_Plus_Corr_mean_confusion_matrix.csv",
+      "bytes": 78,
+      "sha256": "a2dba7f183ee536c803fb51edc2cad88e7ccaf531b43a989545c2b9f8b3235d2"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/burst_correlations.csv",
+      "bytes": 18205,
+      "sha256": "6c007511061e3d6b8c7a880e22d94f7cce8bb04f78f7e82169569b8defd46022"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/burst_feature_dataset.csv",
+      "bytes": 321201,
+      "sha256": "72c28666427d327e4b0b22d359330aa278f289ffc80bfbccf421cf6ff30ddd55"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/correlation_summary.csv",
+      "bytes": 175,
+      "sha256": "cfae6ad1b0d3431d459efa3312c9d2f6e5e1300b4fb737f1f2f0f0efb9291869"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/cv_fold_coefficients.csv",
+      "bytes": 36789,
+      "sha256": "a136adcae1c9dd06ea49ac7984c56a33e729cbf5459fab8bec173c19c2c3e8eb"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/cv_fold_metrics.csv",
+      "bytes": 10058,
+      "sha256": "53d52779c02a54bd557c311b4d14f0fcfbb32d8e0921c90a8a67b12fb4cd7fbf"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/delta_metrics.csv",
+      "bytes": 186,
+      "sha256": "a2a25cbf81ebf5b992867220bed5c7e7fb8d379a51daeea4437f0dbd30eb8ddc"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/experiment_metadata.json",
+      "bytes": 4872,
+      "sha256": "37570c724781c08d5d240dc02bfa301ff25044d047529c590696df3be390f1a7"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/feature_coefficients.csv",
+      "bytes": 1309,
+      "sha256": "75ed7f24509e43cf46671cc2fa3b8e47f9a6b14a263c20f2e2d77eab4003aa51"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/metrics.csv",
+      "bytes": 338,
+      "sha256": "9d70c3c776e8e2dfa4a92af04c028b41c30ad1291176345c4106ee1cbd8ab559"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/metrics_std.csv",
+      "bytes": 333,
+      "sha256": "ae2dc77a87011bf08dfacc2139b7d871ba11534c53b4d72c395dbcdab280e1d1"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/notebook_reference.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/paired_fold_deltas.csv",
+      "bytes": 4015,
+      "sha256": "9e2c4c743e31935c3c914327f2681193d444ab84674dca296dfe8bd065ec3572"
+    },
+    {
+      "path": "results/logistic_ai0_ai1_corr_ablation/predictions.csv",
+      "bytes": 560600,
+      "sha256": "965ef48d322cb7d7b9700014c001dd00d3eddf8ebabac3799f363e33351a3a77"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/analysis_report.md",
+      "bytes": 5100,
+      "sha256": "98f31c902154e5388bce710de03599c78e67877e0d40a14ada35f3969ac71939"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/crop_predictions.csv",
+      "bytes": 9851646,
+      "sha256": "74b9b9f9026f0678165bed0fc3286c7eff920ff13579067bc426b6472c6b92a7"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/experiment_metadata.json",
+      "bytes": 2453,
+      "sha256": "421ce54e9672ec6d5ed4e98c74ce6d133c63e7c43db23170239cf4ba0efff1d3"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/feature_drift_by_length.csv",
+      "bytes": 6023,
+      "sha256": "13416050c21c1857b2484f4d92016a05372e90f9ee3a4636ead0adef77c5f1b9"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/feature_reference_scales.csv",
+      "bytes": 191,
+      "sha256": "01ad90218b21d485b919501abb36fe02818e6d0881de748e67b243b6d710da8f"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/fn_nearest_abnormal_crops.csv",
+      "bytes": 763,
+      "sha256": "6cbc7ff7ca98e28b64bc4e4c771f441d9d8fcc148c22106944dee357916c4237"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/fn_vs_abnormal_crop_distances.csv",
+      "bytes": 26240,
+      "sha256": "3a1672986a90f70443cf60a302f7a34ffe3bdd40b8a1101eef6601d267cd9695"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/length_metrics.csv",
+      "bytes": 6755,
+      "sha256": "b5355251e028a471ee81d552b708b676a31c8d3e5111411d858a458ca6969d16"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/parent_repeat_diagnostic_aggregation.csv",
+      "bytes": 2998398,
+      "sha256": "4489ffa6c06a80981c96f9f39801da1104fccad3cae4ae061a2d34a3e90f7084"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/physical_crop_feature_drift.csv",
+      "bytes": 1935452,
+      "sha256": "8feb84fead2f7049895d4b71b97d34113c8fd0747a454e60a875cb42e790bd8f"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/physical_crop_features.csv",
+      "bytes": 757728,
+      "sha256": "b97bb52d9df40438c5b1c1bb491e363324e4b25f59e4ab5b92559faed793856e"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/plots/feature_drift_by_length.png",
+      "bytes": 112316,
+      "sha256": "e25a6a5c3e05b2a0d6a9337e856ca7e8a6f4e38c180fe84eba3631d5553c4988"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/plots/length_vs_mean_probability.png",
+      "bytes": 57449,
+      "sha256": "387f0d92b448165fdeed2db63b1403f0101191dbe9b2b16b10f7ec9fada39117"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/plots/length_vs_recall.png",
+      "bytes": 57559,
+      "sha256": "043562e06f2ce28d76ec234f704fef7e4e0d6e59da92362a9b7fe6ac7de97778"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/plots/tp_to_fn_parent_probability_shift.png",
+      "bytes": 140791,
+      "sha256": "8f670e3b8b0e3be4b798407b0f417072ba7a9cdc250bb203067712393442e3dd"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/probability_reproduction_checks.csv",
+      "bytes": 1351,
+      "sha256": "513a12f5eaaf26bf7984ab93764a211635c2c7cb9c68acc5363bb3b1777e63d5"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/tp_to_fn_transitions.csv",
+      "bytes": 419009,
+      "sha256": "9bf68e109c61aded58ed4beada8cd05bfeba757e0555a6a79aa57009a970808a"
+    },
+    {
+      "path": "results/logistic_burst_length_sensitivity/transition_summary.csv",
+      "bytes": 324,
+      "sha256": "99715ab195d104638dd9f7d744c209a7b6dcc99233ad9204bbc1eab3e3753030"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/analysis_report.md",
+      "bytes": 7786,
+      "sha256": "d908523f5222744f462b71572edcfd0844e2b64fd09bc6e64c10f52bdc0ac9a6"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/burst_619_620_crop_predictions.csv",
+      "bytes": 45998,
+      "sha256": "e8e4c8a687aa2a1d5f8a0b0ea4f717d019045710f055b3aa7d32007ff9c656ba"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/burst_619_620_predictions.csv",
+      "bytes": 1339,
+      "sha256": "d16e91b54c94ec6ddf947991a819893958897240bb339bdd4adb3087e8b870ac"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/crop_predictions.csv",
+      "bytes": 22981998,
+      "sha256": "37bb047073377de08612880c14972ffb867d6745ae855a583564581daef397c7"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/eligible_bursts_by_sample_count.csv",
+      "bytes": 720,
+      "sha256": "3ca247aa8992d74d95f1702b0dcb3a525f7992f8573eba294cb50212c93199c4"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/experiment_metadata.json",
+      "bytes": 2453,
+      "sha256": "7cd8978c40e967875bda1f0c170732a7e219521a3fbd0cb799a99935477f1c27"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/feature_drift_by_sample_count.csv",
+      "bytes": 15309,
+      "sha256": "5ed1859af3eac542e252b291ac501f4f1e969b8555d91d634096409d0d24648a"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/feature_reference_scales.csv",
+      "bytes": 188,
+      "sha256": "4ba31ea2feca677d98ba63db2e8a4153bfb3c8aa50e77f1adeb810fa7a327a78"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/metrics_by_sample_count.csv",
+      "bytes": 16041,
+      "sha256": "e50b348d4ed6d74588704276469beb453e02ca5909ffc4f5025012c0325a7059"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/physical_crop_features.csv",
+      "bytes": 1609640,
+      "sha256": "4c29e5e39bc92b03e911d969b98ade9a74e7074a171efa472118e5a4b17347c6"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/plots/sample_count_abnormal_probability.png",
+      "bytes": 93493,
+      "sha256": "639151ef88b8a0e5f65f4dbdf1b2c646ce8d5485562a5b6f504e9918fd530865"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/plots/sample_count_F1.png",
+      "bytes": 84150,
+      "sha256": "d968f56af4abdec7ba734d06a31c74d4f5d14faa59d9328d7c77dcd349221656"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/plots/sample_count_feature_drift.png",
+      "bytes": 114078,
+      "sha256": "002fb20aed94722343f008ad18df54925e7d89e8fce1c430c0d75ab70020d86e"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/plots/sample_count_Recall.png",
+      "bytes": 87336,
+      "sha256": "cac4b5d708f1891768e946dc1850204eb22f3d043480f718434cd16bbd323265"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/plots/sample_count_tp_to_fn_rate.png",
+      "bytes": 66532,
+      "sha256": "813a7dd2dc6a44e818c25e7641f721c377d7c30c0ed78ba6c32da5bde6f28130"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/probability_reproduction_checks.csv",
+      "bytes": 1351,
+      "sha256": "513a12f5eaaf26bf7984ab93764a211635c2c7cb9c68acc5363bb3b1777e63d5"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/repeat_metrics.csv",
+      "bytes": 78811,
+      "sha256": "21bffd270846b5fc2b63c132df641a3c91069180d3f9f63964ac9449756504f0"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/tp_to_fn_by_sample_count.csv",
+      "bytes": 13837,
+      "sha256": "4d2e9c9e28f1d7f1d898326004649936e54f034409ed76457c5ae3cee40faf95"
+    },
+    {
+      "path": "results/logistic_burst_sample_count/tp_to_fn_summary.csv",
+      "bytes": 902,
+      "sha256": "2f5cc98237efdcf7bea3d8ef536a20f5807e9d69b6cd2742b8c2fefe1c24ccc0"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/analysis_report.md",
+      "bytes": 6735,
+      "sha256": "a2b99ad74e8df949e4ce07f1cdf3bb618a73ed44ce468cde971428d2364a4f76"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/best_weight.json",
+      "bytes": 795,
+      "sha256": "9bebb824cdcc706682887362fc2a3d198e12403a45a22c30a44b8d8bfeb4d24c"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/cv_fold_metrics.csv",
+      "bytes": 31445,
+      "sha256": "77aeb7c576c246e6d5df4cb08a5c89c19acb98812a1d6f0ce441a96fe7d853c0"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/delta_vs_balanced.csv",
+      "bytes": 1409,
+      "sha256": "7ebcab7b5cd28651c7d25d38c5425cb803bf46c3940f8ca22f8bc8ba5f51cb0a"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/effective_class_weights.csv",
+      "bytes": 14997,
+      "sha256": "db73c594e093a83dfd733143afe9c84d3319f8521e901083c686af3fc602f326"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/experiment_metadata.json",
+      "bytes": 4784,
+      "sha256": "1b1293b9cf328c6bf35791c39a373d9a95914a561c1c5fb97dfe1ea3e49d6078"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/feature_dataset.csv",
+      "bytes": 55903,
+      "sha256": "c4b057e3c06cfd0a168289ffe80150797527cc8f874c7631d7bb9890f28c6f33"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/metrics.csv",
+      "bytes": 3012,
+      "sha256": "1aedc6f57d972c463a7d0b40b28b0f92b0c36c259b1d1f5077efb77bda820fc9"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/notebook_reference.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "results/logistic_class_weight_ablation/predictions.csv",
+      "bytes": 2063908,
+      "sha256": "b4e454fda39790f5b36d72c334ea727754a021937dbcfb61ba8da04540ec4c9f"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/A_Baseline_confusion_matrix.csv",
+      "bytes": 70,
+      "sha256": "7877b1efd3c4499a889a5a4cfa6b749f03774b956beed0b8d81dd5891c774c46"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/A_Baseline_predictions.csv",
+      "bytes": 3949,
+      "sha256": "6e7eb9010138155c2e1e854109b723b01011d8fe411c0f1273ea3e7f41398cfa"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/acf_diagnostics.csv",
+      "bytes": 22384,
+      "sha256": "2450be49beaa46ce46d69ec870d22bec18e97c68194694616f3552f3f5dd8b46"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/analysis_report.md",
+      "bytes": 6674,
+      "sha256": "2eead9cccfc0e6645e14ffad1d381477e792f824068e7c081942e1783656cdf2"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/B_Plus_ACF_confusion_matrix.csv",
+      "bytes": 70,
+      "sha256": "6e351cbbf18d6e1e5ff153ec48bdc6e850f331aac750d303c734cd5e212c9869"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/B_Plus_ACF_predictions.csv",
+      "bytes": 3943,
+      "sha256": "f9c6388043204023cee908a599deb2d227f80ecb2f3e3e8e5036abc6dcd32a7f"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/burst_feature_dataset.csv",
+      "bytes": 317237,
+      "sha256": "2bbae8d953aa2bd949b79831c7de2686c3b27c8b435a93e774cf37354349e31c"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/burst_split.csv",
+      "bytes": 13759,
+      "sha256": "decf00707b1874eb6da0c41b366e5c11f00b6d8755fb7d7d8fa5f3db8a9433d6"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/cv_deltas.csv",
+      "bytes": 208,
+      "sha256": "c9fe6f8a66100e994667013fe3c80b0d2758f52ba17a5d59135fea9a3889c0e0"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/cv_fold_metrics.csv",
+      "bytes": 9860,
+      "sha256": "157b95a55057651fedf7f09af33dba3ef21b0cb87f1643937091073f105f9f3e"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/cv_summary.csv",
+      "bytes": 719,
+      "sha256": "2b3e2ed478f737a69014b8642bab63d9587ab5debb749916ac97529328cfa063"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/experiment_metadata.json",
+      "bytes": 5236,
+      "sha256": "7faf5d70e044260abcdb1a1a026939d9fcbbea3374a1bbaa77d1048cbf9f02c4"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/feature_coefficients.csv",
+      "bytes": 779,
+      "sha256": "018bfbb81edf36b0f133ee0692883cad621c2cfe34a79884d4b4a920f8534670"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/metric_deltas.csv",
+      "bytes": 165,
+      "sha256": "06540764e31d3d981feb66cf3853315803f35923487f0353fb30661f22d52d36"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/metrics.csv",
+      "bytes": 218,
+      "sha256": "6e0ba35c02dc623cc28b1b3696310dd2e1e4a4726a94e5df9c251bdadf12a18f"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/notebook_reference.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "results/logistic_current_acf_ablation/periodicity_summary.csv",
+      "bytes": 175,
+      "sha256": "9c9c2e7763a79a301b7fb4f5f768b6303466a7726efb09eda51d1c846f547cbe"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/A_Baseline_confusion_matrix.csv",
+      "bytes": 70,
+      "sha256": "7877b1efd3c4499a889a5a4cfa6b749f03774b956beed0b8d81dd5891c774c46"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/A_Baseline_CV_mean_confusion_matrix.csv",
+      "bytes": 80,
+      "sha256": "9ba503702adf4aa4bb686854b5eeb0bc13a3106449979e532603fae15f10edce"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/A_Baseline_predictions.csv",
+      "bytes": 3949,
+      "sha256": "6e7eb9010138155c2e1e854109b723b01011d8fe411c0f1273ea3e7f41398cfa"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/acf_diagnostics.csv",
+      "bytes": 21813,
+      "sha256": "d4761c51d492b554e084d28861a9a3c6b68fa09d9111af13f8f39b36fd9d7444"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/analysis_report.md",
+      "bytes": 7028,
+      "sha256": "77b12190b236fba7b8bfa6b3eeb4a1b9ebc279ee792b7adee32c671148c4ce66"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/B_Plus_ACF_confusion_matrix.csv",
+      "bytes": 70,
+      "sha256": "6e351cbbf18d6e1e5ff153ec48bdc6e850f331aac750d303c734cd5e212c9869"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/B_Plus_ACF_CV_mean_confusion_matrix.csv",
+      "bytes": 78,
+      "sha256": "f05ab3a418050c730677cee01ef85146dab43adcdb59fc065ce09adc996b1870"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/B_Plus_ACF_predictions.csv",
+      "bytes": 3935,
+      "sha256": "f38bce560bf151b2e225afe8595c65ad6328d22d95f9ef0d136b5cb01c83c7bc"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/burst_feature_dataset.csv",
+      "bytes": 316833,
+      "sha256": "171d445aae2cec7f1ea30d44aa4c4b17a6914a7652a2c5d4322ccb9c93000c81"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/burst_split.csv",
+      "bytes": 13759,
+      "sha256": "decf00707b1874eb6da0c41b366e5c11f00b6d8755fb7d7d8fa5f3db8a9433d6"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/cv_deltas.csv",
+      "bytes": 208,
+      "sha256": "e6cf3d90a32247132e42dc3cb2f9f4b934979d8817768ae17c714bf26438da07"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/cv_fold_coefficients.csv",
+      "bytes": 26737,
+      "sha256": "07c1d9f95cf6e483c214777261842dd0b1a29115867582740266b3e83e806e01"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/cv_fold_metrics.csv",
+      "bytes": 9840,
+      "sha256": "33139a49cf8960c0d52071be02862bfcaf8f77b67ec6c3a9920704e418148096"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/cv_summary.csv",
+      "bytes": 721,
+      "sha256": "2e1d1aa014a584b8323fd5cb926a9aed98fcb3ca2efbd9f9a0a59b949c75b5c9"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/delta_metrics.csv",
+      "bytes": 203,
+      "sha256": "d9a8b636de7c28913e3577bf724af7e97d28704f778c89ad802e03425d686d7a"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/experiment_metadata.json",
+      "bytes": 5236,
+      "sha256": "7faf5d70e044260abcdb1a1a026939d9fcbbea3374a1bbaa77d1048cbf9f02c4"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/feature_coefficients.csv",
+      "bytes": 2355,
+      "sha256": "6f0741cf3f0099a3629d0774ba870e87c1c5895195b7a1b5125185cbd93c75da"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/holdout_delta_metrics.csv",
+      "bytes": 165,
+      "sha256": "06540764e31d3d981feb66cf3853315803f35923487f0353fb30661f22d52d36"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/holdout_metrics.csv",
+      "bytes": 218,
+      "sha256": "6e0ba35c02dc623cc28b1b3696310dd2e1e4a4726a94e5df9c251bdadf12a18f"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/metrics.csv",
+      "bytes": 361,
+      "sha256": "ed003d092fe7c4121d80e66c1cd89ce720976f7088584b5d9474c820fe568d7a"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/notebook_reference.ipynb",
+      "bytes": 863168,
+      "sha256": "0b2912118b382fd86ed8c742e136edbc0e40443d166e5c815bc59aecd000d8c2"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/periodicity_distribution.png",
+      "bytes": 61502,
+      "sha256": "17a63dc704f26211e198a078f08d6d693980d607215e72af62b376be9c43a2d6"
+    },
+    {
+      "path": "results/logistic_current_acf_pearson_ablation/periodicity_summary.csv",
+      "bytes": 225,
+      "sha256": "935c50376448717295b315c13f8e554d0906da2b5db9f5be13baa688c98f951b"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/abnormal_burst_summary.csv",
+      "bytes": 5386,
+      "sha256": "41156a3e42df20cf58467ea79b54c15d4e3bf0eaa14cdb088593daee2866dc44"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/analysis_report.md",
+      "bytes": 4639,
+      "sha256": "a84f491939a9b27e8ffe0a552fec6e8062809c4ebd3c3727cbe5cb2046e78ccb"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/burst_prediction_summary.csv",
+      "bytes": 156162,
+      "sha256": "c529708420bc8405dba6df47c5002437f2ceb11983adb36574a2a77ba7f3f88a"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/cv_split_indices.json",
+      "bytes": 356794,
+      "sha256": "d44270b812c4e403bada8f84bd5c0a5ff753e2247f00e355c6e62e919a10efb9"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/experiment_metadata.json",
+      "bytes": 4763,
+      "sha256": "c75eab0083cd8255447a1c1f60b035a793d2ad82ca223d32cd5cdf685c20ac81"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/FN_concentration.json",
+      "bytes": 317,
+      "sha256": "d960eae891570cd1d922564ea6375796f436d082f3d6211b4c722337a63ebc8b"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/FN_events.csv",
+      "bytes": 1029,
+      "sha256": "0f1b300285d549ab24f461a7ed57037621cfc9f0e488fc5a386de966c0dc1733"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/fold_coefficients.csv",
+      "bytes": 9623,
+      "sha256": "707b59d1f182282000cd731ec9ca9336c7ff5d65074fc5dda17777361f804af0"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/fold_metrics.csv",
+      "bytes": 3079,
+      "sha256": "d6e3a974f0bcaf33b3356dacc8de5d57297b71bdeabd88519143e9bae99bf00e"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/metrics_summary.csv",
+      "bytes": 335,
+      "sha256": "36966f0fea8b1bc4b27b74792198a5e200732ddaa07e66e6ed099b3a92e5a5fa"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/repeat_summary.csv",
+      "bytes": 249,
+      "sha256": "e567e79be636a58d93119415861c415027e72d21dc686d9327d63ec10c689af7"
+    },
+    {
+      "path": "results/logistic_fn_burst_tracking/validation_predictions.csv",
+      "bytes": 266934,
+      "sha256": "5d9e563042768ed215e066ce63ac14e5af36cf47c66293ed17b5271e02a6d9a2"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/abnormal_distance_to_normal_centroid.csv",
+      "bytes": 2013,
+      "sha256": "773cce27f60e5db16736bc71de98d3a29c9e2d34cea56698bdf60eba139eee9d"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/abnormal_fold_distances.csv",
+      "bytes": 9171,
+      "sha256": "5915781c9526ad3d45e76aecfa515e6be580606da61b030781d36c659674baab"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/analysis_metadata.json",
+      "bytes": 1775,
+      "sha256": "9f7509b3cccf980d9a6398f1aa2df0a8d068dcca94fff28bbbc225f85d1a3ee2"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/analysis_report.md",
+      "bytes": 14915,
+      "sha256": "7428e6adf91d4955545102c60b165d17cdfb7a1967eb663f684d477f6a6bcb42"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/centroid_distance_group_summary.csv",
+      "bytes": 222,
+      "sha256": "220f60d124b70521043197aec79da2b832000a7960724908c3ce72e1dc556909"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/feature_pair_ranking.csv",
+      "bytes": 469,
+      "sha256": "c671449ddb7b018f307bf71c9d0b07ac6bd21b49b9e56c5de76e1f0c7e492352"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_619_620_feature_values.csv",
+      "bytes": 282,
+      "sha256": "c2b4f92d80890d8cb3bbaf1de4698e0f3e90c15705e760915479b6644237c78f"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_decision_scores.csv",
+      "bytes": 2320,
+      "sha256": "d373a9f57630ebfa8463c283815a27126036edcf5eefc4665a6539497def816a"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_decision_summary.csv",
+      "bytes": 363,
+      "sha256": "a8def613bfc05f82483d224c124a860c37fd7120e24834a53de0971ba7ea944e"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_feature_contribution_summary.csv",
+      "bytes": 1494,
+      "sha256": "1814e7f701f572a281eb4498081552d55eaa4932ba2b4d15a4e6cbb12b53ff2e"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_feature_contributions.csv",
+      "bytes": 13978,
+      "sha256": "adb785542de92b90dfa86937d00088432fef8c0a2dcbc2ff2b88dd62660acb44"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/fn_vs_normal_zscores.csv",
+      "bytes": 3631,
+      "sha256": "6112d88a34b4f90f24be047c42100c0e60cb034f42279a1227c832e789a7fa57"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/group_feature_statistics.csv",
+      "bytes": 2369,
+      "sha256": "09bba59173af803ff2d6787db45b5ce2b7a5876ce4fcdc70020909cb883395bf"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/normal_score_overlap.csv",
+      "bytes": 238,
+      "sha256": "44026e5d7617a2e08d8618d4bd4a723b147ee32115e5cececb05d193d9f43a35"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/boxplot_AI0_MaxAbs.png",
+      "bytes": 44344,
+      "sha256": "a6d113a593c648877989854afd977e67aad5ec6402413c49bfeec352130f9bee"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/boxplot_AI0_RMS.png",
+      "bytes": 37784,
+      "sha256": "53a5a5b7745d71b6903a06ffbc98a41be83b853366cbd393f00609cc84a0fb53"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/boxplot_AI1_Kurtosis.png",
+      "bytes": 45289,
+      "sha256": "778268b519f350dafba6faee9d76dc01cf8ef4d86bb130727a7857b6bb1cd642"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/boxplot_AI1_PeakToPeak.png",
+      "bytes": 41686,
+      "sha256": "164fdfa679c40fbd963178471bb4b0dc7cdf603463b07e15f3d3cb26e411cd71"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/boxplot_AI1_RMS.png",
+      "bytes": 37135,
+      "sha256": "1e41ab2d4cc24a3f8c2099bf74e272a1ca89c0c521d6ced508ad152b925719e5"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_240.png",
+      "bytes": 188628,
+      "sha256": "110a5d8129490eec15f13ea144bbf25e532f33d78d3a9c5e952192614a91018e"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_348.png",
+      "bytes": 180561,
+      "sha256": "06119651f5746d83dedf0764bc696062ed78c4898d3541aca49cca33bfbcdedf"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_611.png",
+      "bytes": 148072,
+      "sha256": "5e2a8f815996b5ffc91020df4aba03dd8387f6971a88a0a36aa94df873bd131b"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_617.png",
+      "bytes": 142126,
+      "sha256": "da5d25c9735dd7b5b8c65652ca94b3c0d4cd18a2fbf090b6906f5f96af3452e9"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_619.png",
+      "bytes": 120581,
+      "sha256": "1e77ca5ea69a60e8d05cde483ef9235f2f8a906ee0a6aecaae72c7d180d95ba8"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_burst_620.png",
+      "bytes": 144548,
+      "sha256": "bfe6f2d0b52b6081f4ae01792b087f9bc7a42fa73b483b79b0965f6163763795"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/raw_signal_comparison.png",
+      "bytes": 337089,
+      "sha256": "df491b4aedaaaa6be35277df5370ad8f9eeae6d8cf473fd2583d4fb7ef70470b"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/scatter_top1_AI0_RMS_vs_AI0_MaxAbs.png",
+      "bytes": 62970,
+      "sha256": "3ae51438331c76d597521ee2a622f66d70fb1d4a6b3802ea5f117a67e057fb4c"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/scatter_top2_AI0_MaxAbs_vs_AI1_PeakToPeak.png",
+      "bytes": 112861,
+      "sha256": "86b4179a28085c02617e7600c883a2e2eec68a8098ed7a0a6a823504199d0ad6"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/plots/scatter_top3_AI0_MaxAbs_vs_AI1_RMS.png",
+      "bytes": 97035,
+      "sha256": "23b74c65c8d9c73633e44c50ca23da90c60c2d41f65fe140986795f83aaf1c60"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/raw_representatives.csv",
+      "bytes": 453,
+      "sha256": "29746b926a78246a361290d0075229a5042348f9ad9c92c1833b93926564db08"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/recovered_fold_intercepts.csv",
+      "bytes": 6970,
+      "sha256": "0bddb681b13cd03724e747c29d756b66c4c45269e93339eff5a73fe6ec8ff804"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/representative_raw_signals.csv",
+      "bytes": 16375,
+      "sha256": "f1b05d4f0c967d4dfe6d8971c5347c6388fecda8d7e2c601da91d6f607df7448"
+    },
+    {
+      "path": "results/logistic_fn_feature_analysis/representative_raw_statistics.csv",
+      "bytes": 1829,
+      "sha256": "ebd8d02e2eed1f3cb35e19d95510318bcbe796134f003941dd1216b9f7b9109d"
+    },
+    {
+      "path": "src/logistic_ai0_ai1_corr_ablation.py",
+      "bytes": 12443,
+      "sha256": "e8390324530dcc32801d2f51121a6788bdbc0041285cf4204e2e0aa44cdebb2c"
+    },
+    {
+      "path": "src/logistic_burst_length_sensitivity.py",
+      "bytes": 23017,
+      "sha256": "8781d9a18db5b78e13e69c3bfdddeff84f71bf811f17847b2fdb60be212d61c4"
+    },
+    {
+      "path": "src/logistic_burst_sample_count.py",
+      "bytes": 21676,
+      "sha256": "0d8a4dd5bfb1ff89777fcaf3a4393c7a5b9c5121f8b060e7a6a0835649dd83f3"
+    },
+    {
+      "path": "src/logistic_class_weight_ablation.py",
+      "bytes": 13705,
+      "sha256": "676f8c80fbff80ab536f23f027c60695cfd3db1ddcc329246a531b898a9a7967"
+    },
+    {
+      "path": "src/logistic_current_acf_ablation.py",
+      "bytes": 17094,
+      "sha256": "7066f9f5e09eef96ad658f84ff667782f5678dfa175922d939b41c7cab4d88d5"
+    },
+    {
+      "path": "src/logistic_current_acf_pearson_ablation.py",
+      "bytes": 22641,
+      "sha256": "a9ca0a30f20e33ffd1792d6d4ca3528cbbe33d6dd23bf0beabea59f3cb7e9d43"
+    },
+    {
+      "path": "src/logistic_fn_burst_tracking.py",
+      "bytes": 12043,
+      "sha256": "fe0d41d43326c8b9921348cf46707253bbf16a83e1f557d5f3ed75257c5ab732"
+    },
+    {
+      "path": "src/logistic_fn_feature_analysis.py",
+      "bytes": 24832,
+      "sha256": "bf0de2cc81848f74e6cde3dc9b7a89b22f48473ec75d124a1d2eb3916c3c5bd5"
+    },
+    {
+      "path": "src/LSTM-AutoEncoder/baseline_original.py",
+      "bytes": 15396,
+      "sha256": "3b0855d29c0e47e9856d3c293083d7f430ebe7cbe6f24ef85f247348e504a0a8"
+    },
+    {
+      "path": "src/LSTM-AutoEncoder/baseline_original.sha256",
+      "bytes": 88,
+      "sha256": "e68b50f23386353b8f713bc2f17cde458e136d62feff0725d8f52f8611ea2ce7"
+    },
+    {
+      "path": "src/package_logistic_paper.py",
+      "bytes": 6254,
+      "sha256": "cfebc77a32a5b3991ea71130ee03d73b32c1298deae5a80a6fee48d1a9831f75"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/class_weight_metrics.png",
+      "bytes": 19722,
+      "sha256": "455e232a8932f412627a5bbcdcd3c79f38b7c454b4e0cdd0e6ed8a52a9ff02cd"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/feature_distributions.png",
+      "bytes": 32144,
+      "sha256": "19373a7a06f51da049a87c210e404d50ef6bf886be8575c4887f2264737f8b2f"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/figure_pdf_contact_sheet.png",
+      "bytes": 250933,
+      "sha256": "c412d6a87af6b140feba7e7e17626dd2e260440280870f0c10558532b691a110"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/none_probability_distribution.png",
+      "bytes": 17606,
+      "sha256": "1cffb16c63263bb260a5fb0ec549b4b998f417849e940d0065442eb2b090e433"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/pipeline.png",
+      "bytes": 36205,
+      "sha256": "1e29d8302df145c547d41a2e23d5f1636cb29fc57f37994e2882f19f0c3f17d0"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/sample_count_feature_drift.png",
+      "bytes": 30458,
+      "sha256": "7ba6d9c089c97d1ccc31e6e5c2439ee23e8c47875160da379ab730b7cddc7707"
+    },
+    {
+      "path": "tmp/pdfs/paper_icml_logistic/sample_count_recall.png",
+      "bytes": 25880,
+      "sha256": "0a4e1cc7eab8f630426d8d3836c80c1f2fa2f95e8a2125b8c043646c30b80564"
+    },
+    {
+      "path": "BUNDLE_README.md",
+      "bytes": 2431,
+      "sha256": "4cf630d459c8c129a4da63d20898607104f4ea8a8f6ac7027443c783fb694c65"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 80,
+      "sha256": "6b73911e35ad06e70d29a1e9bcef0925432caadb965f6162c14a8302b851bfcc"
+    }
+  ],
+  "experiments": [
+    "logistic_current_acf_ablation",
+    "logistic_current_acf_pearson_ablation",
+    "logistic_ai0_ai1_corr_ablation",
+    "logistic_class_weight_ablation",
+    "logistic_fn_burst_tracking",
+    "logistic_fn_feature_analysis",
+    "logistic_burst_length_sensitivity",
+    "logistic_burst_sample_count"
+  ],
+  "archive_creation_runs_experiments": false
+}

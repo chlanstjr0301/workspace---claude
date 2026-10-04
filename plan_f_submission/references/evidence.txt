@@ -1,0 +1,23 @@
+자료: Guidebook_소성가공 예지보전 AI 데이터셋.pdf (바탕화면에서 파일명 검색하여 발견), 프로젝트 references/guidebook.pdf에 보존.
+출처 표기: 중소벤처기업부, Korea AI Manufacturing Platform(KAMP), 소성가공 예지보전 AI 데이터셋, 스마트제조혁신추진단(㈜인터엑스), 2022.12.23., www.kamp-ai.kr
+PDF 9/11쪽: AI0 상부 진동, AI1 하부 진동, AI2 전류. PDF 11쪽: 파인블랭킹 프레스, 초당 10회, 두 수집 날짜. PDF 12쪽: 상태 0 정상, 1 고장. 센서 물리 단위, 구체적 설비 ID/제품/부하/고장 종류와 확정 시각은 확인하지 못함. 배경의 기어 마모 설명은 이 CSV의 확정 고장 진단으로 사용하지 않음.
+PDF 28쪽: 세 센서 모두 절댓값. 31~34쪽: 정상 첫15000 학습, MinMaxScaler 학습자료 fit, 길이20, 100시점 뒤 라벨, 윈도우 생성 뒤 보정 분할. 이번에는 윈도우 전에 분할하며 미래 라벨 사용 안 함.
+PDF 35쪽: LSTM64(return seq)-LSTM32-Repeat-LSTM32-LSTM64-TimeDistributed Dense3.
+PDF 36쪽: Adam .001, MSE, batch128, max800, LR factor .7 patience50, early stop patience120 min_delta1e-5.
+PDF 37~38쪽: 마지막 시점 3센서 MSE; 정상+이상 검증 PR의 precision=recall에서 임계값. 참고값 임계 .0035, P/R 약 .847.
+PDF 40~41쪽 참고값: TN3922 FP78 TP154 FN26, accuracy97.51%, F1 74.76%. 이번 공통 평가 결과와 직접 비교하지 않음.
+가이드북 정확 재현 미완료: 구조 기반 PyTorch 구현. 프레임워크/학습예산/분할/길이/임계값/라벨 시점이 다름. 원문 그대로의 800epoch 재현은 이번 제한된 공통 비교에 포함하지 않음.
+10Hz만으로 앨리어싱 유무 확정 불가. 원 신호 대역폭/센서 전처리/안티앨리어싱 필터 정보 필요. 시간영역 특징도 이미 발생한 앨리어싱을 복원하지 못함. FFT 미사용.
+실제 고장 시작, 정상→고장 전환, 정비·고장 확정 시간 없음. Equipment_state가 순간별 전문가 판정인지 파일 전체 부여인지 미확인. 관측 시작→첫 경보는 고장 탐지 지연이 아님.
+전체 자료 요약을 앞선 대화에서 확인했음. 현재 파일 재점검은 이전 결측/변환/중복/간격 결과와 일치. 날짜-라벨 완전 혼재 때문에 고장 효과와 운전조건 효과 식별 불가.
+
+방법 근거 (2026-10-03 확인):
+https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html (-score_samples 방향, 구현 설정)
+https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html (AP는 보간하지 않는 recall 증가 가중 precision 합)
+https://scikit-learn.org/stable/modules/calibration.html (보정 학습/평가 분리, Brier/log loss)
+https://scikit-learn.org/stable/modules/cross_validation.html#cross-validation-of-time-series-data (시간 순서 검증)
+https://doi.org/10.1109/ICDM.2008.17 (Liu, Ting, Zhou 2008; DOI 서지 링크 확인, 원문 접근 제한)
+https://doi.org/10.1371/journal.pone.0118432 (Saito & Rehmsmeier 2015; DOI 열기 실패 후 PLOS 공식 원문에서 확인)
+0.5초 버스트, .01 FPR, 분할비율/후처리는 프로젝트 가정이며 논문/대회 공식 요구로 인용하지 않음.
+
+PLOS 원문 직접 확인: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118432

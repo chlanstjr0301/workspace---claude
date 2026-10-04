@@ -1,0 +1,28 @@
+{
+  "kind": "PCA",
+  "name": "P0_W1_K1",
+  "feature": "R",
+  "sensors": null,
+  "fit_seconds": 0.009785183000076358,
+  "training_windows": 12012,
+  "names": [
+    "AI0_Vibration",
+    "AI1_Vibration",
+    "AI2_Current"
+  ],
+  "k": 1,
+  "rank": 3,
+  "tolerance": 1.3748334220152384e-10,
+  "removed": [],
+  "eigenvalues": [
+    1.3748334220152385,
+    1.0000248340997413,
+    0.6253915149282313
+  ],
+  "cumulative_variance": [
+    0.4582396556728002,
+    0.7915535163224836,
+    1.0000000000000002
+  ],
+  "q_valid": true
+}

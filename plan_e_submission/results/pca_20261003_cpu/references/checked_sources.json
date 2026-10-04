@@ -1,0 +1,9 @@
+[
+ {"title":"scikit-learn PCA","url":"https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html","access":"2026-10-03 official documentation read","used":"PCA centers inputs, does not scale automatically; full SVD and whiten=False API"},
+ {"title":"scikit-learn StandardScaler","url":"https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html","access":"2026-10-03 official documentation read","used":"feature centering/scaling; sensitivity to outliers"},
+ {"title":"scikit-learn average_precision_score","url":"https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html","access":"2026-10-03 official documentation read","used":"AP is noninterpolated and differs from trapezoidal PR area"},
+ {"title":"scikit-learn Probability calibration","url":"https://scikit-learn.org/stable/modules/calibration.html","access":"2026-10-03 official documentation read","used":"sigmoid calibration; disjoint fitting and evaluation; assumptions not guaranteed"},
+ {"title":"Saito & Rehmsmeier (2015)","url":"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0118432","access":"2026-10-03 full article page opened","used":"PR perspective for imbalanced classification; does not prescribe this experiment design"},
+ {"title":"Jackson & Mudholkar (1979)","url":"https://doi.org/10.1080/00401706.1979.10489779","access":"DOI access failed; paper contents not verified","used":"User-supplied bibliography only; no derived theoretical control-limit claim"},
+ {"title":"Liu, Ting, Zhou (2008)","url":"https://doi.org/10.1109/ICDM.2008.17","access":"DOI resolved to IEEE landing page; article body not obtained","used":"User-supplied bibliography only; implementation uses explicit project IF settings"}
+]

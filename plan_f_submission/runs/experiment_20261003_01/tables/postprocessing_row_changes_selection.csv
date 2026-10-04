@@ -1,0 +1,4 @@
+policy,newly_missed_anomaly_rows,newly_detected_anomaly_rows,suppressed_false_positive_rows,new_false_positive_rows
+none,0,0,0,0
+consecutive2,8,0,7,0
+two_of_three,5,2,7,3

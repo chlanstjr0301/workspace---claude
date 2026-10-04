@@ -1,0 +1,9 @@
+{
+  "key": "M0_L10",
+  "seed": 43,
+  "matched": false,
+  "fit_seconds": 70.98610984700008,
+  "training_windows": 10189,
+  "early_stop_windows": 1805,
+  "epochs": 20
+}

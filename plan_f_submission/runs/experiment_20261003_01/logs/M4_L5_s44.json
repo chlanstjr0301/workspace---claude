@@ -1,0 +1,9 @@
+{
+  "key": "M4_L5",
+  "seed": 44,
+  "matched": false,
+  "fit_seconds": 0.8013480330000675,
+  "training_windows": 10605,
+  "early_stop_windows": 0,
+  "epochs": 0
+}

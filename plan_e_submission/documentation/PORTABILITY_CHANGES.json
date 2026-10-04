@@ -1,0 +1,12 @@
+{
+  "changes_to_executable_copy": [
+    "experiment.py: data root resolves to package/data instead of project-local data",
+    "reproduce.sh: portable private environment and unique package/results output",
+    "bootstrap.py/verify_package.py: new package utilities",
+    "build_paper_assets.py: relative package paths"
+  ],
+  "model_algorithm_changed": false,
+  "historical_source_preserved": "results/pca_20261003_cpu/source and source_final",
+  "remote_scripts": "historical scripts retain original dedicated Colab paths; not automatically executed",
+  "authentication_files_included": false
+}

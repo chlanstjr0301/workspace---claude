@@ -1,0 +1,35 @@
+[
+  {
+    "stage": "local environment",
+    "issue": "python3 -m venv created an environment without pip",
+    "resolution": "uv pip install --python .venv/bin/python; Python 3.14.4 compatible wheels installed",
+    "model_scores_seen": false
+  },
+  {
+    "stage": "Colab environment",
+    "issue": "venv ensurepip subprocess failed",
+    "resolution": "venv --without-pip; system pip --python .venv/bin/python install into private venv",
+    "model_scores_seen": false,
+    "final_scores_seen": false
+  },
+  {
+    "stage": "Colab plotting import",
+    "issue": "inherited notebook MPLBACKEND referred to matplotlib_inline absent in private venv",
+    "resolution": "set MPLBACKEND=Agg before matplotlib import",
+    "model_scores_seen": false,
+    "final_scores_seen": false
+  },
+  {
+    "stage": "development artifact inspection",
+    "issue": "primary and F1 alternative selected same model with different thresholds; original error-case filenames omitted target threshold, causing same-name development diagnostic overwrite",
+    "resolution": "include target FPR in filenames; retain original diagnostic and regenerate distinct development diagnostic files; no model, threshold, or selection change",
+    "development_scores_seen": true,
+    "final_scores_seen": false
+  },
+  {
+    "stage": "development validation output",
+    "issue": "numpy bool is not JSON serializable",
+    "resolution": "convert numpy scalars to Python scalar in JSON writer; invariant assertions had passed",
+    "final_scores_seen": false
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "press_data_normal.csv": {
+    "rows": 3990,
+    "max_score_difference": 2.220446049250313e-16,
+    "predictions_identical": true,
+    "no_labels_in_input": true
+  },
+  "outlier_data.csv": {
+    "rows": 357,
+    "max_score_difference": 2.842170943040401e-14,
+    "predictions_identical": true,
+    "no_labels_in_input": true
+  },
+  "all_pca_operational_scores_exact_Q95_fallback": true,
+  "all_models_have_full_operational_coverage": true,
+  "all_candidate_rowwise_routes_saved": true
+}

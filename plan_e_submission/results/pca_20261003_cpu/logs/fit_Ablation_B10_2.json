@@ -1,0 +1,36 @@
+{
+  "kind": "PCA",
+  "name": "Ablation_B10_2",
+  "feature": "B10",
+  "sensors": [
+    2
+  ],
+  "fit_seconds": 0.019017813999880673,
+  "training_windows": 8948,
+  "names": [
+    "AI2_Current__mean",
+    "AI2_Current__std",
+    "AI2_Current__rms",
+    "AI2_Current__min",
+    "AI2_Current__max"
+  ],
+  "k": 2,
+  "rank": 5,
+  "tolerance": 3.2215024345178034e-10,
+  "removed": [],
+  "eigenvalues": [
+    3.221502434517803,
+    1.6165025189810818,
+    0.09690026280688153,
+    0.05732837701042526,
+    0.008325253224551693
+  ],
+  "cumulative_variance": [
+    0.6442284819318453,
+    0.967492854692769,
+    0.9868707414011545,
+    0.99833513543585,
+    0.9999999999999998
+  ],
+  "q_valid": true
+}
