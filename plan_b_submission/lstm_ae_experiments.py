@@ -311,7 +311,8 @@ def run_one(cid, cfg, seed, n, o, budget, out, tag=""):
     th = threshold(cfg, s_thr_n, s_thr_a)
     s_n, c_n = score(cfg, errors(m, S["test_n"]))
     s_a, c_a = score(cfg, errors(m, S["test_a"]))
-    res = dict(config=cid + tag, seed=seed, **{k: cfg[k] for k in cfg}, **info,
+    res = dict(config=cid + tag, seed=seed, channels=list(COLS),
+               **{k: cfg[k] for k in cfg}, **info,
                **metrics(s_n, s_a, th),
                n_train=len(S["train"]))
 
@@ -380,7 +381,7 @@ def block_cv(cid, cfg, n, budget, out, seed=42):
         per.append(dict(block=b, events=ev, hours=h))
         total_ev += ev; hours += h
         print("    block %d: 오경보 %d건" % (b, ev))
-    res = dict(config=cid, seed=seed, events=total_ev, hours=hours,
+    res = dict(config=cid, seed=seed, channels=list(COLS), events=total_ev, hours=hours,
                far_per_h=total_ev / hours, far_ub95=poisson_ub(total_ev) / hours, per_block=per)
     os.makedirs(os.path.join(out, "runs"), exist_ok=True)
     with open(jpath, "w", encoding="utf-8") as f:
@@ -449,7 +450,13 @@ def main():
     ap.add_argument("--blockcv", action="store_true")
     ap.add_argument("--smoke", action="store_true")
     ap.add_argument("--summary", action="store_true")
+    ap.add_argument("--channels", nargs="*", default=None,
+                    help="입력 채널 목록. 기본 AI0+AI1+AI2. 예: --channels AI0_Vibration AI1_Vibration")
     a = ap.parse_args()
+
+    if a.channels:
+        COLS[:] = a.channels
+        print("입력 채널: %s" % COLS)
 
     if a.summary:
         summarize(a.out)
