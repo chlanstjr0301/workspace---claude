@@ -1,0 +1,137 @@
+from pathlib import Path
+import json,pandas as pd
+from html import escape
+R=Path(__file__).parent;j=json.loads((R/'count_summary.json').read_text());pc=pd.read_csv(R/'prior_candidate_counts.csv');train=pd.read_csv(R/'training_execution_minima.csv');part=pd.read_csv(R/'partition_counts.csv')
+report='''# G1 실제 실행 횟수와 데이터 사용 이력 감사
+
+이 문서의 ‘회’는 반드시 아래 단위를 따른다. 서로 다른 단위를 합산한 ‘총 실험 N회’는 제시하지 않는다. 기존 파일·로그·세션 기록 파싱만 했고 학습, 모델 로딩/추론, 성능 재평가, 튜닝 또는 실험 재실행을 하지 않았다.
+
+| 항목 | 확인된 수 | 확정/최소값/확인 불가 | 근거 |
+|---|---:|---|---|
+| 선정 G1 개발·선정 회차 | 1회 | 기록 범위에서 확정 | v2 protocol_v2.json, all_trials.csv, selected_config.json, select.log |
+| 선정 G1 고정 검증 회차 | 1회 | 기록 범위에서 확정 | frozen validation_protocol.json, review.log |
+| 선정 G1 전체 재현 회차 | 2회 | 확인된 최소 | v2 end_to_end_replay.json, frozen portable_replay.json 및 실제 별도 실행 로그 |
+| G1 구조 고유 구성 | 3개 | 보존된 구성 범위에서 확정 | 개발 임계값2개 + 이전 임계값 G1 사후대조1개; candidate_identity.csv |
+| 실제 PCA 적합 파이프라인 | 최소106회 | 전체 횟수 확인 불가 | 선행 원 PCA·검토·tradeoff 로그/manifest/fit 코드; training_execution_minima.csv |
+| 실제 R5 적합 | 최소5회 | 전체 횟수 확인 불가 | 문헌 실험 및2개 재실행의3회 + v2 검증 재적합2회 |
+| 선정 G1 추론 수행 상위 단계 | 최소11회: 완료10·실패1 | 정확한 함수 호출 총수 확인 불가 | v2 select/evaluate/validate 각각2회, frozen review3회·validate2회 |
+| 새 예측에 대한 운영 지표 집계 단계 | 최소6회 완료 | 단계 기준 최소값 | v2 select/evaluate 각2회 + frozen review 성공2회; 추론 단계와 겹침 |
+| 저장 예측의 지표/PR 재집계 | 최소4회 | 최소값 | v2 analyze2회 + frozen make_report2회; 모델 추론 아님 |
+| 온라인/batch 비교 | 4개 검증 실행, 10개 자료 비교 | 확인된 최소 | v2 3범위×2실행, frozen 2범위×2실행 |
+| 구현 검사 | v2 151항목×2실행, frozen 새76항목×2실행 | 보고된 통과항목454건; 중복 포함 | 각 validation_report.json; frozen의 과거151개 재사용은 다시 실행으로 세지 않음 |
+| 같은 S/V/H를 사용한 G1 이전 개발 회차 | 최소4회 | 전체 범위 총횟수 확인 불가 | 최초 PCA, adversarial, FN/FP tradeoff, literature rescue; 별도 전체재실행 최소4회 |
+| 미사용 고유 관측 | 0행 | 원본 고유20599행 모두 사용 확인 | 앞선 원행 감사·실제 fit/score/창 원행 목록; 중복1행 별도 |
+
+## 1. 조사 범위와 확인 수준
+
+중심 실행은 `pca_literature_rescue_20261004_210504`, `pca_followup_v2_20261004_214810`, `pca_g1_frozen_validation_20261004_221914`다. 관련 원 PCA·adversarial·FN/FP tradeoff 및 저장된 재실행을 연결했다. frozen 재실행의 실제 위치는 `/tmp/pca_g1_portable_check_20261004_221914`이며 접근 가능한 기존 로그와 결과를 읽었다. ZIP·복제 폴더·복사된 inputs/previous는 별도 실험으로 세지 않았다.
+
+현재 프로젝트 cwd로 시작한 로컬 세션 JSONL 1개를 찾았다. 관련 실행 명령, 사용자 지시, G1 완료 메시지의 시각/줄 위치만 추출했다. 인증정보·무관한 대화·내부 reasoning 내용은 산출물에 담지 않았다. 세션 전체를 복제하지 않았다. `session_inventory.json`과 `session_commands.json`을 참고한다. 파서는 확인 가능한 명시적 스크립트 명령 중심이며 inline Python, 모든 중첩 함수 호출, 삭제되거나 보존되지 않은 세션은 완전 집계할 수 없다.
+
+프로젝트는 git 저장소가 아니었다(`git rev-parse --show-toplevel` 실패). 따라서 commit 기반 변경·실행 시각은 확인 불가다. 원 결과의 파일 수정 시각만으로 실행이나 사전 고정을 증명하지 않았다.
+
+각 숫자는 관측된 기록의 확정값 또는 검증 가능한 최소값이다. 알려진 하한이 전체 실행 횟수와 같다는 뜻이 아니다. 명령줄이 존재하는 것만으로 성공을 인정하지 않고 완료 로그·상태 파일·결과를 연결했다.
+
+## 2. 어떤 G1이 같은 구성인가
+
+선정 G1은 기존 B0 경보 OR `(R5_t > 17.54312199063481 AND R5_(t−1) > 17.54312199063481)`이다. 정상 C 유효 점수의 q=0.999, higher 분위수·strict `>`이며 B0의 P1 창20/PCA2/Q/StandardScaler/15특징/P0 fallback은 그대로다. R5는 과거2개 센서로 현재를 예측하는 고정 ridge 잔차 거리다. 파일·원 분할·gap>0.5초에서 R5/확인 상태를 끊는다. 보고용 S1/S2/V 분할 자체는 P1을 임의로 초기화하지 않는다.
+
+확인된 G1 구조는 다음3개다.
+
+| 구성 | 실제 임계값 | 역할 |
+|---|---:|---|
+| G1_Q995 | 14.67668394436103 | v2 개발 후보, 미선정 |
+| G1_Q999 = frozen G1 | 17.54312199063481 | 선정 모델 |
+| D_old_threshold_G1 | 19.48692067098804 | 고정 검증의 사후 대조군, 재선정하지 않음 |
+
+G0는 현재 점수만 확인한다. G2는 현재 초과와 직전2개 중1개 초과를 요구해 G1 구조와 다르다. 이전 R5_A0/A1/A2는 G0형이며 G1 개발 횟수에 넣지 않는다. 이름 `C0`, `R5_A0`, `B_same_threshold`, `G0_Q999`의 대응은 실제 θ·규칙·모델·데이터·코드로 확인했다. `C1`은 B0의 정책 확인용 복사여서 별도 모델 구성이 아니다.
+
+R5.joblib의 SHA-256은 문헌 원실행·문헌2개 재실행·v2·frozen에서 모두 `16a0790f16417111fb994fd96903718cf6e657fd2948e74f0232912ef5c7460b`다. 그런데 문헌 재실행은 실제로 보조 모델을 다시 적합했다. **동일 해시는 실행1회라는 증거가 아니다.** 반대로 ZIP에 동일 모델을 여러 번 저장해도 학습 횟수는 늘지 않는다.
+
+`identity_chain.csv`는 B0/R5/원행/코드 해시를, `candidate_identity.csv`는 θ와 규칙까지 포함한 구성 지문을 저장한다. `prediction_identity.json`은 v2와 frozen의 동일 S/V/H 행·정답·판정 지문을 연결한다. CSV 전체 해시는 메타데이터·표현 방식 때문에 달라질 수 있으므로 정렬된 원행/라벨/판정 지문도 함께 사용했다. 판정이 같은 것만으로 구성을 합치지는 않았다.
+
+## 3. 계획·실행·중복 제외가 다른 사례
+
+v2 등록 후보는 G0/G1/G2×q0.995/0.999의6개다. `experiment_v2.py:28–37`은 각 후보의 S와 C 점수/판정을 먼저 계산한 뒤, 이진 판정 signature로 중복을 제외한다. 따라서 다음과 같이 센다.
+
+- 계획6, 실제 계산6, 계산 완료6, 확인된 후보 계산 실패0.
+- all_trials.csv의 `completed`3행, `duplicate_excluded`3행은 계산 실행 여부와 다른 **선택 대상 상태**다.
+- 구조적으로 다른 구성6개, 이전 R5_A1과 완전히 같은 G0_Q999를 빼면 이번에 새로 추가된 구조5개다.
+- C+S 이진 판정 지문은4개다. G2_Q995와 G1_Q995, G2_Q999와 G1_Q999의 이진 결과가 같아서 G2가 제외됐지만 규칙·연속 점수·AP는 다르다. 고유 구성 집계에서는 합치지 않는다.
+- G1 개발 후보는 그중2개이고 선정은1개다. seed 반복은 없다.
+
+frozen의5개 대조 구성은 모두 실행했다. B0, 선정 G1, 같은θ의G0, 이전θ의G1, 이전R5_A0이며, 새 구조는 이전θ의G1 한 개다. 더 나은 점수의 대조군으로 재선정하지 않았다. 고정 검증 최초 review 시도는 점수/예측 작성 후 S 행 정렬 assertion에서 실패했다. 정렬을 고친 재시도1회와 별도 전체 재실행1회를 구별해 review 시도3회(성공2·실패1)로 센다. 새로운 후보3개가 아니다.
+
+선행 adversarial의 all_trials270행은270개 후보가 아니다. 18기본설정×3운영점=54개에, 두 블록의 operational/common 표와 pooled operational 표가 붙어54×5=270행이다. 별도 후처리2개까지 보고서56개다. Forest6개 운영점은 PCA/G1 후보 수에 더하지 않는다. FN/FP tradeoff36개는12개 임계값+짧은 창2종×12개다. literature18개는6보조 점수×3예산이며 G1은 없다. R0_A0는 B0와 같은 경보를 만드는 필수 대조군이다. 선행 후보 숫자는 `prior_candidate_counts.csv`에 단위를 구분했다.
+
+## 4. 실제 학습: 저장 모델 재사용과 검증 재적합
+
+G1 선정·고정 검증은 운영 B0/R5를 새로 학습하는 개발이 아니었다. 하지만 이를 ‘관련 작업 전체에서 fit 호출0회’라고 해석할 수는 없다.
+
+**R5 최소5회:** literature 원실행1회+보조 모델을 다시 만드는 전체재실행2회=3회. v2 원실행과 전체재실행의 `validate_v2.py:73–74`가 각각 정상T로 StandardScaler 적합, ridge 계수 계산, LedoitWolf 적합을 새로 수행해 파라미터를 검증했다. 이2회는 **검증용 재적합**이며 선정 모델 교체·새 후보가 아니다. `new_model_training:false`라는 replay 메타데이터만 보고 실제 모든 적합을0으로 세면 틀린다.
+
+**PCA 최소106개 적합 파이프라인:** 최초 원실험의 PCA fit 로그70개(동일 이름 모델·훈련행 manifest와 연결), adversarial 두 실행의 완료 로그/모델 적합 메타데이터/fit-before-write 코드로 확인한 최소13개씩, 별도 통제 검증의 PCA1개씩, tradeoff 두 실행의 원모델 재적합2개+짧은 창 적합2개씩이다. 즉70+26+2+8=106이다. 모델 파일 개수만 세지 않았다. 일부 Engine의 fit 로그가 이후 Engine 인스턴스에 의해 덮어써져 같은 키의 추가 재적합은 완전 복원할 수 없다. 이 숫자는 하한이다.
+
+이 파이프라인에는 rank 확인용 전체 PCA와 실제 축소 PCA의 두 `.fit` 호출이 있어 sklearn.PCA.fit 호출 기준 최소212회다. **106과212는 같은 작업을 다른 단위로 센 수이며 합산하지 않는다.** Forest 학습 및 IF용 PCA 진단은 이 하한에서 제외했다. PCA seed만 바꾼 가짜 독립 검증으로 해석하지 않는다. 원실험의 matched42/43/44 등은 실제 학습 표본 재추출이므로 그 적합을 별도로 기록하되 새 G1 구성이 아니다.
+
+정확한 프로젝트 전체 학습 횟수는 확인 불가다. 근거와 세부 하한은 `training_execution_minima.csv`에 있다.
+
+## 5. 추론·평가·재실행·보고·검사의 단위
+
+선정 G1을 직접 계산한 상위 스크립트 단계는 최소11회다. v2 select/evaluate/validate 각2회=6회, frozen review3회+validate2회=5회다. 완료10회·정렬 assertion 실패1회다. B0/R5만 계산한 diagnose2회나 calibration 확인용 계산은 이11회에 넣지 않았다. 함수 호출 수·CPU 연산 횟수나 독립 표본 수를 뜻하지 않는다.
+
+새 점수로 운영 지표를 집계한 완료 단계는 최소6회(v2 select/evaluate 각각2회+frozen review 성공2회)다. 이는 위 추론 단계와 겹치므로 합산 금지다. 저장된 예측/점수에서 지표 또는 PR을 다시 계산한 작업은 최소4회(v2 analyze2회+frozen make_report2회)다. 이번 감사에서는 그 지표를 다시 계산하지 않고 당시 코드·로그만 분류했다.
+
+온라인/batch 검증은4개 validator 실행이다. v2는 S, 원 selection 전체(S+V), H 세 자료 비교를2번 했고 frozen은 원selection전체와H 두 자료 비교를2번 했다. 총10개 자료 비교이며 **서로 중첩되고 동일 자료의 반복**이다. 그 안의 별도 온라인 추론 자식 프로세스는 최소14개(6×2+1×2)이나 상위단계11회에 더해 총실험수로 만들지 않는다. B0 단독 진단 자식 프로세스는 별도다.
+
+전체재실행은 G1 관련2회이며 이전개발의 재실행은 별도4회다. 전자는 같은 프로토콜·모델·원행을 재현한 것이지 새 독립 성능 시험이 아니다.
+
+보고서 생성/재인용 스크립트 실행은 최소5회(v2 초안·최종·재실행3회, frozen 원실행·재실행2회). frozen2회는 저장 PR 재계산도 하므로 집계 범주가 겹친다. PDF/HTML/MD/ZIP 파일마다 보고서 실행을 추가하지 않았다.
+
+구현 검사 기록은 v2151항목을2번 수행한302건과 frozen새76항목을2번 수행한152건, 합계454개의 **보고된 통과 항목 발생 기록**이다. 454개의 고유 검사도, 후보도, 학습도 아니다. frozen에서 과거151개를 재사용한 것은 실행 횟수에 다시 더하지 않았다. ZIP CRC/SHA 무결성 작업은 별도이며 전체 assertion 호출 수나 실패한 모든 검사 시도의 수는 보존 로그만으로 확정할 수 없다.
+
+## 6. 같은 S/V/H의 반복 사용
+
+S1 정상639·이상18, S2 정상616·이상3, S=S1∪S2 정상1255·이상21이다. S1/S2 끝행은 서로 겹치지 않지만 S합산은 동일 행을 다시 집계한 것이므로 독립시험3개가 아니다. V 정상731·이상90, H 정상3990·이상357이다. S와V의 끝행은 분리되지만 원P1은 보고 경계 이전 과거 관측을 쓸 수 있다. 이는 `data_usage_audit_20261004_225053/input_window_footprints.csv.gz`에 포함된 사용 이력이다.
+
+G1 관련 구성 범위에서 S에 계산·평가된 고유 구성은 B0/G0/G1/G2 합쳐9개, 그중 G1 구조3개다. V/H는 각각5개, 그중 G1 구조2개다. G1 이전 literature의 다른 보조 모델들은 여기에 합산하지 않는다. 각 S/V/H에서 선정 G1이 포함된 상위 추론 단계는 최소9시도(8완료+1실패), 운영 지표 완료집계는 각각4단계다. 해당 범위를 넘는 모든 함수 호출 총수는 미확인이다. `partition_counts.csv`를 참고한다.
+
+G1 이전 이미4개 개발 회차가 같은 원관측을 사용했다: 최초 PCA, adversarial, FN/FP tradeoff, literature rescue. 특히 원실험 selection은 현재 S+V 전체를 포함한다. 원실험 운영 성능표에는 PCA312운영점 및 IF112운영점이 같은 원selection/H에 평가돼 있다. scope별 표를 합산하지 않았고, 이는 해당 운영표 범위만의 수다. ablation 등까지 포함한 전 선행 실험의 전역 고유 후보 총수는 확인 불가다. Forest는 데이터 재사용에만 별도 기록했다.
+
+**결과를 보고 방향을 바꾼 직접 기록이 있다.** 로컬 세션의 사용자 지시(2026-10-04 12:48:01.882 UTC, 세션1503행)는 이전R5의 S2 FN0→0, FP6→7을 명시하고 그 FP를 줄이도록 G1/G2를 시험하라고 요청했다. 따라서 G1은 이전S2 결과에 착안한 후속 개발이다. 고정검증 요청(13:19:04.420 UTC,1710행)은 이미 G1의 S/V/H 수치를 알고 재선정 없이 검증·대조하라고 요청했다. 반면 단지 결과 파일이 있다는 이유만으로 모든 후보를 사람이 열람했다고 추정하지 않는다.
+
+## 7. 선정 동결 시점과 노출 이력
+
+v2 선정파일 created=12:53:34.496235 UTC, 관련 선택 스크립트 명령=12:53:29.599 UTC, 후속 evaluate 명령=12:53:55.854 UTC(세션1561행)가 확인된다. selected_config에 연결된 모델/프로토콜/코드 해시와 V/H 평가 기록도 일치한다. 이는 해당 회차에서 선택 후 평가했다는 **당시 로컬 기록**을 지지한다. 현재 계산한 해시나mtime만 사용한 결론이 아니다. 다만 외부 불변 시각 인증·git 이력으로 증명된 것은 아니다.
+
+이 순서는 데이터가 새로운 독립 자료였음을 뜻하지 않는다. v2 전부터 V기준선 및 H결과가 노출됐고 원실험에서는 현재V도 원selection의 일부였다. 재실행에서 다시 selected_config를 쓰거나 `candidate_V_H_scores_seen:false`를 기록해도 이전 회차의 노출이 사라지지 않는다. 모델/운영 선택에 개발 라벨을 사용했다. 실제 과적합 여부나 편향 크기는 실행 횟수만으로 수치화하거나 확정할 수 없다.
+
+## 8. 미사용 데이터 결론과 한계
+
+앞선 감사 `runs/data_usage_audit_20261004_225053/`와 연결했다. 원본 정상20000행·이상600행 중 고유20599행은 실제 사용이 확인됐다. 정상19999·이상600행 모두 학습/보정/선택/평가 또는 그 입력에 포함됐다. 최신R5에서 쓰지 않은 이상calibration132행도 최초PCA의 점수 계산·지도 sigmoid 보정에 사용됐다. 고유 원관측 중 사용 확인 불가0행, 조사 범위에서 미사용으로 확인된 고유행0행이다.
+
+추가중복 정상1행은 원파일 `press_data_normal.csv` 원행11566, 2022-07-12 00:43:33.196이다. 사용된11565행과 시간·센서·라벨이 같아 `duplicate_of_used_observation`으로 별도 분류했다. 삭제된 원행 자체를 모델에 썼다고 주장하지 않으며, 새 미사용 관측이나 독립평가구간으로도 취급하지 않는다. 행 번호는 헤더 제외1기반이다.
+
+전체 원자료에 대한 EDA·중복·간격 점검도 이미 수행됐다. 미사용 구간이 없으므로 남은 구간에 대한 새 추론은 없다. 독립 수집 세션도 확인되지 않았다. 원자료는 정상2022-07-12/이상2022-07-17로 날짜와 상태가 겹치며 물리 세션 ID가 없다. 복사/파일명변경/무작위 재분할은 새 자료가 아니다. 다른 에이전트의 보호된 신규 실행·알 수 없는 외부 기록의 완전성을 주장하지 않는다. 긍정적인 기존 사용 증거가 있으므로 이 불확실성이 기존 원관측을 미사용으로 바꾸지는 않는다.
+
+## 9. ‘G1 완료 보고서2차례’의 정확한 의미
+
+접근 가능한 세션에는 G1 개발 완료 메시지(13:06:54.852 UTC,1703행)와 고정검증 완료 메시지(13:39:40.942 UTC,1905행)가 실제로 있다. 두 개의 사용자 대상 완료 보고는 **개발·선정1회차와 고정검증1회차**에 대응한다. 그 안에는 전체재실행2회, 추론 재시도, 온라인 비교, 저장 결과 재집계와 보고서 재생성이 존재한다. 그러므로 ‘실제 계산을 정확히2번만 했다’는 해석은 틀리다.
+
+G1 자체의 반복 실행과 G1 이전부터의 원자료 반복 개발을 구분해야 한다. 현재 확인한 구성은 G1구조3개지만 같은 데이터는 그 이전4개 개발회차에서 이미 사용됐다. 가장 정확한 결론은 **구성/회차/fit/추론/집계/검사마다 단위를 분리해 확인된 최소와 미확인을 보고하는 것**이다.
+
+## 산출물
+
+- experiment_inventory.csv: 회차·재실행·단계·보고·검사의 연결 및 근거
+- dataset_usage.csv: T/C/S1/S2/S/V/H 역할·원행 집합·구성별 사용·선행/Forest 사용
+- count_summary.json: 집계 단위·확인 수준·하한·전체 미확인
+- candidate_identity.csv, identity_chain.csv, prediction_identity.json: 구성·모델·데이터·코드·예측 연결
+- training_execution_minima.csv, implementation_check_counts.csv, partition_counts.csv: 세부 단위별 집계
+- session_commands.json, conversation_direction_evidence.json, completion_message_evidence.json: 필요한 부분만 추출한 당대 기록
+- archive_deduplication.json, evidence_hashes.json: ZIP 사본 중복 처리와 근거 SHA-256
+
+모든 원본·기존 코드·설정·모델·예측은 그대로 보존했다. 이번 감사에서 새로 실행한 것은 기록 파싱과 표/문서 작성뿐이다.
+'''
+(R/'audit_report_ko.md').write_text(report)
+(R/'audit_report_ko.html').write_text('<!doctype html><html lang="ko"><meta charset="utf-8"><title>G1 실험 횟수 감사</title><style>body{max-width:1200px;margin:30px auto;font-family:system-ui;line-height:1.8}pre{white-space:pre-wrap;font-family:inherit}</style><pre>'+escape(report)+'</pre></html>')
+print('Report saved; counts parsed from existing artifacts only')

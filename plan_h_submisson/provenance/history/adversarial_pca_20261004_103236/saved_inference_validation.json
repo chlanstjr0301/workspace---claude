@@ -1,0 +1,44 @@
+[
+  {
+    "alias": "baseline",
+    "file": "press_data_normal.csv",
+    "n": 3990,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  },
+  {
+    "alias": "baseline",
+    "file": "outlier_data.csv",
+    "n": 357,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  },
+  {
+    "alias": "selected",
+    "file": "press_data_normal.csv",
+    "n": 3990,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  },
+  {
+    "alias": "selected",
+    "file": "outlier_data.csv",
+    "n": 357,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  },
+  {
+    "alias": "IF_same_W20",
+    "file": "press_data_normal.csv",
+    "n": 3990,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  },
+  {
+    "alias": "IF_same_W20",
+    "file": "outlier_data.csv",
+    "n": 357,
+    "max_score_delta": 0.0,
+    "identical_prediction": true
+  }
+]

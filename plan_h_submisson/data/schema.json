@@ -1,0 +1,26 @@
+{
+  "required_sensor_columns": [
+    "row_id",
+    "session_id",
+    "TimeStamp",
+    "AI0_Vibration",
+    "AI1_Vibration",
+    "AI2_Current"
+  ],
+  "label_columns": [
+    "row_id",
+    "label"
+  ],
+  "label_values": [
+    0,
+    1
+  ],
+  "sensor_units": "undocumented in original, manual compatibility confirmation needed",
+  "missing_policy": "reject incomplete input file; no row deletion",
+  "timestamp": "strictly increasing within actual contiguous session",
+  "new_data_no_fit": true,
+  "labels_separate_and_read_after_prediction_hash": true,
+  "FP_delta_formula": "floor(0.001*N_normal)",
+  "absolute_FP_formula": "floor(0.01*N_normal)",
+  "stability": "FN nonincrease/F1 F2 nondecrease; anomaly-free -> FP only; baselineFN0 -> reduction not_assessable"
+}

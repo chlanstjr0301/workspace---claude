@@ -1,0 +1,28 @@
+[
+  {
+    "title": "PCA",
+    "year": "scikit-learn1.9.1 accessed2026-10-04",
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html",
+    "connection": "centering/SVD/eigenvalue audit"
+  },
+  {
+    "title": "RobustScaler",
+    "year": "scikit-learn1.9.1",
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html",
+    "connection": "median/IQR scaler"
+  },
+  {
+    "title": "IsolationForest",
+    "year": "scikit-learn1.9.1",
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.IsolationForest.html",
+    "connection": "negative score_samples"
+  },
+  {
+    "title": "Towards a Rigorous Evaluation of Time-Series Anomaly Detection",
+    "year": 2022,
+    "doi": "10.1609/aaai.v36i7.20680",
+    "url": "https://ojs.aaai.org/index.php/AAAI/article/view/20680",
+    "scope": "publisher abstract and metadata",
+    "connection": "no point adjustment"
+  }
+]

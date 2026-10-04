@@ -1,0 +1,70 @@
+{
+  "raw_files": [
+    {
+      "source_file": "press_data_normal.csv",
+      "sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7",
+      "original_rows": 20000,
+      "retained_rows": 19999,
+      "duplicates_removed": 1,
+      "duplicate_source_rows": [
+        11566
+      ],
+      "missing_count": 0,
+      "negative_time_steps": 0,
+      "gaps_over_05": 598,
+      "maximum_gap_seconds": 16.643,
+      "median_step_seconds": 0.1,
+      "date_min": "2022-07-12 00:00:00.019000",
+      "date_max": "2022-07-12 01:16:55.828000",
+      "labels": [
+        0
+      ]
+    },
+    {
+      "source_file": "outlier_data.csv",
+      "sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e",
+      "original_rows": 600,
+      "retained_rows": 600,
+      "duplicates_removed": 0,
+      "duplicate_source_rows": [],
+      "missing_count": 0,
+      "negative_time_steps": 0,
+      "gaps_over_05": 20,
+      "maximum_gap_seconds": 8.572,
+      "median_step_seconds": 0.1,
+      "date_min": "2022-07-17 10:51:07.943000",
+      "date_max": "2022-07-17 10:53:53.540000",
+      "labels": [
+        1
+      ]
+    }
+  ],
+  "B0_train_moment_eigenpair_checks": [
+    {
+      "window": 20,
+      "normal_train_rows": 11974,
+      "mean_max_error": 0.0,
+      "variance_max_error": 0.0,
+      "eigenpair_max_error": 1.8735013540549517e-14,
+      "calibration_Q95": 14.9874861938813,
+      "stored_reference": 14.9874861938813,
+      "no_refit": true
+    },
+    {
+      "window": 1,
+      "normal_train_rows": 12012,
+      "mean_max_error": 0.0,
+      "variance_max_error": 0.0,
+      "eigenpair_max_error": 4.440892098500626e-16,
+      "calibration_Q95": 2.649158116699839,
+      "stored_reference": 2.649158116699839,
+      "no_refit": true
+    }
+  ],
+  "B0_calibration_threshold": 1.3078792257682357,
+  "all_raw_rows_assigned_except_duplicate": true,
+  "split_row_ids_disjoint": true,
+  "normal_anomaly_dates_confounded": true,
+  "physical_units_and_session_ids_not_documented": true,
+  "calibration_anomalies_not_used_for_frozen_threshold": true
+}

@@ -1,0 +1,11 @@
+{
+  "audit_mode": "parse_and_aggregate_existing_records_only",
+  "models_loaded": false,
+  "training_executed": false,
+  "inference_executed": false,
+  "performance_evaluated": false,
+  "experiments_rerun": false,
+  "existing_evidence_files_unchanged": 232,
+  "original_CSV_hashes_unchanged": true,
+  "counts_are_distinct_units_not_additive": true
+}

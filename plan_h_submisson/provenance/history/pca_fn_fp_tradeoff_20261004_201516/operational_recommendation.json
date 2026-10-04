@@ -1,0 +1,7 @@
+{
+  "recommendation": "retain original PCA",
+  "reason": "development selected warmup W3 failed Recall/F1/F2 non-regression on exposed historical evaluation; no reselection",
+  "frozen_selection_preserved": true,
+  "primary_development_selected": "B_W3_q0.0020",
+  "new_independent_evaluation": false
+}

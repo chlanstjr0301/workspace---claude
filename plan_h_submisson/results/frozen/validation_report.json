@@ -1,0 +1,340 @@
+{
+  "passed": true,
+  "reused_historical_checks": 151,
+  "new_checks": [
+    {
+      "check": "packaged immutable src/common.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable src/models.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable src/evaluation.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable src/auxiliary.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable src/v2.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable models/baseline.joblib",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable models/R5.joblib",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/selected_config.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/protocol_v2.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/implementation_lock.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/validation_report.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/V_evaluation.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/H_evaluation.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/reproduction.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/inventory.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/end_to_end_replay.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/review_report_ko.md",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/experiment_v2.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/validate_v2.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/infer_online.py",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/literature_selected_config.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/literature_V_evaluation.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/frozen_rows.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/blocks.json",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/rows_train.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/rows_calibration.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/rows_selection.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/rows_test.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/raw_to_clean_rows.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/duplicate_removed.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable manifests/fit_rows_R5.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable data/press_data_normal.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable data/outlier_data.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/dependency_audit.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/previous/regression_tests.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable requirements.lock.txt",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/B0_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/C0_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/G0_Q999_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/G1_Q999_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/B0_V.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/G1_Q999_V.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/B0_H.csv",
+      "passed": true
+    },
+    {
+      "check": "packaged immutable inputs/expected/G1_Q999_H.csv",
+      "passed": true
+    },
+    {
+      "check": "reused inference sources exact historical version",
+      "passed": true
+    },
+    {
+      "check": "historical151 passed record",
+      "passed": true
+    },
+    {
+      "check": "151 evidence validator source copied intact",
+      "passed": true
+    },
+    {
+      "check": "T exclusively normal",
+      "passed": true
+    },
+    {
+      "check": "raw IDs globally unique",
+      "passed": true
+    },
+    {
+      "check": "all original nonduplicate rows assigned",
+      "passed": true
+    },
+    {
+      "check": "R5 scaler normal train moments",
+      "passed": true
+    },
+    {
+      "check": "R5 fit manifest normal T only",
+      "passed": true
+    },
+    {
+      "check": "selection one-row input order",
+      "passed": true
+    },
+    {
+      "check": "selection B0 online exact decisions",
+      "passed": true
+    },
+    {
+      "check": "selection online R5 numeric scores",
+      "passed": true
+    },
+    {
+      "check": "selection online B_same_threshold",
+      "passed": true
+    },
+    {
+      "check": "selection online G1",
+      "passed": true
+    },
+    {
+      "check": "selection online D_old_threshold_G1",
+      "passed": true
+    },
+    {
+      "check": "selection online R5_A0",
+      "passed": true
+    },
+    {
+      "check": "test one-row input order",
+      "passed": true
+    },
+    {
+      "check": "test B0 online exact decisions",
+      "passed": true
+    },
+    {
+      "check": "test online R5 numeric scores",
+      "passed": true
+    },
+    {
+      "check": "test online B_same_threshold",
+      "passed": true
+    },
+    {
+      "check": "test online G1",
+      "passed": true
+    },
+    {
+      "check": "test online D_old_threshold_G1",
+      "passed": true
+    },
+    {
+      "check": "test online R5_A0",
+      "passed": true
+    },
+    {
+      "check": "demonstrate unsupported missing-input behavior",
+      "passed": true
+    },
+    {
+      "check": "wrapper rejects missing, no false normal classification",
+      "passed": true
+    },
+    {
+      "check": "new-data interface independent process model reload",
+      "passed": true
+    },
+    {
+      "check": "portable external replay same rows",
+      "passed": true
+    },
+    {
+      "check": "portable external B0 same decisions",
+      "passed": true
+    },
+    {
+      "check": "portable external G1 same decisions",
+      "passed": true
+    },
+    {
+      "check": "prediction digest before labels unchanged",
+      "passed": true
+    },
+    {
+      "check": "strict exact threshold equality no auxiliary hit",
+      "passed": true
+    },
+    {
+      "check": "next float above theta hits",
+      "passed": true
+    },
+    {
+      "check": "prior dependency audit includes original split protection",
+      "passed": true
+    }
+  ],
+  "online": [
+    {
+      "partition": "selection",
+      "rows": 2097,
+      "B0_max_abs_score_error": 5.684341886080802e-14,
+      "R5_max_abs_error": 6.821210263296962e-13,
+      "single_row_loop_seconds": 0.15371125099773053,
+      "measured_average_seconds_per_row": 7.33005488782692e-05,
+      "not_hardware_realtime_latency_guarantee": true
+    },
+    {
+      "partition": "test",
+      "rows": 4347,
+      "B0_max_abs_score_error": 5.684341886080802e-14,
+      "R5_max_abs_error": 3.410605131648481e-13,
+      "single_row_loop_seconds": 0.2834159069971065,
+      "measured_average_seconds_per_row": 6.519804623811973e-05,
+      "not_hardware_realtime_latency_guarantee": true
+    }
+  ],
+  "new_data_performance_validation": "not_performed_no_independent_new_acquisition",
+  "missing_input": {
+    "original_helper_produces_nonfinite_base_score": true,
+    "original_helper_treats_nonfinite_base_as_no_alarm": true,
+    "supplied_original_data_have_no_missing": true,
+    "fix": "strict finite-sensor input wrapper rejects the entire external input; frozen core unchanged",
+    "valid_data_scores_affected": false
+  },
+  "core_models_retrained": false,
+  "chronology_independently_proven": false
+}

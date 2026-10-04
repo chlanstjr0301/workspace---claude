@@ -1,0 +1,15 @@
+{
+  "CawleyTalbot2010": {
+    "url": "https://jmlr.org/papers/volume11/cawley10a/cawley10a.pdf",
+    "official": "https://jmlr.org/papers/v11/cawley10a.html",
+    "read": "abstract, Section6, PDF25",
+    "DOI": null
+  },
+  "BergmeirHyndmanKoo2018": {
+    "url": "https://robjhyndman.com/papers/cv-wp.pdf",
+    "DOI": "10.1016/j.csda.2017.11.003",
+    "read": "abstract,Sections1-3,Section7",
+    "document_version": "2017-07-23 preprint",
+    "publisher_DOI_access": "500 error; author fulltext accessible"
+  }
+}

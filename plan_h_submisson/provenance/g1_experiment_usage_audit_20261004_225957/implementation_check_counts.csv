@@ -1,0 +1,5 @@
+run,reported_executed_check_items,reused_historical_check_items,evidence,independent_experiments
+v2_original,151,0,runs/pca_followup_v2_20261004_214810/validation_report.json,False
+v2_replay,151,0,runs/pca_followup_v2_20261004_214810/replays/20261004_220243_176540/validation_report.json,False
+frozen_original,76,151,runs/pca_g1_frozen_validation_20261004_221914/validation_report.json,False
+frozen_replay,76,151,/tmp/pca_g1_portable_check_20261004_221914/validation_report.json,False

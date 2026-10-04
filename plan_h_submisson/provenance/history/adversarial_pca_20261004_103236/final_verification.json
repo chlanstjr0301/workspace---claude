@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "stage": "outer_development",
+      "alias": "baseline",
+      "metrics_match": true,
+      "n": 1095
+    },
+    {
+      "stage": "outer_development",
+      "alias": "selected",
+      "metrics_match": true,
+      "n": 1095
+    },
+    {
+      "stage": "outer_development",
+      "alias": "IF_same_W20",
+      "metrics_match": true,
+      "n": 1095
+    },
+    {
+      "stage": "outer_development",
+      "alias": "selected_consecutive2",
+      "metrics_match": true,
+      "n": 1095
+    },
+    {
+      "stage": "outer_development",
+      "alias": "selected_two_of_three",
+      "metrics_match": true,
+      "n": 1095
+    },
+    {
+      "stage": "historical",
+      "alias": "baseline",
+      "metrics_match": true,
+      "n": 4347
+    },
+    {
+      "stage": "historical",
+      "alias": "selected",
+      "metrics_match": true,
+      "n": 4347
+    },
+    {
+      "stage": "historical",
+      "alias": "IF_same_W20",
+      "metrics_match": true,
+      "n": 4347
+    },
+    {
+      "stage": "historical",
+      "alias": "selected_consecutive2",
+      "metrics_match": true,
+      "n": 4347
+    },
+    {
+      "stage": "historical",
+      "alias": "selected_two_of_three",
+      "metrics_match": true,
+      "n": 4347
+    }
+  ],
+  "candidates": 54,
+  "additional_policies": 2,
+  "all_required_outputs_present": true,
+  "selection_and_source_unchanged": true,
+  "original_data_preserved": true,
+  "saved_model_inference_rows": 13041
+}

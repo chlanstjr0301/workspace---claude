@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "documents": [
+    {
+      "path": "paper/paper_ko.pdf",
+      "pages": 14,
+      "identical_page_text": true,
+      "identical_bytes": false
+    },
+    {
+      "path": "paper/paper_en_icml.pdf",
+      "pages": 14,
+      "identical_page_text": true,
+      "identical_bytes": false
+    },
+    {
+      "path": "reviews/adversarial_review_ko.pdf",
+      "pages": 7,
+      "identical_page_text": true,
+      "identical_bytes": false
+    }
+  ],
+  "metric_csv_byte_identical": true,
+  "all_25_confusion_metric_records_preserved": true,
+  "pdf_bytes_may_change_due_to_generation_metadata": true
+}

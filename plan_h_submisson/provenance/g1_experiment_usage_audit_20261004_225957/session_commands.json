@@ -1,0 +1,1325 @@
+[
+  {
+    "session_line": 81,
+    "timestamp": "2026-10-03T09:23:43.464Z",
+    "call_id": "call_myQQMdBcRfUHRXlmC2xoOFdJ",
+    "scripts": [
+      "/home/lim/hydraulic_ai/src/experiment.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "/home/lim/.local/bin/uv pip freeze --python .venv/bin/python"
+  },
+  {
+    "session_line": 114,
+    "timestamp": "2026-10-03T09:32:48.527Z",
+    "call_id": "call_8olKSJD6UmKAYgSOuSwqI0Ak",
+    "scripts": [
+      "src/models.py",
+      "src/evaluation.py",
+      "src/experiment.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python -m py_compile src/models.py src/evaluation.py src/experiment.py"
+  },
+  {
+    "session_line": 121,
+    "timestamp": "2026-10-03T09:33:21.858Z",
+    "call_id": "call_TkITOemnfguNSH3MJ1HzlsZl",
+    "scripts": [
+      "scripts/checks.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/checks.py"
+  },
+  {
+    "session_line": 121,
+    "timestamp": "2026-10-03T09:33:21.858Z",
+    "call_id": "call_TkITOemnfguNSH3MJ1HzlsZl",
+    "scripts": [
+      "src/experiment.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": ".venv/bin/python src/experiment.py --out runs/preflight_20261003 --stage prepare"
+  },
+  {
+    "session_line": 170,
+    "timestamp": "2026-10-03T09:36:16.601Z",
+    "call_id": "call_b512fbd6f3f74d7283afa471b7d71b69",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 216,
+    "timestamp": "2026-10-03T09:40:48.061Z",
+    "call_id": "call_08b597dbd8354b479cf12474727969ec",
+    "scripts": [
+      "scripts/report.py",
+      "scripts/validate_development.py",
+      "src/infer.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python -m py_compile scripts/report.py scripts/validate_development.py src/infer.py"
+  },
+  {
+    "session_line": 255,
+    "timestamp": "2026-10-03T09:41:49.519Z",
+    "call_id": "call_d3c076c1db6645608ee3fb191031ab28",
+    "scripts": [
+      "src/experiment.py",
+      "scripts/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python -m py_compile src/experiment.py scripts/report.py"
+  },
+  {
+    "session_line": 262,
+    "timestamp": "2026-10-03T09:42:00.264Z",
+    "call_id": "call_01a3de53503b48238c83ba6a206cc51a",
+    "scripts": [
+      "scripts/validate_development.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/validate_development.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 277,
+    "timestamp": "2026-10-03T09:42:26.569Z",
+    "call_id": "call_31451d5d70434340aa868655cd8e33ab",
+    "scripts": [
+      "scripts/validate_development.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/validate_development.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 300,
+    "timestamp": "2026-10-03T09:43:10.809Z",
+    "call_id": "call_390ad58d975344c39fb968ffc38296f7",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 345,
+    "timestamp": "2026-10-03T09:45:09.438Z",
+    "call_id": "call_c90c957edbff459f9f896e91ebf82cc4",
+    "scripts": [
+      "scripts/supplement.py",
+      "scripts/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python -m py_compile scripts/supplement.py scripts/report.py"
+  },
+  {
+    "session_line": 352,
+    "timestamp": "2026-10-03T09:45:19.524Z",
+    "call_id": "call_c27dc33339534bfe87773eccf43a3f15",
+    "scripts": [
+      "scripts/supplement.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/supplement.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 352,
+    "timestamp": "2026-10-03T09:45:19.524Z",
+    "call_id": "call_c27dc33339534bfe87773eccf43a3f15",
+    "scripts": [
+      "scripts/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/report.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 366,
+    "timestamp": "2026-10-03T09:45:43.834Z",
+    "call_id": "call_4997ea1f72784e5f9e116eb1f34b22c9",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 374,
+    "timestamp": "2026-10-03T09:46:07.618Z",
+    "call_id": "call_f84ae5e83ff343eaa2fbf297d2ad2e32",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 383,
+    "timestamp": "2026-10-03T09:46:42.468Z",
+    "call_id": "call_95372fe942f84f27835fbe322d00a258",
+    "scripts": [
+      "scripts/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/report.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 391,
+    "timestamp": "2026-10-03T09:47:21.197Z",
+    "call_id": "call_782b779fa29b4a7392341afbcf2cc4a9",
+    "scripts": [
+      "scripts/supplement.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/supplement.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 391,
+    "timestamp": "2026-10-03T09:47:21.197Z",
+    "call_id": "call_782b779fa29b4a7392341afbcf2cc4a9",
+    "scripts": [
+      "scripts/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/report.py --run runs/pca_20261003_cpu"
+  },
+  {
+    "session_line": 405,
+    "timestamp": "2026-10-03T09:48:07.354Z",
+    "call_id": "call_af4c87aaeffd4c6383188b3d0e2126f5",
+    "scripts": [
+      "scripts/reproduce.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash -n scripts/reproduce.sh"
+  },
+  {
+    "session_line": 485,
+    "timestamp": "2026-10-03T09:56:14.057Z",
+    "call_id": "call_2f6a91f314544c94ae3429c267731036",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 493,
+    "timestamp": "2026-10-03T09:56:59.526Z",
+    "call_id": "call_1cf7f2033083490b9c1a1f0c33a26bfd",
+    "scripts": [
+      "scripts/build_paper_assets.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/build_paper_assets.py"
+  },
+  {
+    "session_line": 526,
+    "timestamp": "2026-10-03T10:03:28.239Z",
+    "call_id": "call_e9b3a94a79344bb798906506fb5c4c42",
+    "scripts": [
+      "scripts/assemble_paper_package.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python scripts/assemble_paper_package.py"
+  },
+  {
+    "session_line": 567,
+    "timestamp": "2026-10-03T10:06:51.128Z",
+    "call_id": "call_c06b577cd7bb4846a99b0c778594a29d",
+    "scripts": [
+      "reports/package_docs.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python reports/package_docs.py"
+  },
+  {
+    "session_line": 605,
+    "timestamp": "2026-10-03T10:08:11.913Z",
+    "call_id": "call_0d650a00623348ef8f1ab7d968b41eea",
+    "scripts": [
+      "VERIFY_PACKAGE.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash VERIFY_PACKAGE.sh"
+  },
+  {
+    "session_line": 622,
+    "timestamp": "2026-10-03T10:08:45.480Z",
+    "call_id": "call_fda9b9c68c724a3d842f5a59d0ec6139",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 622,
+    "timestamp": "2026-10-03T10:08:45.480Z",
+    "call_id": "call_fda9b9c68c724a3d842f5a59d0ec6139",
+    "scripts": [
+      "VERIFY_PACKAGE.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash VERIFY_PACKAGE.sh"
+  },
+  {
+    "session_line": 647,
+    "timestamp": "2026-10-03T10:09:39.232Z",
+    "call_id": "call_4658429744d64aa9b052ba5951580ec0",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 675,
+    "timestamp": "2026-10-03T10:10:58.744Z",
+    "call_id": "call_bee8e26407164d5e819b4fb802b61cc7",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 697,
+    "timestamp": "2026-10-03T10:12:13.743Z",
+    "call_id": "call_43444723ffcd49f9b14d27b2d730f67e",
+    "scripts": [
+      "deliverables/pca_paper_20261003_185434/code/scripts/verify_paper_numbers.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python deliverables/pca_paper_20261003_185434/code/scripts/verify_paper_numbers.py"
+  },
+  {
+    "session_line": 711,
+    "timestamp": "2026-10-03T10:12:55.330Z",
+    "call_id": "call_ccfaec3ab4a5402fa90e7e52c446e35b",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 719,
+    "timestamp": "2026-10-03T10:13:27.265Z",
+    "call_id": "call_0597e3f3d71a45289439717024f3eb58",
+    "scripts": [
+      "deliverables/pca_paper_20261003_185434/code/scripts/create_archive.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python deliverables/pca_paper_20261003_185434/code/scripts/create_archive.py --package deliverables/pca_paper_20261003_185434 --out deliverables/hydraulic_pca_paper_code_data_ko_20261003.zip"
+  },
+  {
+    "session_line": 742,
+    "timestamp": "2026-10-03T10:14:17.544Z",
+    "call_id": "call_279843ea7f9544e899e9cf63a1e6e869",
+    "scripts": [
+      "deliverables/pca_paper_20261003_185434/code/scripts/create_archive.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python deliverables/pca_paper_20261003_185434/code/scripts/create_archive.py --package deliverables/pca_paper_20261003_185434 --out deliverables/hydraulic_pca_paper_code_data_ko_20261003.zip"
+  },
+  {
+    "session_line": 754,
+    "timestamp": "2026-10-03T10:14:50.722Z",
+    "call_id": "call_1e74985962bf42fe8730661489506730",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 831,
+    "timestamp": "2026-10-04T01:33:34.665Z",
+    "call_id": "call_6ZG2iKfwHCZ2XQWQja5xE7XG",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/prepare.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/prepare.py"
+  },
+  {
+    "session_line": 845,
+    "timestamp": "2026-10-04T01:33:53.604Z",
+    "call_id": "call_lwWxIuptR01iqkcR2te2D5YR",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/prepare.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/prepare.py"
+  },
+  {
+    "session_line": 861,
+    "timestamp": "2026-10-04T01:36:33.788Z",
+    "call_id": "call_3mjGOSnDESBVCeiNU9oU0VcD",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/reproduce.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/reproduce.py"
+  },
+  {
+    "session_line": 868,
+    "timestamp": "2026-10-04T01:36:47.533Z",
+    "call_id": "call_R71m2e3VVD8di9R0gYZ1ZDfE",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/prepare.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/prepare.py"
+  },
+  {
+    "session_line": 875,
+    "timestamp": "2026-10-04T01:38:11.359Z",
+    "call_id": "call_Cwsu6rZvyTNIWiFaQpkQTycE",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/design.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/design.py"
+  },
+  {
+    "session_line": 882,
+    "timestamp": "2026-10-04T01:39:29.770Z",
+    "call_id": "call_Vgrr93obarWZBb6EM6C0hvMu",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/develop.py"
+    ],
+    "mode": "script_invocation",
+    "action": "develop",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/develop.py"
+  },
+  {
+    "session_line": 906,
+    "timestamp": "2026-10-04T01:41:01.374Z",
+    "call_id": "call_bWx8bPsrriq0f4MPuk4uEWHY",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/validate.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/validate.py"
+  },
+  {
+    "session_line": 920,
+    "timestamp": "2026-10-04T01:42:19.084Z",
+    "call_id": "call_USyF8YdcpMdabareC4KPIb4G",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/finalize.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/finalize.py"
+  },
+  {
+    "session_line": 938,
+    "timestamp": "2026-10-04T10:44:51.335Z",
+    "call_id": "call_XiOHTYWMT1LpmEzG8Vqr8sG8",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+  },
+  {
+    "session_line": 952,
+    "timestamp": "2026-10-04T10:45:40.184Z",
+    "call_id": "call_PK0HURuD6DDYNmmWJPOfUVdB",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+  },
+  {
+    "session_line": 952,
+    "timestamp": "2026-10-04T10:45:40.184Z",
+    "call_id": "call_PK0HURuD6DDYNmmWJPOfUVdB",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 977,
+    "timestamp": "2026-10-04T10:51:41.624Z",
+    "call_id": "call_90c9d1fa929e46529a45148aece70448",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/additional_audit.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/additional_audit.py"
+  },
+  {
+    "session_line": 984,
+    "timestamp": "2026-10-04T10:51:50.838Z",
+    "call_id": "call_ffcd14fc2c7a4db7ab8f63c86a45c8fc",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 991,
+    "timestamp": "2026-10-04T10:52:19.070Z",
+    "call_id": "call_10ed7d8beab4403fbc31e5e653e654a3",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/analysis_report.py"
+  },
+  {
+    "session_line": 998,
+    "timestamp": "2026-10-04T10:55:17.606Z",
+    "call_id": "call_cf7aaead66b644308941d96ae59567c6",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/write_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/write_report.py"
+  },
+  {
+    "session_line": 1012,
+    "timestamp": "2026-10-04T10:55:53.116Z",
+    "call_id": "call_d2d4b0b70ec941329d3e05ad1ebc4032",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/write_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/write_report.py"
+  },
+  {
+    "session_line": 1021,
+    "timestamp": "2026-10-04T10:56:34.552Z",
+    "call_id": "call_39c6b06bd6134d4cb08c42d510fec48a",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/write_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/write_report.py"
+  },
+  {
+    "session_line": 1021,
+    "timestamp": "2026-10-04T10:56:34.552Z",
+    "call_id": "call_39c6b06bd6134d4cb08c42d510fec48a",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/verify_outputs.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/verify_outputs.py"
+  },
+  {
+    "session_line": 1021,
+    "timestamp": "2026-10-04T10:56:34.552Z",
+    "call_id": "call_39c6b06bd6134d4cb08c42d510fec48a",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/RUN_REVIEW.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash runs/adversarial_pca_20261004_103236/RUN_REVIEW.sh"
+  },
+  {
+    "session_line": 1034,
+    "timestamp": "2026-10-04T10:57:19.236Z",
+    "call_id": "call_29c753f53ba04bde8514ee445629aaa7",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1056,
+    "timestamp": "2026-10-04T10:58:50.371Z",
+    "call_id": "call_ef979ea07b824d06ac6a28a900dadd16",
+    "scripts": [
+      "runs/adversarial_pca_20261004_103236/src/package_results.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/adversarial_pca_20261004_103236/src/package_results.py"
+  },
+  {
+    "session_line": 1105,
+    "timestamp": "2026-10-04T11:17:40.099Z",
+    "call_id": "call_562125f8c2dd4e2ea82932474307bdcd",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/prepare.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/prepare.py"
+  },
+  {
+    "session_line": 1114,
+    "timestamp": "2026-10-04T11:18:46.293Z",
+    "call_id": "call_13c25897c7fa4f41a7a39da9f6672704",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/stage_a.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/stage_a.py"
+  },
+  {
+    "session_line": 1131,
+    "timestamp": "2026-10-04T11:19:59.601Z",
+    "call_id": "call_829bfd06c09c4f90988b648991e826fa",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/stage_b.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/stage_b.py"
+  },
+  {
+    "session_line": 1148,
+    "timestamp": "2026-10-04T11:21:16.298Z",
+    "call_id": "call_441cae86ed8a47dfafdccc52309fc535",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/freeze.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/freeze.py"
+  },
+  {
+    "session_line": 1148,
+    "timestamp": "2026-10-04T11:21:16.298Z",
+    "call_id": "call_441cae86ed8a47dfafdccc52309fc535",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/final_evaluate.py"
+    ],
+    "mode": "script_invocation",
+    "action": "final",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/final_evaluate.py"
+  },
+  {
+    "session_line": 1166,
+    "timestamp": "2026-10-04T11:22:42.362Z",
+    "call_id": "call_1cc0ecc5b0884293b17b3a25bdf8d387",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/validate.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/validate.py"
+  },
+  {
+    "session_line": 1173,
+    "timestamp": "2026-10-04T11:22:59.215Z",
+    "call_id": "call_20ab889d1b4449b5b9b2de907cf10e11",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1180,
+    "timestamp": "2026-10-04T11:23:54.369Z",
+    "call_id": "call_737406fe11ea43728238c179d77fa0b1",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/analyze.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/analyze.py"
+  },
+  {
+    "session_line": 1194,
+    "timestamp": "2026-10-04T11:26:48.479Z",
+    "call_id": "call_b379c1cf128c4b4eb6055419660ef3a6",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/report.py"
+  },
+  {
+    "session_line": 1201,
+    "timestamp": "2026-10-04T11:27:32.939Z",
+    "call_id": "call_8fcc141df22341bebcdaf1116753e2cd",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/verify_outputs.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/verify_outputs.py"
+  },
+  {
+    "session_line": 1201,
+    "timestamp": "2026-10-04T11:27:32.939Z",
+    "call_id": "call_8fcc141df22341bebcdaf1116753e2cd",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/RUN_EXPERIMENT.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash runs/pca_fn_fp_tradeoff_20261004_201516/RUN_EXPERIMENT.sh"
+  },
+  {
+    "session_line": 1219,
+    "timestamp": "2026-10-04T11:29:16.651Z",
+    "call_id": "call_1f95ab2f43894cf58d9bafa2287a64fe",
+    "scripts": [
+      "runs/pca_fn_fp_tradeoff_20261004_201516/src/package_results.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_fn_fp_tradeoff_20261004_201516/src/package_results.py"
+  },
+  {
+    "session_line": 1242,
+    "timestamp": "2026-10-04T12:05:04.484Z",
+    "call_id": "call_6f2dafe32bd44f72830493139a2dc2c5",
+    "scripts": [
+      "RUN_EXPERIMENT.sh",
+      "runs/pca_fn_fp_tradeoff_20261004_201516/RUN_EXPERIMENT.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "date +%Y%m%d_%H%M%S && pwd && rg --files -g AGENTS.md -g RUN_EXPERIMENT.sh -g selected_config.json -g preregistration.json | head -30 && sed -n '1,90p' runs/pca_fn_fp_tradeoff_20261004_201516/RUN_EXPERIMENT.sh"
+  },
+  {
+    "session_line": 1250,
+    "timestamp": "2026-10-04T12:05:21.083Z",
+    "call_id": "call_3042b8f6e8d9493caf5935866742f701",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1267,
+    "timestamp": "2026-10-04T12:06:10.624Z",
+    "call_id": "call_38985c0b05354483aa707798079369f9",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1279,
+    "timestamp": "2026-10-04T12:08:06.839Z",
+    "call_id": "call_bf5c170ecbab4da78e8454532b2bb29e",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/prepare.py"
+    ],
+    "mode": "script_invocation",
+    "action": "prepare",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/prepare.py"
+  },
+  {
+    "session_line": 1326,
+    "timestamp": "2026-10-04T12:12:42.358Z",
+    "call_id": "call_04323f51e5bc4d7f8fc41ceaa2bbd866",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/experiment.py"
+    ],
+    "mode": "script_invocation",
+    "action": "select",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/experiment.py select"
+  },
+  {
+    "session_line": 1333,
+    "timestamp": "2026-10-04T12:12:49.883Z",
+    "call_id": "call_23cca8a071234964a07b6999fb2b5d41",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1354,
+    "timestamp": "2026-10-04T12:13:10.350Z",
+    "call_id": "call_a783774b427f459d98682fe90c9c0b69",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/experiment.py"
+    ],
+    "mode": "script_invocation",
+    "action": "evaluate",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/experiment.py evaluate"
+  },
+  {
+    "session_line": 1370,
+    "timestamp": "2026-10-04T12:14:39.250Z",
+    "call_id": "call_bcf56586eda64529b9940229f21ea1d5",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/validate.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/validate.py"
+  },
+  {
+    "session_line": 1394,
+    "timestamp": "2026-10-04T12:19:03.238Z",
+    "call_id": "call_081f143ad01f4807a9d1b705fe07daf2",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 OMP_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/report.py"
+  },
+  {
+    "session_line": 1401,
+    "timestamp": "2026-10-04T12:19:54.218Z",
+    "call_id": "call_241456afd4e84a7bafaf6fbd164e78db",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/RUN_EXPERIMENT.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash runs/pca_literature_rescue_20261004_210504/RUN_EXPERIMENT.sh"
+  },
+  {
+    "session_line": 1423,
+    "timestamp": "2026-10-04T12:21:09.618Z",
+    "call_id": "call_1b170507caf54bb4837ac79969c56b8d",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/audit_artifacts.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/audit_artifacts.py"
+  },
+  {
+    "session_line": 1432,
+    "timestamp": "2026-10-04T12:21:37.740Z",
+    "call_id": "call_c67ada600fcf4d07858a007a1e8937b1",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/RUN_EXPERIMENT.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash runs/pca_literature_rescue_20261004_210504/RUN_EXPERIMENT.sh"
+  },
+  {
+    "session_line": 1446,
+    "timestamp": "2026-10-04T12:23:03.653Z",
+    "call_id": "call_65dce1ca756c403c8ffee34ed02a1490",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1446,
+    "timestamp": "2026-10-04T12:23:03.653Z",
+    "call_id": "call_65dce1ca756c403c8ffee34ed02a1490",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/report.py"
+  },
+  {
+    "session_line": 1453,
+    "timestamp": "2026-10-04T12:23:40.111Z",
+    "call_id": "call_486477e9bc754614a4707ddcc3cdc124",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1453,
+    "timestamp": "2026-10-04T12:23:40.111Z",
+    "call_id": "call_486477e9bc754614a4707ddcc3cdc124",
+    "scripts": [
+      "runs/pca_literature_rescue_20261004_210504/src/package.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_literature_rescue_20261004_210504/src/package.py deliverables/pca_literature_rescue_20261004_210504_results.zip"
+  },
+  {
+    "session_line": 1460,
+    "timestamp": "2026-10-04T12:23:50.961Z",
+    "call_id": "call_cd14f6683b984dfabdf59b2335c0db6d",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1507,
+    "timestamp": "2026-10-04T12:48:10.704Z",
+    "call_id": "call_928d5a1b47254780a05d1db6dc005499",
+    "scripts": [
+      "RUN_EXPERIMENT.sh",
+      "infer_system.py",
+      "auxiliary.py",
+      "common.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "pwd; rg --files -g AGENTS.md -g 'RUN_EXPERIMENT.sh' -g 'infer_system.py' -g 'auxiliary.py' -g 'common.py' runs/pca_literature_rescue_20261004_210504; date +%Y%m%d_%H%M%S; for f in /AGENTS.md /home/AGENTS.md /home/lim/AGENTS.md /home/lim/hydraulic_ai_alt/AGENTS.md; do if [ -f \"$f\" ]; then cat \"$f\"; fi; done"
+  },
+  {
+    "session_line": 1515,
+    "timestamp": "2026-10-04T12:48:46.019Z",
+    "call_id": "call_1a82dd3d526941ad8413fdc4c6b56ce7",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1523,
+    "timestamp": "2026-10-04T12:50:25.858Z",
+    "call_id": "call_dee1615c388c462792a9328fe4096735",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/diagnose.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/diagnose.py"
+  },
+  {
+    "session_line": 1547,
+    "timestamp": "2026-10-04T12:52:21.562Z",
+    "call_id": "call_7d051e3a48734af3ba84663ed9e0c093",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/register.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/register.py"
+  },
+  {
+    "session_line": 1554,
+    "timestamp": "2026-10-04T12:53:29.599Z",
+    "call_id": "call_5bbf1104c8244bd0ba2d85218e85579f",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/experiment_v2.py"
+    ],
+    "mode": "script_invocation",
+    "action": "select",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/experiment_v2.py select"
+  },
+  {
+    "session_line": 1561,
+    "timestamp": "2026-10-04T12:53:55.854Z",
+    "call_id": "call_eef7ab3d62e840fb809a52e6e2c33c16",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/experiment_v2.py"
+    ],
+    "mode": "script_invocation",
+    "action": "evaluate",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/experiment_v2.py evaluate"
+  },
+  {
+    "session_line": 1580,
+    "timestamp": "2026-10-04T12:55:47.422Z",
+    "call_id": "call_0025bfd96ecc4411a697c231400bd1f7",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/validate_v2.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/validate_v2.py"
+  },
+  {
+    "session_line": 1586,
+    "timestamp": "2026-10-04T12:56:07.665Z",
+    "call_id": "call_1c58ea6d1b534047a8e6458209256756",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1609,
+    "timestamp": "2026-10-04T12:57:48.775Z",
+    "call_id": "call_0bf3dfdb420c425398dd4585d2411db1",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/analyze.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/analyze.py"
+  },
+  {
+    "session_line": 1623,
+    "timestamp": "2026-10-04T12:58:24.663Z",
+    "call_id": "call_e0c2816a183c4fe2b39fd072c3605694",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1632,
+    "timestamp": "2026-10-04T13:01:22.171Z",
+    "call_id": "call_3ba1fdc144bc44f79b8d01b27d228756",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/report_v2.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/report_v2.py"
+  },
+  {
+    "session_line": 1646,
+    "timestamp": "2026-10-04T13:02:43.029Z",
+    "call_id": "call_069cfa7eaec04b38b01d8c5cf6522e4a",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1646,
+    "timestamp": "2026-10-04T13:02:43.029Z",
+    "call_id": "call_069cfa7eaec04b38b01d8c5cf6522e4a",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/RUN_EXPERIMENT.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "bash runs/pca_followup_v2_20261004_214810/RUN_EXPERIMENT.sh"
+  },
+  {
+    "session_line": 1671,
+    "timestamp": "2026-10-04T13:04:52.616Z",
+    "call_id": "call_86abe9e635a34c188ad15d75af020dba",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1671,
+    "timestamp": "2026-10-04T13:04:52.616Z",
+    "call_id": "call_86abe9e635a34c188ad15d75af020dba",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/report_v2.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/report_v2.py"
+  },
+  {
+    "session_line": 1688,
+    "timestamp": "2026-10-04T13:05:49.788Z",
+    "call_id": "call_TAv1UWj5kuF6oRJnyhOBwSfA",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1688,
+    "timestamp": "2026-10-04T13:05:49.788Z",
+    "call_id": "call_TAv1UWj5kuF6oRJnyhOBwSfA",
+    "scripts": [
+      "runs/pca_followup_v2_20261004_214810/src/package.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_followup_v2_20261004_214810/src/package.py deliverables/pca_followup_v2_20261004_214810_results.zip"
+  },
+  {
+    "session_line": 1697,
+    "timestamp": "2026-10-04T13:06:35.272Z",
+    "call_id": "call_dakaYoTFDIouVRkF2Lk0yFsT",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1721,
+    "timestamp": "2026-10-04T13:19:58.157Z",
+    "call_id": "call_8Rxi5k0rvljP9mo11mswUL9a",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1728,
+    "timestamp": "2026-10-04T13:20:57.195Z",
+    "call_id": "call_XXs1ciq9AMFaoS68gbCbWoMQ",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/register_validation.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "OPENBLAS_NUM_THREADS=2 .venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/register_validation.py"
+  },
+  {
+    "session_line": 1768,
+    "timestamp": "2026-10-04T13:24:55.481Z",
+    "call_id": "call_rbEFNluA95gcQRvkeXA0JOSL",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1780,
+    "timestamp": "2026-10-04T13:26:53.077Z",
+    "call_id": "call_JR6mcE7i27CoyEtI8whmTB7n",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/review.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/review.py"
+  },
+  {
+    "session_line": 1795,
+    "timestamp": "2026-10-04T13:27:13.219Z",
+    "call_id": "call_J7xAnUR1wmknpX6ge1113xmO",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/review.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/review.py"
+  },
+  {
+    "session_line": 1802,
+    "timestamp": "2026-10-04T13:28:26.019Z",
+    "call_id": "call_RpgDY0Ssj8Wm7dCKDSHkm8Yr",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1809,
+    "timestamp": "2026-10-04T13:28:36.669Z",
+    "call_id": "call_StycvJ34jDfTX659c19m6Vv3",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1828,
+    "timestamp": "2026-10-04T13:30:04.200Z",
+    "call_id": "call_tCAgLmOByOKW7WirJvQZgKwv",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/validate_frozen.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/validate_frozen.py"
+  },
+  {
+    "session_line": 1835,
+    "timestamp": "2026-10-04T13:30:17.020Z",
+    "call_id": "call_TPebCHbCNl1wYZWXW8qpBuS4",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1843,
+    "timestamp": "2026-10-04T13:31:04.745Z",
+    "call_id": "call_rsY1VacAVFW6984nLwiVIEmj",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/audit_data.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/audit_data.py"
+  },
+  {
+    "session_line": 1852,
+    "timestamp": "2026-10-04T13:35:01.723Z",
+    "call_id": "call_Mj8b1f7NX63L5jOqH5Ntwvop",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/src/make_report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/pca_g1_frozen_validation_20261004_221914/src/make_report.py"
+  },
+  {
+    "session_line": 1859,
+    "timestamp": "2026-10-04T13:35:19.196Z",
+    "call_id": "call_S6rpk8APqofdhrj6LWCrSVsn",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1874,
+    "timestamp": "2026-10-04T13:37:13.817Z",
+    "call_id": "call_y27tIgIx6gNGKT5vONDboWrG",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1874,
+    "timestamp": "2026-10-04T13:37:13.817Z",
+    "call_id": "call_y27tIgIx6gNGKT5vONDboWrG",
+    "scripts": [
+      "runs/pca_g1_frozen_validation_20261004_221914/RUN_REVIEW.sh"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": "PCA_PYTHON=/home/lim/hydraulic_ai_alt/.venv/bin/python bash runs/pca_g1_frozen_validation_20261004_221914/RUN_REVIEW.sh /tmp/pca_g1_portable_check_20261004_221914"
+  },
+  {
+    "session_line": 1881,
+    "timestamp": "2026-10-04T13:37:42.810Z",
+    "call_id": "call_jQ8brJqnLYP6xPo64z48vH8A",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1890,
+    "timestamp": "2026-10-04T13:38:48.875Z",
+    "call_id": "call_JtH6uDzcwcvCOyru13SFG7HF",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1897,
+    "timestamp": "2026-10-04T13:39:12.565Z",
+    "call_id": "call_5YQCiGNQKQeNW3YoiQw2U90y",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1931,
+    "timestamp": "2026-10-04T13:49:58.532Z",
+    "call_id": "call_EaYGooSv6hVZP544S5qZvp3j",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1938,
+    "timestamp": "2026-10-04T13:50:18.351Z",
+    "call_id": "call_ylB5AEngRUCq2cdid4WORrfn",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1947,
+    "timestamp": "2026-10-04T13:50:53.516Z",
+    "call_id": "call_L3b8uuTJtx7zeHyXPXm5DaxM",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 1961,
+    "timestamp": "2026-10-04T13:53:55.035Z",
+    "call_id": "call_KW0yeDTmR18m0Jo68ygz4aKv",
+    "scripts": [
+      "runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+  },
+  {
+    "session_line": 1988,
+    "timestamp": "2026-10-04T13:56:09.668Z",
+    "call_id": "call_qcJGQf8snpgbSkFLyADsXaxt",
+    "scripts": [
+      "runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+  },
+  {
+    "session_line": 2008,
+    "timestamp": "2026-10-04T13:56:52.719Z",
+    "call_id": "call_ZzJ3Q1eREzhniP5dgrA79c9N",
+    "scripts": [
+      "runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/data_usage_audit_20261004_225053/src/audit_usage.py"
+  },
+  {
+    "session_line": 2029,
+    "timestamp": "2026-10-04T13:57:37.876Z",
+    "call_id": "call_mnNkpXjgTLlE7olKM0Ub3AWv",
+    "scripts": [
+      "runs/data_usage_audit_20261004_225053/src/report.py"
+    ],
+    "mode": "script_invocation",
+    "action": "",
+    "safe_command": ".venv/bin/python runs/data_usage_audit_20261004_225053/src/report.py"
+  },
+  {
+    "session_line": 2029,
+    "timestamp": "2026-10-04T13:57:37.876Z",
+    "call_id": "call_mnNkpXjgTLlE7olKM0Ub3AWv",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  },
+  {
+    "session_line": 2038,
+    "timestamp": "2026-10-04T13:58:31.832Z",
+    "call_id": "call_0dTkk6OBp9T9spfmpWHmZUyU",
+    "scripts": [],
+    "mode": "inline_python_body_not_exported",
+    "action": "",
+    "safe_command": null
+  }
+]

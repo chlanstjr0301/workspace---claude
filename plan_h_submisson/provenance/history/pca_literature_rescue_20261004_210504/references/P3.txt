@@ -1,0 +1,6176 @@
+PAGE 1
+Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+Contents
+ lists
+ available
+ at
+ ScienceDirect
+Journal
+ of
+ Process
+ Control
+j ourna
+ l
+ ho
+ me pa
+ ge:
+ www.elsevier.com/locate/jprocont
+Research
+ paper
+Fault
+ detection
+ of
+ process
+ correlation
+ structure
+ using
+ canonical
+variate
+ analysis-based
+ correlation
+ features
+Benben
+ Jiang a,b,∗, Richard
+ D.
+ Braatz b
+a College
+ of
+ Information
+ Science
+ and
+ Technology,
+ Beijing
+ University
+ of
+ Chemical
+ Technology,
+ Beijing
+ 100029,
+ China
+b Department
+ of
+ Chemical
+ Engineering,
+ Massachusetts
+ Institute
+ of
+ Technology,
+ Cambridge,
+ MA
+ 02139,
+ USA
+a
+ r
+ t i c l e 
+i n
+ f o
+Article
+ history:
+Received
+ 7
+ November
+ 2016
+Received
+ in
+ revised
+ form
+ 9
+ August
+ 2017
+Accepted
+ 4
+ September
+ 2017
+Keywords:
+Fault
+ detection
+Process
+ correlations
+Dimensionality
+ reduction
+ technique
+Canonical
+ variate
+ analysis
+Canonical
+ correlation
+Process
+ monitoring
+a
+ b
+ s t r
+ a c t
+This paper proposes
+ a canonical
+ variate
+ analysis
+ (CVA)
+ approach
+ based on feature
+ representation
+ of
+canonical
+ correlation
+ for the monitoring
+ of faults associated
+ with changes
+ in process
+ correlations,
+ which
+involves
+ two new
+ metrics,
+ Rs and Rr, corresponding
+ to the state and residual
+ spaces.
+ The utilization
+ of
+the
+ canonical
+ correlation
+ feature
+ can improve
+ the monitoring
+ proﬁciency
+ by providing more application-
+dependent
+ representations
+ compared
+ with the original
+ data, as well as a decreased
+ degree
+ of redundancy
+in
+ the feature space.
+ A physical
+ interpretation
+ is provided for the canonical
+ correlation-based
+ method.
+ The
+effectiveness
+ of the proposed
+ approach
+ for the monitoring
+ of process
+ correlation
+ changes
+ is demonstrated
+for
+ both abrupt (step change)
+ and incipient
+ (slow drift) types of faults
+ in simulation
+ studies of a network
+system.
+ In the simulation
+ results,
+ the canonical
+ correlation-based
+ method
+ has
+ superior
+ performance
+ over
+both
+ the causal dependency-based
+ method
+ and the traditional
+ variable-based
+ method.
+©
+ 2017 Published by Elsevier
+ Ltd.
+1.
+ Introduction
+With
+ the
+ increasing
+ demand
+ for
+ production
+ efﬁciency,
+ energy
+savings,
+ and
+ environmental
+ protection,
+ many
+ industrial
+ processes
+are
+ moving
+ in
+ the
+ direction
+ of
+ large-scale
+ and
+ complicated
+ struc-
+tures.
+ Industries
+ can
+ face
+ large
+ economic
+ loss
+ and
+ security
+ threats
+when
+ faults
+ occur.
+ It
+ is
+ important
+ to
+ detect
+ and
+ diagnose
+ abnormal
+events
+ to
+ improve
+ the
+ reliability
+ and
+ safety
+ of
+ industrial
+ processes
+by
+ utilizing
+ fault
+ monitoring
+ techniques.
+ A
+ variety
+ of
+ the
+ process
+monitoring
+ approaches
+ designed
+ so
+ far,
+ such
+ as
+ multivariate
+ statis-
+tical
+ control
+ charts
+ [1,2], state-space/time-series
+ approaches
+ [3,4],
+and
+ dimensionality
+ reduction
+ techniques
+ [5–7], focus
+ on
+ the
+ mon-
+itoring
+ of
+ process
+ variables
+ to
+ detect
+ faults
+ [8].
+In
+ contrast
+ to
+ the
+ high
+ level
+ of
+ performance
+ achieved
+ in
+ the
+ fault
+monitoring
+ of
+ process
+ variables,
+ the
+ important
+ complementary
+problem
+ of
+ monitoring
+ the
+ faults
+ of
+ process
+ correlation
+ structures
+has
+ not
+ been
+ extensively
+ explored
+ [9]. Process
+ data
+ has
+ grown
+explosively
+ with
+ the
+ increased
+ scale
+ of
+ manufacturing
+ plants,
+ which
+represent
+ a
+ valuable
+ resource
+ for
+ the
+ analysis
+ and
+ operations
+ of
+industrial
+ processes,
+ providing
+ that
+ methods
+ are
+ developed
+ that
+can
+ effectively
+ extract
+ information
+ from
+ this
+ data.
+ With
+ the
+ rise
+ of
+the
+ Big
+ Data
+ concept,
+ increasing
+ interest
+ has
+ been
+ raised
+ towards
+exploiting
+ correlation
+ structures
+ [10]. In
+ sight
+ of
+ these
+ observations,
+∗Corresponding
+ author
+ at:
+ College
+ of
+ Information
+ Science
+ and
+ Technology,
+ Beijing
+University
+ of
+ ChemicalTechnology,
+ Beijing
+ 100029,
+ China
+E-mail
+ addresses:
+ jiangbb@mail.buct.edu.cn, bbjiang@mit.edu
+ (B.
+ Jiang).
+this
+ paper
+ is
+ devoted
+ to
+ developing
+ a
+ new
+ data-driven
+ approach
+ for
+monitoring
+ changes
+ in
+ process
+ correlations.
+Feature
+ representation,
+ which
+ produces
+ derived
+ values
+ (fea-
+tures)
+ from
+ an
+ initial
+ set
+ of
+ data
+ to
+ facilitate
+ the
+ desired
+ task,
+ is
+ of
+great
+ signiﬁcance
+ to
+ process
+ monitoring.
+ Sarfraz
+ et
+ al.
+ [11]
+ reported
+that
+ better
+ fault
+ monitoring
+ results
+ are
+ achieved
+ for
+ features
+that
+ are
+ more
+ application-dependent.
+ In
+ terms
+ of
+ application-
+dependence
+ of
+ the
+ feature
+ generation,
+ features
+ that
+ measure
+ the
+linkages
+ between
+ process
+ variables
+ (e.g.,
+ correlation
+ coefﬁcient)
+ are
+more
+ appropriate
+ than
+ features
+ directly
+ using
+ the
+ process
+ variables
+themselves
+ for
+ the
+ monitoring
+ of
+ process
+ correlation
+ structures.
+The
+ proﬁciency
+ of
+ monitoring
+ faults
+ from
+ data
+ can
+ be
+ improved
+using
+ dimensionality
+ reduction
+ techniques
+ such
+ as
+ principal
+ com-
+ponent
+ analysis
+ (PCA)
+ [12,13], partial
+ least-squares
+ (PLS)
+ analysis
+[14,15], and
+ canonical
+ variate
+ analysis
+ (CVA)
+ [3,16,17]. PCA-
+ and
+PLS-based
+ monitoring
+ methods
+ are
+ not
+ optimal
+ for
+ the
+ detection
+of
+ faults
+ for
+ process
+ data
+ that
+ contain
+ signiﬁcant
+ serial
+ correlation,
+because
+ the
+ underlying
+ PCA
+ and
+ PLS
+ approaches
+ do
+ not
+ generate
+ the
+most
+ accurate
+ dynamic
+ models,
+ even
+ when
+ lagged
+ values
+ of
+ process
+variables
+ are
+ augmented
+ in
+ the
+ observation
+ vectors
+ [3,18,19].
+ CVA-
+based
+ approaches
+ [18,19]
+ employ
+ the
+ CVA
+ multivariate
+ system
+identiﬁcation
+ method
+ that
+ generates
+ accurate
+ state-space
+ models
+from
+ serially
+ correlated
+ data.
+ This
+ method
+ maximizes
+ the
+ correla-
+tion
+ between
+ the
+ combinations
+ of
+ the
+ “past”
+ values
+ of
+ the
+ process
+inputs
+ and
+ outputs
+ and
+ the
+ combinations
+ of
+ the
+ “future”
+ values
+of
+ the
+ outputs
+ of
+ the
+ system.
+ CVA
+ takes
+ serial
+ correlations
+ into
+account
+ by
+ employing
+ this
+ different
+ augmented
+ vector
+ technique
+during
+ the
+ dimensionality
+ reduction
+ procedure
+ [18,20]. Negiz
+ and
+http://dx.doi.org/10.1016/j.jprocont.2017.09.003
+0959-1524/©
+ 2017
+ Published
+ by
+ Elsevier
+ Ltd.
+
+
+PAGE 2
+132
+ 
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+C¸ inar
+ [3]
+ discuss
+ and
+ demonstrate
+ the
+ higher
+ accuracy
+ of
+ dynamic
+models
+ constructed
+ by
+ CVA
+ compared
+ to
+ dynamic
+ PCA
+ through
+application
+ to
+ numerical
+ examples.
+ CVA
+ has
+ been
+ observed
+ to
+ have
+better
+ numerical
+ stability
+ and
+ parsimony
+ than
+ alternative
+ identi-
+ﬁcation
+ methods,
+ including
+ balanced
+ realization
+ (BR),
+ numerical
+algorithms
+ for
+ state-space
+ subspace
+ system
+ identiﬁcation
+ (N4SID),
+and
+ partial
+ least
+ squares
+ (PLS),
+ in
+ many
+ case
+ studies
+ [4,21].
+The
+ maximum
+ correlations
+ produced
+ by
+ the
+ dimensionality
+reduction
+ procedure
+ of
+ CVA
+ are
+ referred
+ to
+ as
+ canonical
+ corre-
+lations
+ [18,19,22]. In
+ terms
+ of
+ application
+ dependence
+ of
+ feature
+representation,
+ canonical
+ correlation
+ is
+ an
+ appropriate
+ feature
+ for
+monitoring
+ process
+ correlation
+ structures.
+ Canonical
+ correlations
+are
+ regarded
+ as
+ lower
+ dimensional
+ representations
+ of
+ process
+dynamic
+ relations.
+ As
+ such,
+ the
+ performance
+ of
+ process
+ monitor-
+ing
+ can
+ be
+ enhanced
+ by
+ performing
+ fault
+ detection
+ on
+ the
+ feature
+space
+ of
+ canonical
+ correlation,
+ owing
+ to
+ the
+ higher
+ sensitivity
+ of
+ the
+lower
+ dimensional
+ representations
+ of
+ the
+ data
+ [18].
+In
+ this
+ article,
+ a
+ new
+ fault
+ detection
+ approach
+ is
+ proposed
+ based
+on
+ the
+ canonical
+ correlations
+ induced
+ by
+ CVA
+ for
+ the
+ monitoring
+of
+ process
+ correlations.
+ In
+ virtue
+ of
+ the
+ interpretable
+ correlative
+levels
+ of
+ canonical
+ correlations,
+ two
+ novel
+ indices,
+ Rs and
+ Rr, that
+correspond
+ to
+ the
+ state
+ space
+ (that
+ is,
+ retained
+ canonical
+ correla-
+tions
+ obtained
+ via
+ CVA)
+ and
+ the
+ residual
+ space
+ (that
+ is,
+ the
+ rest
+ of
+the
+ canonical
+ correlations
+ in
+ the
+ CVA
+ model)
+ respectively,
+ are
+ put
+forward
+ to
+ examine
+ the
+ utility
+ of
+ the
+ two
+ different
+ measures
+ for
+detecting
+ process
+ dynamics.
+ The
+ two
+ types
+ of
+ monitoring
+ statistics
+(state
+ space
+ and
+ residual
+ space)
+ correspond
+ to
+ different
+ character-
+istics
+ of
+ the
+ process
+ dynamics
+ and
+ can
+ potentially
+ provide
+ more
+insights
+ into
+ the
+ fault.
+The
+ rest
+ of
+ this
+ paper
+ is
+ organized
+ as
+ follows.
+ The
+ CVA
+ method
+ is
+brieﬂy
+ reviewed
+ in
+ Section
+ 2, where
+ a
+ geometric
+ interpretation
+ of
+CVA
+ is
+ also
+ provided.
+ Section
+ 3
+ presents
+ the
+ canonical
+ correlation-
+based
+ measures
+ for
+ monitoring
+ correlation
+ structural
+ faults.
+ The
+effectiveness
+ of
+ the
+ proposed
+ method
+ is
+ demonstrated
+ by
+ a
+ gene
+network
+ system
+ in
+ Section
+ 4, followed
+ by
+ conclusions
+ in
+ Section
+ 5.
+2.
+ Canonical
+ variate
+ analysis
+ (CVA)
+ revisited
+2.1.
+ CVA
+ theorem
+CVA
+ is
+ a
+ dimensionality
+ reduction
+ technique
+ that
+ aims
+ to
+maximize
+ a
+ correlation
+ statistic
+ between
+ two
+ sets
+ of
+ variables.
+ Con-
+sidering
+ the
+ two
+ variable
+ vectors
+ x
+ ∈
+ Rm and
+ y ∈
+ Rn with
+ covariance
+matrices
+ ˙xx and
+ yy and
+ cross-covariance
+ matrix
+ ˙xy, the
+ orthog-
+onal
+ basis
+ J
+ ∈
+ Rm×m and
+ L
+ ∈
+ Rn×n can
+ be
+ determined
+ from
+
+J˙xxJT =
+ I ¯m
+L˙yyLT =
+ I ¯n
+,
+(1)
+and
+J˙xyLT =
+ D
+ =
+ diag (1, ·
+ · ·, r, 0,
+ ·
+ ·
+ ·, 0) ,
+ 
+(2)
+where ¯m
+ =
+ rank (˙xx), ¯n =
+ rank
+˙yy
+
+, r =
+ rank
+˙xy
+
+, and
+ Ik is
+ a
+block-diagonal
+ matrix
+ with
+ a
+ k
+ ×
+ k
+ identity
+ matrix
+ as
+ the
+ ﬁrst
+ block
+and
+ a
+ zero
+ matrix
+ as
+ the
+ second
+ block
+ [18].
+The
+ i (i
+ =
+ 1,
+ 2,
+ · · · , r)
+ are
+ canonical
+ correlations
+ with
+ 1 ≥
+ · · ·
+ ≥
+ r
+[19]. The
+ vectors
+ of
+ canonical
+ variables
+ c
+ =
+ Jx
+ and
+ d
+ =
+ Ly
+ contain
+ a
+ set
+of
+ independent
+ variables
+ with
+ the
+ covariance
+ matrix
+ ˙cc =
+ I ¯m and
+˙dd =
+ I ¯n, respectively.
+By
+ solving
+ the
+ singular
+ value
+ decomposition
+ (SVD)
+˙−1/2
+xx
+˙xy˙−1/2
+yy
+=
+ U˙V T,
+ 
+(3)
+the
+ matrix
+ of
+ canonical
+ correlations
+ D
+ can
+ be
+ computed
+ as
+D
+ =
+ ˙,
+ 
+(4)
+and
+ the
+ projection
+ matrices
+ J
+ and
+ L can
+ be
+ obtained
+ from
+
+J
+ =
+ UT˙−1/2
+xx
+L
+ =
+ V T˙−1/2
+yy
+.
+ 
+(5)
+The
+ matrices
+ UT and
+ VT rotate
+ the
+ canonical
+ variables
+ to
+ be
+ pairwise
+correlated,
+ and
+ the
+ matrices
+ ˙−1/2
+xx
+and
+ ˙−1/2
+yy
+scale
+ the
+ canonical
+variables
+ to
+ be
+ unit
+ variance.
+2.2.
+ CVA
+ algorithm
+The
+ CVA
+ method
+ was
+ pioneered
+ by
+ Akaike
+ [23,24]. Larimore
+ [25]
+both
+ provided
+ a
+ series
+ of
+ later
+ results
+ on
+ and
+ applications
+ of
+ CVA
+based
+ on
+ state-space
+ representations,
+ and
+ is
+ primarily
+ responsible
+for
+ convincing
+ the
+ academic
+ and
+ industrial
+ control
+ communities
+of
+ its
+ value.
+ Given
+ input
+ variables
+ u(t)
+ ∈
+ Rmu and
+ output
+ variables
+y(t)
+ ∈
+ Rmy, the
+ linear
+ state-space
+ model
+ is
+ formulated
+ as
+x(t
+ +
+ 1)
+ =
+ Ax(t)
+ +
+ Bu(t)
+ +
+ v(t),
+ 
+(6)
+y(t)
+ =
+ Cx(t)
+ +
+ Du(t)
+ +
+ Ev(t)
+ +
+ w(t),
+(7)
+where
+ A,B,C,D,
+ and
+ E
+ are
+ coefﬁcient
+ matrices,
+ x(t)
+ ∈
+ Rd is
+ a
+ d-
+dimensional
+ state
+ vector,
+ and
+ v(t)
+ and
+ w(t)
+ are
+ independent
+ white
+noise
+ sequences.
+The
+ concept
+ of
+ past
+ and
+ future
+ vectors
+ is
+ important
+ to
+ the
+ CVA
+algorithm.
+ Given
+ a
+ particular
+ time
+ instant
+ t,
+ the
+ past
+ vector
+ com-
+prising
+ of
+ the
+ past
+ outputs
+ and
+ inputs
+ is
+ introduced
+ as
+p(t)
+ = 
+yT(t
+ −
+ 1),
+ yT(t
+ −
+ 2),
+ · · ·, uT(t
+ −
+ 1), uT(t
+ −
+ 2),
+ · · ·
+T,
+(8)
+and
+ the
+ future
+ vector
+ containing
+ the
+ outputs
+ in
+ the
+ present
+ and
+future
+ is
+ deﬁned
+ as
+f (t)
+ = 
+yT(t),
+ yT(t
+ +
+ 1), ·
+ · ·
+T.
+(9)
+By
+ substituting
+ the
+ matrix
+ xy with
+ pf , xx with
+ pp,
+and
+ yy with
+ ff , the
+ matrix
+ of
+ canonical
+ correlations
+ D
+ =
+diag (1,
+ ·
+ ·
+ ·, r,
+ 0,
+ ·
+ ·
+ ·, 0) can
+ be
+ computed
+ via
+ the
+ SVD
+ as
+ (4), and
+the
+ matrices
+ J
+ and
+ L
+ can
+ be
+ computed
+ as
+ (5).
+ In
+ addition,
+ the
+ canon-
+ical
+ variables
+ xp(t)
+ and
+ xf (t)
+ which
+ corresponds
+ to
+ the
+ past
+ and
+future
+ vectors
+ p(t)
+ and
+ f(t)
+ respectively,
+ can
+ be
+ derived
+ as
+⎧
+⎪
+⎨
+⎪
+⎩
+xp(t)
+ =
+ Jdp(t)
+ =
+ UT
+d ˆ˙
+−1/2
+pp
+p(t)
+xf (t)
+ =
+ Ldf
+ (t)
+ =
+ V T
+d ˆ˙
+−1/2
+f f
+f
+ (t)
+,
+(10)
+where
+ Jd =
+ UT
+d ˆ˙
+−1/2
+pp
+and
+ Ld =
+ V T
+d ˆ˙
+−1/2
+f f
+, and
+ Ud and
+ V d contains
+the
+ ﬁrst
+ d
+ columns
+ of
+ U
+ and
+ V
+ in
+ (3)
+ respectively
+ [18].
+Practically,
+ owing
+ to
+ the
+ ﬁnite
+ quantity
+ of
+ data
+ available,
+ the
+vectors
+ p(t)
+ and
+ f (t)
+ are
+ usually
+ truncated
+ to
+ be
+p(t)
+ = 
+yT(t
+ −
+ 1), yT(t
+ −
+ 2),
+ · · ·, yT(t
+ −
+ l),
+ uT(t
+ −
+ 1),
+ uT(t
+ −
+ 2), · · ·, uT(t
+ −
+ l)T
+,
+ 
+(11)
+and
+f (t)
+ = 
+yT(t),
+ yT(t
+ +
+ 1), ·
+ · ·, yT(t
+ +
+ h)T,
+ 
+(12)
+where
+ l and
+ h
+ are
+ the
+ numbers
+ of
+ lags
+ in
+ vectors
+ p(t)
+ and
+ f
+ (t),
+ respec-
+tively.
+ Moreover,
+ the
+ appropriate
+ numbers
+ of
+ lags
+ l and
+ h
+ and
+ the
+state
+ order
+ d
+ can
+ be
+ determined
+ by
+ the
+ Akaike
+ information
+ criterion
+[18].
+Remark
+ 1.
+ 
+The
+ canonical
+ correlations
+ generated
+ by
+ the
+ CVA
+ algo-
+rithm
+ have
+ a
+ geometric
+ interpretation.
+ Calculating
+ J(i)
+d
+and
+ L(i)
+d
+to
+maximize
+ the
+ correlation
+ between
+ the
+ combinations
+ x(i)
+p =
+ J(i)
+d p
+ and
+x(i)
+f
+=
+ L(i)
+d f —where
+ x(i)
+p and
+ x(i)
+f
+are
+ the
+ ith
+ element
+ of
+ canonical
+ vari-
+ables
+ xp and
+ xf respectively,
+ and
+ J(i)
+d and
+ L(i)
+d denotes
+ the
+ ith
+ row
+of
+ the
+ projection
+ matrices
+ Jd and
+ Ld respectively—is
+ equivalent
+ to
+
+
+PAGE 3
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+ 
+133
+Fig.
+ 1.
+ Interpretation
+ of
+ canonical
+ correlation
+ derived
+ via
+ the
+ CVA
+ algorithm
+ in
+ the
+i-dimensional
+ space
+ of
+ P
+ and
+ the
+ j-dimensional
+ space
+ of
+ F
+ (i
+ =
+ j =
+ 2
+ in
+ this
+ case).
+ The
+vectors
+ x(1)
+p
+=
+ x(1)
+f
+imply
+ the
+ ﬁrst
+ canonical
+ variables.
+ The
+ angle
+ 1 between
+ x(1)
+p
+and
+x(1)
+f
+is
+ the
+ ﬁrst
+ minimum
+ angle
+ and
+ 1 =
+ 0 in
+ this
+ case.
+ The
+ second
+ minimum
+ angle
+2 is
+ the
+ angle
+ between
+ the
+ canonical
+ variables
+ x(2)
+p
+and
+ x(2)
+f
+, which
+ lie
+ in
+ a
+ plane
+orthogonal
+ to
+ the
+ intersection
+ of
+ the
+ planes
+ P
+ and
+ F, since
+ x(2)
+p
+and
+ x(2)
+f
+must
+ be
+orthogonal
+ to
+ x(1)
+p
+and
+ x(1)
+f
+,
+ respectively.
+ﬁnding
+ the
+ vectors
+ in
+ the
+ space
+ of
+ past
+ data
+ P
+ and
+ the
+ space
+ of
+future
+ dataF
+ such
+ that
+ the
+ angle
+ between
+ the
+ vectors
+ is
+ minimum
+[22]. This
+ selection
+ results
+ in
+ the
+ ﬁrst
+ canonical
+ variables
+ having
+the
+ maximum
+ correlation
+ (i.e.,
+ the
+ ﬁrst
+ canonical
+ correlation).
+ Sim-
+ilarly,
+ the
+ second
+ canonical
+ correlation
+ is
+ derived
+ that
+ the
+ second
+canonical
+ variables
+ correspond
+ to
+ vectors
+ orthogonal
+ to
+ the
+ ﬁrst
+canonical
+ variables
+ and
+ with
+ the
+ angle
+ minimized.
+ This
+ procedure
+is
+ continued
+ in
+ this
+ way
+ until
+ r canonical
+ correlations
+ have
+ been
+obtained
+ (see
+ Fig.
+ 1).
+3.
+ CVA-based
+ correlation
+ measures
+ for
+ monitoring
+ process
+correlations
+Feature
+ representation
+ is
+ crucial
+ for
+ fault
+ monitoring
+ in
+ which
+derived
+ values
+ (features)
+ are
+ generated
+ from
+ an
+ initial
+ set
+ of
+ data.
+Features
+ that
+ measure
+ the
+ linkages
+ between
+ process
+ variables
+(e.g.,
+ correlation
+ coefﬁcients)
+ are
+ more
+ appropriate
+ than
+ features
+directly
+ using
+ the
+ process
+ variables
+ for
+ the
+ monitoring
+ of
+ process
+correlation
+ structures.
+ In
+ this
+ regard,
+ canonical
+ correlations
+ pro-
+duced
+ via
+ the
+ augmented
+ vector
+ technique
+ of
+ “past”
+ and
+ “future”
+data
+ in
+ CVA
+ are
+ appropriate
+ features
+ to
+ represent
+ deviations
+ in
+the
+ process
+ dynamic
+ relations
+ (which
+ is
+ demonstrated
+ for
+ the
+ case
+studies
+ in
+ Section
+ 4).
+Similar
+ to
+ the
+ traditional
+ CVA-based
+ monitoring
+ method
+ [19],
+two
+ types
+ of
+ statistics
+ are
+ derived
+ based
+ on
+ the
+ canonical
+ corre-
+lations
+ corresponding
+ to
+ the
+ state
+ space
+ (i.e.,
+ retained
+ canonical
+correlations
+ obtained
+ via
+ CVA)
+ and
+ the
+ residual
+ space
+ (i.e.,
+ dis-
+carded
+ canonical
+ correlations
+ in
+ the
+ CVA
+ model),
+ respectively.
+ The
+ﬁrst
+ statistic
+ Rs, which
+ measures
+ the
+ variations
+ of
+ dynamic
+ corre-
+lations
+ inside
+ the
+ canonical
+ state
+ space,
+ is
+ deﬁned
+ as
+Rs =
+ T
+s s,
+ 
+(13)
+where
+ s = 
+1
+2
+· ·
+ ·
+ 
+d
+T.
+The
+ second
+ statistic
+ Rr, which
+ measures
+ the
+ variations
+ of
+dynamic
+ relations
+ in
+ the
+ residual
+ space,
+ is
+ deﬁned
+ as
+Rr =
+ T
+r r, 
+(14)
+where
+ r = 
+d+1
+d+2
+· ·
+ ·
+ 
+r
+T, and
+ d
+ is
+ the
+ dimensionality
+reduction
+ order
+ of
+ CVA
+ which
+ can
+ be
+ determined
+ by
+ minimizing
+the
+ Akaike
+ information
+ criterion
+ [18]. To
+ avoid
+ a
+ particular
+ i from
+inappropriately
+ dominating
+ the
+ fault
+ detection
+ procedure,
+ canon-
+ical
+ correlations
+ i (i
+ =
+ 1,
+ 2,
+ ·
+ ·
+ ·, r) are
+ required
+ to
+ be
+ normalized
+before
+ the
+ calculation
+ of
+ Rs and
+ Rr in
+ (13)
+ and
+ (14).
+ The
+ statis-
+Fig.
+ 2.
+ Causal
+ description
+ of
+ a
+ gene
+ network
+ [30].
+tics
+ Rs and
+ Rr are
+ calculated
+ for
+ a
+ moving
+ window.
+ Whether
+ d
+ is
+recalculated
+ for
+ each
+ window
+ is
+ a
+ choice
+ by
+ the
+ user;
+ the
+ value
+of
+ d
+ was
+ ﬁxed
+ in
+ the
+ case
+ studies
+ in
+ Section
+ 4
+ to
+ minimize
+ online
+computational
+ cost.
+The
+ process
+ correlations
+ are
+ regarded
+ as
+ normal
+ if
+ the
+ monitor-
+ing
+ metrics
+ are
+ below
+ the
+ thresholds,
+ namely,
+ Rs ≤
+ T2
+˛ and
+ Rr ≤
+ ı2
+˛,
+where
+ T2
+˛ and
+ ı2
+˛ are
+ the
+ upper
+ control
+ limits
+ for
+ the
+ dissimilarity
+statistic
+ in
+ the
+ state
+ and
+ residual
+ spaces
+ with
+ a
+ signiﬁcance
+ level
+,
+ respectively.
+ In
+ addition,
+ T2
+˛ and
+ ı2
+˛ can
+ be
+ obtained
+ by
+ using
+ the
+empirical
+ method
+ based
+ on
+ the
+ calibration
+ samples
+ under
+ normal
+operating
+ conditions
+ (NOC)
+ [19,26].
+ For
+ example,
+ a
+ 99%
+ conﬁdence
+upper
+ control
+ limit
+ can
+ be
+ derived
+ as
+ the
+ Rs or
+ Rr value
+ below
+ which
+99%
+ of
+ the
+ calibration
+ data
+ are
+ located.
+The
+ portion
+ of
+ the
+ CVA
+ space
+ corresponding
+ to
+ the
+ larger
+ sin-
+gular
+ values
+ describes
+ most
+ of
+ the
+ systematic
+ or
+ state
+ variations
+occurring
+ in
+ the
+ process,
+ and
+ the
+ portion
+ of
+ the
+ CVA
+ space
+ corre-
+sponding
+ to
+ the
+ smaller
+ singular
+ values
+ describes
+ the
+ random
+ noise
+[18]. Therefore,
+ a
+ violation
+ of
+ the
+ Rs threshold
+ implies
+ that
+ the
+ pro-
+cess
+ correlations
+ are
+ out
+ of
+ control,
+ whereas
+ a
+ violation
+ of
+ the
+ Rr
+threshold
+ implies
+ that
+ the
+ characteristic
+ of
+ the
+ process
+ noise
+ has
+altered.
+4.
+ Case
+ studies
+ for
+ a
+ gene
+ network
+In
+ this
+ section,
+ a
+ gene
+ network
+ system
+ is
+ utilized
+ to
+ evaluate
+ the
+proposed
+ canonical
+ correlation-based
+ approach
+ for
+ the
+ monitor-
+ing
+ of
+ process
+ correlations,
+ in
+ comparison
+ with
+ causal
+ dependency
+(CD)-based
+ (i.e.,
+ perform
+ CVA
+ on
+ the
+ CDs
+ where
+ the
+ two
+ statistics
+that
+ measure
+ the
+ variations
+ inside
+ the
+ state
+ and
+ residual
+ spaces
+ are
+termed
+ as
+ Ds and
+ Dr, respectively)
+ [29], variable-based
+ (i.e.,
+ directly
+perform
+ CVA
+ on
+ the
+ process
+ variables
+ where
+ the
+ two
+ statistics
+ are
+termed
+ as
+ Ts and
+ Tr)
+ [29], and
+ statistical
+ pattern
+ analysis
+ (SPA)-
+based
+ (i.e.,
+ perform
+ DPCA
+ on
+ the
+ statistical
+ patterns
+ where
+ the
+ two
+statistics
+ that
+ measure
+ the
+ variations
+ inside
+ the
+ principal
+ and
+ resid-
+ual
+ spaces
+ are
+ termed
+ as
+ T2 and
+ Q,
+ respectively)
+ [31,32]
+ methods.
+In
+ each
+ case
+ study,
+ the
+ normal
+ dataset
+ for
+ training
+ contains
+ 2000
+observations;
+ and
+ the
+ testing
+ dataset
+ for
+ each
+ fault
+ also
+ consists
+ of
+2000
+ observations.
+ Each
+ faulty
+ dataset
+ started
+ with
+ no
+ faults,
+ and
+the
+ faults
+ were
+ triggered
+ after
+ the
+ 1000th
+ observation
+ into
+ the
+ run.
+The
+ data
+ have
+ a
+ sampling
+ time
+ of
+ one
+ second.
+ A
+ moving
+ window
+ of
+observation
+ number
+ N
+ =
+ 500
+ is
+ chosen
+ in
+ the
+ step
+ of
+ singular
+ value
+decomposition
+ (3)
+ in
+ the
+ proposed
+ method.
+The
+ proposed
+ canonical
+ correlation-based
+ approach
+ for
+ the
+monitoring
+ of
+ process
+ correlation
+ faults
+ is
+ evaluated
+ for
+ a
+ gene
+network
+ adapted
+ from
+ [30], which
+ contains
+ 16
+ variables
+ causally
+related
+ according
+ to
+ the
+ description
+ provided
+ in
+ Fig.
+ 2.
+
+
+PAGE 4
+134
+ 
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+Fig.
+ 3.
+ The
+ mean
+ missed
+ detection
+ rate
+ (MMDR)
+ as
+ a
+ function
+ of
+ the
+ fault
+ magnitude
+for
+ Fault
+ GN1
+ (ı
+ =
+ 1under
+ NOC).
+ The
+ methods
+ in
+ the
+ legend
+ are:
+ Canonical
+ correlation
+(i.e.,
+ the
+ proposed
+ canonical
+ correlation-based
+ method),
+ Causal
+ dependency
+ (i.e.,
+perform
+ CVA
+ on
+ the
+ CDs
+ [29]),
+ Variable
+ (i.e.,
+ directly
+ perform
+ CVA
+ on
+ the
+ process
+variables
+ [29]),
+ and
+ SPA
+ (i.e.,
+ perform
+ DPCA
+ on
+ the
+ statistics
+ patterns
+ [31])
+ methods.
+For
+ each
+ method,
+ a
+ fault
+ was
+ indicated
+ if
+ either
+ the
+ state
+ or
+ residual
+ statistic
+ violated
+threshold.
+In
+ the
+ case
+ studies,
+ the
+ original
+ variable
+ relationships
+ are
+ lin-
+earized
+ according
+ to
+⎧
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎪
+⎩
+x1(t)
+ =
+ 1.2 (u1(t)
+ +
+ 0.60u1(t
+ −
+ 1)
+ +
+ 0.30u1(t
+ −
+ 2)) + 0.8u2(t)
+ +
+ v1(t)
+y1(t)
+ =
+ 0.60 (x1(t)
+ +
+ 0.50x1(t
+ −
+ 1)
+ +
+ 0.20x1(t
+ −
+ 2)) +
+ v2(t)
+x2(t)
+ =
+ 0.05
+ +
+ 0.22 (x1(t)
+ −
+ 0.40x1(t
+ −
+ 1)
+ −
+ 0.20x1(t
+ −
+ 2)) + v3(t)
+y2(t)
+ =
+ 1
+ +
+ 0.40 (x1(t)
+ −
+ 0.20x1(t
+ −
+ 1)
+ −
+ 0.10x1(t
+ −
+ 2)) +
+ v4(t)
+y3(t)
+ =
+ 0.062
+ +
+ 0.16 (x1(t)
+ +
+ 0.40x1(t
+ −
+ 1)
+ +
+ 0.60x1(t
+ −
+ 2)) + v5(t)
+y4(t)
+ =
+ 0.60 (x1(t)
+ +
+ 0.80x1(t
+ −
+ 1)
+ +
+ 0.10x1(t
+ −
+ 2)) +
+ v6(t)
+y5(t)
+ =
+ 0.70 (x1(t)
+ +
+ 0.40x1(t
+ −
+ 1)
+ +
+ 0.20x1(t
+ −
+ 2)) +
+ v7(t)
+y6(t)
+ =
+ 1
+ +
+ 0.40 (u1(t)
+ +
+ 0.60u1(t
+ −
+ 1)
+ −
+ 0.30u1(t
+ −
+ 2)) + v8(t)
+y7(t)
+ =
+ 0.56
+ +
+ 0.15 (u1(t)
+ +
+ 0.40u1(t
+ −
+ 1)
+ +
+ 0.60u1(t
+ −
+ 2)) + v9(t)
+y8(t)
+ =
+ 0.80 (u3(t)
+ +
+ 0.60u3(t
+ −
+ 1)
+ +
+ 0.30u3(t
+ −
+ 2)) +
+ 0.51x2(t)
+ +
+ v10(t)
+y9(t)
+ =
+ 1.30 (x2(t)
+ +
+ 0.50x2(t
+ −
+ 1)
+ +
+ 0.50x2(t
+ −
+ 2)) + v11(t)
+y10(t)
+ =
+ 1
+ +
+ 0.40 (x2(t)
+ +
+ 0.40x2(t)
+ +
+ 0.60x2(t)) +
+ v12(t)
+y11(t)
+ =
+ 0.028
+ +
+ 1.30 (x2(t)
+ +
+ 0.60x2(t)
+ −
+ 0.30x2(t)) +
+ v13(t)
+(15)
+where
+ u1, u2, and
+ u3 are
+ the
+ input
+ variables,
+ x1 and
+ x2 are
+ the
+ states,
+and
+ the
+ rest
+ are
+ outputs.
+ Each
+ vi is
+ a
+ white
+ noise
+ sequence
+ with
+ a
+noise-to-signal
+ ratio
+ of
+ 10%.
+ The
+ system
+ was
+ subject
+ to
+ the
+ two
+faults
+ (see
+ Table
+ 1),
+ where
+ the
+ type
+ of
+ Fault
+ GN1
+ is
+ step
+ change
+ and
+Fault
+ GN2
+ is
+ a
+ slow
+ drift.
+ For
+ the
+ faults,
+ ı
+ denotes
+ a
+ multiplicative
+factor
+ that
+ causes
+ a
+ change
+ in
+ a
+ model
+ parameter.
+In
+ order
+ to
+ provide
+ meaningful
+ comparisons
+ of
+ the
+ detection
+performances,
+ the
+ false
+ alarm
+ rates
+ are
+ maintained
+ at
+ the
+ same
+level
+ (
+ =
+ 1%)
+ for
+ comparing
+ the
+ missed
+ detection
+ rates
+ throughout
+this
+ study.
+ The
+ same
+ procedure
+ was
+ repeated
+ 100
+ times
+ in
+ order
+to
+ estimate
+ the
+ conﬁdence
+ levels
+ of
+ the
+ missed
+ detection
+ rates
+ at
+different
+ fault
+ magnitudes.
+4.1.
+ Abrupt
+ fault
+ case
+ study
+Fault
+ GN1
+ is
+ a
+ step
+ change
+ fault
+ which
+ occurs
+ in
+ the
+ process
+structure
+ between
+ input
+ variable
+ u1 and
+ state
+ variable
+ x1. For
+ dif-
+ferent
+ fault
+ magnitude
+ ı,
+ the
+ mean
+ missed
+ detection
+ rate
+ (MMDR)
+of
+ Fault
+ GN1
+ are
+ plotted
+ in
+ Fig.
+ 3
+ for
+ the
+ canonical
+ correlation-,
+ CD-,
+SPA-,
+ and
+ variable-based
+ methods.
+As
+ the
+ fault
+ magnitude
+ increases,
+ the
+ mean
+ missed
+ detection
+rate
+ decreases
+ in
+ all
+ of
+ the
+ methods.
+ The
+ mean
+ missed
+ detection
+rate
+ in
+ all
+ four
+ methods
+ will
+ approach
+ zero
+ as
+ the
+ fault
+ magnitude
+further
+ increases,
+ indicating
+ the
+ enhanced
+ detectability
+ for
+ large
+faults.
+ In
+ addition,
+ the
+ mean
+ missed
+ detection
+ rate
+ is
+ fairly
+ sensitive
+to
+ the
+ fault
+ magnitude
+ for
+ small
+ to
+ intermediate
+ values
+ of
+ ı,
+ and
+the
+ proposed
+ canonical
+ correlation
+ has
+ the
+ highest
+ sensitivity
+ with
+regard
+ to
+ the
+ fault
+ magnitude
+ among
+ the
+ four
+ methods.
+For
+ the
+ same
+ fault
+ magnitude
+ ı,
+ the
+ canonical
+ correlation-
+based
+ method
+ consistently
+ outperformed
+ the
+ CD-,
+ variable-,
+ and
+SPA-based
+ methods
+ (Fig.
+ 3).
+ For
+ instance,
+ for
+ a
+ fault
+ magnitude
+ı
+ =
+ 1.6,
+ the
+ missed
+ detection
+ rates
+ of
+ the
+ canonical
+ correlation-
+based
+ algorithm
+ is
+ 5.6%,
+ which
+ is
+ more
+ than
+ a
+ factor
+ of
+ 6.1
+ and
+10.6
+ improvements
+ compared
+ to
+ the
+ CD-based
+ algorithm
+ (34.4%)
+and
+ the
+ SPA-based
+ algorithm
+ (59.6%),
+ respectively.
+ Compared
+ with
+the
+ variable-based
+ algorithm,
+ the
+ mean
+ missed
+ detection
+ rate
+ for
+the
+ canonical
+ correlation-based
+ algorithm
+ is
+ nearly
+ a
+ factor
+ of
+10.3
+ lower
+ (5.6%
+ vs.
+ 57.6%).
+ There
+ are
+ two
+ major
+ contributors
+to
+ the
+ superior
+ performance
+ of
+ the
+ canonical
+ correlation-based
+approach:
+ (i)
+ the
+ canonical
+ correlation-based
+ feature
+ represen-
+tation
+ more
+ effectively
+ captures
+ the
+ changes
+ in
+ the
+ process
+correlation
+ structures
+ (the
+ application-dependent
+ aspect);
+ and
+ (ii)
+the
+ lower
+ redundancy
+ in
+ the
+ canonical
+ correlation-based
+ feature
+representation
+ leads
+ to
+ the
+ improved
+ monitoring
+ performance
+ via
+the
+ dimensionality
+ reduction
+ procedure.
+Successful
+ fault
+ detection
+ methods
+ should
+ be
+ sensitive
+ enough
+to
+ detect
+ all
+ possible
+ faults,
+ while
+ also
+ being
+ robust
+ to
+ data
+ that
+ are
+independent
+ of
+ the
+ training
+ set.
+ While
+ the
+ mean
+ missed
+ detection
+rate
+ (aka
+ type
+ II
+ error
+ [18])
+ is
+ usually
+ used
+ to
+ quantify
+ the
+ sensitivity
+for
+ faults
+ in
+ the
+ testing
+ set,
+ the
+ false
+ alarm
+ rate
+ (aka
+ type
+ I
+ error
+ [18])
+can
+ help
+ to
+ examine
+ the
+ robustness
+ for
+ the
+ testing
+ set
+ under
+ NOC.
+The
+ extent
+ to
+ which
+ the
+ methods
+ (with
+ statistics
+ Ts, Tr, Ds, Dr, T2,
+Q
+ and
+ Rs, Rr)
+ are
+ sensitive
+ to
+ Fault
+ GN1
+ is
+ displayed
+ in
+ Fig.
+ 4
+ with
+the
+ type
+ I
+ error
+ maintained
+ at
+ the
+ same
+ level
+ (
+ =
+ 1%)
+ in
+ all
+ methods
+to
+ enable
+ a
+ fair
+ comparison
+ of
+ the
+ type
+ II
+ errors.
+ A more
+ persistent
+fault
+ indication
+ is
+ shown
+ in
+ the
+ state
+ statistic
+ Rs for
+ the
+ canonical
+correlation-based
+ method
+ compared
+ with
+ the
+ other
+ methods.
+In
+ summary,
+ the
+ results
+ show
+ that
+ the
+ canonical
+ correlation-
+based
+ method
+ outperforms
+ the
+ causal
+ dependency-,
+ Statistics
+Pattern
+ analysis-
+ and
+ variable-based
+ methods,
+ for
+ the
+ monitoring
+of
+ process
+ correlation
+ structures.
+4.2.
+ Incipient
+ fault
+ case
+ study
+A
+ slow
+ drift
+ fault
+ (Fault
+ GN2)
+ in
+ the
+ gene
+ network
+ system
+ that
+occurs
+ in
+ the
+ correlations
+ of
+ x1 →
+ x2 is
+ used
+ to
+ further
+ investi-
+gate
+ the
+ performance
+ of
+ the
+ proposed
+ approach
+ for
+ monitoring
+process
+ correlation
+ changes.
+ The
+ mean
+ missed
+ detection
+ rate
+ for
+different
+ fault
+ magnitude
+ ı
+ values
+ in
+ Fault
+ GN2
+ with
+ the
+ canonical
+correlation-,
+ CD-,
+ SPA-,
+ and
+ variable-based
+ methods
+ are
+ plotted
+ in
+Fig.
+ 5.
+Similar
+ to
+ Fault
+ GN1,
+ as
+ the
+ fault
+ magnitude
+ ı increases,
+ the
+mean
+ missed
+ detection
+ rate
+ of
+ Fault
+ GN2
+ decreases
+ in
+ all
+ of
+ the
+methods
+ (Fig.
+ 5).
+ The
+ mean
+ missed
+ detection
+ rates
+ in
+ all
+ four
+ meth-
+ods
+ also
+ approach
+ zero
+ as
+ the
+ fault
+ magnitude
+ increases,
+ as
+ larger
+faults
+ would
+ have
+ better
+ detectability.
+ Additionally,
+ the
+ gap
+ in
+ the
+missed
+ detection
+ rates
+ between
+ the
+ canonical
+ correlation-
+ and
+ CD-
+based
+ methods
+ enlarges
+ as
+ the
+ magnitude
+ of
+ fault
+ increases
+ from
+1
+ →
+ 1.2
+ to
+ 1
+ →
+ 1.6,
+ while
+ the
+ gap
+ between
+ the
+ canonical
+ correlation-
+and
+ variable-based/SPA-based
+ methods
+ enlarges
+ as
+ fault
+ magni-
+tude
+ increases
+ from
+ 1
+ →
+ 1.1
+ to
+ 1
+ →
+ 2.0.
+For
+ the
+ same
+ fault
+ magnitude
+ ı,
+ the
+ canonical
+ correlation-based
+algorithm
+ always
+ provides
+ better
+ fault
+ detection
+ for
+ Fault
+ GN2
+ than
+the
+ CD-,
+ SPA-
+ and
+ variable-based
+ algorithms
+ (Fig.
+ 5).
+ For
+ exam-
+ple,
+ for
+ a
+ fault
+ magnitude
+ ı
+ =
+ 1
+ →
+ 1.3,
+ the
+ mean
+ missed
+ detection
+rate
+ for
+ the
+ canonical
+ correlation-based
+ algorithm
+ is
+ more
+ than
+ a
+factor
+ of
+ 1.5
+ lower
+ (56.3%
+ vs.
+ 85.8%)
+ than
+ for
+ the
+ CD-based
+ algo-
+rithm,
+ nearly
+ a
+ factor
+ of
+ 1.6
+ for
+ the
+ SPA-based
+ algorithm
+ (56.3%
+vs.
+ 89.6%),
+ and
+ more
+ than
+ a
+ factor
+ of
+ 1.7
+ for
+ the
+ variable-based
+algorithm
+ (56.3%
+ vs.
+ 96.2%).
+ The
+ main
+ reasons
+ are
+ similar
+ to
+ the
+
+
+PAGE 5
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+ 
+135
+Table
+ 1
+Deﬁnition
+ of
+ the
+ faults
+ and
+ respective
+ variables
+ involved
+ for
+ correlation
+ structures,
+ ı
+ is
+ a
+ multiplicative
+ factor
+ that
+ changes
+ the
+ model
+ parameters
+ (ı
+ =
+ 1
+ for
+ NOC).
+Fault
+ 
+Process
+ correlation
+ changed
+ 
+Type
+GN1
+u1 →
+ x1
+Abrupt
+ fault:
+ Step
+ change
+ (ı
+ was
+ exerted
+ by
+ a
+step
+ change
+ after
+ the
+ 1000th
+ sample)
+{x1(t)
+ =
+ 1.2ı (u1(t)
+ +
+ 0.60u1(t
+ −
+ 1)
+ +
+ 0.30u1(t
+ −
+ 2))
++0.8u2(t)
+ +
+ v1(t)}
+GN2
+x1 →
+ x2
+Incipient
+ fault:
+ Slow
+ drift
+ (ı
+ was
+ linearly
+increased
+ during
+ the
+ samples
+ 1001–2000)
+{x2(t)
+ =
+ 0.05
+ +
+ 0.22ı(x1(t)
+ −
+ 0.40x1(t
+ −
+ 1)
+−0.20x1(t
+ −
+ 2))
+ +
+ v3(t)}
+Fig.
+ 4.
+ Multivariate
+ statistics
+ for
+ the
+ detection
+ for
+ Fault
+ GN1
+ with
+ the
+ fault
+ magnitude
+ ı
+ =
+ 1.6
+ for
+ (a)
+ variable-based,
+ (b)
+ CD-based,
+ (c)
+ SPA-based,
+ and
+ (d)
+ canonical
+ correlation-
+based
+ methods.
+Fig.
+ 5.
+ The
+ mean
+ missed
+ detection
+ rate
+ as
+ a
+ function
+ of
+ the
+ fault
+ magnitude
+ for
+Fault
+ GN2
+ (ı
+ = 1
+ under
+ NOC).
+ The
+ methods
+ in
+ the
+ legend
+ are:
+ Canonical
+ correlation
+(i.e.,
+ the
+ proposed
+ canonical
+ correlation-based
+ method),
+ Causal
+ dependency
+ (i.e.,
+perform
+ CVA
+ on
+ the
+ CDs
+ [29]),
+ Variable
+ (i.e.,
+ directly
+ perform
+ CVA
+ on
+ the
+ process
+variables
+ [29]),
+ and
+ SPA
+ (i.e.,
+ perform
+ DPCA
+ on
+ the
+ statistics
+ patterns
+ [31]) meth-
+ods.
+ The
+ notations
+ 1
+ −>
+ i in
+ the
+ horizontal
+ coordinate
+ means
+ the
+ fault
+ magnitude
+ ı
+linearly
+ increases
+ from
+ ı
+ =
+ 1
+ to
+ ı
+ =
+ i
+ during
+ samples
+ 1001–2000.
+ For
+ each
+ method,
+ a
+fault
+ was
+ indicated
+ if
+ either
+ the
+ state
+ or
+ residual
+ statistic
+ violated
+ threshold.
+aforementioned
+ discussions,
+ which
+ are
+ that
+ (i)
+ the
+ deviations
+ in
+the
+ process
+ correlation
+ structures
+ can
+ be
+ more
+ effectively
+ captured
+by
+ the
+ canonical
+ correlation-based
+ features;
+ and
+ (ii)
+ the
+ improved
+monitoring
+ performance
+ results
+ from
+ the
+ less
+ redundancy
+ of
+ the
+canonical
+ correlation-based
+ feature
+ representation.
+Likewise,
+ Fig.
+ 6
+ shows
+ that
+ the
+ combined
+ utilization
+ of
+ the
+ state
+and
+ residual
+ statistics
+ Rs and
+ Rr for
+ the
+ canonical
+ correlation-based
+method
+ more
+ persistently
+ reveals
+ a
+ fault
+ compared
+ to
+ the
+ other
+methods,
+ particularly
+ with
+ the
+ fault
+ magnitude
+ for
+ small
+ values
+ of
+ı
+ (for
+ the
+ samples
+ 1001–1500).
+In this
+ case
+ study,
+ the
+ proposed
+ canonical
+ correlation-based
+approach
+ was
+ more
+ effective
+ for
+ detecting
+ both
+ step-change
+(abrupt)
+ and
+ slow-drift
+ (incipient)
+ faults.
+In
+ addition,
+ the
+ false
+ alarm
+ rates
+ for
+ all
+ the
+ four
+ methods
+ are
+computed
+ using
+ an
+ independent
+ testing
+ dataset
+ with
+ 2000
+ nor-
+mal
+ operating
+ observations.
+ The
+ false
+ alarm
+ rates
+ are
+ tabulated
+ in
+Table
+ 2. The
+ false
+ alarm
+ rate
+ for
+ the
+ proposed
+ canonical
+ correlation-
+based
+ method
+ is
+ comparable
+ to
+ the
+ other
+ methods.
+5.
+ Conclusions
+This
+ 
+article
+ 
+presents
+ 
+a
+ 
+CVA-based
+ 
+canonical
+ 
+correlation
+approach
+ for
+ detecting
+ changes
+ in
+ process
+ dynamic
+ correlations.
+
+
+PAGE 6
+136
+ 
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+Fig.
+ 6.
+ Multivariate
+ statistics
+ for
+ the
+ detection
+ for
+ Fault
+ GN2
+ with
+ the
+ fault
+ magnitude
+ ı linearly
+ increases
+ from
+ ı
+ =
+ 1
+ to
+ ı
+ =
+ 1.3
+ during
+ the
+ samples
+ 1001–2000,
+ for
+ (a)
+variable-based,
+ (b)
+ CD-based,
+ (c)
+ SPA-based,
+ and
+ (d)
+ canonical
+ correlation-based
+ methods.
+Table
+ 2
+False
+ alarm
+ rates
+ for
+ the
+ variable-based,
+ CD-based,
+ SPA-based
+ and
+ canonical
+correlation-based
+ methods.
+ For
+ each
+ method,
+ a
+ fault
+ was
+ indicated
+ if
+ either
+ the
+ state
+or
+ residual
+ statistic
+ violated
+ threshold.
+Method
+ 
+variable
+ 
+CD
+ 
+SPA
+ 
+canonical
+ correlation
+False
+ alarm
+ rate
+ 
+1.5%
+ 
+2.7%
+ 
+1.9%
+ 
+2.2%
+Two
+ new
+ statistics
+ Rs and
+ Rr are
+ proposed
+ that
+ correspond
+ to
+ the
+state
+ and
+ residual
+ spaces,
+ respectively.
+ The
+ proﬁciency
+ of
+ fault
+detection
+ is
+ improved
+ by
+ employing
+ canonical
+ correlation
+ features
+which
+ provides
+ more
+ effective
+ feature
+ representation
+ of
+ the
+ pro-
+cess
+ compared
+ with
+ the
+ original
+ data,
+ as
+ well
+ as
+ a
+ decreased
+ degree
+of
+ redundancy
+ in
+ the
+ feature
+ space.
+ In
+ the
+ case
+ studies
+ of
+ a
+ gene
+network,
+ the
+ proposed
+ canonical
+ correlation-based
+ method
+ is
+ sig-
+niﬁcantly
+ more
+ effective
+ for
+ the
+ cases
+ of
+ both
+ step
+ change
+ and
+ slow
+drift
+ faults
+ for
+ the
+ gene
+ network
+ model,
+ with
+ typical
+ reduction
+ in
+mean
+ missed
+ detection
+ rate
+ of
+ a
+ factor
+ of
+ 1.5–10.
+The
+ proposed
+ method
+ uses
+ a
+ moving
+ window
+ to
+ calculate
+canonical
+ correlations,
+ which
+ can
+ be
+ computationally
+ expensive
+for
+ some
+ online
+ fault
+ detection
+ applications.
+ The
+ online
+ cost
+ can
+ be
+reduced
+ by
+ employing
+ the
+ fast
+ moving
+ window
+ technique
+ in
+ [33].
+The
+ sensitivity
+ for
+ spike
+ detection
+ and
+ detection
+ delay
+ for
+ the
+ pro-
+posed
+ method
+ depends
+ on
+ the
+ size
+ of
+ moving
+ window
+ chosen
+ in
+ the
+singular
+ value
+ decomposition
+ step
+ (3).
+ A
+ smaller
+ moving
+ window
+number
+ results
+ in
+ a
+ smaller
+ detection
+ delay
+ and
+ higher
+ detection
+sensitivity
+ for
+ spikes
+ and
+ vice
+ versa.
+ However,
+ a
+ smaller
+ window
+size
+ also
+ leads
+ to
+ lower
+ accuracy
+ of
+ the
+ canonical
+ correlations.
+ The
+selection
+ of
+ window
+ size
+ depends
+ on
+ the
+ speciﬁc
+ need
+ for
+ an
+ indus-
+trial
+ process.
+ When
+ the
+ promptness
+ of
+ fault
+ detection
+ is
+ of
+ high
+demand,
+ a
+ small
+ window
+ size
+ should
+ be
+ used.
+ A
+ large
+ window
+ size
+should
+ be
+ adopted
+ when
+ the
+ accuracy
+ of
+ fault
+ detection
+ is
+ more
+important.
+Acknowledgements
+Dr.
+ Xiaoxiang
+ Zhu
+ at
+ MIT
+ is
+ appreciated
+ for
+ helpful
+ discussions.
+Yi
+ Luo
+ at
+ BUCT
+ is
+ appreciated
+ for
+ the
+ help
+ on
+ simulations.
+ This
+ work
+is
+ supported
+ by
+ the
+ National
+ Natural
+ Science
+ Foundation
+ of
+ China
+(61603024)
+ and
+ the
+ High-Level
+ Talents
+ Fund
+ of
+ BUCT
+ (buctrc201).
+Appendix
+ A.
+Maximizing
+ Mutual
+ Information
+ Viewpoint
+ for
+ the
+ Optimality
+ of
+CVA
+ in
+ Modeling
+This
+ section
+ discusses
+ how,
+ in
+ the
+ Gaussian
+ case,
+ the
+ objec-
+tive
+ of
+ CVA
+ on
+ maximizing
+ the
+ correlation
+ between
+ the
+ future
+ and
+past
+ variables
+ is
+ equivalent
+ to
+ maximizing
+ the
+ mutual
+ information
+between
+ these
+ two
+ sets
+ of
+ variables.
+Consider
+ the
+ jointly
+ distributed
+ Gaussian
+ random
+ variables
+ p
+and
+ f,
+
+p
+f
+
+∼N
+
+p
+f
+
+,
+
+˙p
+˙pf
+˙fp
+˙f
+
+. 
+(16)
+
+
+PAGE 7
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+ 
+137
+Shannon’s
+ mutual
+ information
+ between
+ p
+ and
+ f
+ is
+I(p,
+ f
+ )
+ = 1
+2 log
+
+|˙p||˙f |
+|˙[p,f ]|
+
+. 
+(17)
+where
+ | · | denotes
+ the
+ determination
+ of
+ a
+ matrix.
+ Then
+ maximizing
+the
+ mutual
+ information
+ (MMI)
+ can
+ be
+ stated
+ as
+ the
+ optimization,
+max
+w
+I(wTp; f
+ )
+ =
+ max
+w
+1
+2 log
+
+|wT˙pw||˙f|
+|˙[wT p,f
+ ]|
+
+,
+ 
+(18)
+which
+ is
+ equivalent
+ to
+ maximizing
+max
+w
+|wT˙pw||˙f|
+|˙[wT p,f ]|
+. 
+(19)
+Since
+ the
+ denominator
+ in
+ (19)
+ can
+ be
+ re-expressed
+ as
+|˙[wTp,f]| =
+ |˙f|
+ · |wT˙pw
+ −
+ wT˙pf ˙−1
+f
+˙fpw|,
+ 
+(20)
+Eq.
+ (19)
+ is
+ equivalent
+ to
+max
+w
+wT˙pf ˙−1
+f
+˙fpw
+wT˙pw
+(21)
+which
+ is
+ equivalent
+ to
+ solving
+ the
+ generalized
+ eigenvalue
+ decom-
+position:
+˙pf ˙−1
+f
+˙f pw
+ =
+ ˙pw.
+ 
+(22)
+Eq.
+ (22)
+ yields
+ the
+ same
+ solution
+ as
+ CVA.
+ Therefore,
+ maximizing
+the
+ mutual
+ information
+ is
+ the
+ same
+ as
+ maximizing
+ correlation
+ in
+the
+ Gaussian
+ case.
+ In
+ addition,
+ it
+ was
+ pointed
+ out
+ in
+ [34]
+ that
+the
+ method
+ that
+ maximizes
+ the
+ mutual
+ information
+ between
+ the
+predicting
+ and
+ predicted
+ variables
+ claims
+ optimality
+ in
+ terms
+ of
+minimizing
+ the
+ mean
+ squared
+ error
+ (MSE)
+ of
+ the
+ model
+ for
+ linear
+Markov
+ systems.
+ Thus,
+ the
+ objective
+ of
+ CVA
+ on
+ maximizing
+ the
+ cor-
+relation
+ between
+ the
+ past
+ and
+ future
+ variables
+ is
+ optimal
+ in
+ model
+performance,
+ i.e.,
+ achieves
+ the
+ minimum
+ error
+ of
+ model
+ prediction.
+Appendix
+ B.
+Physical
+ Meaning
+ for
+ the
+ Proposed
+ Canonical
+ Correlation-based
+Approach
+The
+ CVA
+ optimization
+ (1)–(2), which
+ is
+ solved
+ via
+ the
+ singular
+value
+ decomposition
+ (SVD)
+ of
+ (3), can
+ be
+ equivalently
+ computed
+ by
+the
+ generalized
+ eigenvalue
+ decomposition
+ as
+ [27]
+˙1vi =
+ i˙2vi,
+ 
+(23)
+where
+ ˙1 =
+
+0
+ 
+˙pf
+˙f p
+0
+
+, ˙2 =
+
+˙pp
+0
+0
+ 
+˙ff
+
+, vi =
+
+J(i)T
+L(i)T
+
+, and
+ 0
+is
+ the
+ matrix
+ of
+ zeros
+ of
+ compatible
+ dimensions.
+The
+ generalized
+ eigenvalue
+ system
+ (23)
+ used
+ in
+ the
+ solution
+ of
+proposed
+ CVA-based
+ fault
+ detection
+ approach
+ can
+ be
+ given
+ a
+ phys-
+ical
+ interpretation.
+ A
+ spring-mass
+ system
+ can
+ be
+ constructed
+ by
+taking
+ process
+ variables
+ as
+ spring
+ nodes
+ and
+ connecting
+ each
+ pair
+of
+ process
+ variables
+ as
+ springs
+ connecting
+ each
+ pair
+ of
+ nodes.
+ The
+correlation
+ degree
+ of
+ each
+ connective
+ pair
+ of
+ nodes
+ is
+ deﬁned
+ as
+the
+ spring
+ stiffness,
+ and
+ the
+ total
+ degree
+ of
+ correlation
+ connecting
+to
+ a
+ node
+ is
+ deﬁned
+ as
+ its
+ mass.
+If
+ a
+ hard
+ shake
+ were
+ given
+ to
+ this
+ spring-mass
+ system,
+ nodes
+that
+ have
+ stronger
+ spring
+ connections
+ among
+ them
+ would
+ more
+likely
+ oscillate
+ together,
+ which
+ is
+ analogous
+ to
+ the
+ fact
+ that
+ faults
+would
+ more
+ likely
+ transfer
+ between
+ the
+ process
+ variables
+ that
+ have
+stronger
+ connections
+ among
+ them.
+ As
+ the
+ shaking
+ becomes
+ more
+violent,
+ the
+ properties
+ of
+ process
+ dynamic
+ relations
+ connecting
+ to
+this
+ group
+ of
+ nodes
+ will
+ be
+ altered.
+ The
+ fundamental
+ oscillation
+mode
+ of
+ the
+ nodes
+ can
+ represent
+ its
+ overall
+ steady-state
+ behaviors.
+Actually,
+ the
+ generalized
+ eigenvectors
+ of
+ (23)
+ exactly
+ describe
+ the
+fundamental
+ oscillation
+ modes
+ of
+ the
+ spring-mass
+ system.
+From
+ [28,35], this
+ spring-mass
+ dynamical
+ system
+ can
+ be
+ repre-
+sented
+ by
+M(¨x)(t)
+ =
+ −Kx(t),
+ 
+(24)
+where
+ the
+ diagonal
+ matrix
+ M
+ ∈
+ Rn×n is
+ the
+ mass
+ matrix
+ with
+ M(i,
+i)
+ =
+ikij, x(t)
+ ∈
+ Rn×1 denotes
+ the
+ vector
+ describing
+ the
+ motion
+ of
+each
+ node,
+ kij is
+ the
+ spring
+ stiffness
+ of
+ the
+ connecting
+ nodes
+ i and
+j,
+ and
+ K
+ ∈
+ Rn×n denotes
+ the
+ stiffness
+ matrix
+ with
+ K(i,i)
+ =
+ikij and
+K(i,
+ j)
+ =
+ −kij.
+Given
+ 
+that
+ 
+the
+ 
+motion
+ 
+vector
+ 
+x(t)
+ 
+has
+ 
+the
+ 
+form
+ 
+of
+x(t)
+ =
+ vicos(ωit
+ +
+ ),
+ the
+ solution
+ for
+ the
+ steady-state
+ behavior
+of
+ the
+ spring-mass
+ system
+ is
+ [28,35]
+Kvi =
+ ω2
+i Mvi,
+ 
+(25)
+which
+ is
+ analogous
+ to
+ (23)
+ for
+ the
+ solution
+ of
+ proposed
+ CVA-based
+fault
+ detection
+ approach.
+The
+ solutions 
+ωi, vi
+
+of
+ (25)
+ represent
+ the
+ fundamental
+ modes
+of
+ this
+ spring-mass
+ system.
+ The
+ eigenvectors
+ vi show
+ the
+ steady-
+state
+ movement
+ of
+ each
+ mode
+ of
+ oscillation
+ and
+ the
+ eigenvalues
+ ω2
+i
+indicate
+ the
+ energy
+ required
+ to
+ sustain
+ the
+ oscillation
+ modes
+ [35].
+Similarly,
+ the
+ solution
+ pairs (i, vi) of
+ (23)
+ describe
+ the
+ fundamen-
+tal
+ modes
+ of
+ a
+ process
+ dynamic
+ system.
+ The
+ eigenvectors
+ vi show
+the
+ steady-state
+ behavior
+ of
+ the
+ dynamic
+ relations
+ in
+ each
+ mode.
+The
+ eigenvalues
+ i indicate
+ the
+ energy
+ that
+ each
+ dynamic
+ mode
+owns,
+ which
+ is
+ consistent
+ with
+ the
+ viewpoint
+ in
+ [27]
+ that
+ calculat-
+ing
+ canonical
+ correlations
+ via
+ CVA
+ leads
+ to
+ a
+ maximization
+ of
+ the
+energy
+ i.
+References
+[1]
+ L.H.
+ Chiang,
+ B.
+ Jiang,
+ X.
+ Zhu,
+ D.
+ Huang,
+ R.D.
+ Braatz,
+ Diagnosis
+ of
+ multiple
+ and
+unknown
+ faults
+ using
+ the
+ causal
+ map
+ and
+ multivariate
+ statistics,
+ J.
+ Process
+Control
+ 28
+ (2015)
+ 27–39.
+[2]
+ H.
+ Hotelling,
+ The
+ generalization
+ of
+ student’s
+ ratio,
+ Ann.
+ Math.
+ Stat.
+ 2
+ (1931)
+360–378.
+[3]
+ A.
+ Negiz,
+ A.
+ C¸ inar,
+ Statistical
+ monitoring
+ of
+ multivariable
+ dynamic
+ processes
+with
+ state-space
+ models,
+ AIChE
+ J.
+ 43
+ (1997)
+ 2002–2020.
+[4]
+ A.
+ Negiz,
+ A.
+ C¸ inar,
+ PLS,
+ balanced,
+ and
+ canonical
+ variate
+ realization
+ techniques
+for identifying
+ VARMA
+ models
+ in
+ state
+ space,
+ Chemometr.
+ Intell.
+ Lab.
+ Syst.
+ 38
+(1997)
+ 209–221.
+[5]
+ A.
+ Prieto-Moreno,
+ O.
+ Llanes-Santiago,
+ E.
+ García-Moreno,
+ Principal
+components
+ selection
+ for
+ dimensionality
+ reduction
+ using
+ discriminant
+information
+ applied
+ to
+ fault
+ diagnosis,
+ J.
+ Process
+ Control
+ 33
+ (2015)
+ 14–24.
+[6]
+ S.
+ Yin,
+ S.X.
+ Ding,
+ A.
+ Haghani,
+ H.
+ Hao,
+ P.
+ Zhang,
+ A
+ comparison
+ study
+ of
+ basic
+data-driven
+ fault
+ diagnosis
+ and
+ process
+ monitoring
+ methods
+ on
+ the
+benchmark
+ Tennessee
+ Eastman
+ process,
+ J.
+ Process
+ Control
+ 22
+ (2012)
+1567–1581.
+[7]
+ F.
+ He,
+ J.
+ Xu,
+ A
+ novel
+ process
+ monitoring
+ and
+ fault
+ detection
+ approach
+ based
+ on
+statistics
+ locality
+ preserving
+ projections,
+ J.
+ Process
+ Control
+ 37
+ (2016)
+ 46–57.
+[8]
+ V.B.
+ Ghute,
+ D.T.
+ Shirke,
+ A
+ multivariate
+ synthetic
+ control
+ chart
+ for
+ process
+dispersion,
+ Qual.
+ T.
+ Quant.
+ Manage.
+ 5 (2008)
+ 271–288.
+[9]
+ L.
+ Liu,
+ J.
+ Zhong,
+ Y.
+ Ma,
+ A
+ multivariate
+ synthetic
+ control
+ chart
+ for
+ monitoring
+covariance
+ matrix
+ based
+ on
+ conditional
+ entropy,
+ in:
+ E.
+ Qi,
+ J.
+ Shen,
+ R.
+ Dou
+(Eds.),
+ The
+ 19th
+ International
+ Conference
+ on
+ Industrial
+ Engineering
+ and
+Engineering
+ Management,
+ Springer,
+ Berlin,
+ Heidelberg,
+ 2013,
+ pp.
+ 99–107.
+[10]
+ V.
+ Mayer-Schonberger,
+ K.
+ Cukier,
+ Big
+ Data:
+ A
+ Revolution
+ That
+ Will
+ Transform
+How
+ We Live
+ Work
+ and
+ Think,
+ John
+ Murray
+ Publishers,
+ London,
+ 2013.
+[11]
+ M.S.
+ Sarfraz,
+ O.
+ Hellwich,
+ Z.
+ Riaz,
+ Feature
+ extraction
+ and
+ representation
+ for
+face recognition,
+ in:
+ M.
+ Oravec
+ (Ed.),
+ Face
+ Recognition,
+ InTech,
+ Croatia,
+ 2010,
+pp.
+ 1–20.
+[12]
+ D.
+ Garcia-Alvarez,
+ M.J.
+ Fuente,
+ G.I.
+ Sainz,
+ Fault
+ detection
+ and
+ isolation
+ in
+transient
+ states
+ using
+ principal
+ component
+ analysis,
+ J.
+ Process
+ Control
+ 22
+(2012)
+ 551–563.
+[13]
+ J.E.
+ Jackson,
+ G.S.
+ Mudholkar,
+ Control
+ procedures
+ for
+ residuals
+ associated
+ with
+principal
+ component
+ analysis,
+ Technometrics
+ 21
+ (1979)
+ 341–349.
+[14]
+ J.F.
+ MacGregor,
+ C.
+ Jaeckle,
+ C.
+ Kiparissides,
+ M.
+ Koutoudi,
+ Process
+ monitoring
+and
+ diagnosis
+ by
+ multiblock
+ PLS
+ methods,
+ AIChE
+ J.
+ 40
+ (1994)
+ 826–838.
+[15]
+ G.
+ Li,
+ S.J.
+ Qin,
+ D.
+ Zhou,
+ Geometric
+ properties
+ of
+ partial
+ least
+ squares
+ for
+ process
+monitoring,
+ Automatica
+ 46
+ (2010)
+ 204–210.
+[16]
+ B.
+ Jiang,
+ D.
+ Huang,
+ X.
+ Zhu,
+ F.
+ Yang,
+ R.D.
+ Braatz,
+ Canonical
+ variate
+analysis-based
+ contributions
+ for
+ fault
+ identiﬁcation,
+ J.
+ Process
+ Control
+ 26
+(2015)
+ 17–25.
+
+
+PAGE 8
+138
+ 
+B.
+ Jiang,
+ R.D.
+ Braatz
+ / Journal
+ of
+ Process
+ Control
+ 58
+ (2017)
+ 131–138
+[17]
+ P.E.P.
+ Odiowei,
+ Y.
+ Cao,
+ Nonlinear
+ dynamic
+ process
+ monitoring
+ using
+ canonical
+variate
+ analysis
+ and
+ kernel
+ density
+ estimations,
+ IEEE
+ Trans.
+ Ind.
+ Inf.
+ 6
+ (2010)
+36–45.
+[18]
+ L.H.
+ Chiang,
+ E.L.
+ Russell,
+ R.D.
+ Braatz,
+ Fault
+ Detection
+ and
+ Diagnosis
+ in
+Industrial
+ Systems,
+ Springer
+ Verlag,
+ U.
+ K,
+ 2001.
+[19]
+ E.L.
+ Russell,
+ L.H.
+ Chiang,
+ R.D.
+ Braatz,
+ Fault
+ detection
+ in
+ industrial
+ processes
+using
+ canonical
+ variate
+ analysis
+ and
+ dynamic
+ principal
+ component
+ analysis,
+Chemometr.
+ Intell.
+ Lab.
+ Syst.
+ 51
+ (2000)
+ 81–93.
+[20]
+ B.
+ Jiang,
+ X.
+ Zhu,
+ D.
+ Huang,
+ J.A.
+ Paulson,
+ R.D.
+ Braatz,
+ A
+ combined
+ canonical
+variate
+ analysis
+ and
+ Fisher
+ discriminant
+ analysis
+ (CVA–FDA)
+ approach
+ for
+fault diagnosis,
+ Comput.
+ Chem.
+ Eng.
+ 77
+ (2015)
+ 1–9.
+[21]
+ A.
+ Simoglou,
+ E.B.
+ Martin,
+ A.J.
+ Morris,
+ Statistical
+ performance
+ monitoring
+ of
+dynamic
+ multivariate
+ processes
+ using
+ state
+ space
+ modelling,
+ Comput.
+ Chem.
+Eng.
+ 26
+ (2002)
+ 909–920.
+[22]
+ T.W.
+ Anderson,
+ An
+ Introduction
+ to
+ Multivariate
+ Statistical
+ Analysis,
+ 3rd
+ ed.,
+Wiley,
+ New
+ Jersey,
+ 2003.
+[23]
+ H.
+ Akaike,
+ A
+ new
+ look
+ at
+ the
+ statistical
+ model
+ identiﬁcation,
+ IEEE
+ Trans.
+Autom.
+ Control
+ 19
+ (1974)
+ 267–281.
+[24]
+ H.
+ Akaike,
+ Markovian
+ representation
+ of
+ stochastic
+ processes
+ by
+ canonical
+variables,
+ SIAM
+ J.
+ Control
+ 13
+ (1975)
+ 162–173.
+[25]
+ W.E.
+ Larimore,
+ Canonical
+ variate
+ analysis
+ in
+ control
+ and
+ signal
+ processing,
+ in:
+T. Katayama,
+ S.
+ Sugimoto
+ (Eds.),
+ Statistical
+ Methods
+ in
+ Control
+ and
+ Signal
+Processing,
+ Marcel
+ Dekker
+ Inc.,
+ New
+ York,
+ 1997,
+ pp.
+ 83–120.
+[26]
+ S.J.
+ Qin,
+ Statistical
+ process
+ monitoring:
+ basics
+ and
+ beyond,
+ J.
+ Chemometr.
+ 17
+(2003)
+ 480–502.
+[27]
+ M.
+ Borga,
+ T.
+ Landelius,
+ H.
+ Knutsson,
+ A
+ uniﬁed
+ approach
+ to
+ PCA,
+ PLS,
+ MLR
+ and
+CCA.
+ Report
+ LiTH-ISY-R-1992,
+ Linköping,
+ Sweden,
+ November
+ 1997.
+[28] J.G.
+ Fox,
+ J.
+ Mahanty,
+ The
+ effective
+ mass
+ of
+ an
+ oscillating
+ spring,
+ Am.
+ J.
+ Phys.
+ 38
+(1970)
+ 98–100.
+[29]
+ B.
+ Jiang,
+ X.
+ Zhu,
+ D.
+ Huang,
+ R.D.
+ Braatz,
+ Canonical
+ variate
+ analysis-based
+monitoring
+ of
+ process
+ correlation
+ structure
+ using
+ causal
+ feature
+representation,
+ J. Process
+ Control
+ 32
+ (2015)
+ 109–116.
+[30]
+ Y.
+ Tamada,
+ S.
+ Kim,
+ H.
+ Bannai,
+ S.
+ Imoto,
+ K.
+ Tashiro,
+ S.
+ Kuhara,
+ S.
+ Miyano,
+Estimating
+ gene
+ networks
+ from
+ gene
+ expression
+ data
+ by
+ combining
+ Bayesian
+network
+ model
+ with
+ promoter
+ element
+ detection,
+ Bioinformatics
+ 19
+ (2003)
+ii227–ii236.
+[31]
+ J.
+ Wang,
+ Q.P.
+ He,
+ Multivariate
+ statistical
+ process
+ monitoring
+ based
+ on
+statistics
+ pattern
+ analysis,
+ Ind.
+ Eng.
+ Chem.
+ Res.
+ 49
+ (2010)
+ 7858–7869.
+[32]
+ G.
+ Li,
+ S.J.
+ Qin,
+ Comparative
+ study
+ on
+ monitoring
+ schemes
+ for
+ non-Gaussian
+distributed
+ processes,
+ J.
+ Process
+ Control
+ (2016),
+ http://dx.doi.org/10.1016/j.
+jprocont.2016.08.007.
+[33]
+ X.
+ Wang,
+ U.
+ Kruger,
+ G.W.
+ Irwin,
+ Process
+ monitoring
+ approach
+ using
+ fast
+moving
+ window
+ PCA,
+ Ind.
+ Eng.
+ Chem.
+ Res.
+ 44
+ (2005)
+ 5691–5702.
+[34]
+ J.
+ Galdos,
+ D.
+ Gustafson,
+ Information
+ and
+ distortion
+ in
+ reduced-order
+ ﬁlter
+design,
+ IEEE
+ Trans.
+ Inf.
+ Theory
+ 23
+ (1977)
+ 183–194.
+[35]
+ J.
+ Shi,
+ J.
+ Malik,
+ Normalized
+ cuts
+ and
+ image
+ segmentation,
+ IEEE
+ Trans.
+ Pattern
+Anal.
+ Mach.
+ Intell.
+ 22
+ (2000)
+ 888–905.

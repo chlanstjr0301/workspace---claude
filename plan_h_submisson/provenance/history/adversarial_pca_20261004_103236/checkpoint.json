@@ -1,0 +1,7 @@
+{
+  "stage": "complete",
+  "verifications_passed": true,
+  "new_candidate_improved": false,
+  "selected": "MEDIANIQR_Q",
+  "decision": "retain historical baseline pending new data; no reselection of locked candidate"
+}

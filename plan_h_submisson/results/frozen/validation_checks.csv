@@ -1,0 +1,77 @@
+check,passed
+packaged immutable src/common.py,True
+packaged immutable src/models.py,True
+packaged immutable src/evaluation.py,True
+packaged immutable src/auxiliary.py,True
+packaged immutable src/v2.py,True
+packaged immutable models/baseline.joblib,True
+packaged immutable models/R5.joblib,True
+packaged immutable inputs/previous/selected_config.json,True
+packaged immutable inputs/previous/protocol_v2.json,True
+packaged immutable inputs/previous/implementation_lock.json,True
+packaged immutable inputs/previous/validation_report.json,True
+packaged immutable inputs/previous/V_evaluation.json,True
+packaged immutable inputs/previous/H_evaluation.json,True
+packaged immutable inputs/previous/reproduction.json,True
+packaged immutable inputs/previous/inventory.json,True
+packaged immutable inputs/previous/end_to_end_replay.json,True
+packaged immutable inputs/previous/review_report_ko.md,True
+packaged immutable inputs/previous/experiment_v2.py,True
+packaged immutable inputs/previous/validate_v2.py,True
+packaged immutable inputs/previous/infer_online.py,True
+packaged immutable inputs/previous/literature_selected_config.json,True
+packaged immutable inputs/previous/literature_V_evaluation.json,True
+packaged immutable inputs/frozen_rows.csv,True
+packaged immutable manifests/blocks.json,True
+packaged immutable manifests/rows_train.csv,True
+packaged immutable manifests/rows_calibration.csv,True
+packaged immutable manifests/rows_selection.csv,True
+packaged immutable manifests/rows_test.csv,True
+packaged immutable manifests/raw_to_clean_rows.csv,True
+packaged immutable manifests/duplicate_removed.csv,True
+packaged immutable manifests/fit_rows_R5.csv,True
+packaged immutable data/press_data_normal.csv,True
+packaged immutable data/outlier_data.csv,True
+packaged immutable inputs/previous/dependency_audit.csv,True
+packaged immutable inputs/previous/regression_tests.csv,True
+packaged immutable requirements.lock.txt,True
+packaged immutable inputs/expected/B0_S_pooled.csv,True
+packaged immutable inputs/expected/C0_S_pooled.csv,True
+packaged immutable inputs/expected/G0_Q999_S_pooled.csv,True
+packaged immutable inputs/expected/G1_Q999_S_pooled.csv,True
+packaged immutable inputs/expected/B0_V.csv,True
+packaged immutable inputs/expected/G1_Q999_V.csv,True
+packaged immutable inputs/expected/B0_H.csv,True
+packaged immutable inputs/expected/G1_Q999_H.csv,True
+reused inference sources exact historical version,True
+historical151 passed record,True
+151 evidence validator source copied intact,True
+T exclusively normal,True
+raw IDs globally unique,True
+all original nonduplicate rows assigned,True
+R5 scaler normal train moments,True
+R5 fit manifest normal T only,True
+selection one-row input order,True
+selection B0 online exact decisions,True
+selection online R5 numeric scores,True
+selection online B_same_threshold,True
+selection online G1,True
+selection online D_old_threshold_G1,True
+selection online R5_A0,True
+test one-row input order,True
+test B0 online exact decisions,True
+test online R5 numeric scores,True
+test online B_same_threshold,True
+test online G1,True
+test online D_old_threshold_G1,True
+test online R5_A0,True
+demonstrate unsupported missing-input behavior,True
+"wrapper rejects missing, no false normal classification",True
+new-data interface independent process model reload,True
+portable external replay same rows,True
+portable external B0 same decisions,True
+portable external G1 same decisions,True
+prediction digest before labels unchanged,True
+strict exact threshold equality no auxiliary hit,True
+next float above theta hits,True
+prior dependency audit includes original split protection,True

@@ -1,0 +1,8 @@
+{
+  "command": "bash RUN_EXPERIMENT.sh",
+  "new_run": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_202734_rerun_294980",
+  "same_frozen_configurations": true,
+  "same_final_scores_and_predictions": true,
+  "refit_included": true,
+  "not_independent_statistical_evidence": true
+}

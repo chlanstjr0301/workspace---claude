@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "checked": [
+    "code/runtime/audit_data.py",
+    "code/runtime/auxiliary.py",
+    "code/runtime/common.py",
+    "code/runtime/compare_replay.py",
+    "code/runtime/evaluate_new_data.py",
+    "code/runtime/evaluation.py",
+    "code/runtime/make_report.py",
+    "code/runtime/models.py",
+    "code/runtime/prepare_replay.py",
+    "code/runtime/register_validation.py",
+    "code/runtime/review.py",
+    "code/runtime/v2.py",
+    "code/runtime/validate_frozen.py",
+    "code/analysis/build_assets.py",
+    "scripts/build_papers.sh",
+    "scripts/evaluate_new.py",
+    "scripts/make_manifest.py",
+    "scripts/render_pdfs.py",
+    "scripts/reproduce.py",
+    "scripts/setup_env.sh",
+    "scripts/train_fixed.py",
+    "scripts/validate_input.py",
+    "scripts/verify_hashes.py"
+  ],
+  "scope": "Final scripts/core/analysis identical to extracted executed version; make_manifest hashes itself only via package manifest exclusion scope",
+  "note": "Not all archived precursor scripts were rerun; they are original evidence and not default execution dependencies"
+}

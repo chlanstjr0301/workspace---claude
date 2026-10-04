@@ -1,0 +1,6 @@
+item,result,evidence,limit
+평가 규칙 수정,"C1 V 기존실패→유지통과, 예측변경0",policy_comparison.csv; src/v2.py:judge,성능 개선 아님
+선택 효과,"B0대비FN1감소,FP증가0; C0대비FN1증가,FP1제거",block_metrics.csv; paired_counts.csv,이미노출된21이상행
+V 유지,"FN0→0,F2 1→1 유지통과;FN감소 not_assessable",V_evaluation.json,재사용821행
+H 효과,"FN28→13,FP1→1",H_evaluation.json; paired_selected_rows.csv,이미공개된과거평가
+독립 검증,미수행,protocol_v2.json prior_exposure,새로운 날짜/설비/고장시각필요

@@ -1,0 +1,80 @@
+{
+  "files": [
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/models/baseline.joblib",
+      "path": "models/baseline.joblib",
+      "sha256": "cf410ba82e65312e6df31fa45622029d43c67c2b1f25cf45d1dec7194b1bc746"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/inputs/frozen_rows.csv",
+      "path": "inputs/frozen_rows.csv",
+      "sha256": "9372ae29ed7d3104a0d88c20b961a2aef034ff7b96b5735aac5f2c0c50de16c2"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/inputs/original_expected_test.csv",
+      "path": "inputs/original_expected_test.csv",
+      "sha256": "358c2ebb6f497577ca5c69aa12b04dab6c97d64cc71ebc341f720934e161591e"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/inputs/original/selection_lock.json",
+      "path": "inputs/original_selection_lock.json",
+      "sha256": "5d2c50ae4b73ca3405ab0d89fa0f357ed9ad322e932cd027a6c239e0944e0ec4"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/data/press_data_normal.csv",
+      "path": "data/press_data_normal.csv",
+      "sha256": "f2d61cb3b3108f49a3305d2966b3a31f26942ac8af8ffc9eb531b432b945b0a7"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/data/outlier_data.csv",
+      "path": "data/outlier_data.csv",
+      "sha256": "9fad8c238e63dba3257d8be32a32362548955c772171a95c0d2af61b0435ed2e"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/review_report_ko.md",
+      "path": "inputs/previous_warmup_report.md",
+      "sha256": "54b60cca9057d3b579cb5a5a02c3b8dfa18dd495a18b4a0f595705e2db9fecb8"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/adversarial_pca_20261004_103236/review_report_ko.md",
+      "path": "inputs/previous_median_report.md",
+      "sha256": "d3960f15f4d9f2853fbfce3de762af8d6130a66f3896a5aa9987ad4390137614"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/protocol.json",
+      "path": "inputs/previous_budget_protocol.json",
+      "sha256": "a22d9dcf1113a43f73eca38ea417078d21cef2b325b4947e051eeca09ccb383e"
+    },
+    {
+      "source": "/home/lim/hydraulic_ai_alt/runs/pca_fn_fp_tradeoff_20261004_201516/RUN_EXPERIMENT.sh",
+      "path": "inputs/previous_RUN_EXPERIMENT.sh",
+      "sha256": "dcd9e7387b07549da462ce094ca18fe626f18bc3075a521f8ca048d14de38fb9"
+    }
+  ],
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "threads": 2,
+  "AGENTS": "No AGENTS.md found at project or its ancestor paths",
+  "versions": {
+    "matplotlib": "3.11.2",
+    "scikit-learn": "1.9.1",
+    "kiwisolver": "1.5.1",
+    "fonttools": "4.66.1",
+    "pandas": "3.0.6",
+    "joblib": "1.6.0",
+    "python-dateutil": "2.9.0.post0",
+    "cloudpickle": "3.1.2",
+    "six": "1.17.0",
+    "narwhals": "2.26.0",
+    "numpy": "2.5.3",
+    "contourpy": "1.4.0",
+    "pyparsing": "3.3.3",
+    "threadpoolctl": "3.7.0",
+    "pillow": "12.3.0",
+    "pymupdf": "1.28.2",
+    "scipy": "1.18.1",
+    "packaging": "26.3",
+    "cycler": "0.12.1"
+  },
+  "read_scope": "current project only; no other agent new folders"
+}

@@ -1,0 +1,62 @@
+{
+  "method": "Every page rendered to PNG and visually inspected via two-page contact sheets, plus PDF text and page-geometry checks",
+  "documents": [
+    {
+      "path": "paper/paper_ko.pdf",
+      "sha256": "3ffdd5fbd9d08dc88b2265b369f8ae4613845a9a10450f85d5e85564858f8d5f",
+      "pages_rendered_and_visually_checked": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "path": "paper/paper_en_icml.pdf",
+      "sha256": "258fded1f27336f9efce4c6ca91619cdabbaaf0257761b55f5f1ceb98be69e31",
+      "pages_rendered_and_visually_checked": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "path": "reviews/adversarial_review_ko.pdf",
+      "sha256": "703df1d99d51649af3b52e98d6f5c9cffdc5e5ecca49c5696e7bf051838eb192",
+      "pages_rendered_and_visually_checked": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  ],
+  "issues_remaining": "No clipped/overlapping glyphs, broken Korean/formula, unresolved citations, or unintended blank page observed; appendix figure-only pages intentionally have whitespace.",
+  "review_scope": "Author-side AI-assisted self-review, not external peer review.",
+  "english_main_pages": 6,
+  "english_official_style": "ICML2026, anonymous default; no accepted option or margin/font reduction"
+}

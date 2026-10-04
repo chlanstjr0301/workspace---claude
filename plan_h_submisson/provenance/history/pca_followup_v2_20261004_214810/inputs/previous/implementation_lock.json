@@ -1,0 +1,13 @@
+{
+  "created": "2026-10-04T12:12:45.345455+00:00",
+  "sources": {
+    "auxiliary.py": "cd6db8342519e0669bf74400de97764a43e9211651eff3b201e65d5434a65729",
+    "infer_system.py": "285982a460780bada70d0c64b5cffadeedabc3f8ea9e886dac0ed3a910acbc48",
+    "evaluation.py": "48667a2b846a1af90ce17f454728e89cb371d0f651581a6db2118a00899a8704",
+    "prepare.py": "82deb68d2cb0e5095ecf4e1a22a76a89485d9bcb4e5141983f3f3bf7edd3fcf3",
+    "experiment.py": "32c6769932b659a0e8611c57e6e02941307de32854667d5e1ae1b601322831fd",
+    "common.py": "25d92b7e4c008d2ac8161f35713bc5e48bf2ec19c7d1d2a290b4f74699e8f6ad",
+    "models.py": "521371ba5b2f51dd3ad936576c6ce66acaf64b54d5922cafafb5d75795bdb37e"
+  },
+  "preregistration_sha256": "9397ad82d3cd18d2de5690b0a0250ffc04b6fd998e3e49fc772422e94a49d7e7"
+}

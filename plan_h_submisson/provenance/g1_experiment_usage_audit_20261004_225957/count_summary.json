@@ -1,0 +1,114 @@
+{
+  "scope": "saved PCA project records + relevant local session until audit start; no global process ledger",
+  "selected_G1_development_selection_rounds": {
+    "count": 1,
+    "status": "confirmed_in_scope"
+  },
+  "selected_G1_frozen_validation_rounds": {
+    "count": 1,
+    "status": "confirmed_in_scope"
+  },
+  "selected_G1_whole_replays": {
+    "count": 2,
+    "status": "minimum_confirmed"
+  },
+  "G1_family_unique_configurations": {
+    "count": 3,
+    "status": "confirmed_in_observed_artifacts",
+    "development": 2,
+    "posthoc_previous_threshold_control": 1,
+    "selected": 1
+  },
+  "v2_candidates": {
+    "planned": 6,
+    "computed": 6,
+    "computation_completed": 6,
+    "execution_failed": 0,
+    "status_completed_rows": 3,
+    "status_duplicate_excluded_rows": 3,
+    "structurally_distinct": 6,
+    "new_relative_to_R5_A1": 5,
+    "binary_C_and_S_signatures": 4,
+    "seed_variants": 0,
+    "unknown_extra_attempts": true
+  },
+  "frozen_controls": {
+    "planned": 5,
+    "computed": 5,
+    "unique_in_round": 5,
+    "new_structural_configuration": 1,
+    "reselection": false
+  },
+  "training": {
+    "PCA_fit_pipeline_minimum": 106,
+    "PCA_sklearn_fit_call_minimum": 212,
+    "R5_fit_minimum": 5,
+    "R5_saved_auxiliary_training": 3,
+    "R5_validation_reconstruction": 2,
+    "G1_round_operational_model_new_training": 0,
+    "all_project_training_total": "unknown: overwritten per-engine fit logs and nonexhaustive command history",
+    "Forest_excluded": true
+  },
+  "inference": {
+    "selected_G1_parent_script_attempt_minimum": 11,
+    "selected_G1_parent_script_completed_minimum": 10,
+    "selected_G1_parent_script_failed_minimum": 1,
+    "baseline_R5_diagnostic_parent_stages": 2,
+    "unit": "top-level stage script that computed selected-G1 predictions; nested child calls not added",
+    "exact_function_call_total": "unknown"
+  },
+  "evaluation": {
+    "new_prediction_metric_aggregation_parent_stages_minimum": 6,
+    "stored_prediction_reaggregation_stages_minimum": 4,
+    "unit": "completed stage, not each metric or each S/S1/S2 report row",
+    "online_batch_workflows": 4,
+    "online_batch_dataset_comparisons": 10,
+    "nested_online_child_processes_minimum": 14,
+    "report_generation_or_recitation_minimum": 5,
+    "report_and_reaggregation_overlap": true
+  },
+  "implementation": {
+    "v2_unique_reported_checks": 151,
+    "v2_successful_checker_runs": 2,
+    "frozen_new_reported_checks": 76,
+    "frozen_checker_runs": 2,
+    "reported_pass_items_across_4_runs": 454,
+    "historical151_reuse_not_reexecution": true,
+    "ZIP_checks": "separate integrity operations; not candidates or training",
+    "global_assertion_total": "unknown"
+  },
+  "preceding_shared_data_development_rounds": {
+    "count": 4,
+    "status": "minimum_confirmed",
+    "names": [
+      "original",
+      "adversarial",
+      "tradeoff",
+      "literature"
+    ],
+    "additional_whole_replays": 4
+  },
+  "usage": {
+    "confirmed_used_unique_rows": 20599,
+    "normal": 19999,
+    "anomaly": 600,
+    "duplicate_rows": 1,
+    "confirmed_unused_unique_rows": 0,
+    "unverifiable_unique_row_use": 0,
+    "per_experiment_full_lineage": "not universally verified",
+    "source_audit": "runs/data_usage_audit_20261004_225053/audit_summary.json"
+  },
+  "git": "not a git repository; commit chronology unavailable",
+  "candidate_selection_chronology": {
+    "recorded_selection_UTC": "2026-10-04T12:53:34.496235+00:00",
+    "session_evaluate_command_UTC": "2026-10-04T12:53:55.854Z",
+    "session_source_line": 1561,
+    "local_historical_logs_support_order": true,
+    "independent_tamperproof_timestamp_proof": false
+  },
+  "completion_messages": {
+    "observed": 2,
+    "evidence": "completion_message_evidence.json",
+    "meaning": "two user-facing completion messages for development and frozen-validation tasks, not two total executions"
+  }
+}

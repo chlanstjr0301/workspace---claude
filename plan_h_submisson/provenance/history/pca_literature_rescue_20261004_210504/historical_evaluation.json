@@ -1,0 +1,25 @@
+{
+  "evaluated": "2026-10-04T12:13:12.628764+00:00",
+  "candidates": [
+    "baseline",
+    "R0_A0"
+  ],
+  "single_restricted_batch": true,
+  "results": {
+    "V:R0_A0": {
+      "state": "improvement_unverifiable",
+      "failed_rules": [
+        "FN_decreased",
+        "F2"
+      ]
+    },
+    "historical:R0_A0": {
+      "state": "fail",
+      "failed_rules": [
+        "FN_decreased",
+        "F2"
+      ]
+    }
+  },
+  "reselection": false
+}

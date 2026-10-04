@@ -1,0 +1,83 @@
+[
+  {
+    "path": "deliverables/pca_g1_frozen_validation_20261004_221914_results.zip",
+    "sha256": "c7cfe63a9c56705b33a2deebc1331ff60990b405cab3cfe372b08a73c4919eaf",
+    "members": [
+      {
+        "member": "pca_g1_frozen_validation_20261004_221914/inputs/previous/literature_selected_config.json",
+        "sha256": "fc55520d60d9965bff724f731d841d455ccc5efa494cf43d2dd7c80af1e7d35a"
+      },
+      {
+        "member": "pca_g1_frozen_validation_20261004_221914/inputs/previous/protocol_v2.json",
+        "sha256": "507bc28e8ee0faf42f96e40aff7166a3ea5470eb1d3ffb0a77b6ae90eebe49b9"
+      },
+      {
+        "member": "pca_g1_frozen_validation_20261004_221914/inputs/previous/selected_config.json",
+        "sha256": "0c834105510a19b7672dc21a7dea69bbffd668dcc5b5d2fc93c9d0269dc0ea47"
+      },
+      {
+        "member": "pca_g1_frozen_validation_20261004_221914/model_manifest.json",
+        "sha256": "d8b9485301ed9a914bf07dfcc0ff88b778fd9efc6905941a5cf71b7d50dc7589"
+      },
+      {
+        "member": "pca_g1_frozen_validation_20261004_221914/validation_protocol.json",
+        "sha256": "1c108b54e27754c929bbf33cc2a6498980641e34b3afcf0d1d282105df585757"
+      }
+    ],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  },
+  {
+    "path": "deliverables/pca_followup_v2_20261004_214810_results.zip",
+    "sha256": "2108662a1bb8bb18924878e438fd6ef6784f0b1e7a8ab350a91a855174b8fa16",
+    "members": [
+      {
+        "member": "pca_followup_v2_20261004_214810/inputs/previous/selected_config.json",
+        "sha256": "fc55520d60d9965bff724f731d841d455ccc5efa494cf43d2dd7c80af1e7d35a"
+      },
+      {
+        "member": "pca_followup_v2_20261004_214810/protocol_v2.json",
+        "sha256": "507bc28e8ee0faf42f96e40aff7166a3ea5470eb1d3ffb0a77b6ae90eebe49b9"
+      },
+      {
+        "member": "pca_followup_v2_20261004_214810/selected_config.json",
+        "sha256": "0c834105510a19b7672dc21a7dea69bbffd668dcc5b5d2fc93c9d0269dc0ea47"
+      }
+    ],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  },
+  {
+    "path": "deliverables/adversarial_pca_review_20261004_103236.zip",
+    "sha256": "83fd798343e20314671103fb575e082dc4bcb70bdf4230b54a915c2cdf4a8014",
+    "members": [],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  },
+  {
+    "path": "deliverables/pca_literature_rescue_20261004_210504_results.zip",
+    "sha256": "a70dfe1ac14d267eced17316d108dde6be6d1368df69bca7cff15dadd83b5a2b",
+    "members": [
+      {
+        "member": "pca_literature_rescue_20261004_210504/selected_config.json",
+        "sha256": "fc55520d60d9965bff724f731d841d455ccc5efa494cf43d2dd7c80af1e7d35a"
+      }
+    ],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  },
+  {
+    "path": "deliverables/pca_fn_fp_tradeoff_20261004_201516_results.zip",
+    "sha256": "cdac4b8c5a83370ac177acacda21ff12b2174014db85ba0f98b6c25af1b6bd41",
+    "members": [],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  },
+  {
+    "path": "deliverables/hydraulic_pca_paper_code_data_ko_20261003.zip",
+    "sha256": "cdeb6f252be382a51feffe6263cbf641be4204b99c237a1eb2cdc4f74fc5af73",
+    "members": [],
+    "counts_as_execution": false,
+    "reason": "archive/copy; execution only counted with distinct logs/commands"
+  }
+]

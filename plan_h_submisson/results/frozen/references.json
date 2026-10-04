@@ -1,0 +1,17 @@
+[
+  {
+    "title": "On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation",
+    "authors": "Cawley; Talbot",
+    "year": 2010,
+    "url": "https://jmlr.org/papers/v11/cawley10a.html",
+    "read": "official abstract",
+    "doi": null
+  },
+  {
+    "title": "A Note on the Validity of Cross-Validation for Evaluating Autoregressive Time Series Prediction",
+    "authors": "Bergmeir; Hyndman; Koo",
+    "url": "https://robjhyndman.com/papers/cv-wp.pdf",
+    "read": "abstract and sections1-2 of author preprint",
+    "application": "assumptions matter; not universal random-CV prohibition"
+  }
+]

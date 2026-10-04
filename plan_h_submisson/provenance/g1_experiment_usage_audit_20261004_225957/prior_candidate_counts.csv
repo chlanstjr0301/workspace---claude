@@ -1,0 +1,6 @@
+round,CSV_rows,base_specs,planned_operating_configs,main_operating_configs,additional_postprocess,explanation,PCA_operating_points,IF_operating_points
+adversarial,270,18.0,56.0,54,2.0,54 main points × (2 blocks ×2 scopes + pooled operational)=270 rows; +2 postprocessing policies =>56; IF6 main points kept separate from G1,,
+tradeoff,36,,36.0,36,,12 fixed-model threshold points +2 short-window options ×12; no G1,,
+literature,18,,18.0,18,,6 auxiliary scores ×3 calibration budgets; R5_A0/A1/A2 have no G1 confirmation; no selected candidate,,
+original_selection,1272,,,424,,key+threshold dedup within operational table; native/common scopes not extra configs; not all ancillary ablations/postprocessing aggregated,312.0,112.0
+original_test,1272,,,424,,key+threshold dedup within operational table; native/common scopes not extra configs; not all ancillary ablations/postprocessing aggregated,312.0,112.0

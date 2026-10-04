@@ -1,0 +1,30 @@
+[
+  {
+    "path": "deliverables/hydraulic_pca_paper_code_data_ko_20261003.zip",
+    "sha256": "cdeb6f252be382a51feffe6263cbf641be4204b99c237a1eb2cdc4f74fc5af73",
+    "members": 912,
+    "sample_files": [
+      {
+        "path": "pca_paper_20261003_185434/results/pca_20261003_cpu/selection_lock.json",
+        "sha256": "5d2c50ae4b73ca3405ab0d89fa0f357ed9ad322e932cd027a6c239e0944e0ec4"
+      }
+    ],
+    "zip_CRC_checked": true
+  },
+  {
+    "path": "deliverables/adversarial_pca_review_20261004_103236.zip",
+    "sha256": "83fd798343e20314671103fb575e082dc4bcb70bdf4230b54a915c2cdf4a8014",
+    "members": 281,
+    "sample_files": [
+      {
+        "path": "adversarial_pca_20261004_103236/all_trials.csv",
+        "sha256": "3bd4c5f867f21ef5e2c3f93b6cd79d75b7f6e4359b3d2a6483eb9d3ea932ee20"
+      },
+      {
+        "path": "adversarial_pca_20261004_103236/review_report_ko.md",
+        "sha256": "d3960f15f4d9f2853fbfce3de762af8d6130a66f3896a5aa9987ad4390137614"
+      }
+    ],
+    "zip_CRC_checked": true
+  }
+]

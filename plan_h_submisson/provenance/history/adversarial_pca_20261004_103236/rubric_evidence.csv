@@ -1,0 +1,7 @@
+item,project_weight,experiment,evidence,actual_result,limitation,rubric_source
+데이터 이해 및 진단,15,두CSV·중복·시간공백·교락 재확인,manifests/data_audit.json; inventory.json,"원본 정상19999/이상600, 중복1 제거",부하/고장시작 없음,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보
+AI 예측모델 개발 및 비교,40,원결과재현·56구성·같은창IF·정상fit,all_trials.csv; baseline_vs_improved.csv; src/core.py,"기존329TP/1FP, 신규313TP/3FP; 개선미확인",노출된과거평가,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보
+영향요인 및 오류분석,15,조건분모·paired 오류·route/특징/QT,tables/condition_errors.csv; paired_errors.csv,새TP2·잃은TP18·새FP3·제거FP1,센서조건은 실제부하아님,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보
+현장 활용방안,10,episode·경보지연·후처리,tables/alarm_episodes.csv; tables/postprocessing_costs.csv,2연속FP0 대신FN59,고장시작 정답 없음,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보
+창의성·차별성,10,인과적다중길이/시간상한/통제비교,hypotheses.md; tables/controlled_comparison.csv,라우팅·특징변경의일관된개선실패,새알고리즘 신규성 주장 안 함,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보
+코드 및 재현성,10,ZIP911파일·원4347행/신규13041판정 검증,validation.json; saved_inference_validation.json; RUN_REVIEW.sh,원본해시보존·별도프로세스추론일치,전용환경 및 원프로젝트 필요,기존 패키지 한국어 논문 PDF9쪽 부록; 공식 채점표 외부원문 미확보

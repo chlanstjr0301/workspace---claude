@@ -1,0 +1,316 @@
+{
+  "passed": true,
+  "output": "/home/lim/hydraulic_ai_alt/runs/pca_literature_rescue_20261004_210504/replays/20261004_212137_910157",
+  "complete_retraining_of_auxiliaries": true,
+  "baseline_stored_inference_not_refit": true,
+  "selection_equal": true,
+  "files": [
+    {
+      "file": "R0_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A0_V.csv",
+      "rows": 821,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A0_historical.csv",
+      "rows": 4347,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R0_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R1_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R2_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R3_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R4_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A0_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A0_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A0_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A1_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A1_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A1_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A2_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A2_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "R5_A2_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "baseline_S1.csv",
+      "rows": 657,
+      "equal_predictions": true
+    },
+    {
+      "file": "baseline_S2.csv",
+      "rows": 619,
+      "equal_predictions": true
+    },
+    {
+      "file": "baseline_S_pooled.csv",
+      "rows": 1276,
+      "equal_predictions": true
+    },
+    {
+      "file": "baseline_V.csv",
+      "rows": 821,
+      "equal_predictions": true
+    },
+    {
+      "file": "baseline_historical.csv",
+      "rows": 4347,
+      "equal_predictions": true
+    }
+  ],
+  "seconds": 33.4621290340001,
+  "not_independent_statistical_replication": true
+}

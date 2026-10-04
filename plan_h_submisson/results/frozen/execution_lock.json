@@ -1,0 +1,20 @@
+{
+  "created": "2026-10-04T13:37:13.994985+00:00",
+  "purpose": "final review implementation lock before portable replay; protocol was registered before fixed control scoring",
+  "files": {
+    "src/auxiliary.py": "cd6db8342519e0669bf74400de97764a43e9211651eff3b201e65d5434a65729",
+    "src/evaluation.py": "48667a2b846a1af90ce17f454728e89cb371d0f651581a6db2118a00899a8704",
+    "src/audit_data.py": "1fb477c90c0e0b985662fd34f1759bd5f6724701e04a9bd4275c226a90c3eb71",
+    "src/review.py": "99da581315096a56c8cbcd064f61acaee6318cbc337d5de60d4c5d00c2b25665",
+    "src/compare_replay.py": "73072edeea120962aa001e4fc1ff7010b6203aa345b0ff057203ab0dbbd594ea",
+    "src/register_validation.py": "f0633642aa3d45e504dfe094c6765cd7fb5014cbd55e5ccf6eaf8b20241d10e8",
+    "src/validate_frozen.py": "1986c16151a94d7e9d69a2c13d9fc3bbae43726666edba1f752261023080ec1e",
+    "src/common.py": "25d92b7e4c008d2ac8161f35713bc5e48bf2ec19c7d1d2a290b4f74699e8f6ad",
+    "src/models.py": "521371ba5b2f51dd3ad936576c6ce66acaf64b54d5922cafafb5d75795bdb37e",
+    "src/evaluate_new_data.py": "89247911278edf8e795668cd4128b8ee6e47346a770507de6ce993ee379b8d14",
+    "src/make_report.py": "d5eff88c7ba4f80c9e2b960806fa2fd8bd86ed236804046e3f5a80dfc6d83e5f",
+    "src/prepare_replay.py": "515881a15287a3c1df51863c73795e42632f8f082e87813ea7d46059e07ab159",
+    "src/v2.py": "313186f7e59fa508d1c9e02929c1c24b52726c4926c291601b11d2950b6b352c",
+    "RUN_REVIEW.sh": "e67d66bc11d822588246b6fe15ccc19c5c68e91962d36c8b294d0b566ad900da"
+  }
+}

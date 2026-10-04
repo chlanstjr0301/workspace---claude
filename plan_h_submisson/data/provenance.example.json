@@ -1,0 +1,9 @@
+{
+  "independently_collected": false,
+  "sensor_semantics_compatible": false,
+  "prior_usage": "unknown",
+  "equipment_id": "REPLACE_WITH_CONFIRMED_ID",
+  "acquisition_dates": [],
+  "units": "REPLACE_WITH_CONFIRMED_UNITS",
+  "note": "Metadata template only: not synthetic performance data. Set booleans only from acquisition/use evidence."
+}

@@ -1,0 +1,207 @@
+{
+  "passed": true,
+  "output": "/home/lim/hydraulic_ai_alt/runs/pca_followup_v2_20261004_214810/replays/20261004_220243_176540",
+  "selected": "G1_Q999",
+  "fixed_model_stored_inference": true,
+  "new_model_training": false,
+  "C_quantiles_recomputed_equal": true,
+  "all_row_predictions_match": [
+    {
+      "file": "B0_H.csv",
+      "rows": 4347,
+      "matched": true
+    },
+    {
+      "file": "B0_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "B0_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "B0_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "B0_V.csv",
+      "rows": 821,
+      "matched": true
+    },
+    {
+      "file": "C0_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "C0_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "C0_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "C1_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "C1_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "C1_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G0_Q995_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G0_Q995_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G0_Q995_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G0_Q995_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G0_Q999_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G0_Q999_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G0_Q999_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G0_Q999_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G1_Q995_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G1_Q995_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G1_Q995_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G1_Q995_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_H.csv",
+      "rows": 4347,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G1_Q999_V.csv",
+      "rows": 821,
+      "matched": true
+    },
+    {
+      "file": "G2_Q995_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G2_Q995_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G2_Q995_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G2_Q995_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "G2_Q999_C.csv",
+      "rows": 2011,
+      "matched": true
+    },
+    {
+      "file": "G2_Q999_S1.csv",
+      "rows": 657,
+      "matched": true
+    },
+    {
+      "file": "G2_Q999_S2.csv",
+      "rows": 619,
+      "matched": true
+    },
+    {
+      "file": "G2_Q999_S_pooled.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "reproduced_B0_S.csv",
+      "rows": 1276,
+      "matched": true
+    },
+    {
+      "file": "reproduced_C0_S.csv",
+      "rows": 1276,
+      "matched": true
+    }
+  ],
+  "seconds": 127.10432263199618,
+  "not_independent_statistical_validation": true
+}

@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "replay_root": "/tmp/pca_g1_portable_check_20261004_221914",
+  "original_project_not_read_by_execution": true,
+  "checks": [
+    {
+      "file": "metrics.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "events.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "normal_exposure.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "paired_changes.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "row_timing_and_residuals.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "mandatory_conditions.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "file": "control_effects.csv",
+      "same_values": true,
+      "exact_bytes": true
+    },
+    {
+      "all_prediction_csv_exact_bytes": true
+    }
+  ]
+}

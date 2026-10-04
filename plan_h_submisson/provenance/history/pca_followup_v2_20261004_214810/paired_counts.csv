@@ -1,0 +1,5 @@
+block,comparator,candidate,new_TP,new_FN,additional_FP,removed_FP,new_TP_bursts,new_FN_bursts,independent_failure_events
+S_pooled,B0,G1_Q999,1,0,0,0,1,0,unknown; burst counts are observation groups
+S_pooled,C0,G1_Q999,0,1,0,1,0,1,unknown; burst counts are observation groups
+V,B0,G1_Q999,0,0,0,0,0,0,unknown; burst counts are observation groups
+H,B0,G1_Q999,15,0,0,0,3,0,unknown; burst counts are observation groups

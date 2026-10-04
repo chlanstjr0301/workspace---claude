@@ -1,0 +1,13 @@
+run,prediction_tables_read,split_or_use_manifests,documented_target_or_fit_rows,documented_input_rows,note
+adversarial_pca_20261004_103236,96,4,20545,7514,use confirmed for listed rows; not claiming every candidate fit lineage complete
+adversarial_pca_20261004_195637_rerun_292928,96,2,7514,7514,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_20261003_cpu,26,123,20599,20599,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_fn_fp_tradeoff_20261004_201516,56,8,20467,8455,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_fn_fp_tradeoff_20261004_202734_rerun_294980,56,8,20467,8455,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_followup_v2_20261004_214810,39,11,19751,20449,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_followup_v2_20261004_214810/replays/20261004_220243_176540,39,11,19751,20449,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_g1_frozen_validation_20261004_221914,25,7,17740,18438,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_literature_rescue_20261004_210504,61,16,18454,18438,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_literature_rescue_20261004_210504/replays/20261004_211954_372031,61,15,18454,18438,use confirmed for listed rows; not claiming every candidate fit lineage complete
+pca_literature_rescue_20261004_210504/replays/20261004_212137_910157,61,16,18454,18438,use confirmed for listed rows; not claiming every candidate fit lineage complete
+preflight_20261003,0,24,0,0,preparation only: no score/fit proof

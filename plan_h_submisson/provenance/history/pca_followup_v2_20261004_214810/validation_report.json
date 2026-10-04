@@ -1,0 +1,632 @@
+{
+  "passed": true,
+  "tests": 151,
+  "regression": [
+    {
+      "test": "identical B0 fails strict S effect",
+      "passed": true
+    },
+    {
+      "test": "identical budget-respecting V passes stability",
+      "passed": true
+    },
+    {
+      "test": "FN0to0 maintenance true reduction not_assessable",
+      "passed": true
+    },
+    {
+      "test": "F2 1to1 maintenance passes",
+      "passed": true
+    },
+    {
+      "test": "FN0to1 V maintenance fails",
+      "passed": true
+    },
+    {
+      "test": "S2 FP6to7 fails both unchanged budgets",
+      "passed": true
+    },
+    {
+      "test": "normal-only V judges only FP/FPR",
+      "passed": true
+    },
+    {
+      "test": "normal-only V still enforces extra FP budget",
+      "passed": true
+    },
+    {
+      "test": "G1 reset and no extension without current hit",
+      "passed": true
+    },
+    {
+      "test": "G2 reset and current-hit requirement",
+      "passed": true
+    },
+    {
+      "test": "unavailable auxiliaries never alarm",
+      "passed": true
+    },
+    {
+      "test": "at most six slots and no replacement trials",
+      "passed": true
+    },
+    {
+      "test": "G0_Q995 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G0_Q995 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "G0_Q999 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G0_Q999 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "G1_Q995 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G1_Q995 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "G1_Q999 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G1_Q999 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "G2_Q995 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G2_Q995 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "G2_Q999 same rows and B0 detections retained",
+      "passed": true
+    },
+    {
+      "test": "G2_Q999 score threshold matches alarm",
+      "passed": true
+    },
+    {
+      "test": "S online rows identical",
+      "passed": true
+    },
+    {
+      "test": "S online B0 scores/predictions match",
+      "passed": true
+    },
+    {
+      "test": "S online R5 scores match",
+      "passed": true
+    },
+    {
+      "test": "S G0_Q995 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "S G0_Q999 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "S G1_Q995 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "S G1_Q999 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "S G2_Q995 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "S G2_Q999 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "selection_prefix_and_V online rows identical",
+      "passed": true
+    },
+    {
+      "test": "selection_prefix_and_V online B0 scores/predictions match",
+      "passed": true
+    },
+    {
+      "test": "selection_prefix_and_V online R5 scores match",
+      "passed": true
+    },
+    {
+      "test": "selection_prefix_and_V G1_Q999 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "H online rows identical",
+      "passed": true
+    },
+    {
+      "test": "H online B0 scores/predictions match",
+      "passed": true
+    },
+    {
+      "test": "H online R5 scores match",
+      "passed": true
+    },
+    {
+      "test": "H G1_Q999 batch/online alarms identical",
+      "passed": true
+    },
+    {
+      "test": "G0_Q995 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "G0_Q999 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "G1_Q995 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "G1_Q999 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "G2_Q995 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "G2_Q999 future perturbation leaves past scores and alarms unchanged",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint T/C",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint T/S1",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint C/S1",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint T/H",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint C/H",
+      "passed": true
+    },
+    {
+      "test": "B0 raw dependencies disjoint V/H",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint T/C",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint T/S1",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint C/S1",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint T/H",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint C/H",
+      "passed": true
+    },
+    {
+      "test": "G0 raw dependencies disjoint V/H",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint T/C",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint T/S1",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint C/S1",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint T/H",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint C/H",
+      "passed": true
+    },
+    {
+      "test": "G1 raw dependencies disjoint V/H",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint T/C",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint T/S1",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint C/S1",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint T/H",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint C/H",
+      "passed": true
+    },
+    {
+      "test": "G2 raw dependencies disjoint V/H",
+      "passed": true
+    },
+    {
+      "test": "C0 old S2 rejection remains after V policy repair",
+      "passed": true
+    },
+    {
+      "test": "copied original hash src/common.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact src/common.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash src/evaluation.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact src/evaluation.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash src/models.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact src/models.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash src/auxiliary.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact src/auxiliary.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash src/infer_system.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact src/infer_system.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/experiment.py",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/experiment.py",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/preregistration.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/preregistration.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/all_trials.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/all_trials.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/block_metrics.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/block_metrics.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/V_evaluation.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/V_evaluation.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/selected_config.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/selected_config.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/implementation_lock.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/implementation_lock.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/reproduction.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/reproduction.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/review_report_ko.md",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/review_report_ko.md",
+      "passed": true
+    },
+    {
+      "test": "copied original hash models/baseline.joblib",
+      "passed": true
+    },
+    {
+      "test": "original remains intact models/baseline.joblib",
+      "passed": true
+    },
+    {
+      "test": "copied original hash models/R5.joblib",
+      "passed": true
+    },
+    {
+      "test": "original remains intact models/R5.joblib",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/frozen_rows.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/frozen_rows.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/original_expected_test.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/original_expected_test.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/blocks.json",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/blocks.json",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/block_counts.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/block_counts.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/fit_rows_R5.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/fit_rows_R5.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_train.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_train.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_calibration.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_calibration.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_selection.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_selection.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_test.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_test.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_S1.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_S1.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_S2.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_S2.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/rows_V.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/rows_V.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/raw_to_clean_rows.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/raw_to_clean_rows.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash manifests/duplicate_removed.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact manifests/duplicate_removed.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/baseline_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/baseline_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/R5_A0_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/R5_A0_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/R5_A1_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/R5_A1_S_pooled.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash inputs/previous/baseline_V.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact inputs/previous/baseline_V.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash data/press_data_normal.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact data/press_data_normal.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash data/outlier_data.csv",
+      "passed": true
+    },
+    {
+      "test": "original remains intact data/outlier_data.csv",
+      "passed": true
+    },
+    {
+      "test": "copied original hash requirements.lock.txt",
+      "passed": true
+    },
+    {
+      "test": "original remains intact requirements.lock.txt",
+      "passed": true
+    },
+    {
+      "test": "locked implementation unchanged",
+      "passed": true
+    },
+    {
+      "test": "protocol original hash unchanged",
+      "passed": true
+    },
+    {
+      "test": "selection hash unchanged",
+      "passed": true
+    },
+    {
+      "test": "normal-only T",
+      "passed": true
+    },
+    {
+      "test": "fixed normal-only R5 reconstruction",
+      "passed": true
+    }
+  ],
+  "online": [
+    {
+      "stage": "S",
+      "rows": 1276,
+      "B0_max_error": 2.842170943040401e-14,
+      "R5_max_error": 1.1368683772161603e-13
+    },
+    {
+      "stage": "selection_prefix_and_V",
+      "rows": 2097,
+      "B0_max_error": 5.684341886080802e-14,
+      "R5_max_error": 6.821210263296962e-13
+    },
+    {
+      "stage": "H",
+      "rows": 4347,
+      "B0_max_error": 5.684341886080802e-14,
+      "R5_max_error": 3.410605131648481e-13
+    }
+  ],
+  "selected": "G1_Q999",
+  "no_model_retuning": true
+}

@@ -1,0 +1,220 @@
+{
+  "created": "2026-10-04T12:12:48.662836+00:00",
+  "selected": null,
+  "threshold_control": "R0_A0",
+  "control_is_eligible": false,
+  "decision": "no eligible candidate; retain original PCA",
+  "configs": {
+    "R0_A0": {
+      "id": "R0_A0",
+      "score": "R0",
+      "additional_calibration_FPR": 0,
+      "compute_order": 0,
+      "threshold": 1.3078792257682357,
+      "model": "models/R0.joblib"
+    },
+    "R0_A1": {
+      "id": "R0_A1",
+      "score": "R0",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 0,
+      "threshold": 1.3078754692638375,
+      "model": "models/R0.joblib"
+    },
+    "R0_A2": {
+      "id": "R0_A2",
+      "score": "R0",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 0,
+      "threshold": 1.3010882568768196,
+      "model": "models/R0.joblib"
+    },
+    "R1_A0": {
+      "id": "R1_A0",
+      "score": "R1",
+      "additional_calibration_FPR": 0,
+      "compute_order": 1,
+      "threshold": 100.36660979273653,
+      "model": "models/R1.joblib"
+    },
+    "R1_A1": {
+      "id": "R1_A1",
+      "score": "R1",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 1,
+      "threshold": 93.43899844296195,
+      "model": "models/R1.joblib"
+    },
+    "R1_A2": {
+      "id": "R1_A2",
+      "score": "R1",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 1,
+      "threshold": 84.66145975680013,
+      "model": "models/R1.joblib"
+    },
+    "R2_A0": {
+      "id": "R2_A0",
+      "score": "R2",
+      "additional_calibration_FPR": 0,
+      "compute_order": 2,
+      "threshold": 0.9826801406454538,
+      "model": "models/R2.joblib"
+    },
+    "R2_A1": {
+      "id": "R2_A1",
+      "score": "R2",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 2,
+      "threshold": 0.9808410192520142,
+      "model": "models/R2.joblib"
+    },
+    "R2_A2": {
+      "id": "R2_A2",
+      "score": "R2",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 2,
+      "threshold": 0.9802416336972368,
+      "model": "models/R2.joblib"
+    },
+    "R3_A0": {
+      "id": "R3_A0",
+      "score": "R3",
+      "additional_calibration_FPR": 0,
+      "compute_order": 3,
+      "threshold": 0.8855331844415193,
+      "model": "models/R3.joblib"
+    },
+    "R3_A1": {
+      "id": "R3_A1",
+      "score": "R3",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 3,
+      "threshold": 0.8667165759067904,
+      "model": "models/R3.joblib"
+    },
+    "R3_A2": {
+      "id": "R3_A2",
+      "score": "R3",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 3,
+      "threshold": 0.8652334523657235,
+      "model": "models/R3.joblib"
+    },
+    "R4_A0": {
+      "id": "R4_A0",
+      "score": "R4",
+      "additional_calibration_FPR": 0,
+      "compute_order": 4,
+      "threshold": 21.14775132795233,
+      "model": "models/R4.joblib"
+    },
+    "R4_A1": {
+      "id": "R4_A1",
+      "score": "R4",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 4,
+      "threshold": 20.725790265080665,
+      "model": "models/R4.joblib"
+    },
+    "R4_A2": {
+      "id": "R4_A2",
+      "score": "R4",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 4,
+      "threshold": 15.142193198329863,
+      "model": "models/R4.joblib"
+    },
+    "R5_A0": {
+      "id": "R5_A0",
+      "score": "R5",
+      "additional_calibration_FPR": 0,
+      "compute_order": 5,
+      "threshold": 19.48692067098804,
+      "model": "models/R5.joblib"
+    },
+    "R5_A1": {
+      "id": "R5_A1",
+      "score": "R5",
+      "additional_calibration_FPR": 0.0005,
+      "compute_order": 5,
+      "threshold": 17.54312199063481,
+      "model": "models/R5.joblib"
+    },
+    "R5_A2": {
+      "id": "R5_A2",
+      "score": "R5",
+      "additional_calibration_FPR": 0.001,
+      "compute_order": 5,
+      "threshold": 15.904632118762274,
+      "model": "models/R5.joblib"
+    }
+  },
+  "selection_metrics": null,
+  "control_metrics": {
+    "candidate": "R0_A0",
+    "score_id": "R0",
+    "threshold": 1.3078792257682357,
+    "TP": 18,
+    "FN": 3,
+    "FP": 8,
+    "TN": 1247,
+    "N": 1276,
+    "positive_rate": 0.016457680250783698,
+    "Recall": 0.8571428571428571,
+    "Precision": 0.6923076923076923,
+    "F1": 0.7659574468085106,
+    "F2": 0.8181818181818182,
+    "FPR": 0.006374501992031873,
+    "FNR": 0.14285714285714285,
+    "AP": 0.8598008351245027,
+    "PR_AUC_trapezoid": 0.8597350732269763,
+    "ROC_AUC": 0.8750521722633275,
+    "Accuracy": 0.9913793103448276,
+    "FP_per_1000": 6.374501992031873,
+    "new_TP": 0,
+    "lost_TP": 0,
+    "removed_FP": 0,
+    "new_FP": 0,
+    "delta_TP": 0,
+    "decreased_FN": 0,
+    "delta_FP": 0,
+    "aux_available": 1276,
+    "aux_available_normal": 1255,
+    "aux_available_anomaly": 21,
+    "eligible": false,
+    "strict_eligible": false,
+    "exploratory_002_only": false,
+    "failures": "S_pooled:FN_decreased;S_pooled:F2",
+    "status": "completed",
+    "failure_reason": "",
+    "fit_seconds": 5.861002136953175e-06,
+    "evaluation_seconds": 0.12118246300087776
+  },
+  "baseline": {
+    "model": "models/baseline.joblib",
+    "threshold": 1.3078792257682357,
+    "postprocessing": "none",
+    "fallback": "original P0",
+    "score": "Q/Q95"
+  },
+  "preregistration_sha256": "9397ad82d3cd18d2de5690b0a0250ffc04b6fd998e3e49fc772422e94a49d7e7",
+  "implementation_sha256": "c4cc16220024fdc5b98c39e3c44041ed670271f078d927685c1a36cd1a8e337e",
+  "models": {
+    "baseline.joblib": "cf410ba82e65312e6df31fa45622029d43c67c2b1f25cf45d1dec7194b1bc746",
+    "R1.joblib": "06c0de829d4befc764e4c3ad71dc31cff499dcf6742ca74bee6e660d5b5d0806",
+    "R0.joblib": "53a2ff0ba1988e024a2e870132da0fe7ab7ad16814f5d935ae40680b6b0b1810",
+    "R5.joblib": "16a0790f16417111fb994fd96903718cf6e657fd2948e74f0232912ef5c7460b",
+    "R2.joblib": "d9262cd6a822cda5bf6d2567225759e9cc9f9d324462e98c89b1348870780049",
+    "R4.joblib": "bf8f4f05ea400f564df07bc3772a697676366a8ff90d925d17714223b8567e42",
+    "R3.joblib": "2ad6ba22b89f58a7309abdb6d600d16b9dc70904fc954aac63f4c109b1b8d94f"
+  },
+  "selection_row_ids_sha256": {
+    "S1": "9323116aa0485cd7b895d2e68e6683e007a4a0f261cc6d095eab2aad0e231b3e",
+    "S2": "d80636f68a24efb6efd0554f957c68324689c4cee50de1856fe7f2fb2eb8fd74",
+    "V": "2bae2ac66038835734ab42099fb3cabb20e0be279c4ab81eb5f8c00ed15cc2f3"
+  },
+  "V_scores_opened": false,
+  "old_test_new_candidates_evaluated": false,
+  "seconds": 3.335505164002825
+}

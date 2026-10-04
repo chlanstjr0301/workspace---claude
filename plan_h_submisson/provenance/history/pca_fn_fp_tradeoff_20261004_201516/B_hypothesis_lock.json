@@ -1,0 +1,23 @@
+{
+  "created": "2026-10-04T11:20:01.026654+00:00",
+  "A_primary_eligible": 0,
+  "selection_baseline_FN": 3,
+  "fallback_FN": 3,
+  "decision": "execute narrow warmup complement",
+  "hypotheses": 1,
+  "windows": [
+    3,
+    5
+  ],
+  "normal_train_min": 100,
+  "normal_calibration_native_min": 100,
+  "routed_calibration_min": 10,
+  "small_sample_note": "only17/15 routed calibration rows; use all normal available same-length windows for Q95, not route quantile; global mixed-system threshold recalibrated",
+  "score_alignment": "short-window Q / Q95 from all native normal calibration; original W20 and P0 references unchanged",
+  "fallback_if_insufficient": "retain entire original system; candidate marked reverted",
+  "routing": "short w only where originalW20 unavailable and w same-partition past rows available; all other rows exactly original; no burst resets changed",
+  "rejection": "no configuration meets strict Recall/F2/F1/FP eligibility, or gains fully explained by A threshold-only candidate",
+  "new_candidate_budget": 24,
+  "postprocessing": "none",
+  "test_sensor_or_error_use": false
+}

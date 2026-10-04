@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "source": "stored predictions only",
+  "metric_rows": 25,
+  "confusion_exact": true,
+  "metric_atol": 1e-12,
+  "case_selection": "earliest chronological H group with added detections; complete group; all affected groups in appendix",
+  "new_fit_calls": 0
+}

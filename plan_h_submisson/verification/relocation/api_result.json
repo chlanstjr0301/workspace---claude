@@ -1,0 +1,34 @@
+{
+  "independent_new_data": false,
+  "comparability_confirmed": true,
+  "prior_usage": "historical_H_replay",
+  "labels_available": true,
+  "model_name": "PCA + R5 예측잔차 보조 경보(G1)",
+  "effect": {
+    "passes": true,
+    "mode": "effect",
+    "stability_pass": null,
+    "effect_pass": true,
+    "fn_maintenance_pass": true,
+    "fn_reduction_reproduced": true,
+    "anomaly_metrics_assessable": true,
+    "allowed_additional_FP": 3,
+    "absolute_FP_cap": 39,
+    "failed_rules": ""
+  },
+  "maintenance": {
+    "passes": true,
+    "mode": "maintenance",
+    "stability_pass": true,
+    "effect_pass": null,
+    "fn_maintenance_pass": true,
+    "fn_reduction_reproduced": true,
+    "anomaly_metrics_assessable": true,
+    "allowed_additional_FP": 3,
+    "absolute_FP_cap": 39,
+    "failed_rules": ""
+  },
+  "label_sha256": "48247e64cfaf89a1a96a0a86818f51e80b17f9802a99b143364bbc52121a223a",
+  "claim_allowed": false,
+  "scope": "observations in supplied labeled acquisition; mandatory chronological subblocks require a separate prospectively frozen plan"
+}

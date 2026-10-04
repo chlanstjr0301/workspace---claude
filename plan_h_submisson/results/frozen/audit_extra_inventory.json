@@ -1,0 +1,32 @@
+[
+  {
+    "source": "/home/lim/hydraulic_ai_alt/src/experiment.py",
+    "path": "inputs/original_source/experiment.py",
+    "sha256": "67d1d89c7dcccf9a61f027ed6024c46cc0dec8a36e289204bbbaaccbb7bfc081"
+  },
+  {
+    "source": "/home/lim/hydraulic_ai_alt/src/models.py",
+    "path": "inputs/original_source/models.py",
+    "sha256": "521371ba5b2f51dd3ad936576c6ce66acaf64b54d5922cafafb5d75795bdb37e"
+  },
+  {
+    "source": "/home/lim/hydraulic_ai_alt/runs/pca_followup_v2_20261004_214810/logs/select.log",
+    "path": "inputs/previous/select.log",
+    "sha256": "592f6d2946e5d3a1080a83729a4d4082be3fb1520cd5746396e59ae7467d7b85"
+  },
+  {
+    "source": "/home/lim/hydraulic_ai_alt/runs/pca_followup_v2_20261004_214810/logs/evaluate.log",
+    "path": "inputs/previous/evaluate.log",
+    "sha256": "761c57130db27d5716684c384f232f927fb7c800eb51d7e1971cada3fbe90502"
+  },
+  {
+    "source": "/home/lim/hydraulic_ai_alt/runs/pca_followup_v2_20261004_214810/logs/validate.log",
+    "path": "inputs/previous/validate.log",
+    "sha256": "61a154c8da8fb1ad51fa6ad661b58cfdab430037b89427975b8179472dd52e48"
+  },
+  {
+    "source": "/home/lim/hydraulic_ai_alt/runs/pca_literature_rescue_20261004_210504/all_trials.csv",
+    "path": "inputs/previous/literature_all_trials.csv",
+    "sha256": "ba891e6a3d62bd8dde3a067538fe8ecbb8c2c22aa9ddcd3c6e8da470ec60c0e0"
+  }
+]
