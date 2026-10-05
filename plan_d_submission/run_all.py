@@ -656,13 +656,15 @@ def main():
     import make_calibration as CB
     import make_correction_tables as CT
     import make_interaction_tables as IT
+    import make_review_tables as RV
     for name, mod in (("보고서 보충표 r1-r5", RT), ("감사 진단표 r6-r12", AT),
                       ("도메인 진단표 d1-d3", DT), ("M-of-N 표 d4", MT),
                       ("프로토콜 통제표 d5-d6", PT),
                       ("지도학습 대조군 d7", SC),
                       ("확률 보정 r13", CB),
                       ("정정 대응표 c1-c5", CT),
-                      ("상호작용 진단표 i1-i4", IT)):
+                      ("상호작용 진단표 i1-i4", IT),
+                      ("검토 대응 진단표 v1-v6", RV)):
         log(name + " 생성")
         mod.main()
 
