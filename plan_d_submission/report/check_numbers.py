@@ -108,17 +108,21 @@ def checks():
     v2a = v2a[v2a.rule.astype(str).str.contains("빨강")].set_index("stage1")
     v2c = T("v2c_cv_full_system_summary")
     v2c = v2c[v2c.rule.astype(str).str.contains("빨강")].set_index("stage1")
-    v2d = T("v2d_stress_by_stage1").groupby("stage1").normal_stage1_rate.max()
+    v2d_all = T("v2d_stress_by_stage1")
+    v2d0 = v2d_all[v2d_all.perturbation == "none"].set_index("stage1")
+    v2d = v2d_all[v2d_all.perturbation != "none"].groupby("stage1").agg(
+        s1=("normal_stage1_rate", "max"), red=("normal_red_rate", "max"), rec=("fault_red_recall", "min"))
     for k in ["BL0", "M1", "M2", "M3"]:
-        add("후보 행 " + k, "| %d | %s | %s | %s | %.1f%% |" % (
-            v2a.loc[k, "FP"], f(v2a.loc[k, "f1"]), f(v2c.loc[k, "f1_mean"]),
-            p(v2c.loc[k, "fpr_mean"]), 100 * v2d.loc[k]))
+        add("후보 행 " + k, "| %s | %d | %s | %s | %s |" % (
+            p(v2d0.loc[k, "normal_stage1_rate"]), v2a.loc[k, "FP"], f(v2a.loc[k, "f1"]),
+            f(v2c.loc[k, "f1_mean"]), p(v2c.loc[k, "fpr_mean"])))
+        add("후보 섭동 " + k, "| %.1f%% | %s | %s |" % (100 * v2d.loc[k, "s1"], p(v2d.loc[k, "red"]), f(v2d.loc[k, "rec"])))
     add("BL-0 동점 비율", "%.1f%%" % (100 * v2a.loc["BL0", "p_ties_share"]))
     v3b = T("v3b_posterior_bootstrap")
     add("사후 1% 점", f(v3b.iloc[0, 7])); add("사후 1% 보수", f(v3b.iloc[0, 9]))
     add("사후 0.1% 점", f(v3b.iloc[1, 7])); add("사후 0.1% 보수", f(v3b.iloc[1, 9]))
     r13 = T("r13_probability_calibration")
-    add("보정 Brier", "Brier %.4f" % r13.iloc[1]["Brier"])
+    add("보정 Brier", "| %.4f |" % r13.iloc[1]["Brier"])
     add("순위 Brier", "Brier %.3f" % r13.iloc[0]["Brier"])
 
     # ---- 3장 ----------------------------------------------------------- #
@@ -133,7 +137,6 @@ def checks():
     add("C1 F1 불변", f(v1c.loc["C1", "red_f1"], 4))
     v1d = T("v1d_channel_group_separability").set_index(["subset", "model"])
     add("진동 진폭 AUROC", "AUROC %.3f" % v1d.loc[("G-vibA", "M1"), "auroc"])
-    add("진동 진폭 경보율", p(v1d.loc[("G-vibA", "M1"), "normal_alarm_rate"]))
     add("전류 8개 AUROC", "AUROC %.3f" % v1d.loc[("G-cur", "M3"), "auroc"])
     w2b = T("w2b_confound_margin")
     w2b = w2b[(w2b.preproc == "R0") & (w2b.model == "M1")].set_index("subset")
@@ -143,7 +146,20 @@ def checks():
     c2 = T("c2_fp_conditions_frozen")
     add("저부하 1단", p(c2.iloc[0]["1단 경보율"]))
     lo_fp = int(round(c2.iloc[0]["n"] * c2.iloc[0]["1단 경보율"]))
-    add("저부하 오경보 수", "241 window 중 %d개(%d%%)" % (lo_fp, round(100 * lo_fp / 241)))
+    add("저부하 3분위 오경보 수", "| %d (%d%%) |" % (lo_fp, round(100 * lo_fp / 241)))
+    i6 = T("i6_lowload_overlap").set_index("구분")
+    for k, lab in (("저부하 구간", "1.6 저부하 구간"), ("하위 3분위 ∩ 저부하 구간", "두 집합의 교집합"),
+                   ("저부하 구간 밖", "저부하 구간 밖")):
+        r_ = i6.loc[k]
+        add("i6 " + k, "| %s | %s (%d%%) | %d | %d (%d%%) | %s | %s |" % (
+            lab, c(r_["window"]), round(100 * r_["window 비중"]), r_["버스트"], r_["1단 오경보"],
+            round(100 * r_["1단 오경보 비중"]), p(r_["1단 경보율"]), p(r_["빨강 경보율"])))
+    ll = i6.loc["저부하 구간"]
+    add("저부하 헤드", "1단 오경보 241개 중 %d개(%d%%)가 window %d%%인 저부하 구간에 있고, 경보율은 구간 밖의 %.1f배다" % (
+        ll["1단 오경보"], round(100 * ll["1단 오경보 비중"]), round(100 * ll["window 비중"]),
+        ll["1단 경보율"] / i6.loc["저부하 구간 밖", "1단 경보율"]))
+    add("하위3분위∩구간", "1,847개 중 %s개(%d%%)" % (c(i6.loc["하위 3분위 ∩ 저부하 구간", "window"]),
+        round(100 * i6.loc["하위 3분위 ∩ 저부하 구간", "window"] / i6.loc["부하 하위 3분위", "window"])))
     i5 = T("i5_start_misses_and_red_fp").set_index("대상")
     add("시작부 3번째부터 Recall", f(i5.loc["첫 1초 · 각 버스트 첫 2 window 제외", "값"]))
     add("첫 2 window 미탐", "%d개(62%%)" % i5.loc["첫 1초 · 각 버스트 첫 2 window", "미탐 window"])
@@ -151,6 +167,13 @@ def checks():
     a1 = r6[(r6.perturbation == "offset_AI1_only") & (r6.amount.astype(str) == "0.5")].iloc[0]
     add("하부 진동 오프셋 배수", "%.1f배" % a1.normal_red_ratio_vs_none)
     add("하부 진동 2단 경보율", "%.2f%%" % (100 * a1.normal_stage2_rate))
+    oa = r6[(r6.perturbation == "offset_all") & (r6.amount.astype(str) == "0.5")].iloc[0]
+    add("전 채널 오프셋 최악", "%s(%.1f배)" % (p(oa.normal_red_rate), oa.normal_red_ratio_vs_none))
+    _cur = r6[r6.perturbation.isin(["offset_AI2_only", "gain_AI2_only"]) |
+              ((r6.perturbation == "polarity") & (r6.amount.astype(str) == "AI2"))]
+    add("전류 단독 조건 수", "전류 단독 계측 변화 %d조건" % len(_cur))
+    add("전류 단독 최대 배수", "2.3배 이내" if round(_cur.normal_red_ratio_vs_none.max(), 1) == 2.3 else "불일치")
+    add("섭동 조건 수", "섭동 35조건" if len(r6) - 1 == 35 else "불일치")
 
     # ---- 4장 ----------------------------------------------------------- #
     v5a = T("v5a_alarm_per_shift")
@@ -158,6 +181,8 @@ def checks():
     add("교대당 빨강", "| %s | %s |" % (c(b4.loc["red", "per_shift_8h"]), c(b4.loc["red", "per_shift_8h_upper95"])))
     add("교대당 노랑", c(b4.loc["yellow", "per_shift_8h"]))
     add("수집 비율", "%.2f" % b4.loc["red", "duty"])
+    al = v5a[v5a.scope.str.startswith("정상 전체")].iloc[0]
+    add("정상 수집·벽시계 분", "벽시계 %d분·수집 %d분" % (round(60 * al.wall_hours), round(60 * al.collect_hours)))
     v5b = T("v5b_stop_rule_triggers")
     col = [x for x in v5b.columns if "첫 발동" in x][0]
     s2f = v5b[(v5b.scope == "고장 기록") & (v5b.rule == "S2")].iloc[0]
@@ -174,7 +199,7 @@ def checks():
 
 
 FORBIDDEN = [
-    "5개 중 3개가 Recall", "5종 중 3종이 Recall", "82배", "25개 특징", "표 44개", "0.081시간", "0.139",
+    "4상태", "결정 22건", "36조건", "0.9999988", "3.6시간 ×", "±2.6%p", "무작위 수준(0.49", "수십 건", "10건 이상", "5개 중 3개가 Recall", "5종 중 3종이 Recall", "82배", "25개 특징", "표 44개", "0.081시간", "0.139",
     "17개 중 3개는 구조적으로", "AC 커플링", "평균 부하 수준 정보는 데이터에 존재하지 않는다",
     "작성 요령", "상호작용에서 나온다", "한 번도 보지 않은", "우연 수준이다", "직류 성분이 다르며",
     "60배 이상", "약 12.0%", "0.203", "80분의 1",

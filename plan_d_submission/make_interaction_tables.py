@@ -9,6 +9,7 @@
   i3 : 두 변수의 주효과만으로 예상한 경보율과 실제 경보율의 차이(상호작용 크기)
   i4 : 저부하 정상 버스트 vs 고장 버스트를 가르는 단일 지표의 AUC (버스트 단위)
   i5 : 버스트 시작부 미탐의 구조 분해(첫 2 window 제외 Recall)와 빨강 오경보 목록 (DL-021)
+  i6 : 부하 하위 3분위와 d1 저부하 구간(버스트 시작 3,600–4,280초)의 겹침, 1단 오경보 분포 (DL-023)
 """
 import os
 import sys
@@ -74,6 +75,10 @@ def _frame():
         return p
 
     H = attach(ph, Xn[ho], mn[ho].reset_index(drop=True))
+    # d1 과 같은 정의: 정상 파일 첫 시각 기준, 버스트 시작 시각이 저부하 구간 안이면 저부하 버스트
+    t0 = pd.to_datetime(n.TimeStamp).iloc[0]
+    t = (pd.to_datetime(H.time_start) - t0).dt.total_seconds()
+    H["burst_t0"] = t.groupby(H.burst_id).transform("min")
     F = attach(pf, Xo, mo)
     bounds = dict(vib=b_vib.tolist(), cur=b_cur.tolist(), load=[lo, hi])
     return H, F, bounds
@@ -158,6 +163,22 @@ def i5_start_and_fp(H, F):
     return pd.DataFrame(rows)
 
 
+def i6_lowload_overlap(H):
+    """3.4 의 '부하 하위 3분위' 와 1.6 의 '저부하 운전 구간' 이 같은 window 를 가리키는가."""
+    import make_domain_tables as DM
+    ll = H.burst_t0.between(DM.LOWLOAD_T0, DM.LOWLOAD_T1)
+    lo = H.load_t == 0
+    rows = []
+    for name, sel in (("전체", np.ones(len(H), bool)), ("부하 하위 3분위", lo), ("저부하 구간", ll),
+                      ("하위 3분위 ∩ 저부하 구간", lo & ll), ("저부하 구간 밖", ~ll)):
+        d = H[sel]
+        rows.append({"구분": name, "window": int(sel.sum()), "window 비중": round(sel.mean(), 4),
+                     "버스트": int(d.burst_id.nunique()), "1단 오경보": int(d.s1.sum()),
+                     "1단 오경보 비중": round(d.s1.sum() / H.s1.sum(), 4),
+                     "1단 경보율": round(d.s1.mean(), 4), "빨강 경보율": round(d.red.mean(), 4)})
+    return pd.DataFrame(rows)
+
+
 def main():
     print("변수 간 상호작용 진단표 (모델 불변)")
     H, F, bounds = _frame()
@@ -177,6 +198,9 @@ def main():
     i5 = i5_start_and_fp(H, F)
     save(i5, "i5_start_misses_and_red_fp.csv")
     print(i5.to_string(index=False))
+    i6 = i6_lowload_overlap(H)
+    save(i6, "i6_lowload_overlap.csv")
+    print(i6.to_string(index=False))
     i4 = i4_burst_auc()
     save(i4, "i4_burst_indicator_auc.csv")
     print(i4.to_string(index=False))

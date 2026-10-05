@@ -21,6 +21,7 @@ TAB = os.path.join(ROOT, "outputs", "tables")
 RAW = os.path.join(ROOT, "data", "raw")
 
 BLUE, BLUE_L, RED, GRAY, INK, MUTED = "#2a78d6", "#9ec5f4", "#e34948", "#8a8985", "#0b0b0b", "#52514e"
+GRAY_L = "#dcdbd8"    # 회색의 명도 변화 (색상 수를 늘리지 않음)
 W = 6.6                     # 인쇄 폭(인치) ≈ 본문 폭 168 mm. 글자 12pt 가 그대로 12pt 로 인쇄된다
 FS = 12
 
@@ -133,9 +134,9 @@ def fig_confound():
     fig, ax = plt.subplots(figsize=(W, 2.5))
     for yi, (k, lab) in zip(y, order):
         p, r = w.loc[k, "pseudo_auroc_max"], w.loc[k, "real_auroc_frozen"]
-        ax.plot([p, r], [yi, yi], color=BLUE_L, lw=3, zorder=1)
+        ax.plot([p, r], [yi, yi], color=GRAY_L, lw=3, zorder=1)
         ax.scatter([p], [yi], s=80, color=GRAY, zorder=3)
-        ax.scatter([r], [yi], s=80, color=BLUE, zorder=3)
+        ax.scatter([r], [yi], s=80, color=RED, zorder=3)
         ax.text(p, yi - 0.38, "가짜 고장 최대 %.3f" % p, ha="left", color=MUTED)
         ax.text(r, yi + 0.2, "실제 고장 %.3f" % r, ha="right", color=INK)
     ax.axvline(0.5, color=GRAY, ls=":", lw=1.5)
@@ -151,19 +152,20 @@ def fig_stress():
     pick = [("none", "-", "섭동 없음"), ("offset_AI2_only", "0.5", "전류 오프셋 +0.5σ"),
             ("gain_AI2_only", "1.25", "전류 이득 ×1.25"), ("gain_all", "1.25", "전 채널 이득 ×1.25"),
             ("jitter", "0.05", "샘플링 흔들림 0.05초"), ("gain_AI0_only", "1.25", "상부 진동 이득 ×1.25"),
-            ("offset_AI1_only", "0.5", "하부 진동 오프셋 +0.5σ")]
+            ("offset_AI1_only", "0.5", "하부 진동 오프셋 +0.5σ"),
+            ("offset_all", "0.5", "전 채널 오프셋 +0.5σ")]
     vals = []
     for p, a, lab in pick:
         r = r6[(r6.perturbation == p) & (r6.amount.astype(str) == a)].iloc[0]
         vals.append((lab, 100 * r.normal_red_rate, r.normal_red_ratio_vs_none))
     y = np.arange(len(vals))[::-1]
-    fig, ax = plt.subplots(figsize=(W, 3.3))
-    cols = [GRAY] + [BLUE] * (len(vals) - 2) + [RED]
+    fig, ax = plt.subplots(figsize=(W, 3.6))
+    cols = [GRAY] + [BLUE] * (len(vals) - 3) + [RED] * 2
     ax.barh(y, [v for _, v, _ in vals], color=cols, height=0.6)
     for yi, (_, v, k) in zip(y, vals):
-        ax.text(v + 0.04, yi, "%.2f%% (%.1f배)" % (v, k), va="center", color=INK)
+        ax.text(v + 0.12, yi, "%.2f%% (%.1f배)" % (v, k), va="center", color=INK)
     ax.set_yticks(y); ax.set_yticklabels([l for l, _, _ in vals])
-    ax.set_xlim(0, 3.2); ax.set_xlabel("정상 평가 블록 빨강 오경보율(%) · 괄호는 섭동 없음 대비")
+    ax.set_xlim(0, 13.5); ax.set_xlabel("정상 평가 블록 빨강 오경보율(%) · 괄호는 섭동 없음 대비")
     ax.spines["left"].set_visible(False); ax.tick_params(axis="y", length=0)
     save(fig, "fig_3_2_stress.png")
 
@@ -191,9 +193,10 @@ def fig_flow():
         arrow(xs[i] + bw, yc + bh / 2, xs[i + 1], yc + bh / 2)
     ax.text((xs[1] + bw + xs[2]) / 2, yc + bh / 2 + 2.5, "p1≤0.01", ha="center", color=MUTED)
     ax.text((xs[2] + bw + xs[3]) / 2, yc + bh / 2 + 2.5, "p2≤0.01", ha="center", color=MUTED)
-    box(xs[1], 2, "초록\np1>0.01", BLUE_L, INK)
-    box(xs[2], 2, "노랑 · 기록\n미확인·연속 미달", BLUE_L, INK, w=bw + 10)
-    box(xs[0], 39, "관측부족 · 보류", BLUE_L, INK, w=bw + 10, h=9)
+    box(xs[1], 2, "초록\np1>0.01", GRAY_L, INK)
+    box(xs[2], 2, "노랑 · 기록\n미확인·연속 미달", GRAY_L, INK, w=bw + 10)
+    ax.add_patch(plt.Rectangle((xs[0], 39), bw + 23, 9, fc="white", ec=GRAY, ls="--", lw=1.2))
+    ax.text(xs[0] + (bw + 23) / 2, 43.5, "관측부족·보류 (운영 제안)", ha="center", va="center", color=MUTED)
     arrow(xs[1] + bw / 2, yc, xs[1] + bw / 2, 13)
     arrow(xs[2] + bw / 2, yc, xs[2] + bw / 2, 13)
     arrow(xs[0] + bw / 2, yc + bh, xs[0] + bw / 2, 39)

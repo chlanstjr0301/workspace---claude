@@ -506,7 +506,8 @@ def final_predictions(cfg, P, seed, stage1, stage2):
         allv = np.vstack([P["Fn"][:, idx], P["Fo"][:, idx]])[:, vib]
         vnames = [P["names"][idx[i]] for i in vib]
         top_v = [vnames[k] for k in np.abs(m2.contrib(allv)).argmax(axis=1)]
-        actions = ["[빨강·진동 근거] " + EX.reason_phrase(v) if l == "red" else a
+        # 2단은 진동 센서 오프셋과 설비 이상을 가르지 못하므로(r6) 센서 확인을 먼저 안내한다 (DL-024).
+        actions = ["[빨강·진동 근거] ① 진동 센서 직류·체결 확인 ② " + EX.reason_phrase(v) if l == "red" else a
                    for a, v, l in zip(actions, top_v, lvl)]
 
     # 어느 행이 in-sample 인지 명시한다. 최종 모델은 블록 0-2 로 적합하고
