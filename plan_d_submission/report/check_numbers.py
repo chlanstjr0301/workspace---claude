@@ -207,7 +207,7 @@ def checks():
     up = 3.0 / al.collect_hours
     add("S2 0회 상한", "수집 1시간당 %.1f회, 8시간 교대당 %.1f회" % (up, up * 8 * al.duty))
     d4 = T("d4_mofn_tradeoff").set_index("rule")
-    add("판정 시각 지연", "판정 시각 기준 버스트 시작 후 %.1f초" % (d4.loc["연속 3", "delay_median_s"] + 0.9))
+    add("판정 시각 지연", "0.9초 → %.1f초" % (d4.loc["연속 3", "delay_median_s"] + 0.9))
     v5b_ = T("v5b_stop_rule_triggers")
     _c = [x for x in v5b_.columns if "첫 발동" in x][0]
     _t = float(v5b_[(v5b_.scope == "고장 기록") & (v5b_.rule == "S2")][_c].iloc[0])

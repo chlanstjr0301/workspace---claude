@@ -134,7 +134,7 @@ def check(md, css_src):
                     warns.append("S9 긴 문장 %d자 [%s] %s…" % (len(s_), where, s_[:40]))
 
     # ---- S6 CSS 글자 크기 -------------------------------------------------- #
-    small_ok = ("p.source", ".pagefoot")
+    small_ok = ("p.source", ".pagefoot", "table.cover th")   # 표지 칸 이름 11pt 는 공식 양식
     for sel, size in re.findall(r"([^{}\n]+)\{[^}]*?font-size:\s*([\d.]+)pt", css_src):
         sel, size = sel.strip(), float(size)
         if sel == "body" and size < 14:

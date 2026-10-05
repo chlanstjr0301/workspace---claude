@@ -17,7 +17,7 @@ SRC = os.path.join(HERE, "결과보고서.md")
 OUT_PDF = os.path.join(HERE, "결과보고서.pdf")
 
 CSS = r"""
-@page { size: A4; margin: 20mm 18mm 20mm 18mm; }
+@page { size: A4; margin: 25mm 20mm 25mm 20mm; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body {
   /* 공식 양식: 본문 휴먼명조 14pt·줄간격 160%, 주석 10pt. 휴먼명조가 없으면 나눔명조 */
@@ -26,8 +26,8 @@ body {
   word-break: keep-all; overflow-wrap: break-word;
 }
 h1 { font-size: 20pt; text-align: center; margin: 0 0 4mm 0; }
-h2 { font-size: 16pt; margin: 8mm 0 3mm 0; padding-bottom: 1.5mm;
-     border-bottom: 1.2pt solid #000; page-break-after: avoid; }
+h2 { font-family: "HY헤드라인M", "HYHeadLine M", "NanumSquare", "NanumGothic", sans-serif;
+     font-size: 15pt; font-weight: bold; line-height: 1.6; margin: 0 0 3mm 0; page-break-after: avoid; }
 h2.chapter { page-break-before: always; }
 h3 { font-size: 14pt; margin: 5mm 0 2mm 0; page-break-after: avoid; }
 p { margin: 1.5mm 0; text-align: justify; }
@@ -42,7 +42,7 @@ th, td { border: 0.5pt solid #444; padding: 1mm 1.5mm; vertical-align: top; }
 th { background: #e8e8e8; font-weight: bold; text-align: center; }
 p.caption { font-weight: bold; margin: 4mm 0 0 0; page-break-after: avoid; }
 p.source { font-size: 10pt; color: #333; margin: 0.5mm 0 3mm 0; }
-p.source::before { content: "* "; }
+p.source::before { content: "* "; font-family: "맑은 고딕", "Malgun Gothic", "NanumGothic", sans-serif; font-size: 12pt; }
 code { font-family: "NanumGothicCoding", monospace; font-size: 12pt; }
 pre { font-family: "NanumGothicCoding", monospace; font-size: 12pt; line-height: 1.35;
       background: #f4f4f4; border: 0.5pt solid #bbb; padding: 2mm 3mm;
@@ -55,6 +55,25 @@ ul, ol { margin: 1mm 0 1mm 6mm; padding-left: 4mm; }
 /* 공식 양식의 목록 기호: 1단계 ◦, 2단계 -, 주석 * (휴먼명조 10pt) */
 ul { list-style-type: "◦  "; }
 ul ul { list-style-type: "-  "; }
+li::marker { font-size: 15pt; }
+/* 표지: 공식 양식(1쪽 테두리 표) */
+div.division { text-align: right; font-family: "HY헤드라인M", "NanumSquare", sans-serif; font-size: 12pt; margin: 0 0 2mm 0; }
+table.cover { width: 100%; border-collapse: collapse; border: 0.8pt solid #000; page-break-after: always; }
+table.cover td, table.cover th { border: 0.6pt solid #000; vertical-align: middle; }
+table.cover td.ttl { background: #d9d9d9; text-align: center; height: 13mm;
+  font-family: "HY헤드라인M", "NanumSquare", sans-serif; font-size: 20pt; font-weight: bold; line-height: 1.4; }
+table.cover th { width: 29mm; background: #d9d9d9; text-align: center;
+  font-family: "맑은 고딕", "Malgun Gothic", "NanumGothic", sans-serif; font-size: 11pt; font-weight: bold; }
+table.cover td.fld { font-size: 12pt; line-height: 1.4; padding: 2mm 3mm; height: 11mm; }
+table.cover td.sum { vertical-align: top; padding: 2mm 3mm; font-size: 12pt; line-height: 1.4; }
+table.cover td.sum p.sumhead { font-weight: bold; margin: 0 0 1.5mm 0; text-align: justify; }
+table.cover td.sum ul { margin: 0; padding-left: 5mm; }
+table.cover td.sum li { margin: 0; text-align: justify; }
+table.cover td.decl { border-top: 0.6pt solid #000; padding: 3mm 4mm 3mm 4mm; vertical-align: top; }
+table.cover p.decl { font-size: 13pt; line-height: 1.4; text-indent: 4mm; text-align: justify; margin: 0 0 3mm 0; }
+table.cover p.date { font-size: 13pt; text-align: right; margin: 0 0 3mm 0; letter-spacing: 0.5pt; }
+table.cover p.sign { font-size: 12pt; line-height: 1.4; text-align: right; margin: 0; }
+table.cover p.to { font-size: 17pt; font-weight: bold; text-align: center; margin: 3mm 0 0 0; }
 li { margin: 0.6mm 0; }
 nav.toc { page-break-before: always; }
 nav.toc h2 { border-bottom: 1.2pt solid #000; }
@@ -73,9 +92,40 @@ FOOTER = ('<div style="width:100%;font-size:8pt;text-align:center;'
           '- <span class="pageNumber"></span> -</div>')
 
 
+def _inline(t):
+    """표지 칸 안의 굵게 표기만 처리한다."""
+    t = t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
+
+
+def cover_html(md):
+    """원고의 표지 부분을 공식 양식(1쪽 테두리 표)으로 조판한다."""
+    row = lambda k: (re.search(r"^\| %s \| (.*?) ?\|$" % k, md, re.M) or [None, ""])[1].strip()
+    head = re.search(r"### 내용요약\s+\*\*(.+?)\*\*", md, re.S).group(1)
+    summ = md.split("### 내용요약", 1)[1].split("상기 본인", 1)[0]
+    items = [l[2:] for l in summ.splitlines() if l.startswith("- ")]
+    decl = re.search(r"^(상기 본인.*)$", md, re.M).group(1)
+    date = re.search(r"^(2026년.*)$", md, re.M).group(1).replace(" ", "&nbsp;")
+    signs = re.findall(r"^- (팀[장원] : .*)$", md, re.M)
+    to = re.search(r"\*\*(\(사\).*?)\*\*", md).group(1)
+    li = "".join("<li>%s</li>" % _inline(x) for x in items)
+    sg = "".join('<p class="sign">%s</p>' % x.replace("  ", "&nbsp;&nbsp;") for x in signs)
+    return ('<div class="division">일반국민/대학(원)생 부문</div><table class="cover">'
+            '<tr><td class="ttl" colspan="2">제6회 K-인공지능 제조데이터 분석 경진대회 보고서</td></tr>'
+            '<tr><th>프로젝트명</th><td class="fld">%s</td></tr>'
+            '<tr><th>팀명</th><td class="fld">%s</td></tr>'
+            '<tr><th>내용요약</th><td class="sum"><p class="sumhead">%s</p><ul>%s</ul></td></tr>'
+            '<tr><td class="decl" colspan="2"><p class="decl">%s</p><p class="date">%s</p>%s'
+            '<p class="to">%s</p></td></tr></table>'
+            % (_inline(row("프로젝트명")), _inline(row("팀명")), _inline(head), li, decl, date, sg, to))
+
+
 def build_html():
     with open(SRC, encoding="utf-8") as f:
         md_text = f.read()
+    cut = md_text.index("## □ 제1장")
+    cover = cover_html(md_text[:cut])
+    md_text = md_text[cut:]
     body = markdown.markdown(md_text, extensions=["tables", "fenced_code", "toc"],
                              extension_configs={"toc": {"slugify": _slug}})
 
@@ -107,8 +157,7 @@ def build_html():
         items.append(f'<li class="l{lvl}"><a href="#{hid}" style="color:#000;'
                      f'text-decoration:none">{text}</a></li>')
     toc = '<nav class="toc"><h2>목차</h2><ul>' + "".join(items) + "</ul></nav>"
-    first = body.find('<h2 class="chapter"')
-    body = body[:first] + toc + body[first:]
+    body = cover + toc + body
 
     html = ('<!doctype html><html lang="ko"><head><meta charset="utf-8">'
             f'<title>결과보고서</title><style>{CSS}</style></head><body>{body}</body></html>')
@@ -137,7 +186,7 @@ def build_pdf(html_path):
         page.pdf(path=OUT_PDF, format="A4", print_background=True,
                  display_header_footer=True, header_template="<div></div>",
                  footer_template=FOOTER, prefer_css_page_size=True,
-                 margin={"top": "20mm", "bottom": "20mm", "left": "18mm", "right": "18mm"})
+                 margin={"top": "25mm", "bottom": "25mm", "left": "20mm", "right": "20mm"})
         browser.close()
 
 
