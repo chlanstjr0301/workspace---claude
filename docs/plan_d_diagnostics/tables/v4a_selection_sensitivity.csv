@@ -1,0 +1,9 @@
+﻿sweep,from,to,chosen,n_passed
+gate2_limit_pp,0.0,16.9,BL0,0
+gate2_limit_pp,17.0,22.3,M3,1
+gate2_limit_pp,22.4,61.2,M3,2
+gate2_limit_pp,61.3,89.7,M3,3
+gate2_limit_pp,89.8,100.0,M1,4
+gate3_tol_abs,0.0,0.002,BL0,0
+gate3_tol_abs,0.003,0.006,M3,1
+gate3_tol_abs,0.007,0.02,M3,2
