@@ -123,7 +123,7 @@ def check(md, css_src):
             n = ln.strip().strip("|").count("|") + 1
             if n > MAX_COLS:
                 fails.append("S7 표 열 %d개 > %d [%s] %s" % (n, MAX_COLS, where, ln.strip()[:50]))
-        if not ln.startswith("|") and not is_source:
+        if not ln.startswith("|") and not is_source and "참고문헌" not in ch:   # 서지 항목은 문장이 아님
             for s_ in re.split(r"(?<=다\.)\s+", text.strip()):
                 if len(s_) > SENT_WARN:
                     warns.append("S9 긴 문장 %d자 [%s] %s…" % (len(s_), where, s_[:40]))
