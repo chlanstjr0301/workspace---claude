@@ -84,6 +84,9 @@ def checks():
     r1 = T("r1_gate_before_after").set_index("모델")
     for k in ["BL0", "M1", "M2", "M3"]:
         add("섭동 오경보증가 " + k, "%.2f%%p" % r1.loc[k, "섭동 오경보증가(pp)"])
+    gates = T("e2_selection_gates").set_index("model")
+    for k, lab in (("BL0", "BL-0"), ("M1", "M1"), ("M2", "M2"), ("M3", "**M3**"), ("BL1", "BL-1")):
+        add("시간당 경보 상한 " + k, "| %s | %.4f | %d |" % (lab, gates.loc[k, "fp_rate_worst"], round(gates.loc[k, "far_h_upper95_worst"])))
     v4a = T("v4a_selection_sensitivity")
     m3 = v4a[(v4a.chosen == "M3") & (v4a.iloc[:, 0].astype(str).str.contains("gate2"))]
     add("선정 민감도 구간", "%.1f~%.1f%%p" % (m3["from"].min(), m3["to"].max()))
@@ -182,6 +185,14 @@ def checks():
     add("교대당 노랑", c(b4.loc["yellow", "per_shift_8h"]))
     add("수집 비율", "%.2f" % b4.loc["red", "duty"])
     al = v5a[v5a.scope.str.startswith("정상 전체")].iloc[0]
+    up = 3.0 / al.collect_hours
+    add("S2 0회 상한", "수집 1시간당 %.1f회, 8시간 교대당 %.1f회" % (up, up * 8 * al.duty))
+    d4 = T("d4_mofn_tradeoff").set_index("rule")
+    add("판정 시각 지연", "판정 시각 기준 버스트 시작 후 %.1f초" % (d4.loc["연속 3", "delay_median_s"] + 0.9))
+    v5b_ = T("v5b_stop_rule_triggers")
+    _c = [x for x in v5b_.columns if "첫 발동" in x][0]
+    _t = float(v5b_[(v5b_.scope == "고장 기록") & (v5b_.rule == "S2")][_c].iloc[0])
+    add("S2 판정 시각", "0.9초 뒤인 %.1f초" % (_t + 0.9))
     add("정상 수집·벽시계 분", "벽시계 %d분·수집 %d분" % (round(60 * al.wall_hours), round(60 * al.collect_hours)))
     v5b = T("v5b_stop_rule_triggers")
     col = [x for x in v5b.columns if "첫 발동" in x][0]
@@ -199,7 +210,7 @@ def checks():
 
 
 FORBIDDEN = [
-    "4상태", "결정 22건", "36조건", "0.9999988", "3.6시간 ×", "±2.6%p", "무작위 수준(0.49", "수십 건", "10건 이상", "5개 중 3개가 Recall", "5종 중 3종이 Recall", "82배", "25개 특징", "표 44개", "0.081시간", "0.139",
+    "고장 신호를 지지한다", "수집 시점 차이로 생기는 크기", "재고 교대당", "4상태", "결정 22건", "36조건", "0.9999988", "3.6시간 ×", "±2.6%p", "무작위 수준(0.49", "수십 건", "10건 이상", "5개 중 3개가 Recall", "5종 중 3종이 Recall", "82배", "25개 특징", "표 44개", "0.081시간", "0.139",
     "17개 중 3개는 구조적으로", "AC 커플링", "평균 부하 수준 정보는 데이터에 존재하지 않는다",
     "작성 요령", "상호작용에서 나온다", "한 번도 보지 않은", "우연 수준이다", "직류 성분이 다르며",
     "60배 이상", "약 12.0%", "0.203", "80분의 1",
