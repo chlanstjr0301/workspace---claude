@@ -42,6 +42,7 @@ th, td { border: 0.5pt solid #444; padding: 1mm 1.5mm; vertical-align: top; }
 th { background: #e8e8e8; font-weight: bold; text-align: center; }
 p.caption { font-weight: bold; margin: 4mm 0 0 0; page-break-after: avoid; }
 p.source { font-size: 10pt; color: #333; margin: 0.5mm 0 3mm 0; }
+p.source::before { content: "* "; }
 code { font-family: "NanumGothicCoding", monospace; font-size: 12pt; }
 pre { font-family: "NanumGothicCoding", monospace; font-size: 12pt; line-height: 1.35;
       background: #f4f4f4; border: 0.5pt solid #bbb; padding: 2mm 3mm;
@@ -51,6 +52,9 @@ figure { margin: 3mm 0; text-align: center; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 95mm; }
 figcaption { font-size: 12pt; font-weight: bold; margin-top: 1mm; }
 ul, ol { margin: 1mm 0 1mm 6mm; padding-left: 4mm; }
+/* 공식 양식의 목록 기호: 1단계 ◦, 2단계 -, 주석 * (휴먼명조 10pt) */
+ul { list-style-type: "◦  "; }
+ul ul { list-style-type: "-  "; }
 li { margin: 0.6mm 0; }
 nav.toc { page-break-before: always; }
 nav.toc h2 { border-bottom: 1.2pt solid #000; }

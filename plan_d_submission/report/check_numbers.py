@@ -120,6 +120,8 @@ def checks():
             p(v2d0.loc[k, "normal_stage1_rate"]), v2a.loc[k, "FP"], f(v2a.loc[k, "f1"]),
             f(v2c.loc[k, "f1_mean"]), p(v2c.loc[k, "fpr_mean"])))
         add("후보 섭동 " + k, "| %.1f%% | %s | %s |" % (100 * v2d.loc[k, "s1"], p(v2d.loc[k, "red"]), f(v2d.loc[k, "rec"])))
+    for k, lab in (("BL0", "BL-0"), ("M1", "M1"), ("M2", "M2"), ("M3", "M3 (제출)")):
+        add("구조 기여 " + k, "| %s | %s | %s | %d |" % (lab, p(v2d0.loc[k, "normal_stage1_rate"]), p(v2a.loc[k, "fpr"]), v2a.loc[k, "FP"]))
     add("BL-0 동점 비율", "%.1f%%" % (100 * v2a.loc["BL0", "p_ties_share"]))
     v3b = T("v3b_posterior_bootstrap")
     add("사후 1% 점", f(v3b.iloc[0, 7])); add("사후 1% 보수", f(v3b.iloc[0, 9]))
@@ -158,7 +160,7 @@ def checks():
             lab, c(r_["window"]), round(100 * r_["window 비중"]), r_["버스트"], r_["1단 오경보"],
             round(100 * r_["1단 오경보 비중"]), p(r_["1단 경보율"]), p(r_["빨강 경보율"])))
     ll = i6.loc["저부하 구간"]
-    add("저부하 헤드", "1단 오경보 241개 중 %d개(%d%%)가 window %d%%인 저부하 구간에 있고, 경보율은 구간 밖의 %.1f배다" % (
+    add("저부하 헤드", "1단 오경보 241개 중 %d개(%d%%)가 window %d%%인 저부하 구간에 있고 경보율은 구간 밖의 %.1f배다" % (
         ll["1단 오경보"], round(100 * ll["1단 오경보 비중"]), round(100 * ll["window 비중"]),
         ll["1단 경보율"] / i6.loc["저부하 구간 밖", "1단 경보율"]))
     add("하위3분위∩구간", "1,847개 중 %s개(%d%%)" % (c(i6.loc["하위 3분위 ∩ 저부하 구간", "window"]),
@@ -177,6 +179,20 @@ def checks():
     add("전류 단독 조건 수", "전류 단독 계측 변화 %d조건" % len(_cur))
     add("전류 단독 최대 배수", "2.3배 이내" if round(_cur.normal_red_ratio_vs_none.max(), 1) == 2.3 else "불일치")
     add("섭동 조건 수", "섭동 35조건" if len(r6) - 1 == 35 else "불일치")
+    _r = r6[r6.perturbation != "none"].copy(); _r["amount"] = _r.amount.astype(str)
+    def _grp(x):
+        q, m = x.perturbation, x.amount
+        for ch, lab in (("AI2", "전류 단독"), ("AI0", "상부 진동 단독"), ("AI1", "하부 진동 단독")):
+            if q in ("offset_%s_only" % ch, "gain_%s_only" % ch) or (q == "polarity" and m == ch):
+                return lab
+        if q in ("offset_all", "gain_all") or (q == "polarity" and m == "all"):
+            return "전 채널 동시"
+        return "샘플링 흔들림"
+    _r["g"] = _r.apply(_grp, axis=1)
+    for g, d in _r.groupby("g"):
+        w = d.loc[d.normal_red_rate.idxmax()]
+        add("섭동군 " + g, "| %d | %.1f~%.1f배 |" % (len(d), d.normal_red_ratio_vs_none.min(), d.normal_red_ratio_vs_none.max()))
+        add("섭동군 최악 " + g, "| %s | %.1f%% | %s |" % (p(w.normal_red_rate), 100 * d.normal_stage1_rate.max(), f(d.fault_red_recall.min())))
 
     # ---- 4장 ----------------------------------------------------------- #
     v5a = T("v5a_alarm_per_shift")
@@ -185,6 +201,9 @@ def checks():
     add("교대당 노랑", c(b4.loc["yellow", "per_shift_8h"]))
     add("수집 비율", "%.2f" % b4.loc["red", "duty"])
     al = v5a[v5a.scope.str.startswith("정상 전체")].iloc[0]
+    pr = pd.read_csv(os.path.join(os.path.dirname(TAB), "predictions.csv"))
+    rd = pr[pr.alarm_level == "red"]
+    add("빨강 행 구성", "빨강 %d행(고장 %d, 정상 %d)" % (len(rd), (rd.source != "normal").sum(), (rd.source == "normal").sum()))
     up = 3.0 / al.collect_hours
     add("S2 0회 상한", "수집 1시간당 %.1f회, 8시간 교대당 %.1f회" % (up, up * 8 * al.duty))
     d4 = T("d4_mofn_tradeoff").set_index("rule")

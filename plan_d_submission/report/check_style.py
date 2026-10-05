@@ -38,6 +38,11 @@ RE_DET = re.compile("(?:(?<=\\s)|^)(이|그|저)\\s+(?=[가-힣])")   # 관형�
 RE_INTERNAL = re.compile(NB + "(검토자|감사|클라우드|노트북|사전판정)|Plan [A-H]\\b|DL-\\d+")
 RE_FILE = re.compile(r"`[^`]*\.(csv|json|py)`")
 
+# 규약 9: 1장 용어표에 반드시 있어야 하는 전문용어·약어
+GLOSSARY_REQUIRED = ("버스트", "window", "평가 블록", "1단·2단", "노랑·빨강", "섭동", "가짜 고장",
+                     "확인 지연", "사건", "동결 구성", "BL-0", "BL-1", "M1", "M2", "M3", "M4",
+                     "Recall", "Precision", "F1", "FPR", "AUROC", "AP", "유병률", "conformal p",
+                     "σ", "부트스트랩", "Brier", "RMS", "자기상관", "수집 비율")
 # 헤드 메시지 규약을 적용하지 않는 장·절
 NO_HEAD = ("표지", "□ 부록", "□ 경진대회 만족도")
 # 공식 양식의 고정 문구 (수정 불가)
@@ -138,6 +143,16 @@ def check(md, css_src):
             fails.append("S6 '%s' %spt < 12pt" % (sel, size))
     for sel in re.findall(r"([^{}\n]+)\{[^}]*?font-size:\s*0\.\d+em", css_src):
         fails.append("S6 '%s' 상대 크기(em<1) 사용 — pt 로 지정" % sel.strip())
+
+    # ---- S10 용어표 (규약 9) ------------------------------------------------- #
+    m = re.search(r"^표 1-\d+\. 용어.*?\n\n((?:\|.*\n)+)", md, re.M)
+    if not m:
+        fails.append("S10 1장 용어표(표 1-n. 용어)가 없음")
+    else:
+        gl = m.group(1)
+        for t in GLOSSARY_REQUIRED:
+            if t not in gl:
+                fails.append("S10 용어표에 '%s' 정의 없음" % t)
 
     # ---- S8 그림 색상군 ---------------------------------------------------- #
     for img in re.findall(r"!\[[^\]]*\]\(([^)]+)\)", md):
