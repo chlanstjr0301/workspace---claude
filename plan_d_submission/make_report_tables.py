@@ -91,13 +91,16 @@ def r2_operational():
                      "표본": "holdout 2,929 + fault 428",
                      "유병률": round(float(y.mean()), 4), **m})
     e2 = pd.read_csv(os.path.join(TAB, "e2_model_comparison.csv")).set_index("model")
+    # CV 유병률은 fold 별 실측값(e3)의 평균. 모든 모델이 같은 window 집합을 쓴다 (DL-021)
+    e3 = pd.read_csv(os.path.join(TAB, "e3_normal_block_cv.csv"))
+    cv_prev = round(float(e3[e3.model == "M3"]["prevalence"].mean()), 4)
     for m in ["BL0", "M3", "BL1"]:
         if m not in e2.index:          # BL-1 은 full 실행 또는 동봉 CSV 가 있을 때만
             print("     (%s 결과 없음 - 행 생략)" % m)
             continue
         rows.append({"기준": "%s (CV 5-fold 평균)" % m, "단위": "window",
                      "표본": "fold별 정상 holdout + fault 428",
-                     "유병률": 0.1203,
+                     "유병률": cv_prev,
                      "TP": np.nan, "FP": np.nan, "FN": np.nan, "TN": np.nan,
                      "precision": round(e2.loc[m, "precision_mean"], 4),
                      "recall": round(e2.loc[m, "recall_mean"], 4),

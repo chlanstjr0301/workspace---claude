@@ -1285,9 +1285,11 @@ def e5c_reasons(C):
         "stage2_vib_top1": red["_vib_top1"],
         "red_action_vib": [EX.reason_phrase(x) for x in red["_vib_top1"]],
     })
+    _check(all(a.endswith(b) for a, b in zip(alt.recommended_action_current, alt.red_action_vib)),
+           "빨강 recommended_action == 2단 진동 기여 1위 문구 (DL-022 적용 확인)")
     save(alt, "v5d_red_action_alternative.csv")
-    print("     (predictions.csv 는 수정하지 않았다. recommended_action 매핑 변경은 "
-          "별도 DL 로 사용자가 결정한다)")
+    print("     (DL-022: 빨강 window 의 recommended_action 은 2단 진동 기여 1위 기준. "
+          "이 표는 그 대조 기록이다)")
     return df, alt
 
 

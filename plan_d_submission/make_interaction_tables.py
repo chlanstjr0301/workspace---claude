@@ -8,6 +8,7 @@
   i2 : 부하 3분위 × 버스트 내 위치(첫 1초 / 이후) — 같은 지표
   i3 : 두 변수의 주효과만으로 예상한 경보율과 실제 경보율의 차이(상호작용 크기)
   i4 : 저부하 정상 버스트 vs 고장 버스트를 가르는 단일 지표의 AUC (버스트 단위)
+  i5 : 버스트 시작부 미탐의 구조 분해(첫 2 window 제외 Recall)와 빨강 오경보 목록 (DL-021)
 """
 import os
 import sys
@@ -67,6 +68,7 @@ def _frame():
         p["cur_t"] = np.digitize(_rms(X, 2), b_cur)
         p["load_t"] = FT.load_regime(X, lo, hi)
         p["pos"] = np.where(meta["pos_in_burst_sec"].values <= 1.0, "첫 1초", "1초 이후")
+        p["win_idx"] = p.groupby("burst_id").cumcount()
         p["s1"] = (p.p_normal_stage1 <= 0.01).astype(int)
         p["red"] = (p.alarm_level == "red").astype(int)
         return p
@@ -91,6 +93,9 @@ def _grid(H, F, a, b, la, lb, names_a, names_b):
                 "빨강 경보 수": int(h.red.sum()),
                 "고장 window": len(f),
                 "고장 빨강 Recall": round(f.red.mean(), 4) if len(f) else np.nan,
+                "정상 버스트 수": int(h.burst_id.nunique()),
+                "빨강 오경보 버스트 수": int(h[h.red == 1].burst_id.nunique()),
+                "고장 버스트 수": int(f.burst_id.nunique()),
             })
     return pd.DataFrame(rows)
 
@@ -136,6 +141,23 @@ def i4_burst_auc():
     return pd.DataFrame(rows).sort_values("AUC", ascending=False)
 
 
+def i5_start_and_fp(H, F):
+    """시작부 미탐이 3연속 규칙의 구조 때문인지, 빨강 오경보가 몇 사건인지."""
+    rows = []
+    first = F[F.pos == "첫 1초"]
+    later = F[F.pos == "1초 이후"]
+    for name, d in (("첫 1초 전체", first), ("첫 1초 · 각 버스트 첫 2 window 제외", first[first.win_idx >= 2]),
+                    ("첫 1초 · 각 버스트 첫 2 window", first[first.win_idx < 2]), ("1초 이후", later)):
+        rows.append({"구분": "고장 빨강 Recall", "대상": name, "window": len(d),
+                     "버스트": int(d.burst_id.nunique()), "값": round(d.red.mean(), 4) if len(d) else np.nan,
+                     "미탐 window": int((d.red == 0).sum())})
+    fp = H[H.red == 1].sort_values("original_row_start")
+    for b, g in fp.groupby("burst_id"):
+        rows.append({"구분": "빨강 오경보", "대상": "버스트 %d (원본 행 %s)" % (b, ", ".join(map(str, g.original_row_start))),
+                     "window": len(g), "버스트": 1, "값": np.nan, "미탐 window": np.nan})
+    return pd.DataFrame(rows)
+
+
 def main():
     print("변수 간 상호작용 진단표 (모델 불변)")
     H, F, bounds = _frame()
@@ -152,6 +174,9 @@ def main():
                    ignore_index=True)
     save(i3, "i3_interaction_size.csv")
     print(i3.to_string(index=False))
+    i5 = i5_start_and_fp(H, F)
+    save(i5, "i5_start_misses_and_red_fp.csv")
+    print(i5.to_string(index=False))
     i4 = i4_burst_auc()
     save(i4, "i4_burst_indicator_auc.csv")
     print(i4.to_string(index=False))

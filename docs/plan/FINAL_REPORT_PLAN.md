@@ -8,6 +8,8 @@
 
 ## 0. 원칙
 
+> **결정 확정 (10/6)**: D1–D5 모두 권장안으로 진행한다. 보고서는 `docs/plan/REPORT_WRITING_CONVENTION.md`(작성 규약 8개)를 따르고, `report/check_style.py`와 `report/check_numbers.py`를 모두 통과해야 한다.
+
 1. **모델 불변.** 1단 M3, 2단 M1(진동), p ≤ 0.01, 3연속, 블록 0–2/3/4는 바꾸지 않는다. 진단 결과는 사후 비교로만 쓴다.
 2. **모든 수치는 CSV에서.** 본문 수치는 `outputs/tables/`와 `predictions.csv`에서만 가져오고 `check_numbers.py`로 검사한다. 제출 코드로 재현할 수 없는 수치(다른 Plan 결과)는 본문에 넣지 않는다.
 3. **사전 판정 규칙대로 쓴다.** v·w 표의 `사전판정` 열 또는 `docs/audit/EXPERIMENTS_E1_E6_RESULTS.md`의 판정 문구를 따른다.

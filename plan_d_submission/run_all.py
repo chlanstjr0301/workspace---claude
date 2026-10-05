@@ -498,6 +498,17 @@ def final_predictions(cfg, P, seed, stage1, stage2):
     else:
         tops = [["", ""]] * len(meta)
 
+    # 권고 문구: 노랑·초록은 1단 기여 1위로, 빨강은 2단(전류 제외 진동) 기여 1위로 만든다.
+    # 빨강은 2단 진동 확인을 거쳐야 나오므로 그 근거로 점검 항목을 안내한다 (DL-022).
+    # 경보 판정(alarm_level)과 top_reason_1/2 는 바꾸지 않는다.
+    actions = [EX.reason_phrase(t[0]) for t in tops]
+    if hasattr(m2, "contrib"):
+        allv = np.vstack([P["Fn"][:, idx], P["Fo"][:, idx]])[:, vib]
+        vnames = [P["names"][idx[i]] for i in vib]
+        top_v = [vnames[k] for k in np.abs(m2.contrib(allv)).argmax(axis=1)]
+        actions = ["[빨강·진동 근거] " + EX.reason_phrase(v) if l == "red" else a
+                   for a, v, l in zip(actions, top_v, lvl)]
+
     # 어느 행이 in-sample 인지 명시한다. 최종 모델은 블록 0-2 로 적합하고
     # 블록 3 으로 보정하므로, 정상 행 대부분은 held-out 이 아니다.
     # 블록 4 만이 이 모델이 한 번도 보지 못한 정상 구간이다.
@@ -518,7 +529,7 @@ def final_predictions(cfg, P, seed, stage1, stage2):
         "alarm_level": lvl,
         "top_reason_1": [t[0] for t in tops],
         "top_reason_2": [t[1] for t in tops],
-        "recommended_action": [EX.reason_phrase(t[0]) for t in tops],
+        "recommended_action": actions,
         "label": meta["label"],
     })
     os.makedirs(OUT, exist_ok=True)

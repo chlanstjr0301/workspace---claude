@@ -29,27 +29,27 @@ h1 { font-size: 20pt; text-align: center; margin: 0 0 4mm 0; }
 h2 { font-size: 16pt; margin: 8mm 0 3mm 0; padding-bottom: 1.5mm;
      border-bottom: 1.2pt solid #000; page-break-after: avoid; }
 h2.chapter { page-break-before: always; }
-h3 { font-size: 14.5pt; margin: 5mm 0 2mm 0; page-break-after: avoid; }
+h3 { font-size: 14pt; margin: 5mm 0 2mm 0; page-break-after: avoid; }
 p { margin: 1.5mm 0; text-align: justify; }
 blockquote { margin: 3mm 0; padding: 2mm 4mm; border-left: 1.2pt solid #555; background: #f3f3f3; font-size: 12pt; }
 body > blockquote:first-of-type { text-align: center; background: none; border: none; font-size: 14pt; }
 hr { border: none; border-top: 0.6pt solid #888; margin: 5mm 0; }
 table { border-collapse: collapse; width: 100%; margin: 2mm 0 1mm 0;
-        font-size: 10pt; line-height: 1.45; page-break-inside: auto; }
+        font-size: 12pt; line-height: 1.45; page-break-inside: auto; }
 tr { page-break-inside: avoid; }
 thead { display: table-header-group; }
 th, td { border: 0.5pt solid #444; padding: 1mm 1.5mm; vertical-align: top; }
 th { background: #e8e8e8; font-weight: bold; text-align: center; }
 p.caption { font-weight: bold; margin: 4mm 0 0 0; page-break-after: avoid; }
 p.source { font-size: 10pt; color: #333; margin: 0.5mm 0 3mm 0; }
-code { font-family: "NanumGothicCoding", monospace; font-size: 0.85em; }
-pre { font-family: "NanumGothicCoding", monospace; font-size: 10pt; line-height: 1.35;
+code { font-family: "NanumGothicCoding", monospace; font-size: 12pt; }
+pre { font-family: "NanumGothicCoding", monospace; font-size: 12pt; line-height: 1.35;
       background: #f4f4f4; border: 0.5pt solid #bbb; padding: 2mm 3mm;
       white-space: pre-wrap; page-break-inside: avoid; }
 pre code { font-size: inherit; }
 figure { margin: 3mm 0; text-align: center; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 95mm; }
-figcaption { font-size: 10pt; font-weight: bold; margin-top: 1mm; }
+figcaption { font-size: 12pt; font-weight: bold; margin-top: 1mm; }
 ul, ol { margin: 1mm 0 1mm 6mm; padding-left: 4mm; }
 li { margin: 0.6mm 0; }
 nav.toc { page-break-before: always; }
@@ -58,7 +58,9 @@ nav.toc ul { list-style: none; margin: 0; padding: 0; column-count: 2; column-ga
 nav.toc li.l2 { break-after: avoid; }
 nav.toc li { line-height: 1.45; margin: 0; }
 nav.toc li.l2 { font-weight: bold; margin-top: 2mm; }
-nav.toc li.l3 { margin-left: 7mm; font-size: 11pt; }
+nav.toc li.l3 { margin-left: 7mm; font-size: 12pt; }
+p.head { font-weight: bold; font-size: 14pt; margin: 1mm 0 3mm 0; padding: 2mm 3mm;
+         border-left: 2.5pt solid #2a78d6; background: #eef4fc; page-break-after: avoid; }
 p.formula { text-align: center; margin: 2mm 0; font-size: 12pt; }
 """
 
@@ -76,11 +78,15 @@ def build_html():
     # 그림: <p><img alt=..></p> -> <figure> + 캡션
     body = re.sub(r'<p><img alt="([^"]*)" src="([^"]+)" ?/?></p>',
                   r'<figure><img src="\2" alt="\1"><figcaption>\1</figcaption></figure>', body)
+    # 헤드 메시지: 장·절 제목 바로 다음의 굵은 한 문장 (작성 규약 6)
+    body = re.sub(r'(</h[23]>)\s*<p><strong>([^<]*)</strong></p>', r'\1<p class="head">\2</p>', body)
     # 표 제목(표 x-y.)과 근거줄(*근거: ...*) 서식
     body = re.sub(r'<p>(표 \d+-\d+[a-z]?\..*?)</p>', r'<p class="caption">\1</p>', body)
     body = re.sub(r'<p><em>(근거:.*?)</em></p>', r'<p class="source">\1</p>', body, flags=re.S)
     # 각 장(□ 제n장, 만족도 조사)은 새 페이지에서 시작
     body = re.sub(r'<h2 id="([^"]*)">□', r'<h2 class="chapter" id="\1">□', body)
+    # 부록 B·C 는 앞 부록에 이어 쓴다 (짧은 부록마다 빈 쪽이 생기지 않게)
+    body = re.sub(r'<h2 class="chapter" (id="[^"]*">□ 부록 [B-Z])', r'<h2 \1', body)
     # 새 페이지 직전의 구분선은 빈 페이지를 만들 수 있으므로 제거
     body = re.sub(r'<hr />\s*(<h2 class="chapter")', r'\1', body)
     # 수식 줄(  p_normal ...)은 가운데 정렬
