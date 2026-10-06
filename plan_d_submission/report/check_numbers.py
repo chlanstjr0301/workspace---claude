@@ -201,6 +201,14 @@ def checks():
     add("교대당 노랑", c(b4.loc["yellow", "per_shift_8h"]))
     add("수집 비율", "%.2f" % b4.loc["red", "duty"])
     al = v5a[v5a.scope.str.startswith("정상 전체")].iloc[0]
+    s1 = T("s1_stream_replay").set_index("대상")
+    for k, lab in (("정상 학습 블록 0-2", "정상 학습 블록 0–2"), ("정상 평가 블록 4", "정상 평가 블록 4"), ("고장 기록", "고장 기록")):
+        r_ = s1.loc[k]
+        assert int(r_["경보 상태 일치"]) == int(r_["짝지은 window"]) == int(r_["저장 예측 window"])
+        add("재생 " + k, "| %s | %s | %s | 0 | %d / %d |" % (lab, c(int(r_["짝지은 window"])), c(int(r_["경보 상태 일치"])),
+                                                       int(r_["빨강 (재생)"]), int(r_["빨강 (저장)"])))
+    n_rep = sum(int(s1.loc[k, "경보 상태 일치"]) for k in ("정상 학습 블록 0-2", "정상 평가 블록 4", "고장 기록"))
+    add("재생 일치 합계", "일괄 예측 %s window와 모두 같다" % c(n_rep))
     pr = pd.read_csv(os.path.join(os.path.dirname(TAB), "predictions.csv"))
     rd = pr[pr.alarm_level == "red"]
     add("빨강 행 구성", "빨강 %d행(고장 %d, 정상 %d)" % (len(rd), (rd.source != "normal").sum(), (rd.source == "normal").sum()))

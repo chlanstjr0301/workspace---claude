@@ -681,6 +681,9 @@ def main():
                       ("조기탐지 가능성 진단표 w1-w5", EW)):
         log(name + " 생성")
         mod.main()
+    import stream_replay as SR
+    log("실시간 재생 검증 s1 생성")
+    SR.main()
 
 
 if __name__ == "__main__":

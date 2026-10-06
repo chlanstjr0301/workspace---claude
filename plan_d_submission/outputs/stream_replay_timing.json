@@ -1,0 +1,11 @@
+{
+  "stage1": "M3",
+  "windows": 15299,
+  "ms_per_window_median": 1.422,
+  "ms_per_window_p99": 2.468,
+  "ms_per_window_max": 8.244,
+  "sample_interval_ms": 100.0,
+  "python": "3.13.14",
+  "platform": "Linux-6.18.44-fc-v70-x86_64-with-glibc2.39",
+  "processor": "x86_64"
+}
