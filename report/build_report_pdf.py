@@ -85,6 +85,11 @@ nav.toc li.l3 { margin-left: 7mm; font-size: 12pt; }
 p.head { font-weight: bold; font-size: 14pt; margin: 1mm 0 3mm 0; padding: 2mm 3mm;
          border-left: 2.5pt solid #2a78d6; background: #eef4fc; page-break-after: avoid; }
 p.formula { text-align: center; margin: 2mm 0; font-size: 12pt; }
+/* 만족도 조사 캡쳐: 가로 화면 2장(왼쪽 위·아래) + 휴대폰 화면 1장(오른쪽) */
+div.survey { display: flex; gap: 4mm; align-items: flex-start; margin-top: 4mm; page-break-inside: avoid; }
+div.survey div.col { flex: 0 0 112mm; }
+div.survey div.col img { width: 112mm; border: 0.5pt solid #888; margin-bottom: 4mm; display: block; }
+div.survey div.phone img { width: 54mm; border: 0.5pt solid #888; display: block; }
 """
 
 FOOTER = ('<div style="width:100%;font-size:8pt;text-align:center;'
