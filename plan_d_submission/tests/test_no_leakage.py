@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""불변식: holdout/이상 정보가 scaler·임계값에 들어가지 않는다 (Plan D §2.2-6)."""
+"""불변식: holdout/이상 정보가 scaler·임계값에 들어가지 않는다 (분석 프로토콜 §2.2-6)."""
 import os
 import sys
 

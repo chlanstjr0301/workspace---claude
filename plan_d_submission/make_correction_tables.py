@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""적대적 감사 2차 지적(P1-7·9·10·12·14) 대응 표.
+"""내부 검증 2차 보완 표.
 
 모델·임계값 불변. 기존 predictions.csv 와 원본 데이터만 사용한다.
-  c1 : NC 음성대조를 '같은 유병률의 우연 수준'과 비교 (P1-7)
-  c2 : FP 집중조건을 동결 운영 구성에서 재계산 (P1-9)
-  c3 : 블록별 1단/빨강 경보율 (P1-10)
-  c4 : d2 의 재색인 burst 와 원시 burst_id 매핑 (P1-12)
-  c5 : 1단·2단 점수 상관 (P1-14)
+  c1 : NC 음성대조를 '같은 유병률의 우연 수준'과 비교
+  c2 : FP 집중조건을 동결 운영 구성에서 재계산
+  c3 : 블록별 1단/빨강 경보율
+  c4 : d2 의 재색인 burst 와 원시 burst_id 매핑
+  c5 : 1단·2단 점수 상관
 """
 import os
 import sys
@@ -31,7 +31,7 @@ def save(df, name):
 
 
 def c1_nc_chance():
-    """P1-7: NC 는 균형 과제다. 같은 유병률의 우연 수준과 비교해야 한다."""
+    """NC 는 균형 과제다. 같은 유병률의 우연 수준과 비교해야 한다."""
     d7 = pd.read_csv(os.path.join(TAB, "d7_supervised_control.csv"))
     rows = []
     for _, r in d7.iterrows():
@@ -63,7 +63,7 @@ def _regimes(pred, Xn, tr_mask):
 
 
 def c2_fp_conditions_frozen():
-    """P1-9: FP 집중조건을 동결 구성(학습 0-2, 보정 3, holdout 4)에서 재계산."""
+    """FP 집중조건을 동결 구성(학습 0-2, 보정 3, holdout 4)에서 재계산."""
     import yaml
     from src import data as D, features as FT, windows as WD
     cfg = yaml.safe_load(open(os.path.join(HERE, "config.yaml"), encoding="utf-8"))
@@ -101,7 +101,7 @@ def c2_fp_conditions_frozen():
 
 
 def c3_block_alarm_rates():
-    """P1-10: 간판 FPR 은 holdout 블록 하나의 값이다. 블록별로 공개한다."""
+    """간판 FPR 은 holdout 블록 하나의 값이다. 블록별로 공개한다."""
     pred = pd.read_csv(os.path.join(OUT, "predictions.csv"))
     nm = pred[pred.source == "normal"]
     rows = []
@@ -119,7 +119,7 @@ def c3_block_alarm_rates():
 
 
 def c4_burst_id_map():
-    """P1-12: d2 의 burst 는 '10샘플 이상만 추려 0부터 재색인'한 값이다."""
+    """d2 의 burst 는 '10샘플 이상만 추려 0부터 재색인'한 값이다."""
     import yaml
     from src import data as D, windows as WD
     cfg = yaml.safe_load(open(os.path.join(HERE, "config.yaml"), encoding="utf-8"))
@@ -151,7 +151,7 @@ def c4_burst_id_map():
 
 
 def c5_stage_correlation():
-    """P1-14: 1단·2단이 독립 증거인지."""
+    """1단·2단이 독립 증거인지."""
     pred = pd.read_csv(os.path.join(OUT, "predictions.csv"))
     rows = []
     for name, sel in (("정상 holdout", pred.split == "holdout"),

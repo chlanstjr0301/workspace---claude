@@ -13,7 +13,7 @@ E-B  Point adjustment (PA) 의 영향
 
 구간 S_m 은 고장 버스트 17개로 정의한다(이 데이터에서 자연스러운 이상 구간 단위).
 
-usage: python plan_d_submission/make_protocol_tables.py
+usage: python make_protocol_tables.py
 출력:  outputs/tables/d5_random_baseline.csv, d6_point_adjustment.csv
 """
 import os

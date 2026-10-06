@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""BL-1 공식 LSTM-Autoencoder 재현 (Plan D §4.1).
+"""BL-1 공식 LSTM-Autoencoder 재현 (분석 프로토콜 §4.1).
 
 구조는 가이드북 그대로: LSTM64 -> LSTM32 -> RepeatVector -> LSTM32 -> LSTM64
                         -> TimeDistributed(Dense(n_features))

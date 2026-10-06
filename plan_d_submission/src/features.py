@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""A/S/R/O/Q 특징군 (Plan D §3.1).
+"""A/S/R/O/Q 특징군 (분석 프로토콜 §3.1).
 
 A 진폭  : 센서 이득에 민감        std, p2p, rms
 S 형태  : 이득/오프셋에 비교적 강건 lag-1/lag-2 자기상관, zero-crossing rate

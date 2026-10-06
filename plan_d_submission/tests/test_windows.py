@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""불변식: window 는 시간 공백을 가로지르지 않는다 (Plan D 즉시 에스컬레이션 항목)."""
+"""불변식: window 는 시간 공백을 가로지르지 않는다 (분석 프로토콜 필수 항목)."""
 import os
 import sys
 

@@ -14,7 +14,7 @@ A6 — 시간적 통합 규칙 (N개 중 M개) 의 지연·미탐·오경보 맞
 이고, 버스트 내부에서 연속한 N개 window 중 M개 이상이 후보이면 그 시점에 빨강.
 N 은 버스트를 넘지 않는다(버스트 경계에서 창이 끊긴다).
 
-usage: python plan_d_submission/make_mofn_table.py
+usage: python make_mofn_table.py
 출력:  outputs/tables/d4_mofn_tradeoff.csv
 """
 import os

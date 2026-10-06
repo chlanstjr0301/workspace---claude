@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""버스트 분할과 gap-safe windowing (Plan D §2.1-§2.2).
+"""버스트 분할과 gap-safe windowing (분석 프로토콜 §2.1-§2.2).
 
 불변식: 어떤 window 도 버스트 경계를 가로지르지 않는다.
        -> tests/test_windows.py 가 이를 검증한다.

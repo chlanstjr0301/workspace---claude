@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""결과보고서 작성 규약 자동 검사 (docs/plan/REPORT_WRITING_CONVENTION.md §2).
+"""결과보고서 작성 규약 자동 검사 (보고서 작성 규약 9개).
 
     python report/check_style.py           # 실패가 있으면 종료코드 1
     python report/check_style.py --heads   # 헤드 메시지만 순서대로 출력

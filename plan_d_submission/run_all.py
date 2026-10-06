@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Plan D 전체 파이프라인.
+"""CARE-Press 전체 파이프라인.
 
     python run_all.py --config config.yaml --mode quick
     python run_all.py --config config.yaml --mode full
@@ -580,7 +580,7 @@ def main():
     os.makedirs(TAB, exist_ok=True)
     os.makedirs(FIG, exist_ok=True)
 
-    log("Plan D 파이프라인 시작  mode=%s  seed=%d" % (a.mode, seed))
+    log("CARE-Press 파이프라인 시작  mode=%s  seed=%d" % (a.mode, seed))
     normal, outlier, hashes = D.load_all(cfg, HERE)
     log("  정상 %d행 / 이상 %d행" % (len(normal), len(outlier)))
 
@@ -658,7 +658,7 @@ def main():
         json.dump(manifest, f, ensure_ascii=False, indent=2)
     log("완료. %.1f초" % (time.time() - t0))
 
-    # 보고서 보충표(r1-r5)와 감사 진단표(r6-r11). 모델·임계값 불변, 기존 산출물만 사용.
+    # 보고서 보충표(r1-r5)와 보완 진단표(r6-r11). 모델·임계값 불변, 기존 산출물만 사용.
     import make_report_tables as RT
     import make_audit_tables as AT
     import make_domain_tables as DT
@@ -670,14 +670,14 @@ def main():
     import make_interaction_tables as IT
     import make_review_tables as RV
     import make_earlywarning_tables as EW
-    for name, mod in (("보고서 보충표 r1-r5", RT), ("감사 진단표 r6-r12", AT),
+    for name, mod in (("보고서 보충표 r1-r5", RT), ("보완 진단표 r6-r12", AT),
                       ("도메인 진단표 d1-d3", DT), ("M-of-N 표 d4", MT),
                       ("프로토콜 통제표 d5-d6", PT),
                       ("지도학습 대조군 d7", SC),
                       ("확률 보정 r13", CB),
                       ("정정 대응표 c1-c5", CT),
                       ("상호작용 진단표 i1-i4", IT),
-                      ("검토 대응 진단표 v1-v6", RV),
+                      ("보완 진단표 v1-v6", RV),
                       ("조기탐지 가능성 진단표 w1-w5", EW)):
         log(name + " 생성")
         mod.main()

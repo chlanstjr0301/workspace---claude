@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""데이터 로딩과 품질 감사 (Plan D §2.2 / E0)."""
+"""데이터 로딩과 품질 점검 (분석 프로토콜 §2.2 / E0)."""
 import hashlib
 import os
 

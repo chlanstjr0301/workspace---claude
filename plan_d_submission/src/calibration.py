@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""정상성 conformal p-value (Plan D §5.1).
+"""정상성 conformal p-value (분석 프로토콜 §5.1).
 
 p_normal(x) = (1 + #{s_i >= s(x)}) / (n + 1)
 risk_score  = 1 - p_normal          (순위 기반 이상위험 점수. 사후확률 아님)

@@ -16,7 +16,7 @@ M4 지도학습 대조군 + 가짜 라벨 음성대조
       이 가짜 과제의 점수가 높다면, 이 특징공간은 임의의 시간 구간을 가르는
       능력이 있다는 뜻이고 고장-정상 F1 의 정보량은 그만큼 줄어든다.
 
-usage: python plan_d_submission/make_supervised_control.py
+usage: python make_supervised_control.py
 출력:  outputs/tables/d7_supervised_control.csv
 """
 import os

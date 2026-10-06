@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-도메인 지식 적용용 보조 표 생성 (P0)
+도메인 지식 적용용 보조 표 생성
 
   outputs/tables/d1_operating_modes.csv   운전모드 3분할 (주운전/저부하/이상)
   outputs/tables/d2_quiet_bursts.csv      이상 이벤트 내 조용한 버스트
@@ -9,7 +9,7 @@
 규약은 config.yaml 과 동일하다: gap 0.5 s 로 버스트 분할, window length L=10
 → 길이 10샘플 미만 버스트는 window 를 만들 수 없으므로 제외(이상 17개).
 
-usage: python plan_d_submission/make_domain_tables.py
+usage: python make_domain_tables.py
 """
 import os
 import sys
