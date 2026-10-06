@@ -1,8 +1,0 @@
-source_file,split,label,rows,first_row,last_row,start,end
-press_data_normal.csv,train,0,12012,1,12013,2022-07-12 00:00:00.019,2022-07-12 00:45:07.256
-press_data_normal.csv,calibration,0,2011,12014,14024,2022-07-12 00:45:10.440,2022-07-12 00:53:17.956
-press_data_normal.csv,selection,0,1986,14025,16010,2022-07-12 00:53:19.759,2022-07-12 01:01:01.732
-press_data_normal.csv,test,0,3990,16011,20000,2022-07-12 01:01:04.524,2022-07-12 01:16:55.828
-outlier_data.csv,calibration,1,132,1,132,2022-07-17 10:51:07.943,2022-07-17 10:51:34.734
-outlier_data.csv,selection,1,111,133,243,2022-07-17 10:51:39.999,2022-07-17 10:52:08.307
-outlier_data.csv,test,1,357,244,600,2022-07-17 10:52:12.567,2022-07-17 10:53:53.540

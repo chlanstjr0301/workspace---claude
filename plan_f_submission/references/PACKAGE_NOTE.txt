@@ -1,1 +1,0 @@
-evidence.txt는 원실험의 확인 기록이다. 기록 속 references/guidebook.pdf 및 guidebook.txt는 개인 워터마크를 포함하여 본 패키지에서는 제외했다. 원문 설정의 출처·쪽 번호는 evidence.txt에 보존했다. 논문 작성 중 추가 확인한 서지는 paper/references_verified.json에 있다. 원실험 reports 경로의 전송 기록은 본 패키지 audit/에 동봉했다.

@@ -1,9 +1,0 @@
-{
-  "path": "/home/lim/.codex/sessions/2026/10/03/rollout-2026-10-03T17-51-19-01a100f5-ec7e-7790-8457-0c815584b315.jsonl",
-  "prefix_last_line": 2047,
-  "prefix_sha256": "070914c5daffbaa7d4687a05b325268f98721e5124aa84b70b2b727941fa675b",
-  "raw_session_exported": false,
-  "unrelated_messages_or_reasoning_exported": false,
-  "complete_shell_or_training_process_audit_trail": false,
-  "git_available": false
-}

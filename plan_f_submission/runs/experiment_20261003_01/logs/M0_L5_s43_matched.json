@@ -1,9 +1,0 @@
-{
-  "key": "M0_L5",
-  "seed": 43,
-  "matched": true,
-  "fit_seconds": 33.443615731000136,
-  "training_windows": 9009,
-  "early_stop_windows": 1596,
-  "epochs": 20
-}

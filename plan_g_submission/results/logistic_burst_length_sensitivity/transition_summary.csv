@@ -1,7 +1,0 @@
-cohort,length,eligible_original_TP_parents,affected_any_FN,persistent_all_crop_fold_FN,FN_predictions,n_predictions
-actually_shorter,10,15,12,1,191,450
-actually_shorter,15,14,9,1,130,420
-actually_shorter,20,13,8,0,98,390
-common_N_ge20,10,13,11,1,171,390
-common_N_ge20,15,13,9,1,130,390
-common_N_ge20,20,13,8,0,98,390

@@ -1,7 +1,0 @@
-﻿group,burst_id,selection
-Normal,240,two closest to within-group feature median (standardized by group std)
-Normal,348,two closest to within-group feature median (standardized by group std)
-Detected Abnormal,617,two closest to within-group feature median (standardized by group std)
-Detected Abnormal,611,two closest to within-group feature median (standardized by group std)
-FN Abnormal,619,specified FN case
-FN Abnormal,620,specified FN case

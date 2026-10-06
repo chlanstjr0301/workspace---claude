@@ -1,5 +1,0 @@
-﻿group,crossing,n_predictions,n_unique_bursts
-Detected abnormal,unchanged,180,18
-FN abnormal,unchanged,20,2
-Normal,0_to_1,94,16
-Normal,unchanged,5656,574

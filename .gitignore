@@ -2,24 +2,4 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ipynb_checkpoints/
-
-# LaTeX 중간 산출물
-*.aux
-*.log
-*.out
-*.synctex.gz
-!**/outputs/*.log
-!**/outputs/**/*.log
-
-# latexmk / bibtex 부기 파일 (매 빌드마다 바뀌는 노이즈)
-*.fls
-*.fdb_latexmk
-*.blg
-
-# 벤더링된 실행 바이너리 (Linux ELF, 공개 배포본 — 저장소에 둘 이유 없음)
-plan_e_submission/tools/tectonic
-
-# plan_h: 과거 실행 산출물(391MB)과 벤더링 바이너리는 저장소에 두지 않는다.
-# 재현에 필요한 code/configs/data/scripts/paper/results/frozen 은 포함된다.
-plan_h_submisson/results/history/
-plan_h_submisson/environment/tools/tectonic
+report/_build_report.html

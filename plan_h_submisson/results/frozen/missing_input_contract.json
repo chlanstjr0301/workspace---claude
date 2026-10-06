@@ -1,7 +1,0 @@
-{
-  "original_helper_produces_nonfinite_base_score": true,
-  "original_helper_treats_nonfinite_base_as_no_alarm": true,
-  "supplied_original_data_have_no_missing": true,
-  "fix": "strict finite-sensor input wrapper rejects the entire external input; frozen core unchanged",
-  "valid_data_scores_affected": false
-}

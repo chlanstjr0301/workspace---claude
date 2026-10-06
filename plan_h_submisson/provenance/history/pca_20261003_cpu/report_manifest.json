@@ -1,7 +1,0 @@
-{
-  "report": "REPORT.html",
-  "selection_lock_sha256": "5d2c50ae4b73ca3405ab0d89fa0f357ed9ad322e932cd027a6c239e0944e0ec4",
-  "final_summary_sha256": "4c38485475a26edccb5e9d6de0bfe59a8700cf935e5240c043d7c85927236762",
-  "generated_by": "/home/lim/hydraulic_ai_alt/scripts/report.py",
-  "source": "/home/lim/hydraulic_ai_alt/runs/pca_20261003_cpu"
-}

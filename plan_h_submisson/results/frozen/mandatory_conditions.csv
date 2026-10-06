@@ -1,6 +1,0 @@
-model,S_effect,S1_maintenance,S2_maintenance,original_selection_all_conditions,V_stability,V_FN_reduction,H_effect_descriptive,selected_model_unchanged
-B0,False,True,True,False,True,not_assessable,False,False
-B_same_threshold,True,True,False,False,True,not_assessable,True,False
-G1,True,True,True,True,True,not_assessable,True,True
-D_old_threshold_G1,True,True,True,True,True,not_assessable,True,False
-R5_A0,True,True,False,False,True,not_assessable,True,False

@@ -1,9 +1,0 @@
-{
-  "passed": true,
-  "review_model_and_manuscript_hashes_match": true,
-  "original_models_unchanged": true,
-  "source_inventory_originals_unchanged": true,
-  "final_tex_critical_warnings": [],
-  "independent_new_data": false,
-  "scope": "fixed implementation, document arithmetic and package reproducibility; not independent generalization"
-}

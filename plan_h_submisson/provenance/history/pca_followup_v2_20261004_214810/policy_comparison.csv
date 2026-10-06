@@ -1,4 +1,0 @@
-candidate,block,old_pass,old_failed_rules,new_pass,fn_maintenance_pass,fn_reduction_reproduced,predictions_changed
-C1,S_pooled,False,FN_decreased;F2,False,True,False,False
-C1,V,False,FN_decreased;F2,True,True,not_assessable,False
-C0,S2,False,F2;F1;FP_budget;absolute_FPR,False,True,not_assessable,False

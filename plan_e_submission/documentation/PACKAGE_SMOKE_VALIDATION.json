@@ -1,9 +1,0 @@
-{
-  "checked_utc": "2026-10-03T10:13:27.318859+00:00",
-  "package_private_environment_created": true,
-  "saved_model_predictions_matched": 4347,
-  "raw_csv_hashes_match": true,
-  "portable_experiment_prepare_passed": true,
-  "model_fit_or_tuning_in_paper_task": false,
-  "notes": "Full historical experiments are preserved. This paper-packaging task checks inference and data preparation, without rerunning model selection."
-}

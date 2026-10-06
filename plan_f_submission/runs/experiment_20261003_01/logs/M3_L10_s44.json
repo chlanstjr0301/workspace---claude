@@ -1,9 +1,0 @@
-{
-  "key": "M3_L10",
-  "seed": 44,
-  "matched": false,
-  "fit_seconds": 0.8113141040000755,
-  "training_windows": 11994,
-  "early_stop_windows": 0,
-  "epochs": 0
-}

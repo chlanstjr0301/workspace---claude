@@ -1,4 +1,0 @@
-source_file,status,rows
-outlier_data.csv,used_confirmed,600
-press_data_normal.csv,duplicate_of_used_observation,1
-press_data_normal.csv,used_confirmed,19999

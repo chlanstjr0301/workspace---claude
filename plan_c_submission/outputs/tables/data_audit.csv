@@ -1,3 +1,0 @@
-﻿source,rows,state_values,missing_cells,duplicate_timestamps,negative_time_steps,gaps_over_threshold,bursts,median_internal_dt,wall_duration_sec,observed_duration_sec
-normal,20000,0,1,1,0,598,599,0.1,4615.809,2000.0
-outlier,600,1,1,0,0,20,21,0.1,165.597,60.0

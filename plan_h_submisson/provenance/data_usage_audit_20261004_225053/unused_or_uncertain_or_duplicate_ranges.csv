@@ -1,2 +1,0 @@
-source_file,status,original_split,source_row_start,source_row_end,normal,anomaly,TimeStamp_start,TimeStamp_end
-press_data_normal.csv,duplicate_of_used_observation,deduplicated,11566,11566,1,0,2022-07-12 00:43:33.196000,2022-07-12 00:43:33.196000

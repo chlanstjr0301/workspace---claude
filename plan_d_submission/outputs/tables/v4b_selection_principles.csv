@@ -1,5 +1,0 @@
-﻿원리,선정 모델,근거,제외
-(a) minimax — 최악 섭동 오경보 증가 최소,M3,worst_shift_fp_increase_pp 최소 (16.976 pp),"BL1 (섭동 시험 미실시, NaN)"
-(b) 섭동 4종 순위합 최소,M3,"순위합 M3=8, M2=8, BL0=11, M1=13; 동률 M2=M3 → 1순위 정렬키 far_h_upper95_worst 로 결정 (M2 555.5, M3 362.7)",BL1 (e5_robustness_summary 에 행 없음)
-(c) 원 기준 v0,BL0,passed_v0 통과: BL0,-
-(참고) 정정 기준 v2 (제출본 선정),M3,passed_v2 통과: M3,-

@@ -1,6 +1,0 @@
-goal,result,evidence,limit
-a_FN 감소,"선택 pooled R5 FN3→1, R4 FN3→2. 적격 후보는 없음",all_trials.csv; paired_errors.csv,"선택21이상행, 단2개 이상 burst"
-b_FP 예산,"R4/R5 S2 추가FP1>허용0, 절대FPR1% 초과",block_metrics.csv; tables/fp_integer_budgets.csv,"작은 블록의 정수예산, 현장 비용 근거 아님"
-c_F1_F2,"pooled R5 F1/F2 상승, S2 F1/F2 하락",block_metrics.csv; figures/f1_f2_budgets.png,pooled 이득만으로 채택하지 않음
-d_후반 시간 검증,"선정 후보 없음. V 원FN0, 개선 확인 불가",selected_config.json; V_evaluation.json,"이미 노출된 기존 개발 자료, 새로운 독립 테스트 아님"
-실행 재현,원저장추론+정상전용 보조 재학습 포함 전체재실행 일치,validation_report.json; end_to_end_replay.json,독립 통계 반복 또는 원PCA 재학습 반복 아님

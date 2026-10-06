@@ -1,1 +1,0 @@
-"""SHIFT-Guard implementation package."""

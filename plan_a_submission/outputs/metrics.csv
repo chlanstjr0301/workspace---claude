@@ -1,2 +1,0 @@
-﻿feature_set,model,d1_ok,n_params,threshold,precision,recall,f1,fpr,mcc,TP,FN,FP,TN,f1_ci_lo,f1_ci_hi,far_per_h,far_alarms,far_upper95,burst_recall,burst_fp,burst_f1,event_recall,detect_delay_s,conformal_ks
-S1_VIB,BL0_Range,True,0,0.1042049084409475,1.0,0.8659420289855072,0.9281553398058252,0.0,0.9237196549003057,239,37,0,2489,0.8522483940042827,0.9842540729076219,0.0,0,21.569272369588724,1.0,0,1.0,1.0,8.781,0.16065706125331303

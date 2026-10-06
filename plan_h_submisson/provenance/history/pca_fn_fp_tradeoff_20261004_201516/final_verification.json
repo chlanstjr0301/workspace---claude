@@ -1,9 +1,0 @@
-{
-  "required_outputs_present": true,
-  "all_candidates_completed": 36,
-  "historical_evaluated": 3,
-  "saved_inference_rows": 13041,
-  "A_and_B_common_W20_identical": true,
-  "threshold_and_selection_not_retuned": true,
-  "baseline_preserved": true
-}

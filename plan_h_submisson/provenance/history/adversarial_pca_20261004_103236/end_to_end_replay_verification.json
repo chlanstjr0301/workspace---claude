@@ -1,8 +1,0 @@
-{
-  "replay_folder": "/home/lim/hydraulic_ai_alt/runs/adversarial_pca_20261004_195637_rerun_292928",
-  "command": "bash RUN_REVIEW.sh",
-  "fresh_training": true,
-  "same_selected_candidate": true,
-  "same_final_predictions": true,
-  "statistical_independence": false
-}

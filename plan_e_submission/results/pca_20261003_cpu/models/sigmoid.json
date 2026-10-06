@@ -1,9 +1,0 @@
-{
-  "a": 5.697597231486163,
-  "b": -5.3542300244797145,
-  "mean": 0.45991940196404674,
-  "std": 0.7961787553102958,
-  "regularization": 0.0001,
-  "success": true,
-  "input": "standardized log1p(score)"
-}

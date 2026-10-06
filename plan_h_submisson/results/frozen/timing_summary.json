@@ -1,9 +1,0 @@
-{
-  "horizon": "t-2,t-1 predict t; residual only available after t received",
-  "G1_dependency": "current residual and previous residual: raw t,t-1,t-2,t-3 within continuity group",
-  "P1_dependency": "last20 rows inside original partition, gap crossing allowed",
-  "report_block_reset": false,
-  "physical_session_metadata_present": false,
-  "first_2_R5_unavailable": true,
-  "no_earlier_alarm_claim": true
-}
